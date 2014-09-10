@@ -1,30 +1,21 @@
 /**
- * @Title: ActionRange.java 
- * @Package com.glacier.permission.entity.util 
- * @author zhenfei.zhang   
- * @email 289556866@qq.com
- * @date 2013-12-24 下午4:21:08 
+ * @author xichao.dong   
+ * @email 406592176@qq.com
+ * @date 2014-8-15 上午8:50:38 
  * @company (开发公司)    珠海市冰川软件有限公司
  * @copyright (版权)    本文件归属珠海市冰川软件有限公司所有
  * @version V1.0
- * @modify (修改) 
- *        	<p>
-				第一次修改：
-				时间：2013-12-24
-				修改人：zhenfei.zhang 
-				修改内容简介 ：
-			</p>              
- * @Review (审核人) ：zhenfei.zhang
- * 
+ * @modify (修改) : 2014-8-15 上午8:50:38  xichao.dong 
+ * @Review (审核人) ：xichao.dong 
  */
 package com.glacier.frame.entity.system.util;
 
 /**
  * @ClassName: ActionRange 
  * @Description: TODO(动作范围) 
- * @author zhenfei.zhang
- * @email 289556866@qq.com
- * @date 2013-12-24 下午4:21:08
+ * @author xichao.dong	
+ * @email 406592176@qq.com
+ * @date 2014-9-10 下午3:27:48
  */
 public enum ActionRange {
     
