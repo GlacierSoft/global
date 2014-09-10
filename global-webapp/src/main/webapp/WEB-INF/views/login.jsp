@@ -43,7 +43,7 @@
 					<div class="col-lg-12 visible-lg" style="height:120px;">
 					</div>
 					<div class="page-header">
-						<h1>GS Loan Management System <br><small>冰川贷管理系统</small></h1>
+						<h1>YHGlobal Management System <br><small>&nbsp;&nbsp;深 国 际 管 理 系 统</small></h1>
 					</div>
 					<div class="row">
 						<div class="col-md-10 col-xs-12">
