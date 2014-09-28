@@ -66,21 +66,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					      <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
 					        <li><a href="${ctx}/aboutUs.htm" >公司简介</a></li>
 					        <li><a href="${ctx}/announcement/announcement.htm?&p=1">网站公告</a></li>
-						      <li><a href="#" id="new">新闻资讯</a>
-							   <ul  class="nav nav-pills nav-stacked" style="max-width: 300px;" id="u2">
-							       <li><a href="${ctx}/news/news.htm?&p=1&type=trade">贸易新闻</a></li>
-							       <li><a href="${ctx}/news/news.htm?&p=1&type=land">陆运新闻</a></li>
-							       <li><a href="${ctx}/news/news.htm?&p=1&type=airlift">空运新闻</a></li>
-							       <li><a href="${ctx}/news/news.htm?&p=1&type=sea">海运新闻</a></li>
-							    </ul>  
-						    </li>
-					        <li><a href="${ctx}/hiring/hiring.htm?&p=1">招纳贤士</a></li>
+						    <li><a href="${ctx}/hiring/hiring.htm?&p=1">招纳贤士</a></li>
 					        <li><a href="${ctx}/contactUs.htm">联系我们</a></li>
 					        <li class="active"><a href="${ctx}/others/otherAddress.htm">公司地图</a></li>
 					        <li><a href="${ctx}/others/others.htm">其他业务</a></li>
 					      </ul>
 				  		</div>
 				  	</div>
+				  		<div class="panel panel-default">
+				  		<div class="bs-example">
+					      <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
+					         <li><a href="#" id="new">新闻资讯>></a>
+							   <ul class="nav nav-pills nav-stacked"   id="u2">
+							       <li name="trade"><a href="${ctx}/news/news.htm?&p=1&type=trade">贸易新闻</a></li>
+							       <li name="land"><a href="${ctx}/news/news.htm?&p=1&type=land">陆运新闻</a></li>
+							       <li name="airlift"><a href="${ctx}/news/news.htm?&p=1&type=airlift">空运新闻</a></li>
+							       <li name="sea"><a href="${ctx}/news/news.htm?&p=1&type=sea">海运新闻</a></li>
+							    </ul>  
+						    </li> 
+					      </ul>
+				  		</div>
+				  	</div>
+				  	
+				  	
 				  	<div class="panel panel-default">
 						<img src="${pageContext.request.contextPath}/resources/images/newbie/about001.jpg" alt="联系我们">
 					</div>
