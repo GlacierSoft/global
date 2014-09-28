@@ -43,6 +43,14 @@
 				width:280,
 				sortable:true
 			},{
+				field:'type',
+				title:'新闻类型',
+				width:120,
+				sortable:true,
+				formatter: function(value,row,index){//数据格式化，例如enable显示启用，disable显示禁用
+					return renderGridValue(value,fields.newType);
+				}
+			},{
 				field:'webNewsStatus',
 				title:'新闻状态',
 				width:120,
@@ -125,7 +133,7 @@
 	glacier.website_mgr.news_mgr.news.addNews = function(){
 		glacier.basicAddOrEditDialog({
 			title : '【新闻管理】- 增加',
-			width : 720,
+			width : 730,
 			height : 500,
 			queryUrl : ctx + '/do/news/intoForm.htm',
 			submitUrl : ctx + '/do/news/add.json',
@@ -139,7 +147,7 @@
 		var row = glacier.website_mgr.news_mgr.news.newsDataGrid.datagrid("getSelected");
 		glacier.basicAddOrEditDialog({
 			title : '【新闻管理】- 编辑('+row.webNewsTheme+')',
-			width : 720,
+			width : 730,
 			height : 500,
 			queryUrl : ctx + '/do/news/intoForm.htm',
 			submitUrl : ctx + '/do/news/edit.json',

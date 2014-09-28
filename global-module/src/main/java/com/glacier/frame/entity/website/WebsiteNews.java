@@ -18,7 +18,9 @@ public class WebsiteNews {
 
     @Max(value = 999, message = "{WebsiteNews.webNewsNum.illegal}")
     private Integer webNewsNum;
-
+    
+    private String type;
+    
     private String accessory;
 
     @Length(max = 255, message = "{WebsiteNews.remark.illegal}")
@@ -59,7 +61,15 @@ public class WebsiteNews {
         return webNewsTheme;
     }
 
-    public void setWebNewsTheme(String webNewsTheme) {
+    public String getType() {
+		return type;
+	}
+
+	public void setType(String type) {
+		this.type = type;
+	}
+
+	public void setWebNewsTheme(String webNewsTheme) {
         this.webNewsTheme = webNewsTheme;
     }
 

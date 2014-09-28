@@ -73,7 +73,7 @@ public class WebsiteNewsService {
         }
         if (StringUtils.isNotBlank(pager.getSort()) && StringUtils.isNotBlank(pager.getOrder())) {// 设置排序信息
         	websiteNewsExample.setOrderByClause(pager.getOrderBy("temp_website_news_"));
-        }
+        } 
         List<WebsiteNews>  websiteNewss = newsMapper.selectByExample(websiteNewsExample); // 查询所有新闻列表
         int total = newsMapper.countByExample(websiteNewsExample); // 查询总页数
         returnResult.setRows(websiteNewss);
@@ -81,10 +81,11 @@ public class WebsiteNewsService {
         return returnResult;// 返回ExtGrid表
     }
 
-    public Object listAsWebsite(JqPager pager, int p) {
+    public Object listAsWebsite(JqPager pager, int p,String type) {
+    	
     	JqGridReturn returnResult = new JqGridReturn();
         WebsiteNewsExample websiteNewsExample = new WebsiteNewsExample();
-        websiteNewsExample.createCriteria().andWebNewsStatusEqualTo("enable");
+        websiteNewsExample.createCriteria().andWebNewsStatusEqualTo("enable").andTypeEqualTo(type);
         if (null != pager.getPage() && null != pager.getRows()) {// 设置排序信息
         	websiteNewsExample.setLimitStart((pager.getPage() - 1) * pager.getRows());
         	websiteNewsExample.setLimitEnd(pager.getRows());
@@ -102,6 +103,8 @@ public class WebsiteNewsService {
         returnResult.setRows(websiteNewss);
         returnResult.setTotal(total);
         returnResult.setP(p);
+        System.out.println(type);
+        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>数据:"+websiteNewss.size());
         return returnResult;// 返回ExtGrid表
     }
 

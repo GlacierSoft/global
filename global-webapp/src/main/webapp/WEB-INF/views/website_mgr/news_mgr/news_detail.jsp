@@ -6,10 +6,13 @@
 	<table class="detailtable">
 		<tr>
 			<td>新闻主题：</td>
-			<td class="forminputtable" colspan="3"><!-- 当表格行存在两个要显示的td,使用该forminputtable样式可以进行适当的空间调整  -->
+			<td class="forminputtable"><!-- 当表格行存在两个要显示的td,使用该forminputtable样式可以进行适当的空间调整  -->
 				<input type="hidden" name="webNewsId" value="${newsData.webNewsId}" />
-				<input class="spinner" style="width:605px"  value="${newsData.webNewsTheme}" readonly="readonly"/>
+				<input class="spinner"  style="width:250px" value="${newsData.webNewsTheme}" readonly="readonly"/>
 			</td>
+			<td>新闻类型：</td>
+			<td><input id="news_mgr_news_detail_type" class="spinner" style="width:270px"  value="${newsData.type}"  readonly="readonly"/></td>
+			
 		</tr>
 		<tr>
 			<td>新闻状态：</td>
@@ -99,5 +102,6 @@
 	});
 </script>
 <script type="text/javascript">
+    $('#news_mgr_news_detail_type').val(renderGridValue('${newsData.type}',fields.newType));
 	$('#news_mgr_news_detail_webNewsStatus').val(renderGridValue('${newsData.webNewsStatus}',fields.status));
 </script>

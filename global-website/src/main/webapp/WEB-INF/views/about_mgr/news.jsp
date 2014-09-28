@@ -23,9 +23,35 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		    margin: 0;
     		padding: 0;
 		}
+		.twoStage{
+		max-width: 300px;
+		text-align:center; 
+		padding-top: 3px
+		}
 	</style>
   </head>
-
+  <script type="text/javascript">
+		$(function(){ 
+			var types='<%=request.getAttribute("type")%>'; 
+			//取到列表
+			var li=$("#u2").children(); 
+			var clas=null;
+			$.each(li, function(key, val) {
+				clas = $(val).attr('name');
+			    if(types == clas){
+			    	$("#u2").children().eq(key).addClass("active"); 
+			    	return false;
+			    } 
+			});
+			 
+			$("#new").click(function(){ 
+				//用于改变选择了的样式
+				 $("li").removeClass("active");
+				 $(this).parent().addClass("active"); 
+				$("#u2").slideToggle("slow"); 
+			});
+		}); 
+	</script>
   <body>
     <jsp:include page="../nav.jsp"/>
        
@@ -38,7 +64,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					      <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
 					        <li><a href="${ctx}/aboutUs.htm">公司简介</a></li>
 					        <li><a href="${ctx}/announcement/announcement.htm?&p=1">网站公告</a></li>
-						    <li class="active"><a href="${ctx}/news/news.htm?&p=1">网站新闻</a></li>
+						     <li><a href="#" id="new">新闻资讯</a>
+							   <ul class="nav nav-pills nav-stacked"   id="u2">
+							       <li name="trade"><a href="${ctx}/news/news.htm?&p=1&type=trade">贸易新闻</a></li>
+							       <li name="land"><a href="${ctx}/news/news.htm?&p=1&type=land">陆运新闻</a></li>
+							       <li name="airlift"><a href="${ctx}/news/news.htm?&p=1&type=airlift">空运新闻</a></li>
+							       <li name="sea"><a href="${ctx}/news/news.htm?&p=1&type=sea">海运新闻</a></li>
+							    </ul>  
+						    </li> 
 					        <li><a href="${ctx}/hiring/hiring.htm?&p=1">招纳贤士</a></li>
 					        <li><a href="${ctx}/contactUs.htm">联系我们</a></li>
 					        <li><a href="${ctx}/others/otherAddress.htm">公司地图</a></li>
@@ -51,14 +84,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					<div class="panel panel-default">
 						<img src="${pageContext.request.contextPath}/resources/images/index/weixin.jpg" width="163" height="163" alt="联系我们">
-						<p>扫描二维码关注冰川贷微信，获取冰川贷最新动态 </p>
+						<p>扫描二维码关注冰川越海物流微信，获取冰川越海物流最新动态 </p>
 					</div>
 			  	</div>
 	  		</div>
 	    	<div class="col-md-10">
 	    		<div class="panel panel-default">
 				  <div class="panel-heading">
-				    <h3 class="panel-title">关于我们 / 网站新闻</h3>
+				    <h3 class="panel-title">关于我们 /新闻资讯</h3>
 				  </div>
 				  <div class="panel-body">
 			          <h2>网站新闻</h2>
@@ -104,7 +137,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    <jsp:include page="../foot.jsp"/>
 <!-- 分页显示表格数据 -->
 <script type="text/javascript">
-	
+    var type='<%=request.getAttribute("type")%>';
 	//构建表单
 	function doClick(str){
 		// 创建Form  
@@ -116,9 +149,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    form.attr('target', '_self');  
 	    // 创建Input  
 	    var my_input = $('<input type="text" name="webNewsId" />');  
+	    var typetext=$('<input type="text" name="type" />');  
 	    my_input.attr('value', str);  
+	    typetext.attr("value",type);
 	    // 附加到Form  
 	    form.append(my_input); 
+	    form.append(typetext);
 	    //表单设置隐藏
 	    form.css('display','none');
 	    //表单的构建 完成并提交
@@ -171,7 +207,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	    numberOfPages: 5,
 	    totalPages:total,
 	    pageUrl: function(type, page, current){
-	    	return "${ctx}/news/news.htm?"+composeUrlParams()+"&p="+page;
+	    	return "${ctx}/news/news.htm?"+composeUrlParams()+"&p="+page+"&type="+type;
 	    	}
 	}
 	

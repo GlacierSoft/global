@@ -6,13 +6,14 @@
     <result column="temp_website_news_web_news_theme" property="webNewsTheme" jdbcType="VARCHAR" />
     <result column="temp_website_news_web_news_status" property="webNewsStatus" jdbcType="CHAR" />
     <result column="temp_website_news_web_news_num" property="webNewsNum" jdbcType="INTEGER" />
+    <result column="temp_website_news_type" property="type" jdbcType="CHAR" />
     <result column="temp_website_news_accessory" property="accessory" jdbcType="VARCHAR" />
     <result column="temp_website_news_remark" property="remark" jdbcType="VARCHAR" />
     <result column="temp_website_news_creater" property="creater" jdbcType="VARCHAR" />
     <result column="temp_website_news_create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="temp_website_news_updater" property="updater" jdbcType="VARCHAR" />
     <result column="temp_website_news_update_time" property="updateTime" jdbcType="TIMESTAMP" />
-    <result column="temp_website_news_creater_display" property="createrDisplay" jdbcType="VARCHAR"/> <!-- 自定义扩展字段 -->
+	<result column="temp_website_news_creater_display" property="createrDisplay" jdbcType="VARCHAR"/> <!-- 自定义扩展字段 -->
     <result column="temp_website_news_updater_display" property="updaterDisplay" jdbcType="VARCHAR"/> <!-- 自定义扩展字段 -->
   </resultMap>
   <resultMap id="ResultMapWithBLOBs" type="com.glacier.frame.entity.website.WebsiteNews" extends="BaseResultMap" >
@@ -79,10 +80,11 @@
   <sql id="Base_Column_List" >
     temp_website_news.web_news_id as temp_website_news_web_news_id, temp_website_news.web_news_theme as temp_website_news_web_news_theme, 
     temp_website_news.web_news_status as temp_website_news_web_news_status, temp_website_news.web_news_num as temp_website_news_web_news_num, 
-    temp_website_news.accessory as temp_website_news_accessory, temp_website_news.remark as temp_website_news_remark, 
-    temp_website_news.creater as temp_website_news_creater, temp_website_news.create_time as temp_website_news_create_time, 
-    temp_website_news.updater as temp_website_news_updater, temp_website_news.update_time as temp_website_news_update_time
-    <!-- 以下字段属于扩展 -->
+    temp_website_news.type as temp_website_news_type, temp_website_news.accessory as temp_website_news_accessory, 
+    temp_website_news.remark as temp_website_news_remark, temp_website_news.creater as temp_website_news_creater, 
+    temp_website_news.create_time as temp_website_news_create_time, temp_website_news.updater as temp_website_news_updater, 
+    temp_website_news.update_time as temp_website_news_update_time
+     <!-- 以下字段属于扩展 -->
     ,temp_creater.user_cn_name as temp_website_news_creater_display
     ,temp_updater.user_cn_name as temp_website_news_updater_display
   </sql>
@@ -119,7 +121,7 @@
     </if>
     <include refid="Base_Column_List" />
     from t_website_news temp_website_news
-    <include refid="Base_extend"/>
+	 <include refid="Base_extend"/>
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -136,7 +138,7 @@
     ,
     <include refid="Blob_Column_List" />
     from t_website_news temp_website_news
-    <include refid="Base_extend"/>
+	<include refid="Base_extend"/>
     where temp_website_news.web_news_id = #{webNewsId,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
@@ -151,13 +153,15 @@
   </delete>
   <insert id="insert" parameterType="com.glacier.frame.entity.website.WebsiteNews" >
     insert into t_website_news (web_news_id, web_news_theme, web_news_status, 
-      web_news_num, accessory, remark, 
-      creater, create_time, updater, 
-      update_time, web_news_content)
+      web_news_num, type, accessory, 
+      remark, creater, create_time, 
+      updater, update_time, web_news_content
+      )
     values (#{webNewsId,jdbcType=VARCHAR}, #{webNewsTheme,jdbcType=VARCHAR}, #{webNewsStatus,jdbcType=CHAR}, 
-      #{webNewsNum,jdbcType=INTEGER}, #{accessory,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, 
-      #{creater,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updater,jdbcType=VARCHAR}, 
-      #{updateTime,jdbcType=TIMESTAMP}, #{webNewsContent,jdbcType=LONGVARCHAR})
+      #{webNewsNum,jdbcType=INTEGER}, #{type,jdbcType=CHAR}, #{accessory,jdbcType=VARCHAR}, 
+      #{remark,jdbcType=VARCHAR}, #{creater,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updater,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}, #{webNewsContent,jdbcType=LONGVARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.glacier.frame.entity.website.WebsiteNews" >
     insert into t_website_news
@@ -173,6 +177,9 @@
       </if>
       <if test="webNewsNum != null" >
         web_news_num,
+      </if>
+      <if test="type != null" >
+        type,
       </if>
       <if test="accessory != null" >
         accessory,
@@ -209,6 +216,9 @@
       <if test="webNewsNum != null" >
         #{webNewsNum,jdbcType=INTEGER},
       </if>
+      <if test="type != null" >
+        #{type,jdbcType=CHAR},
+      </if>
       <if test="accessory != null" >
         #{accessory,jdbcType=VARCHAR},
       </if>
@@ -234,7 +244,7 @@
   </insert>
   <select id="countByExample" parameterType="com.glacier.frame.entity.website.WebsiteNewsExample" resultType="java.lang.Integer" >
     select count(*) from t_website_news temp_website_news
-    <include refid="Base_extend"/>
+	<include refid="Base_extend"/>
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -253,6 +263,9 @@
       </if>
       <if test="record.webNewsNum != null" >
         temp_website_news.web_news_num = #{record.webNewsNum,jdbcType=INTEGER},
+      </if>
+      <if test="record.type != null" >
+        temp_website_news.type = #{record.type,jdbcType=CHAR},
       </if>
       <if test="record.accessory != null" >
         temp_website_news.accessory = #{record.accessory,jdbcType=VARCHAR},
@@ -286,6 +299,7 @@
       temp_website_news.web_news_theme = #{record.webNewsTheme,jdbcType=VARCHAR},
       temp_website_news.web_news_status = #{record.webNewsStatus,jdbcType=CHAR},
       temp_website_news.web_news_num = #{record.webNewsNum,jdbcType=INTEGER},
+      temp_website_news.type = #{record.type,jdbcType=CHAR},
       temp_website_news.accessory = #{record.accessory,jdbcType=VARCHAR},
       temp_website_news.remark = #{record.remark,jdbcType=VARCHAR},
       temp_website_news.creater = #{record.creater,jdbcType=VARCHAR},
@@ -303,6 +317,7 @@
       temp_website_news.web_news_theme = #{record.webNewsTheme,jdbcType=VARCHAR},
       temp_website_news.web_news_status = #{record.webNewsStatus,jdbcType=CHAR},
       temp_website_news.web_news_num = #{record.webNewsNum,jdbcType=INTEGER},
+      temp_website_news.type = #{record.type,jdbcType=CHAR},
       temp_website_news.accessory = #{record.accessory,jdbcType=VARCHAR},
       temp_website_news.remark = #{record.remark,jdbcType=VARCHAR},
       temp_website_news.creater = #{record.creater,jdbcType=VARCHAR},
@@ -324,6 +339,9 @@
       </if>
       <if test="webNewsNum != null" >
         web_news_num = #{webNewsNum,jdbcType=INTEGER},
+      </if>
+      <if test="type != null" >
+        type = #{type,jdbcType=CHAR},
       </if>
       <if test="accessory != null" >
         accessory = #{accessory,jdbcType=VARCHAR},
@@ -354,6 +372,7 @@
     set web_news_theme = #{webNewsTheme,jdbcType=VARCHAR},
       web_news_status = #{webNewsStatus,jdbcType=CHAR},
       web_news_num = #{webNewsNum,jdbcType=INTEGER},
+      type = #{type,jdbcType=CHAR},
       accessory = #{accessory,jdbcType=VARCHAR},
       remark = #{remark,jdbcType=VARCHAR},
       creater = #{creater,jdbcType=VARCHAR},
@@ -368,6 +387,7 @@
     set web_news_theme = #{webNewsTheme,jdbcType=VARCHAR},
       web_news_status = #{webNewsStatus,jdbcType=CHAR},
       web_news_num = #{webNewsNum,jdbcType=INTEGER},
+      type = #{type,jdbcType=CHAR},
       accessory = #{accessory,jdbcType=VARCHAR},
       remark = #{remark,jdbcType=VARCHAR},
       creater = #{creater,jdbcType=VARCHAR},
