@@ -14,7 +14,7 @@
 	            <span class="icon-bar"></span>
 	            <span class="icon-bar"></span>
 	          </button>
-	          <a class="navbar-brand" href="${ctx}/index.htm">冰川网站模板</a>
+	          <a class="navbar-brand" href="${ctx}/index.htm">冰川越海物流</a>
 	        </div>
 	        <div class="navbar-collapse collapse">
 	          <ul id="topNavBar" class="nav navbar-nav">
@@ -26,38 +26,49 @@
 	            	    	url:"${ctx}/nav/levelWebNav.json",
 	            	    	dataType:"json",
 	            	    	success:function(data){
+	            	    		var tips = '<%=session.getAttribute("tips")%>';
 	            	    		//循环开始 
 	            	    		$.each(data,function(index,comment){
+	            	    			if(tips == 'null'){
 	            	    		        if(index==0){
 	            	    		        	$("<li class='active'><a id='navABar"+index+"' href='${ctx}/index.htm'>"+comment.webNavName+"</a></li>").appendTo("#topNavBar");
 	            	    		        }else{
-	            	    		        	$("<li id='nav"+index+"' class='dropdown' onclick='getWebNavPname(\""+comment.webNavId+"\",this);'><a id='navABar"+index+"' href='${ctx}"+comment.webNavUrl+"'  class='dropdown-toggle' data-toggle='dropdown'>"+comment.webNavName+"</a></li>").appendTo("#topNavBar");
+	            	    		        	$("<li id='nav"+index+"' class='dropdown' onclick='getWebNavPname(\""+comment.webNavId+"\",this,\""+comment.webNavName+"\",\""+comment.webNavUrl+"\");'><a id='navABar"
+	            	    		        	+index+"' href='${ctx}"+comment.webNavUrl+"'  class='dropdown-toggle' data-toggle='dropdown'>"+comment.webNavName+"</a></li>").appendTo("#topNavBar");
 	            	    		        }
-	            	    		  });
+	            	    			}else{
+	            	    				if(tips == comment.webNavName){
+	            	    		        	$("<li id='nav"+index+"' class='active' onclick='getWebNavPname(\""+comment.webNavId+"\",this,\""+comment.webNavName+"\",\""+comment.webNavUrl+"\");'><a id='navABar" + 
+	            	    		        	index+"' class='dropdown-toggle' data-toggle='dropdown' href='${ctx}"+comment.webNavUrl+"'>"+comment.webNavName+"</a></li>").appendTo("#topNavBar");
+	            	    		        }else{
+	            	    		        	$("<li id='nav"+index+"' class='dropdown' onclick='getWebNavPname(\""+comment.webNavId+"\",this,\""+comment.webNavName+"\",\""+comment.webNavUrl+"\");'><a id='navABar"+index+"' href='${ctx}" + 
+	            	    		        	comment.webNavUrl+"' class='dropdown-toggle' data-toggle='dropdown'>"+comment.webNavName+"</a></li>").appendTo("#topNavBar");
+	            	    		        }
+	            	    			}
+	            	    		});
 	            	    	}
 	            	    });
 	            	});
 	            	//点击时取出子项
-	            	function getWebNavPname(webNavId,obj){
+	            	function getWebNavPname(webNavId,obj,name,url){
 	            		var id = $(obj).attr('id');//获取Id属性
-	            		$.post("${ctx}/nav/list.json","webNavId="+webNavId,function(data){
-	            			//构建一个UL元素
-	            			if(data!=""){
-	            				var ul="<ul class='dropdown-menu'>";
-	            			}
-	            			$.each(data,function(i,v){
-	            				ul+="<li onclick='clickBackGrounp(\""+id+"\")'><a href='${ctx}"+v.webNavUrl+"'>"+v.webNavName+"</a></li>";
-	            			});
-	            			if(data!=""){
-	            				ul+="<ul>";
-	            				$("#"+id).append(ul);//追加内容在某个元素结束前
-	            			}
+	            		$.post("${ctx}/nav/list.json","webNavId="+webNavId+"&name="+name,function(data){
+		            		if(data != ""){	//判断返回的数据是否为空
+	            				//构建一个UL元素
+		            			if(data != ""){
+		            				var ul="<ul class='dropdown-menu'>";
+		            			}
+		            			$.each(data,function(i,v){
+		            				ul+="<li><a href='${ctx}"+v.webNavUrl+"'>"+v.webNavName+"</a></li>";
+		            			});
+		            			if(data != ""){
+		            				ul+="<ul>";
+		            				$("#"+id).append(ul);//追加内容在某个元素结束前
+		            			}
+		            		}else{
+		            			location.href="${ctx}"+url;
+		            		}
 	            		},"json");
-	            	}
-	            	
-	            	function clickBackGrounp(id){
-	            		var ulNum = $("#topNavBar>li").length;
-	            		$("#"+id).addClass("active");
 	            	}
 	            </script>
 	          </ul>

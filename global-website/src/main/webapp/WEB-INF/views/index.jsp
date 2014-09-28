@@ -7,7 +7,7 @@
 <html lang="zh-cn">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>冰川网贷平台</title>
+    <title>冰川越海物流</title>
    	<!-- 引入公用的js和样式库 -->
 	<jsp:include page="inc.jsp"/>
 	</head>
@@ -62,19 +62,19 @@
       <div class="row">
       	<div class="col-lg-4">
           <img src="${pageContext.request.contextPath}/resources/images/index/5.jpg"  alt="Generic placeholder image">
-          <h2>Title One</h2>
+          <h2>寄送货物</h2>
           <p>Contents</p>
           <p><a class="btn btn-default" href="${ctx}/borrowingProcess.htm" role="button">查看详情 >></a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
           <img src="${pageContext.request.contextPath}/resources/images/index/4.jpg" alt="Generic placeholder image">
-          <h2>Title Two</h2>
+          <h2>订单查询</h2>
           <p>Contents</p>
           <p><a class="btn btn-default" href="${ctx}/investmentProcess.htm" role="button">查看详情 >></a></p>
         </div><!-- /.col-lg-4 -->
         <div class="col-lg-4">
           <img src="${pageContext.request.contextPath}/resources/images/index/6.jpg"  alt="Generic placeholder image">
-          <h2>Title Three</h2>
+          <h2>网点查询</h2>
           <p>Contents</p>
           <p><a class="btn btn-default" href="${ctx}/riskGuarantee.htm" role="button">查看详情 >></a></p>
         </div><!-- /.col-lg-4 -->

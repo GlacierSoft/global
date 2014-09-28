@@ -40,6 +40,22 @@ public class WebsiteNavService {
 	@Autowired
     private UserMapper userMapper;
 	
+	
+	/**
+	 * @Title: getNav 
+	 * @Description: TODO(根据导航Id获取下拉项信息) 
+	 * @param @param webNavId
+	 * @param @return    设定文件 
+	 * @return Object    返回类型 
+	 * @throws
+	 */
+	public int getNavNum(String webNavId) {
+		WebsiteNavExample websiteNavExample = new WebsiteNavExample();
+		websiteNavExample.createCriteria().andWebNavIdEqualTo(webNavId);
+	    int websiteNavNum = websiteNavMapper.countByExample(websiteNavExample);
+        return websiteNavNum;
+	}
+	
 	/**
 	 * @Title: getNav 
 	 * @Description: TODO(根据导航Id获取下拉项信息) 
