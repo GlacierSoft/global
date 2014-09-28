@@ -40,6 +40,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
          .iw_poi_content {font:12px arial,sans-serif;overflow:visible;padding-top:4px;white-space:-moz-pre-wrap;word-wrap:break-word}
 		
 	</style>
+	
+  <script type="text/javascript">
+		$(function(){ 
+			$("#u2").hide();
+			$("#new").click(function(){ 
+				//用于改变选择了的样式
+				//$("li").removeClass("active");
+				//$(this).parent().addClass("active"); 
+				$("#u2").slideToggle("slow"); 
+			});
+		}); 
+	</script>
   </head>
 
   <body>
@@ -54,7 +66,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					      <ul class="nav nav-pills nav-stacked" style="max-width: 300px;">
 					        <li><a href="${ctx}/aboutUs.htm" >公司简介</a></li>
 					        <li><a href="${ctx}/announcement/announcement.htm?&p=1">网站公告</a></li>
-						    <li><a href="${ctx}/news/news.htm?&p=1">网站新闻</a></li>
+						      <li><a href="#" id="new">新闻资讯</a>
+							   <ul  class="nav nav-pills nav-stacked" style="max-width: 300px;" id="u2">
+							       <li><a href="${ctx}/news/news.htm?&p=1&type=trade">贸易新闻</a></li>
+							       <li><a href="${ctx}/news/news.htm?&p=1&type=land">陆运新闻</a></li>
+							       <li><a href="${ctx}/news/news.htm?&p=1&type=airlift">空运新闻</a></li>
+							       <li><a href="${ctx}/news/news.htm?&p=1&type=sea">海运新闻</a></li>
+							    </ul>  
+						    </li>
 					        <li><a href="${ctx}/hiring/hiring.htm?&p=1">招纳贤士</a></li>
 					        <li><a href="${ctx}/contactUs.htm">联系我们</a></li>
 					        <li class="active"><a href="${ctx}/others/otherAddress.htm">公司地图</a></li>
@@ -67,7 +86,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					<div class="panel panel-default">
 						<img src="${pageContext.request.contextPath}/resources/images/index/weixin.jpg" width="163" height="163" alt="联系我们">
-						<p>扫描二维码关注冰川贷微信，获取冰川贷最新动态 </p>
+						<p>扫描二维码关注冰川越海物流微信，获取冰川越海物流最新动态 </p>
 					</div>
 			  	</div>
 	  		</div>

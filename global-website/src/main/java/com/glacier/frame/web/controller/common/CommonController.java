@@ -72,7 +72,7 @@ public class CommonController {
         ModelAndView mav = new ModelAndView("index");
         // 进入首页初始化导航信息
         mav.addObject("announcementDatas", announcementService.listAsWebsite(pager, 1));//主页加载公告信息
-        mav.addObject("newsDatas", newsService.listAsWebsite(pager, 1));//主页加载新闻信息
+        mav.addObject("newsDatas", newsService.listAsWebsite(pager, 1,"trade"));//主页加载新闻信息
         sessionStauts.setAttribute("newClass", "");
         return mav;
     }
@@ -92,7 +92,7 @@ public class CommonController {
         ModelAndView mav = new ModelAndView("index");
         // 进入首页初始化导航信息
         mav.addObject("announcementDatas", announcementService.listAsWebsite(pager, 1));//主页加载公告信息
-        mav.addObject("newsDatas", newsService.listAsWebsite(pager, 1));//主页加载新闻信息
+        mav.addObject("newsDatas", newsService.listAsWebsite(pager, 1,"trade"));//主页加载新闻信息
         return mav;
     }
     /**

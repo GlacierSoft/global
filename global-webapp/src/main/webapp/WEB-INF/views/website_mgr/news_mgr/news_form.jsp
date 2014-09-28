@@ -12,6 +12,14 @@
 			</td>
 		</tr>
 		<tr>
+			<td>新闻类型：</td>
+			<td>
+				<input id="news_mgr_news_form_type" name="type" value="${newsData.type}" class="easyui-combobox" style="height:18px;width:600px"
+				data-options="valueField:'value',textField : 'label',panelHeight : 'auto',editable : false,required:true,data : fields.newType"/>
+				 
+			</td>
+		</tr>
+		<tr>
 			<td>新闻状态：</td>
 			<td>
 				<input id="news_mgr_news_form_webNewsStatus" name="webNewsStatus" value="${newsData.webNewsStatus}" class="easyui-combobox" style="height:18px;width:600px" data-options="valueField:'value',textField : 'label',panelHeight : 'auto',editable : false,required:true,data : fields.status"/>
