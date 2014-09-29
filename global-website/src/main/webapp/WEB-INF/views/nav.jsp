@@ -14,7 +14,7 @@
 	            <span class="icon-bar"></span>
 	            <span class="icon-bar"></span>
 	          </button>
-	          <a class="navbar-brand" href="${ctx}/index.htm">冰川越海物流</a>
+	          <a class="navbar-brand" href="${ctx}/index.htm">越海物流</a>
 	        </div>
 	        <div class="navbar-collapse collapse">
 	          <ul id="topNavBar" class="nav navbar-nav">

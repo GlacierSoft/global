@@ -7,7 +7,7 @@
 <html lang="zh-cn">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>冰川越海物流</title>
+    <title>越海物流</title>
    	<!-- 引入公用的js和样式库 -->
 	<jsp:include page="inc.jsp"/>
 	</head>

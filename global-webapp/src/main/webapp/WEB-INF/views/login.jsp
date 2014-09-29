@@ -6,7 +6,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>冰川贷管理系统</title>
+		<title>越海物流管理系统</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1.0">
 		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
 		<!-- 引入网站标识icon -->
@@ -43,7 +43,7 @@
 					<div class="col-lg-12 visible-lg" style="height:120px;">
 					</div>
 					<div class="page-header">
-						<h1>YHGlobal Management System <br><small>&nbsp;&nbsp;深 国 际 管 理 系 统</small></h1>
+						<h1>YHGlobal Management System <br><small>&nbsp;&nbsp;越 海  管 理 系 统</small></h1>
 					</div>
 					<div class="row">
 						<div class="col-md-10 col-xs-12">
