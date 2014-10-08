@@ -3,6 +3,8 @@ package com.glacier.frame.entity.member;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 public class ShipperMember {
     private String memberId;
 
@@ -20,8 +22,10 @@ public class ShipperMember {
 
     private String memberPhoto;
 
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date registrationTime;
 
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date lastLoginTime;
 
     private String memberType;
@@ -38,10 +42,12 @@ public class ShipperMember {
 
     private String creater;
 
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
     private String updater;
 
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
 
     public String getMemberId() {
