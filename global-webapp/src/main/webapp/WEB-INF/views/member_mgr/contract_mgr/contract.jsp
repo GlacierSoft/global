@@ -28,7 +28,7 @@
 						singleSelect : true,//限制单选
 						checkOnSelect : false,//选择复选框的时候选择该行
 						selectOnCheck : false,//选择的时候复选框打勾
-						url : ctx + '/do/contract/list.json',
+// 						url : ctx + '/do/contract/list.json',
 						sortName : 'createTime',//排序字段名称
 						sortOrder : 'DESC',//升序还是降序
 						remoteSort : true,//开启远程排序，默认为false
@@ -156,6 +156,13 @@
 							});
 						}
 					});
+	
+	
+	glacier.member_mgr.contract_mgr.contract.printContract=function(){
+		 alert("hahahha1");
+	};
+	
+	
 </script>
 
 <!-- 所有客服列表面板和表格 -->
@@ -163,7 +170,7 @@
 	<div id="contractGridPanel" data-options="region:'center',border:true">
 		<table id="contractDataGrid">
 			<glacierui:toolbar panelEnName="ContractList"
-				toolbarId="contractDataGrid_toolbar" menuEnName="member" />
+				toolbarId="contractDataGrid_toolbar" menuEnName="contract" />
 			<!-- 自定义标签：自动根据菜单获取当前用户权限，动态注册方法 -->
 		</table>
 	</div>

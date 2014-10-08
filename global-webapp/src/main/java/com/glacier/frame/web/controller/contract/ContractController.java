@@ -15,10 +15,8 @@ import com.glacier.jqueryui.util.JqPager;
 @RequestMapping(value="/contract")
 public class ContractController {
 	
-	@Autowired
-	private ContractService memberService;
-
-    // 进入合同记录展示页面
+	
+   // 进入合同记录展示页面
     @RequestMapping(value = "/index.htm")
     private Object intoIndexPservice() {
         ModelAndView mav = new ModelAndView("member_mgr/contract_mgr/contract");
