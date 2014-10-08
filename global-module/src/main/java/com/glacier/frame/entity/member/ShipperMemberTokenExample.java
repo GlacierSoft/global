@@ -334,73 +334,73 @@ public class ShipperMemberTokenExample {
             return (Criteria) this;
         }
 
-        public Criteria andStaltIsNull() {
-            addCriterion("temp_shipper_member_token.stalt is null");
+        public Criteria andSaltIsNull() {
+            addCriterion("temp_shipper_member_token.salt is null");
             return (Criteria) this;
         }
 
-        public Criteria andStaltIsNotNull() {
-            addCriterion("temp_shipper_member_token.stalt is not null");
+        public Criteria andSaltIsNotNull() {
+            addCriterion("temp_shipper_member_token.salt is not null");
             return (Criteria) this;
         }
 
-        public Criteria andStaltEqualTo(String value) {
-            addCriterion("temp_shipper_member_token.stalt =", value, "stalt");
+        public Criteria andSaltEqualTo(String value) {
+            addCriterion("temp_shipper_member_token.salt =", value, "salt");
             return (Criteria) this;
         }
 
-        public Criteria andStaltNotEqualTo(String value) {
-            addCriterion("temp_shipper_member_token.stalt <>", value, "stalt");
+        public Criteria andSaltNotEqualTo(String value) {
+            addCriterion("temp_shipper_member_token.salt <>", value, "salt");
             return (Criteria) this;
         }
 
-        public Criteria andStaltGreaterThan(String value) {
-            addCriterion("temp_shipper_member_token.stalt >", value, "stalt");
+        public Criteria andSaltGreaterThan(String value) {
+            addCriterion("temp_shipper_member_token.salt >", value, "salt");
             return (Criteria) this;
         }
 
-        public Criteria andStaltGreaterThanOrEqualTo(String value) {
-            addCriterion("temp_shipper_member_token.stalt >=", value, "stalt");
+        public Criteria andSaltGreaterThanOrEqualTo(String value) {
+            addCriterion("temp_shipper_member_token.salt >=", value, "salt");
             return (Criteria) this;
         }
 
-        public Criteria andStaltLessThan(String value) {
-            addCriterion("temp_shipper_member_token.stalt <", value, "stalt");
+        public Criteria andSaltLessThan(String value) {
+            addCriterion("temp_shipper_member_token.salt <", value, "salt");
             return (Criteria) this;
         }
 
-        public Criteria andStaltLessThanOrEqualTo(String value) {
-            addCriterion("temp_shipper_member_token.stalt <=", value, "stalt");
+        public Criteria andSaltLessThanOrEqualTo(String value) {
+            addCriterion("temp_shipper_member_token.salt <=", value, "salt");
             return (Criteria) this;
         }
 
-        public Criteria andStaltLike(String value) {
-            addCriterion("temp_shipper_member_token.stalt like", value, "stalt");
+        public Criteria andSaltLike(String value) {
+            addCriterion("temp_shipper_member_token.salt like", value, "salt");
             return (Criteria) this;
         }
 
-        public Criteria andStaltNotLike(String value) {
-            addCriterion("temp_shipper_member_token.stalt not like", value, "stalt");
+        public Criteria andSaltNotLike(String value) {
+            addCriterion("temp_shipper_member_token.salt not like", value, "salt");
             return (Criteria) this;
         }
 
-        public Criteria andStaltIn(List<String> values) {
-            addCriterion("temp_shipper_member_token.stalt in", values, "stalt");
+        public Criteria andSaltIn(List<String> values) {
+            addCriterion("temp_shipper_member_token.salt in", values, "salt");
             return (Criteria) this;
         }
 
-        public Criteria andStaltNotIn(List<String> values) {
-            addCriterion("temp_shipper_member_token.stalt not in", values, "stalt");
+        public Criteria andSaltNotIn(List<String> values) {
+            addCriterion("temp_shipper_member_token.salt not in", values, "salt");
             return (Criteria) this;
         }
 
-        public Criteria andStaltBetween(String value1, String value2) {
-            addCriterion("temp_shipper_member_token.stalt between", value1, value2, "stalt");
+        public Criteria andSaltBetween(String value1, String value2) {
+            addCriterion("temp_shipper_member_token.salt between", value1, value2, "salt");
             return (Criteria) this;
         }
 
-        public Criteria andStaltNotBetween(String value1, String value2) {
-            addCriterion("temp_shipper_member_token.stalt not between", value1, value2, "stalt");
+        public Criteria andSaltNotBetween(String value1, String value2) {
+            addCriterion("temp_shipper_member_token.salt not between", value1, value2, "salt");
             return (Criteria) this;
         }
 
@@ -474,73 +474,73 @@ public class ShipperMemberTokenExample {
             return (Criteria) this;
         }
 
-        public Criteria andTratersStaltIsNull() {
-            addCriterion("temp_shipper_member_token.traters_stalt is null");
+        public Criteria andTratersSaltIsNull() {
+            addCriterion("temp_shipper_member_token.traters_salt is null");
             return (Criteria) this;
         }
 
-        public Criteria andTratersStaltIsNotNull() {
-            addCriterion("temp_shipper_member_token.traters_stalt is not null");
+        public Criteria andTratersSaltIsNotNull() {
+            addCriterion("temp_shipper_member_token.traters_salt is not null");
             return (Criteria) this;
         }
 
-        public Criteria andTratersStaltEqualTo(String value) {
-            addCriterion("temp_shipper_member_token.traters_stalt =", value, "tratersStalt");
+        public Criteria andTratersSaltEqualTo(String value) {
+            addCriterion("temp_shipper_member_token.traters_salt =", value, "tratersSalt");
             return (Criteria) this;
         }
 
-        public Criteria andTratersStaltNotEqualTo(String value) {
-            addCriterion("temp_shipper_member_token.traters_stalt <>", value, "tratersStalt");
+        public Criteria andTratersSaltNotEqualTo(String value) {
+            addCriterion("temp_shipper_member_token.traters_salt <>", value, "tratersSalt");
             return (Criteria) this;
         }
 
-        public Criteria andTratersStaltGreaterThan(String value) {
-            addCriterion("temp_shipper_member_token.traters_stalt >", value, "tratersStalt");
+        public Criteria andTratersSaltGreaterThan(String value) {
+            addCriterion("temp_shipper_member_token.traters_salt >", value, "tratersSalt");
             return (Criteria) this;
         }
 
-        public Criteria andTratersStaltGreaterThanOrEqualTo(String value) {
-            addCriterion("temp_shipper_member_token.traters_stalt >=", value, "tratersStalt");
+        public Criteria andTratersSaltGreaterThanOrEqualTo(String value) {
+            addCriterion("temp_shipper_member_token.traters_salt >=", value, "tratersSalt");
             return (Criteria) this;
         }
 
-        public Criteria andTratersStaltLessThan(String value) {
-            addCriterion("temp_shipper_member_token.traters_stalt <", value, "tratersStalt");
+        public Criteria andTratersSaltLessThan(String value) {
+            addCriterion("temp_shipper_member_token.traters_salt <", value, "tratersSalt");
             return (Criteria) this;
         }
 
-        public Criteria andTratersStaltLessThanOrEqualTo(String value) {
-            addCriterion("temp_shipper_member_token.traters_stalt <=", value, "tratersStalt");
+        public Criteria andTratersSaltLessThanOrEqualTo(String value) {
+            addCriterion("temp_shipper_member_token.traters_salt <=", value, "tratersSalt");
             return (Criteria) this;
         }
 
-        public Criteria andTratersStaltLike(String value) {
-            addCriterion("temp_shipper_member_token.traters_stalt like", value, "tratersStalt");
+        public Criteria andTratersSaltLike(String value) {
+            addCriterion("temp_shipper_member_token.traters_salt like", value, "tratersSalt");
             return (Criteria) this;
         }
 
-        public Criteria andTratersStaltNotLike(String value) {
-            addCriterion("temp_shipper_member_token.traters_stalt not like", value, "tratersStalt");
+        public Criteria andTratersSaltNotLike(String value) {
+            addCriterion("temp_shipper_member_token.traters_salt not like", value, "tratersSalt");
             return (Criteria) this;
         }
 
-        public Criteria andTratersStaltIn(List<String> values) {
-            addCriterion("temp_shipper_member_token.traters_stalt in", values, "tratersStalt");
+        public Criteria andTratersSaltIn(List<String> values) {
+            addCriterion("temp_shipper_member_token.traters_salt in", values, "tratersSalt");
             return (Criteria) this;
         }
 
-        public Criteria andTratersStaltNotIn(List<String> values) {
-            addCriterion("temp_shipper_member_token.traters_stalt not in", values, "tratersStalt");
+        public Criteria andTratersSaltNotIn(List<String> values) {
+            addCriterion("temp_shipper_member_token.traters_salt not in", values, "tratersSalt");
             return (Criteria) this;
         }
 
-        public Criteria andTratersStaltBetween(String value1, String value2) {
-            addCriterion("temp_shipper_member_token.traters_stalt between", value1, value2, "tratersStalt");
+        public Criteria andTratersSaltBetween(String value1, String value2) {
+            addCriterion("temp_shipper_member_token.traters_salt between", value1, value2, "tratersSalt");
             return (Criteria) this;
         }
 
-        public Criteria andTratersStaltNotBetween(String value1, String value2) {
-            addCriterion("temp_shipper_member_token.traters_stalt not between", value1, value2, "tratersStalt");
+        public Criteria andTratersSaltNotBetween(String value1, String value2) {
+            addCriterion("temp_shipper_member_token.traters_salt not between", value1, value2, "tratersSalt");
             return (Criteria) this;
         }
     }

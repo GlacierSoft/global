@@ -5,9 +5,9 @@
     <id column="temp_shipper_member_token_member_id" property="memberId" jdbcType="VARCHAR" />
     <result column="temp_shipper_member_token_member_name" property="memberName" jdbcType="VARCHAR" />
     <result column="temp_shipper_member_token_password" property="password" jdbcType="VARCHAR" />
-    <result column="temp_shipper_member_token_stalt" property="stalt" jdbcType="VARCHAR" />
+    <result column="temp_shipper_member_token_salt" property="salt" jdbcType="VARCHAR" />
     <result column="temp_shipper_member_token_traters_password" property="tratersPassword" jdbcType="VARCHAR" />
-    <result column="temp_shipper_member_token_traters_stalt" property="tratersStalt" jdbcType="VARCHAR" />
+    <result column="temp_shipper_member_token_traters_salt" property="tratersSalt" jdbcType="VARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -69,9 +69,9 @@
   </sql>
   <sql id="Base_Column_List" >
     temp_shipper_member_token.member_id as temp_shipper_member_token_member_id, temp_shipper_member_token.member_name as temp_shipper_member_token_member_name, 
-    temp_shipper_member_token.password as temp_shipper_member_token_password, temp_shipper_member_token.stalt as temp_shipper_member_token_stalt, 
+    temp_shipper_member_token.password as temp_shipper_member_token_password, temp_shipper_member_token.salt as temp_shipper_member_token_salt, 
     temp_shipper_member_token.traters_password as temp_shipper_member_token_traters_password, 
-    temp_shipper_member_token.traters_stalt as temp_shipper_member_token_traters_stalt
+    temp_shipper_member_token.traters_salt as temp_shipper_member_token_traters_salt
   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.glacier.frame.entity.member.ShipperMemberTokenExample" >
     select
@@ -108,10 +108,10 @@
   </delete>
   <insert id="insert" parameterType="com.glacier.frame.entity.member.ShipperMemberToken" >
     insert into t_shipper_member_token (member_id, member_name, password, 
-      stalt, traters_password, traters_stalt
+      salt, traters_password, traters_salt
       )
     values (#{memberId,jdbcType=VARCHAR}, #{memberName,jdbcType=VARCHAR}, #{password,jdbcType=VARCHAR}, 
-      #{stalt,jdbcType=VARCHAR}, #{tratersPassword,jdbcType=VARCHAR}, #{tratersStalt,jdbcType=VARCHAR}
+      #{salt,jdbcType=VARCHAR}, #{tratersPassword,jdbcType=VARCHAR}, #{tratersSalt,jdbcType=VARCHAR}
       )
   </insert>
   <insert id="insertSelective" parameterType="com.glacier.frame.entity.member.ShipperMemberToken" >
@@ -126,14 +126,14 @@
       <if test="password != null" >
         password,
       </if>
-      <if test="stalt != null" >
-        stalt,
+      <if test="salt != null" >
+        salt,
       </if>
       <if test="tratersPassword != null" >
         traters_password,
       </if>
-      <if test="tratersStalt != null" >
-        traters_stalt,
+      <if test="tratersSalt != null" >
+        traters_salt,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -146,14 +146,14 @@
       <if test="password != null" >
         #{password,jdbcType=VARCHAR},
       </if>
-      <if test="stalt != null" >
-        #{stalt,jdbcType=VARCHAR},
+      <if test="salt != null" >
+        #{salt,jdbcType=VARCHAR},
       </if>
       <if test="tratersPassword != null" >
         #{tratersPassword,jdbcType=VARCHAR},
       </if>
-      <if test="tratersStalt != null" >
-        #{tratersStalt,jdbcType=VARCHAR},
+      <if test="tratersSalt != null" >
+        #{tratersSalt,jdbcType=VARCHAR},
       </if>
     </trim>
   </insert>
@@ -175,14 +175,14 @@
       <if test="record.password != null" >
         temp_shipper_member_token.password = #{record.password,jdbcType=VARCHAR},
       </if>
-      <if test="record.stalt != null" >
-        temp_shipper_member_token.stalt = #{record.stalt,jdbcType=VARCHAR},
+      <if test="record.salt != null" >
+        temp_shipper_member_token.salt = #{record.salt,jdbcType=VARCHAR},
       </if>
       <if test="record.tratersPassword != null" >
         temp_shipper_member_token.traters_password = #{record.tratersPassword,jdbcType=VARCHAR},
       </if>
-      <if test="record.tratersStalt != null" >
-        temp_shipper_member_token.traters_stalt = #{record.tratersStalt,jdbcType=VARCHAR},
+      <if test="record.tratersSalt != null" >
+        temp_shipper_member_token.traters_salt = #{record.tratersSalt,jdbcType=VARCHAR},
       </if>
     </set>
     <if test="_parameter != null" >
@@ -194,9 +194,9 @@
     set temp_shipper_member_token.member_id = #{record.memberId,jdbcType=VARCHAR},
       temp_shipper_member_token.member_name = #{record.memberName,jdbcType=VARCHAR},
       temp_shipper_member_token.password = #{record.password,jdbcType=VARCHAR},
-      temp_shipper_member_token.stalt = #{record.stalt,jdbcType=VARCHAR},
+      temp_shipper_member_token.salt = #{record.salt,jdbcType=VARCHAR},
       temp_shipper_member_token.traters_password = #{record.tratersPassword,jdbcType=VARCHAR},
-      temp_shipper_member_token.traters_stalt = #{record.tratersStalt,jdbcType=VARCHAR}
+      temp_shipper_member_token.traters_salt = #{record.tratersSalt,jdbcType=VARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -210,14 +210,14 @@
       <if test="password != null" >
         password = #{password,jdbcType=VARCHAR},
       </if>
-      <if test="stalt != null" >
-        stalt = #{stalt,jdbcType=VARCHAR},
+      <if test="salt != null" >
+        salt = #{salt,jdbcType=VARCHAR},
       </if>
       <if test="tratersPassword != null" >
         traters_password = #{tratersPassword,jdbcType=VARCHAR},
       </if>
-      <if test="tratersStalt != null" >
-        traters_stalt = #{tratersStalt,jdbcType=VARCHAR},
+      <if test="tratersSalt != null" >
+        traters_salt = #{tratersSalt,jdbcType=VARCHAR},
       </if>
     </set>
     where member_id = #{memberId,jdbcType=VARCHAR}
@@ -226,9 +226,9 @@
     update t_shipper_member_token
     set member_name = #{memberName,jdbcType=VARCHAR},
       password = #{password,jdbcType=VARCHAR},
-      stalt = #{stalt,jdbcType=VARCHAR},
+      salt = #{salt,jdbcType=VARCHAR},
       traters_password = #{tratersPassword,jdbcType=VARCHAR},
-      traters_stalt = #{tratersStalt,jdbcType=VARCHAR}
+      traters_salt = #{tratersSalt,jdbcType=VARCHAR}
     where member_id = #{memberId,jdbcType=VARCHAR}
   </update>
 </mapper>

@@ -796,73 +796,73 @@ public class ShipperMemberExample {
             return (Criteria) this;
         }
 
-        public Criteria andMembeTyperIsNull() {
-            addCriterion("temp_shipper_member.membe_typer is null");
+        public Criteria andMemberTypeIsNull() {
+            addCriterion("temp_shipper_member.member_type is null");
             return (Criteria) this;
         }
 
-        public Criteria andMembeTyperIsNotNull() {
-            addCriterion("temp_shipper_member.membe_typer is not null");
+        public Criteria andMemberTypeIsNotNull() {
+            addCriterion("temp_shipper_member.member_type is not null");
             return (Criteria) this;
         }
 
-        public Criteria andMembeTyperEqualTo(String value) {
-            addCriterion("temp_shipper_member.membe_typer =", value, "membeTyper");
+        public Criteria andMemberTypeEqualTo(String value) {
+            addCriterion("temp_shipper_member.member_type =", value, "memberType");
             return (Criteria) this;
         }
 
-        public Criteria andMembeTyperNotEqualTo(String value) {
-            addCriterion("temp_shipper_member.membe_typer <>", value, "membeTyper");
+        public Criteria andMemberTypeNotEqualTo(String value) {
+            addCriterion("temp_shipper_member.member_type <>", value, "memberType");
             return (Criteria) this;
         }
 
-        public Criteria andMembeTyperGreaterThan(String value) {
-            addCriterion("temp_shipper_member.membe_typer >", value, "membeTyper");
+        public Criteria andMemberTypeGreaterThan(String value) {
+            addCriterion("temp_shipper_member.member_type >", value, "memberType");
             return (Criteria) this;
         }
 
-        public Criteria andMembeTyperGreaterThanOrEqualTo(String value) {
-            addCriterion("temp_shipper_member.membe_typer >=", value, "membeTyper");
+        public Criteria andMemberTypeGreaterThanOrEqualTo(String value) {
+            addCriterion("temp_shipper_member.member_type >=", value, "memberType");
             return (Criteria) this;
         }
 
-        public Criteria andMembeTyperLessThan(String value) {
-            addCriterion("temp_shipper_member.membe_typer <", value, "membeTyper");
+        public Criteria andMemberTypeLessThan(String value) {
+            addCriterion("temp_shipper_member.member_type <", value, "memberType");
             return (Criteria) this;
         }
 
-        public Criteria andMembeTyperLessThanOrEqualTo(String value) {
-            addCriterion("temp_shipper_member.membe_typer <=", value, "membeTyper");
+        public Criteria andMemberTypeLessThanOrEqualTo(String value) {
+            addCriterion("temp_shipper_member.member_type <=", value, "memberType");
             return (Criteria) this;
         }
 
-        public Criteria andMembeTyperLike(String value) {
-            addCriterion("temp_shipper_member.membe_typer like", value, "membeTyper");
+        public Criteria andMemberTypeLike(String value) {
+            addCriterion("temp_shipper_member.member_type like", value, "memberType");
             return (Criteria) this;
         }
 
-        public Criteria andMembeTyperNotLike(String value) {
-            addCriterion("temp_shipper_member.membe_typer not like", value, "membeTyper");
+        public Criteria andMemberTypeNotLike(String value) {
+            addCriterion("temp_shipper_member.member_type not like", value, "memberType");
             return (Criteria) this;
         }
 
-        public Criteria andMembeTyperIn(List<String> values) {
-            addCriterion("temp_shipper_member.membe_typer in", values, "membeTyper");
+        public Criteria andMemberTypeIn(List<String> values) {
+            addCriterion("temp_shipper_member.member_type in", values, "memberType");
             return (Criteria) this;
         }
 
-        public Criteria andMembeTyperNotIn(List<String> values) {
-            addCriterion("temp_shipper_member.membe_typer not in", values, "membeTyper");
+        public Criteria andMemberTypeNotIn(List<String> values) {
+            addCriterion("temp_shipper_member.member_type not in", values, "memberType");
             return (Criteria) this;
         }
 
-        public Criteria andMembeTyperBetween(String value1, String value2) {
-            addCriterion("temp_shipper_member.membe_typer between", value1, value2, "membeTyper");
+        public Criteria andMemberTypeBetween(String value1, String value2) {
+            addCriterion("temp_shipper_member.member_type between", value1, value2, "memberType");
             return (Criteria) this;
         }
 
-        public Criteria andMembeTyperNotBetween(String value1, String value2) {
-            addCriterion("temp_shipper_member.membe_typer not between", value1, value2, "membeTyper");
+        public Criteria andMemberTypeNotBetween(String value1, String value2) {
+            addCriterion("temp_shipper_member.member_type not between", value1, value2, "memberType");
             return (Criteria) this;
         }
 

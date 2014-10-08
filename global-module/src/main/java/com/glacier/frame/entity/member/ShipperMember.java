@@ -24,7 +24,7 @@ public class ShipperMember {
 
     private Date lastLoginTime;
 
-    private String membeTyper;
+    private String memberType;
 
     private Integer integral;
 
@@ -124,12 +124,12 @@ public class ShipperMember {
         this.lastLoginTime = lastLoginTime;
     }
 
-    public String getMembeTyper() {
-        return membeTyper;
+    public String getMemberType() {
+        return memberType;
     }
 
-    public void setMembeTyper(String membeTyper) {
-        this.membeTyper = membeTyper;
+    public void setMemberType(String memberType) {
+        this.memberType = memberType;
     }
 
     public Integer getIntegral() {
@@ -226,7 +226,7 @@ public class ShipperMember {
             && (this.getMemberPhoto() == null ? other.getMemberPhoto() == null : this.getMemberPhoto().equals(other.getMemberPhoto()))
             && (this.getRegistrationTime() == null ? other.getRegistrationTime() == null : this.getRegistrationTime().equals(other.getRegistrationTime()))
             && (this.getLastLoginTime() == null ? other.getLastLoginTime() == null : this.getLastLoginTime().equals(other.getLastLoginTime()))
-            && (this.getMembeTyper() == null ? other.getMembeTyper() == null : this.getMembeTyper().equals(other.getMembeTyper()))
+            && (this.getMemberType() == null ? other.getMemberType() == null : this.getMemberType().equals(other.getMemberType()))
             && (this.getIntegral() == null ? other.getIntegral() == null : this.getIntegral().equals(other.getIntegral()))
             && (this.getStatus() == null ? other.getStatus() == null : this.getStatus().equals(other.getStatus()))
             && (this.getLoginCount() == null ? other.getLoginCount() == null : this.getLoginCount().equals(other.getLoginCount()))
@@ -252,7 +252,7 @@ public class ShipperMember {
         result = prime * result + ((getMemberPhoto() == null) ? 0 : getMemberPhoto().hashCode());
         result = prime * result + ((getRegistrationTime() == null) ? 0 : getRegistrationTime().hashCode());
         result = prime * result + ((getLastLoginTime() == null) ? 0 : getLastLoginTime().hashCode());
-        result = prime * result + ((getMembeTyper() == null) ? 0 : getMembeTyper().hashCode());
+        result = prime * result + ((getMemberType() == null) ? 0 : getMemberType().hashCode());
         result = prime * result + ((getIntegral() == null) ? 0 : getIntegral().hashCode());
         result = prime * result + ((getStatus() == null) ? 0 : getStatus().hashCode());
         result = prime * result + ((getLoginCount() == null) ? 0 : getLoginCount().hashCode());

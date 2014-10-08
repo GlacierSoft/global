@@ -28,7 +28,7 @@
 						singleSelect : true,//限制单选
 						checkOnSelect : false,//选择复选框的时候选择该行
 						selectOnCheck : false,//选择的时候复选框打勾
-						url : ctx + '/do/member/list.json',
+						url : ctx + '/do/shippermember/list.json',
 						sortName : 'createTime',//排序字段名称
 						sortOrder : 'DESC',//升序还是降序
 						remoteSort : true,//开启远程排序，默认为false
@@ -42,67 +42,49 @@
 							title : '会员名称',
 							width : 120,
 							sortable : true
-						}, {
-							field : 'memberRealName',
-							title : '会员真实姓名',
-							width : 120,
-							sortable : true
-						}, {
+						},{
 							field : 'status',
-							title : '状态',
+							title : '会员状态',
 							width : 120,
 							sortable : true,
 							formatter : function(value, row, index) {//数据格式化，例如man显示是，woman显示女
 								return renderGridValue(value, fields.status);
 							}
 						}, {
-							field : 'type',
-							title : '类型',
+							field : 'memberType',
+							title : '会员类型',
 							width : 120,
 							sortable : true,
 							formatter : function(value, row, index) {//数据格式化，例如man显示是，woman显示女
-								return renderGridValue(value, fields.type);
+								return renderGridValue(value, fields.memberType);
 							}
-						}, {
-							field : 'creditIntegral',
-							title : '信用积分',
-							width : 120,
-							sortable : true,
-							formatter: function(value,row,index){//金额数据格式化
-								return formatNum(value);
-							}
-						}, {
-							field : 'integral',
-							title : '积分',
-							width : 120,
-							sortable : true
-						}, {
-							field : 'creditamount',
-							title : '信用额度(元)',
-							width : 140,
-							sortable : true,
 						},{
-							field : 'mobileNumber',
-							title : '手机号码',
-							width : 140,
-							sortable : true,
-						}, {
-							field : 'cardId',
-							title : '身份证',
-							width : 200,
+							field : 'integral',
+							title : '会员积分',
+							width : 120,
+							sortable : true
+						},{
+							field : 'accountBalance',
+							title : '账户余额',
+							width : 120,
 							sortable : true
 						}, {
-							field : 'createrDisplay',
+							field : 'registrationTime',
+							title : '注册时间',
+							sortable : true,
+							width : 200
+						}, {
+							field : 'loginCount',
+							title : '登录次数',
+							sortable : true,
+							width : 120
+						},{
+							field : 'creater',
 							title : '录入人',
 							sortable : true,
 							width : 120
 						}, {
-							field : 'createTime',
-							title : '录入时间',
-							sortable : true,
-							width : 200
-						}, {
-							field : 'updaterDisplay',
+							field : 'updater',
 							title : '更新人',
 							sortable : true,
 							width : 120
@@ -153,7 +135,7 @@
 						onDblClickRow : function(rowIndex, rowData){
                         $.easyui.showDialog({
 								title : '【' + rowData.memberName + '】会员详细信息',
-								href : ctx+ '/do/member/intoDetail.htm?memberId='+ rowData.memberId,//从controller请求jsp页面进行渲染
+								href : ctx+ '/do/shippermember/intoDetail.htm?memberId='+ rowData.memberId,//从controller请求jsp页面进行渲染
 								width : 655,
 								height : 470,
 								resizable : false,
@@ -261,7 +243,7 @@
 		panelHeight : 'auto',
 		editable : false,
 		//required:true,
-		data : fields.type
+		data : fields.memberType
 	});
 </script>
 
@@ -281,15 +263,12 @@
 				<tr>
 					<td>会员名称：</td>
 					<td><input name="memberName" style="width: 80px;"
-						class="spinner" /></td>
-					<td>会员真实姓名：</td>
-					<td><input name="memberRealName" style="width: 80px;"
-						class="spinner" /></td>
+						class="spinner" /></td> 
 					<td>状态：</td>
 					<td><input id="memberSearchForm_status" name="status"
 						style="width: 80px;" class="spinner" /></td>
 					<td>类型：</td>
-					<td><input id="memberSearchForm_type" name="type"
+					<td><input id="memberSearchForm_type" name="memberType"
 						style="width: 80px;" class="spinner" /></td>
 					<td>录入时间：</td>
 					<td><input name="createStartTime" class="easyui-datetimebox"
