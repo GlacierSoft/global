@@ -3,8 +3,6 @@ package com.glacier.frame.entity.member;
 import java.math.BigDecimal;
 import java.util.Date;
 
-import com.alibaba.fastjson.annotation.JSONField;
-
 public class ShipperMember {
     private String memberId;
 
@@ -22,13 +20,13 @@ public class ShipperMember {
 
     private String memberPhoto;
 
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date registrationTime;
 
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date lastLoginTime;
 
     private String memberType;
+
+    private String email;
 
     private Integer integral;
 
@@ -42,12 +40,10 @@ public class ShipperMember {
 
     private String creater;
 
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
     private String updater;
 
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
 
     public String getMemberId() {
@@ -136,6 +132,14 @@ public class ShipperMember {
 
     public void setMemberType(String memberType) {
         this.memberType = memberType;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public Integer getIntegral() {
@@ -233,6 +237,7 @@ public class ShipperMember {
             && (this.getRegistrationTime() == null ? other.getRegistrationTime() == null : this.getRegistrationTime().equals(other.getRegistrationTime()))
             && (this.getLastLoginTime() == null ? other.getLastLoginTime() == null : this.getLastLoginTime().equals(other.getLastLoginTime()))
             && (this.getMemberType() == null ? other.getMemberType() == null : this.getMemberType().equals(other.getMemberType()))
+            && (this.getEmail() == null ? other.getEmail() == null : this.getEmail().equals(other.getEmail()))
             && (this.getIntegral() == null ? other.getIntegral() == null : this.getIntegral().equals(other.getIntegral()))
             && (this.getStatus() == null ? other.getStatus() == null : this.getStatus().equals(other.getStatus()))
             && (this.getLoginCount() == null ? other.getLoginCount() == null : this.getLoginCount().equals(other.getLoginCount()))
@@ -259,6 +264,7 @@ public class ShipperMember {
         result = prime * result + ((getRegistrationTime() == null) ? 0 : getRegistrationTime().hashCode());
         result = prime * result + ((getLastLoginTime() == null) ? 0 : getLastLoginTime().hashCode());
         result = prime * result + ((getMemberType() == null) ? 0 : getMemberType().hashCode());
+        result = prime * result + ((getEmail() == null) ? 0 : getEmail().hashCode());
         result = prime * result + ((getIntegral() == null) ? 0 : getIntegral().hashCode());
         result = prime * result + ((getStatus() == null) ? 0 : getStatus().hashCode());
         result = prime * result + ((getLoginCount() == null) ? 0 : getLoginCount().hashCode());

@@ -13,6 +13,7 @@
     <result column="temp_shipper_member_registration_time" property="registrationTime" jdbcType="TIMESTAMP" />
     <result column="temp_shipper_member_last_login_time" property="lastLoginTime" jdbcType="TIMESTAMP" />
     <result column="temp_shipper_member_member_type" property="memberType" jdbcType="CHAR" />
+    <result column="temp_shipper_member_email" property="email" jdbcType="VARCHAR" />
     <result column="temp_shipper_member_integral" property="integral" jdbcType="INTEGER" />
     <result column="temp_shipper_member_status" property="status" jdbcType="CHAR" />
     <result column="temp_shipper_member_login_count" property="loginCount" jdbcType="INTEGER" />
@@ -87,9 +88,9 @@
     temp_shipper_member.traders_password as temp_shipper_member_traders_password, temp_shipper_member.account_balance as temp_shipper_member_account_balance, 
     temp_shipper_member.live_address as temp_shipper_member_live_address, temp_shipper_member.member_photo as temp_shipper_member_member_photo, 
     temp_shipper_member.registration_time as temp_shipper_member_registration_time, temp_shipper_member.last_login_time as temp_shipper_member_last_login_time, 
-    temp_shipper_member.member_type as temp_shipper_member_member_type, temp_shipper_member.integral as temp_shipper_member_integral, 
-    temp_shipper_member.status as temp_shipper_member_status, temp_shipper_member.login_count as temp_shipper_member_login_count, 
-    temp_shipper_member.last_login_ip_address as temp_shipper_member_last_login_ip_address, 
+    temp_shipper_member.member_type as temp_shipper_member_member_type, temp_shipper_member.email as temp_shipper_member_email, 
+    temp_shipper_member.integral as temp_shipper_member_integral, temp_shipper_member.status as temp_shipper_member_status, 
+    temp_shipper_member.login_count as temp_shipper_member_login_count, temp_shipper_member.last_login_ip_address as temp_shipper_member_last_login_ip_address, 
     temp_shipper_member.remark as temp_shipper_member_remark, temp_shipper_member.creater as temp_shipper_member_creater, 
     temp_shipper_member.create_time as temp_shipper_member_create_time, temp_shipper_member.updater as temp_shipper_member_updater, 
     temp_shipper_member.update_time as temp_shipper_member_update_time
@@ -131,17 +132,19 @@
     insert into t_shipper_member (member_id, grade_id, member_name, 
       member_password, traders_password, account_balance, 
       live_address, member_photo, registration_time, 
-      last_login_time, member_type, integral, 
-      status, login_count, last_login_ip_address, 
-      remark, creater, create_time, 
-      updater, update_time)
+      last_login_time, member_type, email, 
+      integral, status, login_count, 
+      last_login_ip_address, remark, creater, 
+      create_time, updater, update_time
+      )
     values (#{memberId,jdbcType=VARCHAR}, #{gradeId,jdbcType=VARCHAR}, #{memberName,jdbcType=VARCHAR}, 
       #{memberPassword,jdbcType=VARCHAR}, #{tradersPassword,jdbcType=VARCHAR}, #{accountBalance,jdbcType=DECIMAL}, 
       #{liveAddress,jdbcType=VARCHAR}, #{memberPhoto,jdbcType=VARCHAR}, #{registrationTime,jdbcType=TIMESTAMP}, 
-      #{lastLoginTime,jdbcType=TIMESTAMP}, #{memberType,jdbcType=CHAR}, #{integral,jdbcType=INTEGER}, 
-      #{status,jdbcType=CHAR}, #{loginCount,jdbcType=INTEGER}, #{lastLoginIpAddress,jdbcType=VARCHAR}, 
-      #{remark,jdbcType=VARCHAR}, #{creater,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{updater,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP})
+      #{lastLoginTime,jdbcType=TIMESTAMP}, #{memberType,jdbcType=CHAR}, #{email,jdbcType=VARCHAR}, 
+      #{integral,jdbcType=INTEGER}, #{status,jdbcType=CHAR}, #{loginCount,jdbcType=INTEGER}, 
+      #{lastLoginIpAddress,jdbcType=VARCHAR}, #{remark,jdbcType=VARCHAR}, #{creater,jdbcType=VARCHAR}, 
+      #{createTime,jdbcType=TIMESTAMP}, #{updater,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.glacier.frame.entity.member.ShipperMember" >
     insert into t_shipper_member
@@ -178,6 +181,9 @@
       </if>
       <if test="memberType != null" >
         member_type,
+      </if>
+      <if test="email != null" >
+        email,
       </if>
       <if test="integral != null" >
         integral,
@@ -240,6 +246,9 @@
       </if>
       <if test="memberType != null" >
         #{memberType,jdbcType=CHAR},
+      </if>
+      <if test="email != null" >
+        #{email,jdbcType=VARCHAR},
       </if>
       <if test="integral != null" >
         #{integral,jdbcType=INTEGER},
@@ -312,6 +321,9 @@
       <if test="record.memberType != null" >
         temp_shipper_member.member_type = #{record.memberType,jdbcType=CHAR},
       </if>
+      <if test="record.email != null" >
+        temp_shipper_member.email = #{record.email,jdbcType=VARCHAR},
+      </if>
       <if test="record.integral != null" >
         temp_shipper_member.integral = #{record.integral,jdbcType=INTEGER},
       </if>
@@ -357,6 +369,7 @@
       temp_shipper_member.registration_time = #{record.registrationTime,jdbcType=TIMESTAMP},
       temp_shipper_member.last_login_time = #{record.lastLoginTime,jdbcType=TIMESTAMP},
       temp_shipper_member.member_type = #{record.memberType,jdbcType=CHAR},
+      temp_shipper_member.email = #{record.email,jdbcType=VARCHAR},
       temp_shipper_member.integral = #{record.integral,jdbcType=INTEGER},
       temp_shipper_member.status = #{record.status,jdbcType=CHAR},
       temp_shipper_member.login_count = #{record.loginCount,jdbcType=INTEGER},
@@ -403,6 +416,9 @@
       <if test="memberType != null" >
         member_type = #{memberType,jdbcType=CHAR},
       </if>
+      <if test="email != null" >
+        email = #{email,jdbcType=VARCHAR},
+      </if>
       <if test="integral != null" >
         integral = #{integral,jdbcType=INTEGER},
       </if>
@@ -445,6 +461,7 @@
       registration_time = #{registrationTime,jdbcType=TIMESTAMP},
       last_login_time = #{lastLoginTime,jdbcType=TIMESTAMP},
       member_type = #{memberType,jdbcType=CHAR},
+      email = #{email,jdbcType=VARCHAR},
       integral = #{integral,jdbcType=INTEGER},
       status = #{status,jdbcType=CHAR},
       login_count = #{loginCount,jdbcType=INTEGER},

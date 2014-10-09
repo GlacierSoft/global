@@ -9,9 +9,9 @@ public class ShipperMemberToken {
 
     private String salt;
 
-    private String tratersPassword;
+    private String tradersPassword;
 
-    private String tratersSalt;
+    private String tradersSalt;
 
     public String getMemberId() {
         return memberId;
@@ -45,20 +45,20 @@ public class ShipperMemberToken {
         this.salt = salt;
     }
 
-    public String getTratersPassword() {
-        return tratersPassword;
+    public String getTradersPassword() {
+        return tradersPassword;
     }
 
-    public void setTratersPassword(String tratersPassword) {
-        this.tratersPassword = tratersPassword;
+    public void setTradersPassword(String tradersPassword) {
+        this.tradersPassword = tradersPassword;
     }
 
-    public String getTratersSalt() {
-        return tratersSalt;
+    public String getTradersSalt() {
+        return tradersSalt;
     }
 
-    public void setTratersSalt(String tratersSalt) {
-        this.tratersSalt = tratersSalt;
+    public void setTradersSalt(String tradersSalt) {
+        this.tradersSalt = tradersSalt;
     }
 
     @Override
@@ -77,8 +77,8 @@ public class ShipperMemberToken {
             && (this.getMemberName() == null ? other.getMemberName() == null : this.getMemberName().equals(other.getMemberName()))
             && (this.getPassword() == null ? other.getPassword() == null : this.getPassword().equals(other.getPassword()))
             && (this.getSalt() == null ? other.getSalt() == null : this.getSalt().equals(other.getSalt()))
-            && (this.getTratersPassword() == null ? other.getTratersPassword() == null : this.getTratersPassword().equals(other.getTratersPassword()))
-            && (this.getTratersSalt() == null ? other.getTratersSalt() == null : this.getTratersSalt().equals(other.getTratersSalt()));
+            && (this.getTradersPassword() == null ? other.getTradersPassword() == null : this.getTradersPassword().equals(other.getTradersPassword()))
+            && (this.getTradersSalt() == null ? other.getTradersSalt() == null : this.getTradersSalt().equals(other.getTradersSalt()));
     }
 
     @Override
@@ -89,8 +89,8 @@ public class ShipperMemberToken {
         result = prime * result + ((getMemberName() == null) ? 0 : getMemberName().hashCode());
         result = prime * result + ((getPassword() == null) ? 0 : getPassword().hashCode());
         result = prime * result + ((getSalt() == null) ? 0 : getSalt().hashCode());
-        result = prime * result + ((getTratersPassword() == null) ? 0 : getTratersPassword().hashCode());
-        result = prime * result + ((getTratersSalt() == null) ? 0 : getTratersSalt().hashCode());
+        result = prime * result + ((getTradersPassword() == null) ? 0 : getTradersPassword().hashCode());
+        result = prime * result + ((getTradersSalt() == null) ? 0 : getTradersSalt().hashCode());
         return result;
     }
 }

@@ -10,7 +10,6 @@
     <result column="temp_shipper_enterprise_member_property" property="property" jdbcType="VARCHAR" />
     <result column="temp_shipper_enterprise_member_enterprise_type" property="enterpriseType" jdbcType="VARCHAR" />
     <result column="temp_shipper_enterprise_member_trade" property="trade" jdbcType="VARCHAR" />
-    <result column="temp_shipper_enterprise_member_email" property="email" jdbcType="VARCHAR" />
     <result column="temp_shipper_enterprise_member_enterprise_phone" property="enterprisePhone" jdbcType="VARCHAR" />
     <result column="temp_shipper_enterprise_member_enterprise_img" property="enterpriseImg" jdbcType="VARCHAR" />
     <result column="temp_shipper_enterprise_member_enterprise_logo" property="enterpriseLogo" jdbcType="VARCHAR" />
@@ -86,8 +85,7 @@
     temp_shipper_enterprise_member.detailed_address as temp_shipper_enterprise_member_detailed_address, 
     temp_shipper_enterprise_member.property as temp_shipper_enterprise_member_property, 
     temp_shipper_enterprise_member.enterprise_type as temp_shipper_enterprise_member_enterprise_type, 
-    temp_shipper_enterprise_member.trade as temp_shipper_enterprise_member_trade, temp_shipper_enterprise_member.email as temp_shipper_enterprise_member_email, 
-    temp_shipper_enterprise_member.enterprise_phone as temp_shipper_enterprise_member_enterprise_phone, 
+    temp_shipper_enterprise_member.trade as temp_shipper_enterprise_member_trade, temp_shipper_enterprise_member.enterprise_phone as temp_shipper_enterprise_member_enterprise_phone, 
     temp_shipper_enterprise_member.enterprise_img as temp_shipper_enterprise_member_enterprise_img, 
     temp_shipper_enterprise_member.enterprise_logo as temp_shipper_enterprise_member_enterprise_logo, 
     temp_shipper_enterprise_member.enterprise_fax as temp_shipper_enterprise_member_enterprise_fax, 
@@ -132,18 +130,16 @@
   <insert id="insert" parameterType="com.glacier.frame.entity.member.ShipperEnterpriseMember" >
     insert into t_shipper_enterprise_member (member_id, enterprise_name, deputy, 
       area, detailed_address, property, 
-      enterprise_type, trade, email, 
-      enterprise_phone, enterprise_img, enterprise_logo, 
-      enterprise_fax, enterprise_summary, auth_state, 
-      auth, auth_time, auth_remark
-      )
+      enterprise_type, trade, enterprise_phone, 
+      enterprise_img, enterprise_logo, enterprise_fax, 
+      enterprise_summary, auth_state, auth, 
+      auth_time, auth_remark)
     values (#{memberId,jdbcType=VARCHAR}, #{enterpriseName,jdbcType=VARCHAR}, #{deputy,jdbcType=VARCHAR}, 
       #{area,jdbcType=VARCHAR}, #{detailedAddress,jdbcType=VARCHAR}, #{property,jdbcType=VARCHAR}, 
-      #{enterpriseType,jdbcType=VARCHAR}, #{trade,jdbcType=VARCHAR}, #{email,jdbcType=VARCHAR}, 
-      #{enterprisePhone,jdbcType=VARCHAR}, #{enterpriseImg,jdbcType=VARCHAR}, #{enterpriseLogo,jdbcType=VARCHAR}, 
-      #{enterpriseFax,jdbcType=VARCHAR}, #{enterpriseSummary,jdbcType=VARCHAR}, #{authState,jdbcType=CHAR}, 
-      #{auth,jdbcType=VARCHAR}, #{authTime,jdbcType=TIMESTAMP}, #{authRemark,jdbcType=VARCHAR}
-      )
+      #{enterpriseType,jdbcType=VARCHAR}, #{trade,jdbcType=VARCHAR}, #{enterprisePhone,jdbcType=VARCHAR}, 
+      #{enterpriseImg,jdbcType=VARCHAR}, #{enterpriseLogo,jdbcType=VARCHAR}, #{enterpriseFax,jdbcType=VARCHAR}, 
+      #{enterpriseSummary,jdbcType=VARCHAR}, #{authState,jdbcType=CHAR}, #{auth,jdbcType=VARCHAR}, 
+      #{authTime,jdbcType=TIMESTAMP}, #{authRemark,jdbcType=VARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.glacier.frame.entity.member.ShipperEnterpriseMember" >
     insert into t_shipper_enterprise_member
@@ -171,9 +167,6 @@
       </if>
       <if test="trade != null" >
         trade,
-      </if>
-      <if test="email != null" >
-        email,
       </if>
       <if test="enterprisePhone != null" >
         enterprise_phone,
@@ -227,9 +220,6 @@
       </if>
       <if test="trade != null" >
         #{trade,jdbcType=VARCHAR},
-      </if>
-      <if test="email != null" >
-        #{email,jdbcType=VARCHAR},
       </if>
       <if test="enterprisePhone != null" >
         #{enterprisePhone,jdbcType=VARCHAR},
@@ -293,9 +283,6 @@
       <if test="record.trade != null" >
         temp_shipper_enterprise_member.trade = #{record.trade,jdbcType=VARCHAR},
       </if>
-      <if test="record.email != null" >
-        temp_shipper_enterprise_member.email = #{record.email,jdbcType=VARCHAR},
-      </if>
       <if test="record.enterprisePhone != null" >
         temp_shipper_enterprise_member.enterprise_phone = #{record.enterprisePhone,jdbcType=VARCHAR},
       </if>
@@ -338,7 +325,6 @@
       temp_shipper_enterprise_member.property = #{record.property,jdbcType=VARCHAR},
       temp_shipper_enterprise_member.enterprise_type = #{record.enterpriseType,jdbcType=VARCHAR},
       temp_shipper_enterprise_member.trade = #{record.trade,jdbcType=VARCHAR},
-      temp_shipper_enterprise_member.email = #{record.email,jdbcType=VARCHAR},
       temp_shipper_enterprise_member.enterprise_phone = #{record.enterprisePhone,jdbcType=VARCHAR},
       temp_shipper_enterprise_member.enterprise_img = #{record.enterpriseImg,jdbcType=VARCHAR},
       temp_shipper_enterprise_member.enterprise_logo = #{record.enterpriseLogo,jdbcType=VARCHAR},
@@ -375,9 +361,6 @@
       </if>
       <if test="trade != null" >
         trade = #{trade,jdbcType=VARCHAR},
-      </if>
-      <if test="email != null" >
-        email = #{email,jdbcType=VARCHAR},
       </if>
       <if test="enterprisePhone != null" >
         enterprise_phone = #{enterprisePhone,jdbcType=VARCHAR},
@@ -418,7 +401,6 @@
       property = #{property,jdbcType=VARCHAR},
       enterprise_type = #{enterpriseType,jdbcType=VARCHAR},
       trade = #{trade,jdbcType=VARCHAR},
-      email = #{email,jdbcType=VARCHAR},
       enterprise_phone = #{enterprisePhone,jdbcType=VARCHAR},
       enterprise_img = #{enterpriseImg,jdbcType=VARCHAR},
       enterprise_logo = #{enterpriseLogo,jdbcType=VARCHAR},

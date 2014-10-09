@@ -8,7 +8,6 @@
     <result column="temp_shipper_individuality_member_home_phone" property="homePhone" jdbcType="VARCHAR" />
     <result column="temp_shipper_individuality_member_card_id" property="cardId" jdbcType="VARCHAR" />
     <result column="temp_shipper_individuality_member_member_real_name" property="memberRealName" jdbcType="VARCHAR" />
-    <result column="temp_shipper_individuality_member_member_email" property="memberEmail" jdbcType="VARCHAR" />
     <result column="temp_shipper_individuality_member_member_qq" property="memberQq" jdbcType="INTEGER" />
     <result column="temp_shipper_individuality_member_mobile_number" property="mobileNumber" jdbcType="VARCHAR" />
     <result column="temp_shipper_individuality_member_detailed_address" property="detailedAddress" jdbcType="VARCHAR" />
@@ -77,7 +76,6 @@
     temp_shipper_individuality_member.home_phone as temp_shipper_individuality_member_home_phone, 
     temp_shipper_individuality_member.card_id as temp_shipper_individuality_member_card_id, 
     temp_shipper_individuality_member.member_real_name as temp_shipper_individuality_member_member_real_name, 
-    temp_shipper_individuality_member.member_email as temp_shipper_individuality_member_member_email, 
     temp_shipper_individuality_member.member_qq as temp_shipper_individuality_member_member_qq, 
     temp_shipper_individuality_member.mobile_number as temp_shipper_individuality_member_mobile_number, 
     temp_shipper_individuality_member.detailed_address as temp_shipper_individuality_member_detailed_address
@@ -118,12 +116,12 @@
   <insert id="insert" parameterType="com.glacier.frame.entity.member.ShipperIndividualityMember" >
     insert into t_shipper_individuality_member (member_id, sex, member_age, 
       home_phone, card_id, member_real_name, 
-      member_email, member_qq, mobile_number, 
-      detailed_address)
+      member_qq, mobile_number, detailed_address
+      )
     values (#{memberId,jdbcType=VARCHAR}, #{sex,jdbcType=CHAR}, #{memberAge,jdbcType=INTEGER}, 
       #{homePhone,jdbcType=VARCHAR}, #{cardId,jdbcType=VARCHAR}, #{memberRealName,jdbcType=VARCHAR}, 
-      #{memberEmail,jdbcType=VARCHAR}, #{memberQq,jdbcType=INTEGER}, #{mobileNumber,jdbcType=VARCHAR}, 
-      #{detailedAddress,jdbcType=VARCHAR})
+      #{memberQq,jdbcType=INTEGER}, #{mobileNumber,jdbcType=VARCHAR}, #{detailedAddress,jdbcType=VARCHAR}
+      )
   </insert>
   <insert id="insertSelective" parameterType="com.glacier.frame.entity.member.ShipperIndividualityMember" >
     insert into t_shipper_individuality_member
@@ -145,9 +143,6 @@
       </if>
       <if test="memberRealName != null" >
         member_real_name,
-      </if>
-      <if test="memberEmail != null" >
-        member_email,
       </if>
       <if test="memberQq != null" >
         member_qq,
@@ -177,9 +172,6 @@
       </if>
       <if test="memberRealName != null" >
         #{memberRealName,jdbcType=VARCHAR},
-      </if>
-      <if test="memberEmail != null" >
-        #{memberEmail,jdbcType=VARCHAR},
       </if>
       <if test="memberQq != null" >
         #{memberQq,jdbcType=INTEGER},
@@ -219,9 +211,6 @@
       <if test="record.memberRealName != null" >
         temp_shipper_individuality_member.member_real_name = #{record.memberRealName,jdbcType=VARCHAR},
       </if>
-      <if test="record.memberEmail != null" >
-        temp_shipper_individuality_member.member_email = #{record.memberEmail,jdbcType=VARCHAR},
-      </if>
       <if test="record.memberQq != null" >
         temp_shipper_individuality_member.member_qq = #{record.memberQq,jdbcType=INTEGER},
       </if>
@@ -244,7 +233,6 @@
       temp_shipper_individuality_member.home_phone = #{record.homePhone,jdbcType=VARCHAR},
       temp_shipper_individuality_member.card_id = #{record.cardId,jdbcType=VARCHAR},
       temp_shipper_individuality_member.member_real_name = #{record.memberRealName,jdbcType=VARCHAR},
-      temp_shipper_individuality_member.member_email = #{record.memberEmail,jdbcType=VARCHAR},
       temp_shipper_individuality_member.member_qq = #{record.memberQq,jdbcType=INTEGER},
       temp_shipper_individuality_member.mobile_number = #{record.mobileNumber,jdbcType=VARCHAR},
       temp_shipper_individuality_member.detailed_address = #{record.detailedAddress,jdbcType=VARCHAR}
@@ -270,9 +258,6 @@
       <if test="memberRealName != null" >
         member_real_name = #{memberRealName,jdbcType=VARCHAR},
       </if>
-      <if test="memberEmail != null" >
-        member_email = #{memberEmail,jdbcType=VARCHAR},
-      </if>
       <if test="memberQq != null" >
         member_qq = #{memberQq,jdbcType=INTEGER},
       </if>
@@ -292,7 +277,6 @@
       home_phone = #{homePhone,jdbcType=VARCHAR},
       card_id = #{cardId,jdbcType=VARCHAR},
       member_real_name = #{memberRealName,jdbcType=VARCHAR},
-      member_email = #{memberEmail,jdbcType=VARCHAR},
       member_qq = #{memberQq,jdbcType=INTEGER},
       mobile_number = #{mobileNumber,jdbcType=VARCHAR},
       detailed_address = #{detailedAddress,jdbcType=VARCHAR}
