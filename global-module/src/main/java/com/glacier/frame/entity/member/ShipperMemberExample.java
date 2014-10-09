@@ -196,76 +196,6 @@ public class ShipperMemberExample {
             return (Criteria) this;
         }
 
-        public Criteria andGradeIdIsNull() {
-            addCriterion("temp_shipper_member.grade_id is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andGradeIdIsNotNull() {
-            addCriterion("temp_shipper_member.grade_id is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andGradeIdEqualTo(String value) {
-            addCriterion("temp_shipper_member.grade_id =", value, "gradeId");
-            return (Criteria) this;
-        }
-
-        public Criteria andGradeIdNotEqualTo(String value) {
-            addCriterion("temp_shipper_member.grade_id <>", value, "gradeId");
-            return (Criteria) this;
-        }
-
-        public Criteria andGradeIdGreaterThan(String value) {
-            addCriterion("temp_shipper_member.grade_id >", value, "gradeId");
-            return (Criteria) this;
-        }
-
-        public Criteria andGradeIdGreaterThanOrEqualTo(String value) {
-            addCriterion("temp_shipper_member.grade_id >=", value, "gradeId");
-            return (Criteria) this;
-        }
-
-        public Criteria andGradeIdLessThan(String value) {
-            addCriterion("temp_shipper_member.grade_id <", value, "gradeId");
-            return (Criteria) this;
-        }
-
-        public Criteria andGradeIdLessThanOrEqualTo(String value) {
-            addCriterion("temp_shipper_member.grade_id <=", value, "gradeId");
-            return (Criteria) this;
-        }
-
-        public Criteria andGradeIdLike(String value) {
-            addCriterion("temp_shipper_member.grade_id like", value, "gradeId");
-            return (Criteria) this;
-        }
-
-        public Criteria andGradeIdNotLike(String value) {
-            addCriterion("temp_shipper_member.grade_id not like", value, "gradeId");
-            return (Criteria) this;
-        }
-
-        public Criteria andGradeIdIn(List<String> values) {
-            addCriterion("temp_shipper_member.grade_id in", values, "gradeId");
-            return (Criteria) this;
-        }
-
-        public Criteria andGradeIdNotIn(List<String> values) {
-            addCriterion("temp_shipper_member.grade_id not in", values, "gradeId");
-            return (Criteria) this;
-        }
-
-        public Criteria andGradeIdBetween(String value1, String value2) {
-            addCriterion("temp_shipper_member.grade_id between", value1, value2, "gradeId");
-            return (Criteria) this;
-        }
-
-        public Criteria andGradeIdNotBetween(String value1, String value2) {
-            addCriterion("temp_shipper_member.grade_id not between", value1, value2, "gradeId");
-            return (Criteria) this;
-        }
-
         public Criteria andMemberNameIsNull() {
             addCriterion("temp_shipper_member.member_name is null");
             return (Criteria) this;
@@ -863,6 +793,76 @@ public class ShipperMemberExample {
 
         public Criteria andMemberTypeNotBetween(String value1, String value2) {
             addCriterion("temp_shipper_member.member_type not between", value1, value2, "memberType");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailIsNull() {
+            addCriterion("temp_shipper_member.email is null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailIsNotNull() {
+            addCriterion("temp_shipper_member.email is not null");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailEqualTo(String value) {
+            addCriterion("temp_shipper_member.email =", value, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailNotEqualTo(String value) {
+            addCriterion("temp_shipper_member.email <>", value, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailGreaterThan(String value) {
+            addCriterion("temp_shipper_member.email >", value, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailGreaterThanOrEqualTo(String value) {
+            addCriterion("temp_shipper_member.email >=", value, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailLessThan(String value) {
+            addCriterion("temp_shipper_member.email <", value, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailLessThanOrEqualTo(String value) {
+            addCriterion("temp_shipper_member.email <=", value, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailLike(String value) {
+            addCriterion("temp_shipper_member.email like", value, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailNotLike(String value) {
+            addCriterion("temp_shipper_member.email not like", value, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailIn(List<String> values) {
+            addCriterion("temp_shipper_member.email in", values, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailNotIn(List<String> values) {
+            addCriterion("temp_shipper_member.email not in", values, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailBetween(String value1, String value2) {
+            addCriterion("temp_shipper_member.email between", value1, value2, "email");
+            return (Criteria) this;
+        }
+
+        public Criteria andEmailNotBetween(String value1, String value2) {
+            addCriterion("temp_shipper_member.email not between", value1, value2, "email");
             return (Criteria) this;
         }
 

@@ -13,8 +13,6 @@ public class ShipperIndividualityMember {
 
     private String memberRealName;
 
-    private String memberEmail;
-
     private Integer memberQq;
 
     private String mobileNumber;
@@ -69,14 +67,6 @@ public class ShipperIndividualityMember {
         this.memberRealName = memberRealName;
     }
 
-    public String getMemberEmail() {
-        return memberEmail;
-    }
-
-    public void setMemberEmail(String memberEmail) {
-        this.memberEmail = memberEmail;
-    }
-
     public Integer getMemberQq() {
         return memberQq;
     }
@@ -119,7 +109,6 @@ public class ShipperIndividualityMember {
             && (this.getHomePhone() == null ? other.getHomePhone() == null : this.getHomePhone().equals(other.getHomePhone()))
             && (this.getCardId() == null ? other.getCardId() == null : this.getCardId().equals(other.getCardId()))
             && (this.getMemberRealName() == null ? other.getMemberRealName() == null : this.getMemberRealName().equals(other.getMemberRealName()))
-            && (this.getMemberEmail() == null ? other.getMemberEmail() == null : this.getMemberEmail().equals(other.getMemberEmail()))
             && (this.getMemberQq() == null ? other.getMemberQq() == null : this.getMemberQq().equals(other.getMemberQq()))
             && (this.getMobileNumber() == null ? other.getMobileNumber() == null : this.getMobileNumber().equals(other.getMobileNumber()))
             && (this.getDetailedAddress() == null ? other.getDetailedAddress() == null : this.getDetailedAddress().equals(other.getDetailedAddress()));
@@ -135,7 +124,6 @@ public class ShipperIndividualityMember {
         result = prime * result + ((getHomePhone() == null) ? 0 : getHomePhone().hashCode());
         result = prime * result + ((getCardId() == null) ? 0 : getCardId().hashCode());
         result = prime * result + ((getMemberRealName() == null) ? 0 : getMemberRealName().hashCode());
-        result = prime * result + ((getMemberEmail() == null) ? 0 : getMemberEmail().hashCode());
         result = prime * result + ((getMemberQq() == null) ? 0 : getMemberQq().hashCode());
         result = prime * result + ((getMobileNumber() == null) ? 0 : getMobileNumber().hashCode());
         result = prime * result + ((getDetailedAddress() == null) ? 0 : getDetailedAddress().hashCode());

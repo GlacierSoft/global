@@ -36,8 +36,7 @@ public class ShipperMemberController extends AbstractController{
         ModelAndView mav = new ModelAndView("member_mgr/shipperMember_mgr/shipperMember");
         return mav;
     } 
-     
-    
+      
     // 获取表格结构的所有菜单数据
     @RequestMapping(value = "/list.json", method = RequestMethod.POST)
     @ResponseBody
@@ -65,6 +64,11 @@ public class ShipperMemberController extends AbstractController{
 	     return mav;
     }
     
-    
+    // 启用、禁用会员
+    @RequestMapping(value = "/status.json", method = RequestMethod.POST)
+    @ResponseBody
+    private Object updateStatus(String  memberId) { 
+    	 	return shippermemberService.upStatus(memberId); 
+    } 
     
 }

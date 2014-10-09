@@ -2,7 +2,7 @@
 <!-- 引入国际化标签 -->
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<form id="member_mgr_member_form" method="post" style="padding:15px">
+<form id="member_mgr_member_form" method="post" style="padding:15px;width: 555px">
 <div title="基本信息" style="padding:15px">
     	<fieldset id="user_mgr_user_form_userGenfieldset" style="padding:10px;" class="spinner">
 			<legend>会员基本信息</legend>  
@@ -23,12 +23,11 @@
 						<td><input id="member_mgr_member_form_status" name="status" class="spinner" style="width:168px" value="${shipperMemberData.status}" readonly="readonly"/></td>
 					 </tr>
 					 <tr>
-						<td>积分：</td>
+						<td>会员积分：</td>
 						<td><input id="member_mgr_member_form_integral" name="integral" class="spinner" style="width:168px" value="<fmt:formatNumber value='${shipperMemberData.integral}' pattern="#,#00.00"/>" readonly="readonly"/></td>
-					    <td style="padding-left:10px;">账户余额:</td>
+					    <td style="padding-left:10px;">账户余额：</td>
 					    <td><input id="member_mgr_member_form_accountBalance" name="accountBalance" class="spinner" style="width:168px" value="<fmt:formatNumber value='${shipperMemberData.accountBalance}' pattern="#,#00.00元"/>" readonly="readonly"/></td>
-					
-					</tr>
+					 </tr>
 					 <tr>
 						<td>注册时间：</td>
 						<td><input class="spinner" style="width:168px" value="<fmt:formatDate value="${shipperMemberData.registrationTime}" pattern="yyyy-MM-dd HH:mm:ss"/>" readonly="readonly"/></td>
@@ -40,14 +39,13 @@
 						<td ><input name="loginCount" class="spinner" style="width:168px" value="${shipperMemberData.loginCount}" readonly="readonly"/></td>
 						<td style="padding-left:10px;">上次登录ip：</td>
 						<td ><input name="lastLoginIpAddress" class="spinner" style="width:168px" value="${shipperMemberData.lastLoginIpAddress}" readonly="readonly"/></td>
-					
-					</tr>
+					 </tr>
 						<tr>
-						<td>地址：</td>
+						<td>地 址：</td>
 						<td colspan="3"><input  name="liveAddress" class="spinner" style="width:435px" value="${shipperMemberData.liveAddress}" readonly="readonly"/></td>
 					</tr>
 					<tr>
-						<td>备注：</td>
+						<td>备 注：</td>
 						<td colspan="3"> <textarea   name="remark" class="spinner" style="width:435px;" readonly="readonly" >${shipperMemberData.remark}</textarea></td>
 					</tr>
 				</table>
@@ -80,24 +78,23 @@
 						<td><input  name="enterpriseLogo" class="spinner" style="width:168px" value='${enterpriseMemberData.enterpriseLogo}' readonly="readonly"/></td>
 					    <td style="padding-left:10px;">企业标识：</td>
 						<td><input name="enterpriseImg" class="spinner" style="width:168px" value="${enterpriseMemberData.enterpriseImg}" readonly="readonly"/></td>
-					
 					 </tr>
 					 <tr>
-					     <td style="padding-left:10px;">企业传真：</td>
+					     <td>企业传真：</td>
 						<td><input name="enterpriseFax" class="spinner" style="width:168px" value="${enterpriseMemberData.enterpriseFax}" readonly="readonly"/></td>
 					    <td style="padding-left:10px;">详细地址：</td>
 						<td><input name="detailedAddress" class="spinner" style="width:168px" value="${enterpriseMemberData.detailedAddress}" readonly="readonly"/></td>
+					  </tr>
+					  <tr>
+					    <td>企业电话：</td>
+						<td><input name="enterprisePhone" class="spinner" style="width:168px" value="${enterpriseMemberData.enterprisePhone}" readonly="readonly"/></td>
+					    <td style="padding-left:10px;">企业邮箱：</td>
+						<td><input name="email" class="spinner" style="width:168px" value="${shipperMemberData.email}" readonly="readonly"/></td>
 					
 					 </tr>
-					  <tr>
-					    <td>企业邮箱：</td>
-						<td><input  name="email" class="spinner" style="width:168px" value='${enterpriseMemberData.email}' readonly="readonly"/></td>
-					    <td style="padding-left:10px;">企业电话：</td>
-						<td><input name="enterprisePhone" class="spinner" style="width:168px" value="${enterpriseMemberData.enterprisePhone}" readonly="readonly"/></td>
-					 </tr>
 					 <tr>
-						<td>简介：</td>
-						<td colspan="3"> <textarea   name="enterpriseSummary" class="spinner" style="width:435px;" readonly="readonly" >${enterpriseMemberData.enterpriseSummary}</textarea></td>
+						<td>简 介：</td>
+						<td colspan="3"> <textarea   name="enterpriseSummary" class="spinner" style="width:410px;" readonly="readonly" >${enterpriseMemberData.enterpriseSummary}</textarea></td>
 					</tr>
 					   <tr>
 					    <td>认证状态：</td>

@@ -19,8 +19,6 @@ public class ShipperEnterpriseMember {
 
     private String trade;
 
-    private String email;
-
     private String enterprisePhone;
 
     private String enterpriseImg;
@@ -101,14 +99,6 @@ public class ShipperEnterpriseMember {
 
     public void setTrade(String trade) {
         this.trade = trade;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getEnterprisePhone() {
@@ -203,7 +193,6 @@ public class ShipperEnterpriseMember {
             && (this.getProperty() == null ? other.getProperty() == null : this.getProperty().equals(other.getProperty()))
             && (this.getEnterpriseType() == null ? other.getEnterpriseType() == null : this.getEnterpriseType().equals(other.getEnterpriseType()))
             && (this.getTrade() == null ? other.getTrade() == null : this.getTrade().equals(other.getTrade()))
-            && (this.getEmail() == null ? other.getEmail() == null : this.getEmail().equals(other.getEmail()))
             && (this.getEnterprisePhone() == null ? other.getEnterprisePhone() == null : this.getEnterprisePhone().equals(other.getEnterprisePhone()))
             && (this.getEnterpriseImg() == null ? other.getEnterpriseImg() == null : this.getEnterpriseImg().equals(other.getEnterpriseImg()))
             && (this.getEnterpriseLogo() == null ? other.getEnterpriseLogo() == null : this.getEnterpriseLogo().equals(other.getEnterpriseLogo()))
@@ -227,7 +216,6 @@ public class ShipperEnterpriseMember {
         result = prime * result + ((getProperty() == null) ? 0 : getProperty().hashCode());
         result = prime * result + ((getEnterpriseType() == null) ? 0 : getEnterpriseType().hashCode());
         result = prime * result + ((getTrade() == null) ? 0 : getTrade().hashCode());
-        result = prime * result + ((getEmail() == null) ? 0 : getEmail().hashCode());
         result = prime * result + ((getEnterprisePhone() == null) ? 0 : getEnterprisePhone().hashCode());
         result = prime * result + ((getEnterpriseImg() == null) ? 0 : getEnterpriseImg().hashCode());
         result = prime * result + ((getEnterpriseLogo() == null) ? 0 : getEnterpriseLogo().hashCode());

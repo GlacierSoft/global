@@ -11,8 +11,7 @@
 	glacier.member_mgr.member_mgr.member.param = {
 		toolbarId : 'memberDataGrid_toolbar',
 		actions : {
-             edit:{flag:'edit',controlType:'single'},
-             del:{flag:'del',controlType:'multiple'}
+             status:{flag:'status',controlType:'single'} 
           }
      };
 
@@ -58,6 +57,11 @@
 							formatter : function(value, row, index) {//数据格式化，例如man显示是，woman显示女
 								return renderGridValue(value, fields.memberType);
 							}
+						},{
+							field : 'email',
+							title : '会员邮箱',
+							width : 120,
+							sortable : true
 						},{
 							field : 'integral',
 							title : '会员积分',
@@ -136,7 +140,6 @@
                         $.easyui.showDialog({
 								title : '【' + rowData.memberName + '】会员详细信息',
 								href : ctx+ '/do/shippermember/intoDetail.htm?memberId='+ rowData.memberId,//从controller请求jsp页面进行渲染
-								width : 655,
 								height : 470,
 								resizable : false,
 								enableApplyButton : false,
@@ -144,81 +147,36 @@
 							});
 						}
 					});
+ 
 
-	//点击增加按钮触发方法
-	glacier.member_mgr.member_mgr.member.addMember = function(){
-	glacier.basicAddOrEditDialog({
-			title : '增加会员信息',
-			width : 855,
-			height : 415,
-			queryUrl : ctx + '/do/member/intoForm.htm',
-			submitUrl : ctx + '/do/member/add.json',
-			successFun : function() {
-				glacier.member_mgr.member_mgr.member.memberDataGrid.datagrid('reload');
-			}
-		});
-	};
-
-	//点击编辑按钮触发方法
+	//点击启用禁用按钮触发方法
 	glacier.member_mgr.member_mgr.member.editMember = function(){
     var row = glacier.member_mgr.member_mgr.member.memberDataGrid.datagrid("getSelected");
-    glacier.basicAddOrEditDialog({
-			title : '编辑【' + row.memberName + '】会员信息',
-			width : 865,
-			height : 415,
-			queryUrl : ctx + '/do/member/intoForm.htm',
-			submitUrl : ctx + '/do/member/edit.json',
-			queryParams : {
-				memberId : row.memberId
-			},
-			successFun : function() {
-				glacier.member_mgr.member_mgr.member.memberDataGrid.datagrid('reload');
-			}
-		});
-	};
-	//点击删除按钮触发方法
-	glacier.member_mgr.member_mgr.member.delMember = function() {
-		var rows = glacier.member_mgr.member_mgr.member.memberDataGrid.datagrid("getChecked");
-		var memberIds = [];//删除的id标识
-		var memberNames = [];//客服主题
-		for ( var i = 0; i < rows.length; i++) {
-			memberIds.push(rows[i].memberId);
-			memberNames.push(rows[i].memberName);
-		}
-		if (memberIds.length > 0) {
-			$.messager.confirm('请确认','是否要删除该记录',function(r){
-                                         if (r){
-                                        	 $.ajax({ 
-                                        		type: "POST",
-                                        	    url : ctx+ '/do/member/del.json',
-												data : {
-													memberIds : memberIds.join(','),
-													memberNames : memberNames.join(',')
-												},
-												dataType : 'json',
-												success : function(r) {
-													if (r.success) {//因为失败成功的方法都一样操作，这里故未做处理
-														$.messager.show({
-															title : '提示',
-															timeout : 3000,
-															msg : r.msg
-														});
-                                                  glacier.member_mgr.member_mgr.member.memberDataGrid.datagrid('reload');
-													} else {
-														$.messager.show({//后台验证弹出错误提示信息框
-																	title : '错误提示',
-																	width : 380,
-																	height : 120,
-																	msg : '<span style="color:red">'+ r.msg+ '<span>',
-																	timeout : 4500
-																});
-													}
-												}
-									});
-								}
-							});
-		}
-	};
+    $.ajax({
+		   type: "POST",
+		   url: ctx + '/do/shippermember/status.json',
+		   data: {memberId:row.memberId}, 
+		   dataType:'json',
+		   success: function(r){
+			   if(r.success){//因为失败成功的方法都一样操作，这里故未做处理
+				   $.messager.show({
+						title:'提示',
+						timeout:3000,
+						msg:r.msg
+					});
+				   glacier.member_mgr.member_mgr.member.memberDataGrid.datagrid('reload');
+			   }else{
+					$.messager.show({//后台验证弹出错误提示信息框
+						title:'错误提示',
+						width:380,
+						height:120,
+						msg: '<span style="color:red">'+r.msg+'<span>',
+						timeout:4500
+					});
+				}
+		   }
+	});  
+	}; 
 	//客服资料模糊查询
 	glacier.member_mgr.member_mgr.member.quickquery = function(value, name) {
 		var obj = $.parseJSON('{"' + name + '":"' + value + '"}');//将值和对象封装成obj作为参数传递给后台
@@ -251,8 +209,8 @@
 <div class="easyui-layout" data-options="fit:true">
 	<div id="memberGridPanel" data-options="region:'center',border:true">
 		<table id="memberDataGrid">
-			<glacierui:toolbar panelEnName="MemberList"
-				toolbarId="memberDataGrid_toolbar" menuEnName="member" />
+			<glacierui:toolbar panelEnName="memberList"
+				toolbarId="memberDataGrid_toolbar" menuEnName="shipperMember" />
 			<!-- 自定义标签：自动根据菜单获取当前用户权限，动态注册方法 -->
 		</table>
 	</div>

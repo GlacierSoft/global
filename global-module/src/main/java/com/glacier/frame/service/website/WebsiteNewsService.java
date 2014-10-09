@@ -102,9 +102,7 @@ public class WebsiteNewsService {
         int total = newsMapper.countByExample(websiteNewsExample); // 查询总页数
         returnResult.setRows(websiteNewss);
         returnResult.setTotal(total);
-        returnResult.setP(p);
-        System.out.println(type);
-        System.out.println(">>>>>>>>>>>>>>>>>>>>>>>>>>数据:"+websiteNewss.size());
+        returnResult.setP(p); 
         return returnResult;// 返回ExtGrid表
     }
 

@@ -28,6 +28,7 @@ import com.glacier.frame.entity.member.ShipperMember;
 import com.glacier.frame.entity.member.ShipperMemberExample; 
 import com.glacier.jqueryui.util.JqGridReturn;
 import com.glacier.jqueryui.util.JqPager; 
+import com.glacier.jqueryui.util.JqReturnJson;
 import com.glacier.frame.entity.member.ShipperMemberExample.Criteria;
 /*** 
  * @ClassName:  MemberService
@@ -56,7 +57,7 @@ public class ShipperMemberService {
      * @param @return    设定文件 
      * @return Object    返回类型 
      * @throws
-     */
+     */ 
     public Object listAsGrid(JqPager jqPager, ShipperMemberQueryDTO memberQueryDTO, String q) {
         JqGridReturn returnResult = new JqGridReturn();
         ShipperMemberExample memberExample = new ShipperMemberExample(); 
@@ -75,6 +76,7 @@ public class ShipperMemberService {
         returnResult.setTotal(total);
         return returnResult;// 返回ExtGrid表
     }
+     
     
     /**
 	 * @Title: getMember 
@@ -95,7 +97,33 @@ public class ShipperMemberService {
     		list.add(shipperIndividualityMemberMapper.selectByPrimaryKey(memberId));
     	} 
         return list;
+    } 
+     
+    
+    /*** 
+     * @Title: upStatus  
+     * @Description: TODO(启用和禁用会员)  
+     * @param @param shipperMemberId
+     * @param @return    设定文件  
+     * @return Object    返回类型  
+     * @throws
+     */ 
+    @Transactional(readOnly = false)
+    public Object upStatus(String shipperMemberId){
+    	 JqReturnJson returnResult = new JqReturnJson();// 构建返回结果，默认结果为false
+    	 ShipperMember shipperMember= shipperMemberMapper.selectByPrimaryKey(shipperMemberId);
+    	 if(shipperMember.getStatus().equals("enable")){
+    		 shipperMember.setStatus("disable");
+    	 }else{
+    		 shipperMember.setStatus("enable");
+    	 } 
+    	 int count = shipperMemberMapper.updateByPrimaryKeySelective(shipperMember);
+    	 if(count == 1){
+    		 returnResult.setSuccess(true);
+    		 returnResult.setMsg("更改状态成功!");
+    	 }else{
+    		 returnResult.setMsg("发生未知错误，状态修改失败");
+    	 }
+    	return returnResult; 
     }
-    
-    
 }
