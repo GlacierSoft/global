@@ -160,7 +160,8 @@
 <div class="easyui-layout" data-options="fit:true">
 	<div id="contractManagerGridPanel" data-options="region:'center',border:true">
 		<table id="contractManagerDataGrid">
-			<glacierui:toolbar panelEnName="ContractManagerList" toolbarId="contractManagerDataGrid_toolbar" menuEnName="contractManager" />
+			<glacierui:toolbar panelEnName="ContractManagerList"
+				toolbarId="contractManagerDataGrid_toolbar" menuEnName="contractManager" />
 			<!-- 自定义标签：自动根据菜单获取当前用户权限，动态注册方法 -->
 		</table>
 	</div>
