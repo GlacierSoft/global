@@ -25,7 +25,7 @@
 					 <tr>
 						<td>会员积分：</td>
 						<td><input id="member_mgr_member_form_integral" name="integral" class="spinner" style="width:168px" value="<fmt:formatNumber value='${shipperMemberData.integral}' pattern="#,#00.00"/>" readonly="readonly"/></td>
-					    <td style="padding-left:10px;">账户余额:</td>
+					    <td style="padding-left:10px;">账户余额：</td>
 					    <td><input id="member_mgr_member_form_accountBalance" name="accountBalance" class="spinner" style="width:168px" value="<fmt:formatNumber value='${shipperMemberData.accountBalance}' pattern="#,#00.00元"/>" readonly="readonly"/></td>
 				 	</tr>
 					 <tr>
