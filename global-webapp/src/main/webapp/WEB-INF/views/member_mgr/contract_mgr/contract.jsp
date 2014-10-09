@@ -28,7 +28,7 @@
 						singleSelect : true,//限制单选
 						checkOnSelect : false,//选择复选框的时候选择该行
 						selectOnCheck : false,//选择的时候复选框打勾
-// 						url : ctx + '/do/contract/list.json',
+ 						url : ctx + '/do/contract/list.json',
 						sortName : 'createTime',//排序字段名称
 						sortOrder : 'DESC',//升序还是降序
 						remoteSort : true,//开启远程排序，默认为false
@@ -38,7 +38,7 @@
 							title : 'ID',
 							checkbox : true
 						}, {
-							field : 'goodsDisplay',
+							field : 'goodsId',
 							title : '货物名称',
 							width : 120,
 							sortable : true
@@ -48,12 +48,12 @@
 							width : 120,
 							sortable : true
 						}, {
-							field : 'platformDisplay',
+							field : 'platformId',
 							title : '平台名称(甲方)',
 							width : 120,
 							sortable : true,
 						}, {
-							field : 'typeDisplay',
+							field : 'contractTypeDisplay',
 							title : '合同类型',
 							width : 120,
 							sortable : true,
@@ -113,11 +113,11 @@
 						toolbar : '#contractDataGrid_toolbar',
 						onCheck : function(rowIndex, rowData) {//选择行事件触发
 							action_controller(
-									glacier.member_mgr.contract_mgr.contract,this).check();
+									glacier.member_mgr.contract_mgr.contract.param,this).check();
 						},
 						onCheckAll : function(rows) {//取消勾选行状态触发事件
 							action_controller(
-									glacier.member_mgr.contract_mgr.contract,this).check();
+									glacier.member_mgr.contract_mgr.contract.param,this).check();
 						},
 						onUncheck : function(rowIndex, rowData) {//选择行事件触发
 							action_controller(
@@ -146,10 +146,10 @@
 						},
 						onDblClickRow : function(rowIndex, rowData){
                         $.easyui.showDialog({
-								title : '【' + rowData.memberDisplay + '-'+rowData.platformDisplay+'】合同详细信息',
+								title : '【' + rowData.memberDisplay + '-'+rowData.platformId+'】合同详细信息',
 								href : ctx+ '/do/contract/intoDetail.htm?contractRecordId='+ rowData.contractRecordId,//从controller请求jsp页面进行渲染
-								width : 655,
-								height : 470,
+								width : 560,
+								height : 360,
 								resizable : false,
 								enableApplyButton : false,
 								enableSaveButton : false
@@ -157,9 +157,9 @@
 						}
 					});
 	
-	glacier.member_mgr.contract_mgr.contract.editContractorManager=function(){
+	  glacier.member_mgr.contract_mgr.contract.editContractorManager=function(){
 		
-	};
+	  };
 	
 	
 </script>
@@ -169,7 +169,7 @@
 	<div id="contractGridPanel" data-options="region:'center',border:true">
 		<table id="contractDataGrid">
 			<glacierui:toolbar panelEnName="ContractList"
-				toolbarId="contractDataGrid_toolbar" menuEnName="member" />
+				toolbarId="contractDataGrid_toolbar" menuEnName="contract" />
 			<!-- 自定义标签：自动根据菜单获取当前用户权限，动态注册方法 -->
 		</table>
 	</div>
@@ -179,21 +179,21 @@
 			<table>
 				<tr>
 					<td>货物名称：</td>
-					<td><input name="goodsName" style="width: 80px;"
+					<td><input name="goodsDisplay" style="width: 80px;"
 						class="spinner" /></td>
 					<td>会员名称：</td>
-					<td><input name="memberName" style="width: 80px;"
+					<td><input name="memberDisplay" style="width: 80px;"
 						class="spinner" /></td>
 					<td>类型：</td>
-					<td><input id="contract_type" name="type"
+					<td><input id="status" name="type"
 						style="width: 80px;" class="spinner" /></td>
 					<td>生效时间：</td>
-					<td><input name="contractStartTime" class="easyui-datetimebox"
-						style="width: 100px;" /> - <input name="contractEndTime"
+					<td><input name="contractTypeStartTime" class="easyui-datetimebox"
+						style="width: 100px;" /> - <input name="contractTypeEndTime"
 						class="easyui-datetimebox" style="width: 100px;" /></td>
 					<td>失效时间：</td>
 					<td><input name="contractRemoveStartTime" class="easyui-datetimebox"
-						style="width: 100px;" /> - <input name="contractRemoveEndEndTime"
+						style="width: 100px;" /> - <input name="contractTypeRemoveEndEndTime"
 						class="easyui-datetimebox" style="width: 100px;" /></td>
 					<td><a href="javascript:void(0);" class="easyui-linkbutton"
 						data-options="iconCls:'icon-standard-zoom-in',plain:true"

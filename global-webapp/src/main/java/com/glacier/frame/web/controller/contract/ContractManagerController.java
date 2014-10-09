@@ -18,7 +18,6 @@ import com.glacier.frame.entity.member.MemberContractType;
 import com.glacier.frame.service.member.ContractManagerService;
 import com.glacier.jqueryui.util.JqPager;
 
-
 @Controller
 @RequestMapping(value="/contractManager")
 public class ContractManagerController {
@@ -87,5 +86,27 @@ public class ContractManagerController {
     public Object delContractManagerForm(@RequestParam List<String> contractTypeIds) {
     	return contractManagerService.delContractManager(contractTypeIds);
     }
+    
+    
+    // 进入合同类型信息表单页面
+    @RequestMapping(value = "/intoAudit.htm")
+    private Object intoAuditWithdrawSet(String contractTypeId) {
+        ModelAndView mav = new ModelAndView("member_mgr/contractManager_mgr/contractManager_audit");
+        if(StringUtils.isNotBlank(contractTypeId)){
+        	 mav.addObject("contractManagerData", contractManagerService.getContractManager(contractTypeId));
+        }
+        return mav;
+    }
+    
+    // 审核合同类型信息表单
+    @RequestMapping(value = "/audit.json", method = RequestMethod.POST)
+    @ResponseBody
+    private Object auditWithdrawSet(@Valid MemberContractType memberContractType, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {// 后台校验的错误信息
+            //return returnErrorBindingResult(bindingResult);
+        }
+        return contractManagerService.auditWithdrawSet(memberContractType);
+    }
+    
 	
 }

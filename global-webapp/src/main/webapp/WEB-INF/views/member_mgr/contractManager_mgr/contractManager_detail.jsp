@@ -11,7 +11,7 @@
 				<input class="spinner" style="height:18px;width:180px" value="${contractManagerData.contractTypeName}"  readonly="readonly"/>
 			</td>
 			<td>有效期限：</td>
-			<td><input class="spinner" style="width:168px" value="${contractManagerData.timeLimit}" readonly="readonly"/></td>
+			<td><input class="spinner" style="width:168px" value="${contractManagerData.timeLimit}（天）" readonly="readonly"/></td>
 		</tr>
 		<tr>
 			<td>状态：</td>

@@ -137,7 +137,7 @@
 	//点击添加按钮触发按钮
 	glacier.member_mgr.contractManager_mgr.contractManager.addContractorManager=function(){
 		glacier.basicAddOrEditDialog({
-			title : '【合同设置】- 增加',
+			title : '合同类型增加',
 			width : 450,
 			height : 300,
 			queryUrl : ctx + '/do/contractManager/intoForm.htm',
@@ -152,7 +152,7 @@
 	glacier.member_mgr.contractManager_mgr.contractManager.updateContractorManager=function(){
 		var row =glacier.member_mgr.contractManager_mgr.contractManager.contractManagerDataGrid.datagrid("getSelected");
 		glacier.basicAddOrEditDialog({
-			title : '编辑合同类型设置',
+			title : "【"+row.contractTypeName+"】编辑合同类型设置",
 			width : 450,
 			height : 300,
 			queryUrl : ctx + '/do/contractManager/intoForm.htm',
@@ -209,7 +209,21 @@
 	
 	//点击启用禁用触发按钮
 	glacier.member_mgr.contractManager_mgr.contractManager.editContractorManager=function(){
-		 
+		var row = glacier.member_mgr.contractManager_mgr.contractManager.contractManagerDataGrid.datagrid("getSelected");
+		glacier.basicAddOrEditDialog({
+				title :"【"+row.contractTypeName+"】合同类型信息审核",
+				width : 450,
+				height : 300,
+				queryUrl : ctx + '/do/contractManager/intoAudit.htm',
+				submitUrl : ctx + '/do/contractManager/audit.json',
+				queryParams : {
+					contractTypeId : row.contractTypeId
+				},
+				successFun : function (){
+					glacier.member_mgr.contractManager_mgr.contractManager.contractManagerDataGrid.datagrid('reload');
+				}
+			});
+		
 	};
 	
 </script>

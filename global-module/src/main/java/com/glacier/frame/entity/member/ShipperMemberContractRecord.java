@@ -2,6 +2,8 @@ package com.glacier.frame.entity.member;
 
 import java.util.Date;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 public class ShipperMemberContractRecord {
     private String contractRecordId;
 
@@ -17,21 +19,90 @@ public class ShipperMemberContractRecord {
 
     private String contractContent;
 
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date operationTime;
 
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date closeTime;
 
     private String remark;
 
     private String creater;
 
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
     private String updater;
 
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
+    
+    /**
+     * 自定义字段，显示更新人的真实名字
+     */
+    
+    private String goodsDisplay;
+    
+    private String memberDisplay;
+    
+    private String platformDisplay;
+    
+    private String contractTypeDisplay;
+    
+    private String createrDisplay;
+    
+    private String updaterDisplay;
+    
+    
+    public String getGoodsDisplay() {
+		return goodsDisplay;
+	}
 
-    public String getContractRecordId() {
+	public void setGoodsDisplay(String goodsDisplay) {
+		this.goodsDisplay = goodsDisplay;
+	}
+
+	public String getMemberDisplay() {
+		return memberDisplay;
+	}
+
+	public void setMemberDisplay(String memberDisplay) {
+		this.memberDisplay = memberDisplay;
+	}
+
+	public String getPlatformDisplay() {
+		return platformDisplay;
+	}
+
+	public void setPlatformDisplay(String platformDisplay) {
+		this.platformDisplay = platformDisplay;
+	}
+
+	public String getContractTypeDisplay() {
+		return contractTypeDisplay;
+	}
+
+	public void setContractTypeDisplay(String contractTypeDisplay) {
+		this.contractTypeDisplay = contractTypeDisplay;
+	}
+
+	public String getCreaterDisplay() {
+		return createrDisplay;
+	}
+
+	public void setCreaterDisplay(String createrDisplay) {
+		this.createrDisplay = createrDisplay;
+	}
+
+	public String getUpdaterDisplay() {
+		return updaterDisplay;
+	}
+
+	public void setUpdaterDisplay(String updaterDisplay) {
+		this.updaterDisplay = updaterDisplay;
+	}
+
+	public String getContractRecordId() {
         return contractRecordId;
     }
 

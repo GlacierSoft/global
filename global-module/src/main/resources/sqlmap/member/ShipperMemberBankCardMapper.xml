@@ -16,6 +16,12 @@
     <result column="temp_shipper_member_bank_card_create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="temp_shipper_member_bank_card_updater" property="updater" jdbcType="VARCHAR" />
     <result column="temp_shipper_member_bank_card_update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    
+    <result column="temp_shipper_member_bank_card_creater_display" property="createrDisplay" jdbcType="VARCHAR"/> <!--自定义扩展字段 -->
+    <result column="temp_shipper_member_bank_card_updater_display" property="updaterDisplay" jdbcType="VARCHAR"/> <!--自定义扩展字段 -->
+    <result column="temp_shipper_member_bank_card_member_display" property="memberDisplay" jdbcType="VARCHAR"/> <!--自定义扩展字段 -->
+    <result column="temp_shipper_member_bank_card_audit_display" property="auditDisplay" jdbcType="VARCHAR"/> <!--自定义扩展字段 -->
+    
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -82,12 +88,29 @@
     temp_shipper_member_bank_card.card_name as temp_shipper_member_bank_card_card_name, 
     temp_shipper_member_bank_card.card_number as temp_shipper_member_bank_card_card_number, 
     temp_shipper_member_bank_card.audit_state as temp_shipper_member_bank_card_audit_state, 
-    temp_shipper_member_bank_card.audit as temp_shipper_member_bank_card_audit, temp_shipper_member_bank_card.audit_opinion as temp_shipper_member_bank_card_audit_opinion, 
+    temp_shipper_member_bank_card.audit as temp_shipper_member_bank_card_audit, 
+    temp_shipper_member_bank_card.audit_opinion as temp_shipper_member_bank_card_audit_opinion, 
     temp_shipper_member_bank_card.audit_time as temp_shipper_member_bank_card_audit_time, 
-    temp_shipper_member_bank_card.remark as temp_shipper_member_bank_card_remark, temp_shipper_member_bank_card.creater as temp_shipper_member_bank_card_creater, 
+    temp_shipper_member_bank_card.remark as temp_shipper_member_bank_card_remark,
+    temp_shipper_member_bank_card.creater as temp_shipper_member_bank_card_creater, 
     temp_shipper_member_bank_card.create_time as temp_shipper_member_bank_card_create_time, 
-    temp_shipper_member_bank_card.updater as temp_shipper_member_bank_card_updater, temp_shipper_member_bank_card.update_time as temp_shipper_member_bank_card_update_time
+    temp_shipper_member_bank_card.updater as temp_shipper_member_bank_card_updater, 
+    temp_shipper_member_bank_card.update_time as temp_shipper_member_bank_card_update_time
+    
+    <!-- 以下字段属于扩展 -->
+    ,temp_creater.user_cn_name as temp_shipper_member_bank_card_creater_display
+    ,temp_updater.user_cn_name as temp_shipper_member_bank_card_updater_display
+    ,temp_shipper_member.member_name as temp_shipper_member_bank_card_member_display
+    ,temp_auditor.user_cn_name as temp_shipper_member_bank_card_audit_display
   </sql>
+  
+   <sql id="Base_extend">
+  	 	LEFT JOIN t_user temp_creater ON temp_creater.user_id =  temp_shipper_member_bank_card.creater <!-- 扩展 -->
+        LEFT JOIN t_user temp_updater ON temp_updater.user_id =  temp_shipper_member_bank_card.updater <!-- 扩展 -->
+        LEFT JOIN t_shipper_member temp_shipper_member on temp_shipper_member.member_id=temp_shipper_member_bank_card.member_id<!-- 扩展 -->
+        LEFT JOIN t_user temp_auditor ON temp_auditor.user_id =  temp_shipper_member_bank_card.audit <!-- 扩展 -->
+   </sql>
+  
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.glacier.frame.entity.member.ShipperMemberBankCardExample" >
     select
     <if test="distinct" >
@@ -95,6 +118,7 @@
     </if>
     <include refid="Base_Column_List" />
     from t_shipper_member_bank_card temp_shipper_member_bank_card
+    <include refid="Base_extend" />
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -109,6 +133,7 @@
     select 
     <include refid="Base_Column_List" />
     from t_shipper_member_bank_card temp_shipper_member_bank_card
+    <include refid="Base_extend" />
     where temp_shipper_member_bank_card.bankcard_id = #{bankcardId,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
@@ -226,6 +251,7 @@
   </insert>
   <select id="countByExample" parameterType="com.glacier.frame.entity.member.ShipperMemberBankCardExample" resultType="java.lang.Integer" >
     select count(*) from t_shipper_member_bank_card temp_shipper_member_bank_card
+    <include refid="Base_extend" />
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>

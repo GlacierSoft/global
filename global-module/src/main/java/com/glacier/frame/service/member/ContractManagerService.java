@@ -1,6 +1,5 @@
 package com.glacier.frame.service.member;
 
-import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -109,5 +108,31 @@ public class ContractManagerService {
         return returnResult;
     }
     
+    
+    @Transactional(readOnly = false)
+    public Object auditWithdrawSet(MemberContractType memberContractType) {
+        JqReturnJson returnResult = new JqReturnJson();// 构建返回结果，默认结果为false
+        int count = 0;
+        String type_name=memberContractType.getContractTypeName();
+        Subject pricipalSubject = SecurityUtils.getSubject();
+        User pricipalUser = (User) pricipalSubject.getPrincipal();
+        memberContractType.setUpdater(pricipalUser.getUserId());
+        memberContractType.setUpdateTime(new Date());
+        count = memberContractTypeMapper.updateByPrimaryKeySelective(memberContractType);
+        if (count == 1) {
+            returnResult.setSuccess(true);
+            if(memberContractType.getStatus().equals("enable"))
+            	 returnResult.setMsg("【"+type_name+"】合同类型启用操作成功!");
+            else
+            	 returnResult.setMsg("【"+type_name+"】合同类型禁用操作成功!");
+        } else {
+        	 if(memberContractType.getStatus().equals("enable"))
+        		 returnResult.setMsg("发生未知错误，【"+type_name+"】合同类型启用操作失败!");
+            else
+            	 returnResult.setMsg("发生未知错误，【"+type_name+"】合同类型禁用操作失败!");
+            
+        }
+        return returnResult;
+    }
 	
 }

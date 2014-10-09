@@ -29,7 +29,7 @@
 						singleSelect : true,//限制单选
 						checkOnSelect : false,//选择复选框的时候选择该行
 						selectOnCheck : false,//选择的时候复选框打勾
-// 						url : ctx + '/do/contract/list.json',
+ 						url : ctx + '/do/memberBankCard/list.json',
 						sortName : 'createTime',//排序字段名称
 						sortOrder : 'DESC',//升序还是降序
 						remoteSort : true,//开启远程排序，默认为false
@@ -60,11 +60,14 @@
 							sortable : true,
 						}, {
 							field : 'auditState',
-							title : '审核状态',
+							title : '状态',
 							width : 120,
 							sortable : true,
+							formatter : function(value, row, index) {//数据格式化
+								return renderGridValue(value, fields.auditState);
+							}
 						}, {
-							field : 'audit',
+							field : 'auditDisplay',
 							title : '审核人',
 							width : 120,
 							sortable : true,
@@ -106,27 +109,27 @@
 						toolbar : '#bankCardDataGrid_toolbar',
 						onCheck : function(rowIndex, rowData) {//选择行事件触发
 							action_controller(
-									glacier.member_mgr.bankCard_mgr.bankCard,this).check();
+									glacier.member_mgr.bankCard_mgr.bankCard.param,this).check();
 						},
 						onCheckAll : function(rows) {//取消勾选行状态触发事件
 							action_controller(
-									glacier.member_mgr.bankCard_mgr.bankCard,this).check();
+									glacier.member_mgr.bankCard_mgr.bankCard.param,this).check();
 						},
 						onUncheck : function(rowIndex, rowData) {//选择行事件触发
 							action_controller(
-									glacier.member_mgr.bankCard_mgr.bankCard,this).unCheck();
+									glacier.member_mgr.bankCard_mgr.bankCard.param,this).unCheck();
 						},
 						onUncheckAll : function(rows) {//取消勾选行状态触发事件
 							action_controller(
-									glacier.member_mgr.bankCard_mgr.bankCard,this).unCheck();
+									glacier.member_mgr.bankCard_mgr.bankCard.param,this).unCheck();
 						},
 						onSelect : function(rowIndex, rowData) {//选择行事件触发
 							action_controller(
-									glacier.member_mgr.bankCard_mgr.bankCard,this).select();
+									glacier.member_mgr.bankCard_mgr.bankCard.param,this).select();
 						},
 						onUnselectAll : function(rows) {
 							action_controller(
-									glacier.member_mgr.bankCard_mgr.bankCard,this).unSelect();
+									glacier.member_mgr.bankCard_mgr.bankCard.param,this).unSelect();
 						},
 						onLoadSuccess : function(index, record) {//加载数据成功触发事件
 							$(this).datagrid('clearSelections');
@@ -139,10 +142,10 @@
 						},
 						onDblClickRow : function(rowIndex, rowData){
                         $.easyui.showDialog({
-								title : '【' + rowData.contractTypeName + '】合同详细信息',
+								title : '【' + rowData.memberDisplay + '】银行卡帐号详情',
 								href : ctx+ '/do/memberBankCard/intoDetail.htm?bankcardId='+ rowData.bankcardId,//从controller请求jsp页面进行渲染
-								width : 655,
-								height : 470,
+								width : 540,
+								height : 360,
 								resizable : false,
 								enableApplyButton : false,
 								enableSaveButton : false
@@ -152,7 +155,20 @@
 	
 	//点击启用禁用触发按钮
 	glacier.member_mgr.bankCard_mgr.bankCard.checkBankCard=function(){
-		 alert("我是审核方法！！");
+		var row =glacier.member_mgr.bankCard_mgr.bankCard.bankCardDataGrid.datagrid("getSelected");
+		glacier.basicAddOrEditDialog({
+				title :"【"+row.memberDisplay+"】银行卡信息审核",
+				width : 580,
+				height : 380,
+				queryUrl : ctx + '/do/memberBankCard/intoAudit.htm',
+				submitUrl : ctx + '/do/memberBankCard/audit.json',
+				queryParams : {
+					bankcardId : row.bankcardId
+				},
+				successFun : function (){
+					glacier.member_mgr.bankCard_mgr.bankCard.bankCardDataGrid.datagrid('reload');
+				}
+			});
 	};
 	
 	
@@ -178,14 +194,14 @@
 					<td><input name="MemberName" style="width: 80px;"
 						class="spinner" /></td>
 					<td>银行卡名称：</td>
-					<td><input name="bankCodeName" style="width: 80px;"
+					<td><input name="cardName" style="width: 80px;"
 						class="spinner" /></td>
-					<td>类型：</td>
-					<td><input id="contract_type" name="type"
+					<td>银行卡号：</td>
+					<td><input id="cardNumber" name="type"
 						style="width: 80px;" class="spinner" /></td>
 					<td>录入时间：</td>
-					<td><input name="contractRemoveStartTime" class="easyui-datetimebox"
-						style="width: 100px;" /> - <input name="contractRemoveEndTime"
+					<td><input name="bankCardStartTime" class="easyui-datetimebox"
+						style="width: 100px;" /> - <input name="bankCardEndTime"
 						class="easyui-datetimebox" style="width: 100px;" /></td>
 					<td><a href="javascript:void(0);" class="easyui-linkbutton"
 						data-options="iconCls:'icon-standard-zoom-in',plain:true"
