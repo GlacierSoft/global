@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class SipperIntegralTypeExample {
+public class ShipperIntegralTypeExample {
     protected String orderByClause;
 
     protected boolean distinct;
@@ -15,7 +15,7 @@ public class SipperIntegralTypeExample {
 
     protected int limitEnd = -1;
 
-    public SipperIntegralTypeExample() {
+    public ShipperIntegralTypeExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 

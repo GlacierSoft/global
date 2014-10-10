@@ -152,30 +152,34 @@
 	//点击启用禁用按钮触发方法
 	glacier.member_mgr.member_mgr.member.editMember = function(){
     var row = glacier.member_mgr.member_mgr.member.memberDataGrid.datagrid("getSelected");
-    $.ajax({
-		   type: "POST",
-		   url: ctx + '/do/shippermember/status.json',
-		   data: {memberId:row.memberId}, 
-		   dataType:'json',
-		   success: function(r){
-			   if(r.success){//因为失败成功的方法都一样操作，这里故未做处理
-				   $.messager.show({
-						title:'提示',
-						timeout:3000,
-						msg:r.msg
-					});
-				   glacier.member_mgr.member_mgr.member.memberDataGrid.datagrid('reload');
-			   }else{
-					$.messager.show({//后台验证弹出错误提示信息框
-						title:'错误提示',
-						width:380,
-						height:120,
-						msg: '<span style="color:red">'+r.msg+'<span>',
-						timeout:4500
-					});
-				}
-		   }
-	});  
+    $.messager.confirm('请确认', '是否要启用/禁用该会员?', function(r){
+		if (r){ 
+		    $.ajax({
+				   type: "POST",
+				   url: ctx + '/do/shippermember/status.json',
+				   data: {memberId:row.memberId}, 
+				   dataType:'json',
+				   success: function(r){
+					   if(r.success){//因为失败成功的方法都一样操作，这里故未做处理
+						   $.messager.show({
+								title:'提示',
+								timeout:3000,
+								msg:r.msg
+							});
+						   glacier.member_mgr.member_mgr.member.memberDataGrid.datagrid('reload');
+					   }else{
+							$.messager.show({//后台验证弹出错误提示信息框
+								title:'错误提示',
+								width:380,
+								height:120,
+								msg: '<span style="color:red">'+r.msg+'<span>',
+								timeout:4500
+							});
+						}
+				   }
+			 });  
+          }
+		});
 	}; 
 	//客服资料模糊查询
 	glacier.member_mgr.member_mgr.member.quickquery = function(value, name) {

@@ -2,7 +2,9 @@ package com.glacier.frame.entity.member;
 
 import java.util.Date;
 
-public class SipperIntegralType {
+import com.alibaba.fastjson.annotation.JSONField;
+
+public class ShipperIntegralType {
     private String integralTypeId;
 
     private String integralType;
@@ -15,17 +17,45 @@ public class SipperIntegralType {
 
     private String creater;
 
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
     private String updater;
 
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
-
+ 
+    /**
+     * 自定义字段，显示创建人真实名字
+     */
+    private String createrDisplay;
+    
+    /**
+     * 自定义字段，显示更新人的真实名字
+     */
+    private String updaterDisplay;
+    
     public String getIntegralTypeId() {
         return integralTypeId;
     }
 
-    public void setIntegralTypeId(String integralTypeId) {
+    public String getCreaterDisplay() {
+		return createrDisplay;
+	}
+
+	public void setCreaterDisplay(String createrDisplay) {
+		this.createrDisplay = createrDisplay;
+	}
+
+	public String getUpdaterDisplay() {
+		return updaterDisplay;
+	}
+
+	public void setUpdaterDisplay(String updaterDisplay) {
+		this.updaterDisplay = updaterDisplay;
+	}
+
+	public void setIntegralTypeId(String integralTypeId) {
         this.integralTypeId = integralTypeId;
     }
 
@@ -104,7 +134,7 @@ public class SipperIntegralType {
         if (getClass() != that.getClass()) {
             return false;
         }
-        SipperIntegralType other = (SipperIntegralType) that;
+        ShipperIntegralType other = (ShipperIntegralType) that;
         return (this.getIntegralTypeId() == null ? other.getIntegralTypeId() == null : this.getIntegralTypeId().equals(other.getIntegralTypeId()))
             && (this.getIntegralType() == null ? other.getIntegralType() == null : this.getIntegralType().equals(other.getIntegralType()))
             && (this.getChangeType() == null ? other.getChangeType() == null : this.getChangeType().equals(other.getChangeType()))

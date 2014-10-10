@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" ?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="com.glacier.frame.dao.member.SipperIntegralTypeMapper" >
-  <resultMap id="BaseResultMap" type="com.glacier.frame.entity.member.SipperIntegralType" >
+<mapper namespace="com.glacier.frame.dao.member.ShipperIntegralTypeMapper" >
+  <resultMap id="BaseResultMap" type="com.glacier.frame.entity.member.ShipperIntegralType" >
     <id column="temp_shipper_integral_type_integral_type_id" property="integralTypeId" jdbcType="VARCHAR" />
     <result column="temp_shipper_integral_type_integral_type" property="integralType" jdbcType="VARCHAR" />
     <result column="temp_shipper_integral_type_change_type" property="changeType" jdbcType="CHAR" />
@@ -11,6 +11,8 @@
     <result column="temp_shipper_integral_type_create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="temp_shipper_integral_type_updater" property="updater" jdbcType="VARCHAR" />
     <result column="temp_shipper_integral_type_update_time" property="updateTime" jdbcType="TIMESTAMP" />
+    <result column="temp_shipper_integral_type_creater_display" property="createrDisplay" jdbcType="VARCHAR"/> <!-- 自定义扩展字段 -->
+    <result column="temp_shipper_integral_type_updater_display" property="updaterDisplay" jdbcType="VARCHAR"/> <!-- 自定义扩展字段 -->
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -78,14 +80,22 @@
     temp_shipper_integral_type.remark as temp_shipper_integral_type_remark, temp_shipper_integral_type.creater as temp_shipper_integral_type_creater, 
     temp_shipper_integral_type.create_time as temp_shipper_integral_type_create_time, 
     temp_shipper_integral_type.updater as temp_shipper_integral_type_updater, temp_shipper_integral_type.update_time as temp_shipper_integral_type_update_time
+    <!-- 以下字段属于扩展 -->
+    ,temp_creater.user_cn_name as temp_shipper_integral_type_creater_display
+    ,temp_updater.user_cn_name as temp_shipper_integral_type_updater_display 
+ </sql> 
+ <sql id="Base_extend">
+  	LEFT JOIN t_user temp_creater ON temp_creater.user_id =  temp_shipper_integral_type.creater <!-- 扩展 -->
+    LEFT JOIN t_user temp_updater ON temp_updater.user_id =  temp_shipper_integral_type.updater <!-- 扩展 -->
   </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.glacier.frame.entity.member.SipperIntegralTypeExample" >
+  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.glacier.frame.entity.member.ShipperIntegralTypeExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
     from t_shipper_integral_type temp_shipper_integral_type
+     <include refid="Base_extend" />
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -100,19 +110,20 @@
     select 
     <include refid="Base_Column_List" />
     from t_shipper_integral_type temp_shipper_integral_type
+     <include refid="Base_extend" />
     where temp_shipper_integral_type.integral_type_id = #{integralTypeId,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
-    delete from t_shipper_integral_type
+    delete temp_shipper_integral_type from t_shipper_integral_type
     where integral_type_id = #{integralTypeId,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.glacier.frame.entity.member.SipperIntegralTypeExample" >
-    delete from t_shipper_integral_type temp_shipper_integral_type
+  <delete id="deleteByExample" parameterType="com.glacier.frame.entity.member.ShipperIntegralTypeExample" >
+    delete temp_shipper_integral_type from t_shipper_integral_type temp_shipper_integral_type
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.glacier.frame.entity.member.SipperIntegralType" >
+  <insert id="insert" parameterType="com.glacier.frame.entity.member.ShipperIntegralType" >
     insert into t_shipper_integral_type (integral_type_id, integral_type, change_type, 
       change_value, remark, creater, 
       create_time, updater, update_time
@@ -122,7 +133,7 @@
       #{createTime,jdbcType=TIMESTAMP}, #{updater,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}
       )
   </insert>
-  <insert id="insertSelective" parameterType="com.glacier.frame.entity.member.SipperIntegralType" >
+  <insert id="insertSelective" parameterType="com.glacier.frame.entity.member.ShipperIntegralType" >
     insert into t_shipper_integral_type
     <trim prefix="(" suffix=")" suffixOverrides="," >
       <if test="integralTypeId != null" >
@@ -183,7 +194,7 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.glacier.frame.entity.member.SipperIntegralTypeExample" resultType="java.lang.Integer" >
+  <select id="countByExample" parameterType="com.glacier.frame.entity.member.ShipperIntegralTypeExample" resultType="java.lang.Integer" >
     select count(*) from t_shipper_integral_type temp_shipper_integral_type
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
@@ -239,7 +250,7 @@
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.glacier.frame.entity.member.SipperIntegralType" >
+  <update id="updateByPrimaryKeySelective" parameterType="com.glacier.frame.entity.member.ShipperIntegralType" >
     update t_shipper_integral_type
     <set >
       <if test="integralType != null" >
@@ -269,7 +280,7 @@
     </set>
     where integral_type_id = #{integralTypeId,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.glacier.frame.entity.member.SipperIntegralType" >
+  <update id="updateByPrimaryKey" parameterType="com.glacier.frame.entity.member.ShipperIntegralType" >
     update t_shipper_integral_type
     set integral_type = #{integralType,jdbcType=VARCHAR},
       change_type = #{changeType,jdbcType=CHAR},
