@@ -52,6 +52,7 @@ public class WebsiteNavService {
 	public int getNavNum(String webNavId) {
 		WebsiteNavExample websiteNavExample = new WebsiteNavExample();
 		websiteNavExample.createCriteria().andWebNavIdEqualTo(webNavId);
+		websiteNavExample.setOrderByClause("temp_website_nav.web_nav_num asc");
 	    int websiteNavNum = websiteNavMapper.countByExample(websiteNavExample);
         return websiteNavNum;
 	}
@@ -71,7 +72,7 @@ public class WebsiteNavService {
 	
 	/**
 	 * @Title: getNav 
-	 * @Description: TODO(取出一级导航信息的数据) 
+	 * @Description: TODO(前台:取出一级导航信息的数据) 
 	 * @param @param
 	 * @param @return    设定文件 
 	 * @return Object    返回类型 
@@ -80,6 +81,7 @@ public class WebsiteNavService {
 	public Object getOneLevelWebNav(){
 		WebsiteNavExample websiteNavExample = new WebsiteNavExample();
 		websiteNavExample.createCriteria().andWebNavPidIsNull();
+		websiteNavExample.setOrderByClause("temp_website_nav.web_nav_num asc");
 		List<WebsiteNav> websiteNavList =  websiteNavMapper.selectByExample(websiteNavExample);
 		return websiteNavList;
 	}
@@ -95,6 +97,7 @@ public class WebsiteNavService {
 	public Object getSubitemWebNav(String webNavId){
 		WebsiteNavExample websiteNavExample = new WebsiteNavExample();
 		websiteNavExample.createCriteria().andWebNavPidEqualTo(webNavId);
+		websiteNavExample.setOrderByClause("temp_website_nav.web_nav_num asc");
 		List<WebsiteNav> websiteNavList =  websiteNavMapper.selectByExample(websiteNavExample);
 		return websiteNavList;
 	}
@@ -125,7 +128,9 @@ public class WebsiteNavService {
     }
     
     public Object listAsTree() {
-        List<WebsiteNav> navList = websiteNavMapper.selectByExample(new WebsiteNavExample());
+    	WebsiteNavExample websiteNavExample = new WebsiteNavExample();
+    	websiteNavExample.setOrderByClause("temp_website_nav.web_nav_num asc");
+        List<WebsiteNav> navList = websiteNavMapper.selectByExample(websiteNavExample);
         return navList;
     }
     

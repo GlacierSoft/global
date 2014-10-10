@@ -22,6 +22,7 @@
 		fitColumns:true,//自动填充行
 		autoRowHeight: false,//禁止设置自动行高以适应内容
 		url : ctx + '/do/nav/list.json',//请求的URL
+		sortName: 'webNavNum',//排序字段名称
 		idField : 'webNavId',
 		treeField : 'webNavName',//定义树节点字段
 		parentField : 'webNavPid',//treegrid父节点
