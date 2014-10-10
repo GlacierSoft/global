@@ -37,7 +37,7 @@ public class ShipperMemberController extends AbstractController{
         return mav;
     } 
       
-    // 获取表格结构的所有菜单数据
+    // 查询显示所有的货主会员信息
     @RequestMapping(value = "/list.json", method = RequestMethod.POST)
     @ResponseBody
     private Object listActionAsGridByMenuId(JqPager jqPager, ShipperMemberQueryDTO memberQueryDTO, String q) {
@@ -67,8 +67,8 @@ public class ShipperMemberController extends AbstractController{
     // 启用、禁用会员
     @RequestMapping(value = "/status.json", method = RequestMethod.POST)
     @ResponseBody
-    private Object updateStatus(String  memberId) { 
-    	 	return shippermemberService.upStatus(memberId); 
+    private Object updateStatus(String  memberId) {
+    	return shippermemberService.upStatus(memberId); 
     } 
     
 }
