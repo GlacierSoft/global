@@ -31,11 +31,11 @@ import com.glacier.jqueryui.util.JqPager;
 import com.glacier.jqueryui.util.JqReturnJson;
 import com.glacier.frame.entity.member.ShipperMemberExample.Criteria;
 /*** 
- * @ClassName:  MemberService
- * @Description: TODO(会员表业务类)
+ * @ClassName:  ShipperMemberService
+ * @Description: TODO(货主会员表业务类)
  * @author songjundong
  * @email 985776597@QQ.com
- * @date 2014-8-18  下午5:11:53
+ * @date 2014-10-08 下午1:40:53
  */
 @Service
 @Transactional(readOnly = true ,propagation = Propagation.REQUIRED)
