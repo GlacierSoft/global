@@ -12,6 +12,10 @@
 	<jsp:include page="inc.jsp"/>
 	</head>
 	<style type="text/css">
+		body {
+		    padding-top: 50px;
+		}
+		
 		#tabsTemp td,th{
 			text-align: center;
 		}

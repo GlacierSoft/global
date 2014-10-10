@@ -20,13 +20,20 @@
 package com.glacier.frame.web.controller.common;
 
 
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
 import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.web.filter.authc.FormAuthenticationFilter;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.glacier.frame.entity.member.ShipperMember;
 import com.glacier.frame.service.website.WebsiteAnnouncementService;
 import com.glacier.frame.service.website.WebsiteNavService;
 import com.glacier.frame.service.website.WebsiteNewsService;
@@ -105,21 +112,6 @@ public class CommonController {
         return "login";
     }
     
-    /*@RequestMapping(value = "/MyRequestURI.htm")
-    public Object MyRequestURI(HttpSession session,HttpServletRequest request){
-    	
-    	String MyRequestURI = (String) session.getAttribute("MyRequestURI");
-    	ModelAndView mav = new ModelAndView(MyRequestURI);
-    	System.out.println("MyRequestURI   :"+MyRequestURI);
-    	String requestURI = WebUtils.getPathWithinApplication(WebUtils.toHttp(request));
-    	System.out.println("requestURI   :"+requestURI);
-    	String url = WebUtils.getSavedRequest(request).getRequestUrl();
-    	System.out.println("url   :"+url);
-    	String reurl = "/"+request.getContextPath();
-    	//return "redirect:"+url; 
-    	return "index";
-    }*/
-    
     /**
      * @Title: fail
      * @Description: TODO(该方法调用前会被Filter拦截，交给shiro验证，如果验证失败会调用该方法)
@@ -129,18 +121,18 @@ public class CommonController {
      * @return String 返回类型
      * @throws
      */
-  /*  @RequestMapping(value = "/login.htm", method = RequestMethod.POST)
+    @RequestMapping(value = "/login.htm", method = RequestMethod.POST)
     public String fail(@RequestParam(FormAuthenticationFilter.DEFAULT_USERNAME_PARAM)
-    String username,String password, Model model,Member member,HttpServletRequest request) {
+    String username,String password, Model model,ShipperMember shipperMember,HttpServletRequest request) {
         if (null != SecurityUtils.getSubject() && null != SecurityUtils.getSubject().getSession()) {
             SecurityUtils.getSubject().logout();// 进入登录页面，默认把登录用户注销
         }
         model.addAttribute(FormAuthenticationFilter.DEFAULT_USERNAME_PARAM, username);
-        member.setMemberName(username);
-        member.setMemberPassword(password);
-        request.setAttribute("member", member);
+        shipperMember.setMemberName(username);
+        shipperMember.setMemberPassword(password);
+        request.setAttribute("shipperMember", shipperMember);
         return "login";
-    }*/
+    }
     /**
      * @Title: logout 
      * @Description: TODO(退出系统) 
