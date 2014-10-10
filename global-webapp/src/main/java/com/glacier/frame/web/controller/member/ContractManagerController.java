@@ -1,4 +1,4 @@
-package com.glacier.frame.web.controller.contract;
+package com.glacier.frame.web.controller.member;
 
 import java.util.List;
 
@@ -32,20 +32,19 @@ public class ContractManagerController {
         return mav;
     }
     
-    
     //获取表格结构的所有菜单数据
 	@RequestMapping(value = "/list.json", method = RequestMethod.POST)
 	@ResponseBody
 	private Object listActionAsGridByMenuId(JqPager jqPager) {
 	     return contractManagerService.listAsGrid(jqPager);
-	  }
+	}
 	
-	 //投资统计详情页
+	 //合同类型详情页
 	 @RequestMapping(value = "/intoDetail.htm")
 	 private Object intoContractManagerDetailPage(String contractTypeId) {
 	     ModelAndView mav = new ModelAndView("member_mgr/contractManager_mgr/contractManager_detail");
-	     if(StringUtils.isNotBlank(contractTypeId)){
-	          mav.addObject("contractManagerData", contractManagerService.getContractManager(contractTypeId));
+	 if(StringUtils.isNotBlank(contractTypeId)){
+	      mav.addObject("contractManagerData", contractManagerService.getContractManager(contractTypeId));
 	     }
 	     return mav;
 	  }
@@ -60,7 +59,7 @@ public class ContractManagerController {
         return mav;
     }
 	 
-	// 增加合同类型
+	//增加合同类型
     @RequestMapping(value = "/add.json", method = RequestMethod.POST)
     @ResponseBody
     private Object addContractManagerForm(@Valid MemberContractType memberContractType, BindingResult bindingResult) {
@@ -98,15 +97,11 @@ public class ContractManagerController {
         return mav;
     }
     
-    // 审核合同类型信息表单
-    @RequestMapping(value = "/audit.json", method = RequestMethod.POST)
+    //进入合同类型信息表单页面
+    @RequestMapping(value = "/audit.json")
     @ResponseBody
-    private Object auditWithdrawSet(@Valid MemberContractType memberContractType, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {// 后台校验的错误信息
-            //return returnErrorBindingResult(bindingResult);
-        }
-        return contractManagerService.auditWithdrawSet(memberContractType);
+    private Object auditContractType(String contractTypeId) {
+        return contractManagerService.changeContractType(contractTypeId);
     }
-    
 	
 }

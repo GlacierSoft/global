@@ -169,11 +169,9 @@
 	//点击删除触发按钮
 	glacier.member_mgr.contractManager_mgr.contractManager.delContractorManager=function(){
 		var rows =glacier.member_mgr.contractManager_mgr.contractManager.contractManagerDataGrid.datagrid("getChecked");
-		
 		var contractTypeIds = [];//删除的id标识 
 		for(var i=0;i<rows.length;i++){
 			contractTypeIds.push(rows[i].contractTypeId); 
-		    alert(rows[i].contractTypeId);
 		}
 		if(contractTypeIds.length > 0){
 			$.messager.confirm('请确认', '是否要删除该记录', function(r){
@@ -187,8 +185,11 @@
 							   if(r.success){//因为失败成功的方法都一样操作，这里故未做处理
 								   $.messager.show({
 										title:'提示',
+										width:380,
+										height:120,
 										timeout:3000,
-										msg:r.msg
+										msg:r.msg,
+										icon:'info'
 									});
 								   glacier.member_mgr.contractManager_mgr.contractManager.contractManagerDataGrid.datagrid('reload');
 							   }else{
@@ -196,7 +197,8 @@
 										title:'错误提示',
 										width:380,
 										height:120,
-										msg: '<span style="color:red">'+r.msg+'<span>',
+										msg: r.msg,
+										icon:'error',
 										timeout:4500
 									});
 								}
@@ -210,19 +212,41 @@
 	//点击启用禁用触发按钮
 	glacier.member_mgr.contractManager_mgr.contractManager.editContractorManager=function(){
 		var row = glacier.member_mgr.contractManager_mgr.contractManager.contractManagerDataGrid.datagrid("getSelected");
-		glacier.basicAddOrEditDialog({
-				title :"【"+row.contractTypeName+"】合同类型信息审核",
-				width : 450,
-				height : 300,
-				queryUrl : ctx + '/do/contractManager/intoAudit.htm',
-				submitUrl : ctx + '/do/contractManager/audit.json',
-				queryParams : {
-					contractTypeId : row.contractTypeId
-				},
-				successFun : function (){
-					glacier.member_mgr.contractManager_mgr.contractManager.contractManagerDataGrid.datagrid('reload');
+		var str="";
+		if(row.status=="enable")
+			  str="禁用";
+		else
+			  str="启用";
+        $.messager.confirm('请确认', '是否要'+str+'该条合同类型记录', function(r){
+				if (r){
+					$.ajax({
+						   type: "POST",
+						   url: ctx + '/do/contractManager/audit.json',
+						   data: {contractTypeId:row.contractTypeId},
+						   dataType:'json',
+						   success: function(r){
+							   if(r.success){//因为失败成功的方法都一样操作，这里故未做处理
+								   $.messager.show({
+										title:'提示',
+										timeout:3000,
+										msg:r.msg
+									});
+								   glacier.member_mgr.contractManager_mgr.contractManager.contractManagerDataGrid.datagrid('reload');
+							   }else{
+								   $.messager.show({//后台验证弹出错误提示信息框
+										title:'错误提示',
+										width:380,
+										height:120,
+										msg: '<span style="color:red">'+r.msg+'<span>',
+										timeout:4500
+									});
+								}
+						   }
+					});
 				}
 			});
+		
+
 		
 	};
 	

@@ -4,8 +4,6 @@ package com.glacier.frame.dto.query.member;
 
 import java.util.Date;
 
-
-import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
 
 import com.glacier.frame.entity.member.ShipperMemberContractRecord;

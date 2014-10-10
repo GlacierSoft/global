@@ -1,4 +1,4 @@
-package com.glacier.frame.web.controller.contract;
+package com.glacier.frame.web.controller.member;
 
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,7 +20,7 @@ public class ContractController {
 	@Autowired
 	private ContractService contractService;
 	
-   // 进入合同记录展示页面
+    //进入合同记录展示页面
     @RequestMapping(value = "/index.htm")
     private Object intoIndexPservice() {
         ModelAndView mav = new ModelAndView("member_mgr/contract_mgr/contract");
@@ -31,17 +31,16 @@ public class ContractController {
    	@RequestMapping(value = "/list.json", method = RequestMethod.POST)
    	@ResponseBody
    	private Object listActionAsGridByMenuId(JqPager jqPager, ShipperMemberContractRecordQueryDTO contractRecordQueryDTO, String q) {
-   	     return contractService.listAsGrid(jqPager, contractRecordQueryDTO, q);
+   	    return contractService.listAsGrid(jqPager, contractRecordQueryDTO, q);
    	}
    	
-    //投资统计详情页
+    //合同记录信息详情页
 	@RequestMapping(value = "/intoDetail.htm")
 	private Object intoContractManagerDetailPage(String contractRecordId) {
-	     ModelAndView mav = new ModelAndView("member_mgr/contract_mgr/contract_detail");
-	     if(StringUtils.isNotBlank(contractRecordId)){
+	    ModelAndView mav = new ModelAndView("member_mgr/contract_mgr/contract_detail");
+	    if(StringUtils.isNotBlank(contractRecordId)){
 	          mav.addObject("contractData", contractService.getContractPro(contractRecordId));
-	     }
-	     return mav;
-	  }
-
+	    }
+	    return mav;
+	}
 }

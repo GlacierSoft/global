@@ -158,7 +158,7 @@
 					});
 	
 	  glacier.member_mgr.contract_mgr.contract.editContractorManager=function(){
-		
+		  alert("我是打印方法!!!!");
 	  };
 	
 	

@@ -123,7 +123,7 @@
     where contract_type_id = #{contractTypeId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.glacier.frame.entity.member.MemberContractTypeExample" >
-    delete from t_member_contract_type temp_member_contract_type
+    delete temp_member_contract_type from t_member_contract_type temp_member_contract_type
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
