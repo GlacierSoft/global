@@ -107,6 +107,18 @@ public class ShipperMemberService {
         return list;
     } 
      
+    /**
+     * @Title: getMember 
+     * @Description: TODO(根据会员Id获取会员信息) 
+     * @param @param memberId
+     * @param @return    设定文件 
+     * @return Object    返回类型 
+     * @throws
+     */
+    public ShipperMember getShipperMember(String memberId) {
+        ShipperMember shipperMember = shipperMemberMapper.selectByPrimaryKey(memberId);
+        return shipperMember;
+    }
     
     /*** 
      * @Title: upStatus  

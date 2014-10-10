@@ -81,7 +81,7 @@
 			   	<c:otherwise> 
 				   		<span>您好！${currentMember.memberName}
 				   		  <c:choose>
-				   		      <c:when test="${empty currentMember.memberRealName}">
+				   		      <c:when test="${empty currentMember.memberName}">
 				   		     	 <a  href="${ctx}/member/memberDetail.htm?&p=1" class="navbar-link">
 				   		         <span id="nav_messageNoticCount" class="badge">${messageNoticCount}</span>
 				   		         </a>  
