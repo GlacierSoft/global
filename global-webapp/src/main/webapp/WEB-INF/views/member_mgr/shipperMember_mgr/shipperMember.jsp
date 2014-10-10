@@ -83,12 +83,12 @@
 							sortable : true,
 							width : 120
 						},{
-							field : 'creater',
+							field : 'createrDisplay',
 							title : '录入人',
 							sortable : true,
 							width : 120
 						}, {
-							field : 'updater',
+							field : 'updaterDisplay',
 							title : '更新人',
 							sortable : true,
 							width : 120

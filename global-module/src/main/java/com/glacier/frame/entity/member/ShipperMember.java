@@ -49,9 +49,16 @@ public class ShipperMember {
     
     @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
-
-    //自定义字段，会员等级
-    private String grade;
+ 
+    /**
+     * 自定义字段，显示创建人真实名字
+     */
+    private String createrDisplay;
+    
+    /**
+     * 自定义字段，显示更新人的真实名字
+     */
+    private String updaterDisplay;
     
     public String getMemberId() {
         return memberId;
@@ -95,15 +102,7 @@ public class ShipperMember {
 
     public String getLiveAddress() {
         return liveAddress;
-    }
-
-    public String getGrade() {
-		return grade;
-	}
-
-	public void setGrade(String grade) {
-		this.grade = grade;
-	}
+    } 
 
 	public void setLiveAddress(String liveAddress) {
         this.liveAddress = liveAddress;
@@ -129,7 +128,23 @@ public class ShipperMember {
         return lastLoginTime;
     }
 
-    public void setLastLoginTime(Date lastLoginTime) {
+    public String getCreaterDisplay() {
+		return createrDisplay;
+	}
+
+	public void setCreaterDisplay(String createrDisplay) {
+		this.createrDisplay = createrDisplay;
+	}
+
+	public String getUpdaterDisplay() {
+		return updaterDisplay;
+	}
+
+	public void setUpdaterDisplay(String updaterDisplay) {
+		this.updaterDisplay = updaterDisplay;
+	}
+
+	public void setLastLoginTime(Date lastLoginTime) {
         this.lastLoginTime = lastLoginTime;
     }
 
