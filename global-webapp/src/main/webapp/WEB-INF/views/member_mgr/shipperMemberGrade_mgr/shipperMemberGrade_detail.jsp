@@ -69,7 +69,7 @@
 		<tr>
 			<td>运输费用打折：</td>
 			<td>
-			<input id="memberGrade_mgr_memberGrade_form_gradeDiscount" name="gradeDiscount" readonly="readonly" style="width:268px;height: 20px;" value="${gradeData.gradeDiscount}" class="easyui-validatebox spinner"  required="true" invalidMessage="必须至少输入一位数字"/>
+			<input id="memberGrade_mgr_memberGrade_form_gradeDiscount" name="gradeDiscount" readonly="readonly" style="width:268px;height: 20px;" value="${gradeData.gradeDiscount}" class="easyui-numberbox"  required="true" invalidMessage="必须至少输入一位数字" data-options="min:0,precision:2"/>
 			</td>
 		</tr>
 		<tr>
@@ -95,9 +95,7 @@
 		<tr>
 			<td>备注：</td>
 			<td colspan="3">
-				<textarea id="memberGrade_mgr_memberGrade_form_remark" name="remark" readonly="readonly" style="width:670px;" class="spinner formta">
-					${gradeData.remark}
-				</textarea>
+				<textarea id="memberGrade_mgr_memberGrade_form_remark" name="remark" readonly="readonly" style="width:670px;" class="spinner">${gradeData.remark}</textarea>
 			</td>
 		</tr>
 	</table>
