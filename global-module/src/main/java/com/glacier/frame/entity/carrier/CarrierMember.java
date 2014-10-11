@@ -3,6 +3,15 @@ package com.glacier.frame.entity.carrier;
 import java.math.BigDecimal;
 import java.util.Date;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
+/**
+ * @ClassName:  CarrierMember
+ * @Description: TODO(这里用一句话描述这个类的作用)
+ * @author songjundong
+ * @email 985776597@QQ.com
+ * @date 2014-10-11  下午2:13:05
+ */
 public class CarrierMember {
     private String carrierMemberId;
 
@@ -15,9 +24,11 @@ public class CarrierMember {
     private String liveAddress;
 
     private String memberPhoto;
-
+    
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date registrationTime;
 
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date lastLoginTime;
 
     private String email;
@@ -46,18 +57,30 @@ public class CarrierMember {
 
     private String auditOpinion;
 
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date auditTime;
 
     private String remark;
 
     private String creater;
 
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
     private String updater;
 
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
 
+    /**
+     * 自定义字段，显示创建人真实名字
+     */
+    private String createrDisplay;
+    
+    /**
+     * 自定义字段，显示更新人的真实名字
+     */
+    private String updaterDisplay;
     public String getCarrierMemberId() {
         return carrierMemberId;
     }
@@ -74,7 +97,23 @@ public class CarrierMember {
         this.memberName = memberName;
     }
 
-    public String getMemberPassword() {
+    public String getCreaterDisplay() {
+		return createrDisplay;
+	}
+
+	public void setCreaterDisplay(String createrDisplay) {
+		this.createrDisplay = createrDisplay;
+	}
+
+	public String getUpdaterDisplay() {
+		return updaterDisplay;
+	}
+
+	public void setUpdaterDisplay(String updaterDisplay) {
+		this.updaterDisplay = updaterDisplay;
+	}
+
+	public String getMemberPassword() {
         return memberPassword;
     }
 

@@ -5,10 +5,10 @@
 	uri="http://com.glacier.permissions.com.cn/tag/easyui"%>
 
 <script type="text/javascript">
-	$.util.namespace('glacier.member_mgr.member_mgr.member');//自定义命名空间，相当于一个唯一变量(推荐按照webapp目录结构命名可避免重复)
+	$.util.namespace('glacier.carrier_mgr.carrierMember_mgr.member');//自定义命名空间，相当于一个唯一变量(推荐按照webapp目录结构命名可避免重复)
 
 	//定义toolbar的操作，对操作进行控制
-	glacier.member_mgr.member_mgr.member.param = {
+	glacier.carrier_mgr.carrierMember_mgr.member.param = {
 		toolbarId : 'memberDataGrid_toolbar',
 		actions : {
              status:{flag:'status',controlType:'single'} 
@@ -16,7 +16,7 @@
      };
 
 	//初始化客服DataGrid
-	glacier.member_mgr.member_mgr.member.memberDataGrid = $('#memberDataGrid').datagrid({
+	glacier.carrier_mgr.carrierMember_mgr.member.memberDataGrid = $('#memberDataGrid').datagrid({
 						fit : true,//控件自动resize占满窗口大小
 						iconCls : 'icon-save',//图标样式
 						border : false,//是否存在边框
@@ -27,13 +27,13 @@
 						singleSelect : true,//限制单选
 						checkOnSelect : false,//选择复选框的时候选择该行
 						selectOnCheck : false,//选择的时候复选框打勾
-						url : ctx + '/do/shippermember/list.json',
+						url : ctx + '/do/carrierMember/list.json',
 						sortName : 'createTime',//排序字段名称
 						sortOrder : 'DESC',//升序还是降序
 						remoteSort : true,//开启远程排序，默认为false
-						idField : 'memberId',
+						idField : 'carrierMemberId',
 						columns : [ [ {
-							field : 'memberId',
+							field : 'carrierMemberId',
 							title : 'ID',
 							checkbox : true
 						}, {
@@ -63,12 +63,17 @@
 							width : 120,
 							sortable : true
 						},{
-							field : 'integral',
-							title : '会员积分',
+							field : 'creditworthiness',
+							title : '信誉度',
 							width : 120,
 							sortable : true
 						},{
-							field : 'accountBalance',
+							field : 'creditLimit',
+							title : '信用额度',
+							width : 120,
+							sortable : true
+						},{
+							field : 'surplusMonney',
 							title : '账户余额',
 							width : 120,
 							sortable : true
@@ -78,10 +83,43 @@
 							sortable : true,
 							width : 200
 						}, {
+							field : 'deliverSuccess',
+							title : '配送成功次数',
+							width : 120,
+							sortable : true
+						},{
+							field : 'deliverFail',
+							title : '配送失败次数',
+							width : 120,
+							sortable : true
+						},{
 							field : 'loginCount',
 							title : '登录次数',
 							sortable : true,
 							width : 120
+						},{
+							field : 'auditState',
+							title : '审核状态',
+							width : 120,
+							sortable : true,
+							formatter : function(value, row, index) {//数据格式化，例如man显示是，woman显示女
+								return renderGridValue(value, fields.auditState);
+							}
+						},{
+							field : 'audit',
+							title : '审核人',
+							width : 120,
+							sortable : true
+						},{
+							field : 'auditTime',
+							title : '审核时间',
+							width : 120,
+							sortable : true
+						},{
+							field : 'auditOpinion',
+							title : '审核备注',
+							width : 120,
+							sortable : true
 						},{
 							field : 'createrDisplay',
 							title : '创建人',
@@ -110,27 +148,27 @@
 						toolbar : '#memberDataGrid_toolbar',
 						onCheck : function(rowIndex, rowData) {//选择行事件触发
 							action_controller(
-									glacier.member_mgr.member_mgr.member.param,this).check();
+									glacier.carrier_mgr.carrierMember_mgr.member.param,this).check();
 						},
 						onCheckAll : function(rows) {//取消勾选行状态触发事件
 							action_controller(
-									glacier.member_mgr.member_mgr.member.param,this).check();
+									glacier.carrier_mgr.carrierMember_mgr.member.param,this).check();
 						},
 						onUncheck : function(rowIndex, rowData) {//选择行事件触发
 							action_controller(
-									glacier.member_mgr.member_mgr.member.param,this).unCheck();
+									glacier.carrier_mgr.carrierMember_mgr.member.param,this).unCheck();
 						},
 						onUncheckAll : function(rows) {//取消勾选行状态触发事件
 							action_controller(
-									glacier.member_mgr.member_mgr.member.param,this).unCheck();
+									glacier.carrier_mgr.carrierMember_mgr.member.param,this).unCheck();
 						},
 						onSelect : function(rowIndex, rowData) {//选择行事件触发
 							action_controller(
-									glacier.member_mgr.member_mgr.member.param,this).select();
+									glacier.carrier_mgr.carrierMember_mgr.member.param,this).select();
 						},
 						onUnselectAll : function(rows) {
 							action_controller(
-									glacier.member_mgr.member_mgr.member.param,this).unSelect();
+									glacier.carrier_mgr.carrierMember_mgr.member.param,this).unSelect();
 						},
 						onLoadSuccess : function(index, record) {//加载数据成功触发事件
 							$(this).datagrid('clearSelections');
@@ -144,8 +182,9 @@
 						onDblClickRow : function(rowIndex, rowData){
                         $.easyui.showDialog({
 								title : '【' + rowData.memberName + '】会员详细信息',
-								href : ctx+ '/do/shippermember/intoDetail.htm?memberId='+ rowData.memberId,//从controller请求jsp页面进行渲染
-								height : 470,
+								href : ctx+ '/do/carrierMember/intoDetail.htm?carrierMemberId='+ rowData.carrierMemberId,//从controller请求jsp页面进行渲染
+								height : 520,
+								width:630,
 								resizable : false,
 								enableApplyButton : false,
 								enableSaveButton : false
@@ -155,14 +194,14 @@
  
 
 	//点击启用禁用按钮触发方法
-	glacier.member_mgr.member_mgr.member.editMember = function(){
-    var row = glacier.member_mgr.member_mgr.member.memberDataGrid.datagrid("getSelected");
+	glacier.carrier_mgr.carrierMember_mgr.member.editMember = function(){
+    var row = glacier.carrier_mgr.carrierMember_mgr.member.memberDataGrid.datagrid("getSelected");
     $.messager.confirm('请确认', '是否要启用/禁用该会员?', function(r){
 		if (r){ 
 		    $.ajax({
 				   type: "POST",
-				   url: ctx + '/do/shippermember/status.json',
-				   data: {memberId:row.memberId}, 
+				   url: ctx + '/do/carrierMember/status.json',
+				   data: {memberId:row.carrierMemberId}, 
 				   dataType:'json',
 				   success: function(r){
 					   if(r.success){//因为失败成功的方法都一样操作，这里故未做处理
@@ -171,7 +210,7 @@
 								timeout:3000,
 								msg:r.msg
 							});
-						   glacier.member_mgr.member_mgr.member.memberDataGrid.datagrid('reload');
+						   glacier.carrier_mgr.carrierMember_mgr.member.memberDataGrid.datagrid('reload');
 					   }else{
 							$.messager.show({//后台验证弹出错误提示信息框
 								title:'错误提示',
@@ -187,9 +226,9 @@
 		});
 	}; 
 	//客服资料模糊查询
-	glacier.member_mgr.member_mgr.member.quickquery = function(value, name) {
+	glacier.carrier_mgr.carrierMember_mgr.member.quickquery = function(value, name) {
 		var obj = $.parseJSON('{"' + name + '":"' + value + '"}');//将值和对象封装成obj作为参数传递给后台
-		glacier.member_mgr.member_mgr.member.memberDataGrid.datagrid('load',obj);
+		glacier.carrier_mgr.carrierMember_mgr.member.memberDataGrid.datagrid('load',obj);
 	};
 	//下拉项的值
 	$('#memberSearchForm_status').combobox({
@@ -218,8 +257,8 @@
 <div class="easyui-layout" data-options="fit:true">
 	<div id="memberGridPanel" data-options="region:'center',border:true">
 		<table id="memberDataGrid">
-			<glacierui:toolbar panelEnName="memberList"
-				toolbarId="memberDataGrid_toolbar" menuEnName="shipperMember" />
+			<glacierui:toolbar panelEnName="carrierMemberList"
+				toolbarId="memberDataGrid_toolbar" menuEnName="carrierMember" />
 			<!-- 自定义标签：自动根据菜单获取当前用户权限，动态注册方法 -->
 		</table>
 	</div>
@@ -243,10 +282,10 @@
 						class="easyui-datetimebox" style="width: 100px;" /></td>
 					<td><a href="javascript:void(0);" class="easyui-linkbutton"
 						data-options="iconCls:'icon-standard-zoom-in',plain:true"
-						onclick="glacier.member_mgr.member_mgr.member.memberDataGrid.datagrid('load',glacier.serializeObject($('#memberSearchForm')));">查询</a>
+						onclick="glacier.carrier_mgr.carrierMember_mgr.member.memberDataGrid.datagrid('load',glacier.serializeObject($('#memberSearchForm')));">查询</a>
 						<a href="javascript:void(0);" class="easyui-linkbutton"
 						data-options="iconCls:'icon-standard-zoom-out',plain:true"
-						onclick="$('#memberSearchForm input').val('');glacier.member_mgr.member_mgr.member.memberDataGrid.datagrid('load',{});">重置条件</a>
+						onclick="$('#memberSearchForm input').val('');glacier.carrier_mgr.carrierMember_mgr.member.memberDataGrid.datagrid('load',{});">重置条件</a>
 					</td>
 				</tr>
 			</table>

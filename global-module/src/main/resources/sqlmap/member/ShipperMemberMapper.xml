@@ -98,8 +98,7 @@
     <!-- 以下字段属于扩展 -->
     ,temp_creater.user_cn_name as temp_shipper_member_creater_display
     ,temp_updater.user_cn_name as temp_shipper_member_updater_display 
-  </sql>
-  
+  </sql> 
  <sql id="Base_extend">
   	LEFT JOIN t_user temp_creater ON temp_creater.user_id = temp_shipper_member.creater <!-- 扩展 -->
     LEFT JOIN t_user temp_updater ON temp_updater.user_id = temp_shipper_member.updater <!-- 扩展 -->
