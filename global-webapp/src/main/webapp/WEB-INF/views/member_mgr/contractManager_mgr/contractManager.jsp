@@ -51,25 +51,20 @@
 							sortable : true
 						},{
 							field : 'status',
-							title : '状态',
+							title : '合同状态',
 							width : 120,
 							sortable : true,
 							formatter : function(value, row, index) {//数据格式化
 								return renderGridValue(value, fields.status);
 							}
 						}, {
-							field : 'remark',
-							title : '简介',
-							width : 120,
-							sortable : true,
-						}, {
 							field : 'createrDisplay',
-							title : '录入人',
+							title : '创建人',
 							sortable : true,
 							width : 120
 						}, {
 							field : 'createTime',
-							title : '录入时间',
+							title : '创建时间',
 							sortable : true,
 							width : 200
 						}, {
@@ -82,6 +77,11 @@
 							title : '更新时间',
 							sortable : true,
 							width : 200
+						}, {
+							field : 'remark',
+							title : '备注',
+							width : 120,
+							sortable : true,
 						} ] ],
 						pagination : true,//True 就会在 datagrid 的底部显示分页栏
 						pmemberSize : 10,//注意，pmemberSize必须在pmemberList存在

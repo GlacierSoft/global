@@ -12,7 +12,13 @@ import com.glacier.frame.dto.query.member.ShipperMemberContractRecordQueryDTO;
 import com.glacier.frame.service.member.ContractService;
 import com.glacier.jqueryui.util.JqPager;
 
-
+/*** 
+ * @ClassName:  ContractController
+ * @Description: TODO(合同记录控制层)
+ * @author zhengjunjie
+ * @email 1203807137@QQ.com
+ * @date 2014-10-08  下午2:09:10
+ */
 @Controller
 @RequestMapping(value="/contract")
 public class ContractController {
@@ -27,7 +33,7 @@ public class ContractController {
         return mav;
     }
     
-    //获取表格结构的所有菜单数据
+    //获取表格结构的所有合同记录信息
    	@RequestMapping(value = "/list.json", method = RequestMethod.POST)
    	@ResponseBody
    	private Object listActionAsGridByMenuId(JqPager jqPager, ShipperMemberContractRecordQueryDTO contractRecordQueryDTO, String q) {
