@@ -4,7 +4,6 @@
   <resultMap id="BaseResultMap" type="com.glacier.frame.entity.carrier.CarrierCarInformation" >
     <id column="temp_carrier_car_information_car_id" property="carId" jdbcType="VARCHAR" />
     <result column="temp_carrier_car_information_carrier_member_id" property="carrierMemberId" jdbcType="VARCHAR" />
-    <result column="temp_carrier_car_information_carrier_id" property="carrierId" jdbcType="VARCHAR" />
     <result column="temp_carrier_car_information_route_name" property="routeName" jdbcType="INTEGER" />
     <result column="temp_carrier_car_information_transport_type" property="transportType" jdbcType="CHAR" />
     <result column="temp_carrier_car_information_service_type" property="serviceType" jdbcType="CHAR" />
@@ -87,7 +86,6 @@
   </sql>
   <sql id="Base_Column_List" >
     temp_carrier_car_information.car_id as temp_carrier_car_information_car_id, temp_carrier_car_information.carrier_member_id as temp_carrier_car_information_carrier_member_id, 
-    temp_carrier_car_information.carrier_id as temp_carrier_car_information_carrier_id, 
     temp_carrier_car_information.route_name as temp_carrier_car_information_route_name, 
     temp_carrier_car_information.transport_type as temp_carrier_car_information_transport_type, 
     temp_carrier_car_information.service_type as temp_carrier_car_information_service_type, 
@@ -138,24 +136,22 @@
     </if>
   </delete>
   <insert id="insert" parameterType="com.glacier.frame.entity.carrier.CarrierCarInformation" >
-    insert into t_carrier_car_information (car_id, carrier_member_id, carrier_id, 
-      route_name, transport_type, service_type, 
-      plate_number, car_age, car_type, 
-      car_length, car_load, car_attribution, 
-      car_status, transport_status, car_img, 
-      audit_state, audit, audit_opinion, 
-      audit_time, remark, creater, 
-      create_time, updater, update_time
-      )
-    values (#{carId,jdbcType=VARCHAR}, #{carrierMemberId,jdbcType=VARCHAR}, #{carrierId,jdbcType=VARCHAR}, 
-      #{routeName,jdbcType=INTEGER}, #{transportType,jdbcType=CHAR}, #{serviceType,jdbcType=CHAR}, 
-      #{plateNumber,jdbcType=VARCHAR}, #{carAge,jdbcType=INTEGER}, #{carType,jdbcType=VARCHAR}, 
-      #{carLength,jdbcType=INTEGER}, #{carLoad,jdbcType=VARCHAR}, #{carAttribution,jdbcType=VARCHAR}, 
-      #{carStatus,jdbcType=CHAR}, #{transportStatus,jdbcType=CHAR}, #{carImg,jdbcType=VARCHAR}, 
-      #{auditState,jdbcType=CHAR}, #{audit,jdbcType=VARCHAR}, #{auditOpinion,jdbcType=VARCHAR}, 
-      #{auditTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, #{creater,jdbcType=VARCHAR}, 
-      #{createTime,jdbcType=TIMESTAMP}, #{updater,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP}
-      )
+    insert into t_carrier_car_information (car_id, carrier_member_id, route_name, 
+      transport_type, service_type, plate_number, 
+      car_age, car_type, car_length, 
+      car_load, car_attribution, car_status, 
+      transport_status, car_img, audit_state, 
+      audit, audit_opinion, audit_time, 
+      remark, creater, create_time, 
+      updater, update_time)
+    values (#{carId,jdbcType=VARCHAR}, #{carrierMemberId,jdbcType=VARCHAR}, #{routeName,jdbcType=INTEGER}, 
+      #{transportType,jdbcType=CHAR}, #{serviceType,jdbcType=CHAR}, #{plateNumber,jdbcType=VARCHAR}, 
+      #{carAge,jdbcType=INTEGER}, #{carType,jdbcType=VARCHAR}, #{carLength,jdbcType=INTEGER}, 
+      #{carLoad,jdbcType=VARCHAR}, #{carAttribution,jdbcType=VARCHAR}, #{carStatus,jdbcType=CHAR}, 
+      #{transportStatus,jdbcType=CHAR}, #{carImg,jdbcType=VARCHAR}, #{auditState,jdbcType=CHAR}, 
+      #{audit,jdbcType=VARCHAR}, #{auditOpinion,jdbcType=VARCHAR}, #{auditTime,jdbcType=TIMESTAMP}, 
+      #{remark,jdbcType=VARCHAR}, #{creater,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
+      #{updater,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP})
   </insert>
   <insert id="insertSelective" parameterType="com.glacier.frame.entity.carrier.CarrierCarInformation" >
     insert into t_carrier_car_information
@@ -165,9 +161,6 @@
       </if>
       <if test="carrierMemberId != null" >
         carrier_member_id,
-      </if>
-      <if test="carrierId != null" >
-        carrier_id,
       </if>
       <if test="routeName != null" >
         route_name,
@@ -239,9 +232,6 @@
       </if>
       <if test="carrierMemberId != null" >
         #{carrierMemberId,jdbcType=VARCHAR},
-      </if>
-      <if test="carrierId != null" >
-        #{carrierId,jdbcType=VARCHAR},
       </if>
       <if test="routeName != null" >
         #{routeName,jdbcType=INTEGER},
@@ -323,9 +313,6 @@
       <if test="record.carrierMemberId != null" >
         temp_carrier_car_information.carrier_member_id = #{record.carrierMemberId,jdbcType=VARCHAR},
       </if>
-      <if test="record.carrierId != null" >
-        temp_carrier_car_information.carrier_id = #{record.carrierId,jdbcType=VARCHAR},
-      </if>
       <if test="record.routeName != null" >
         temp_carrier_car_information.route_name = #{record.routeName,jdbcType=INTEGER},
       </if>
@@ -398,7 +385,6 @@
     update t_carrier_car_information temp_carrier_car_information
     set temp_carrier_car_information.car_id = #{record.carId,jdbcType=VARCHAR},
       temp_carrier_car_information.carrier_member_id = #{record.carrierMemberId,jdbcType=VARCHAR},
-      temp_carrier_car_information.carrier_id = #{record.carrierId,jdbcType=VARCHAR},
       temp_carrier_car_information.route_name = #{record.routeName,jdbcType=INTEGER},
       temp_carrier_car_information.transport_type = #{record.transportType,jdbcType=CHAR},
       temp_carrier_car_information.service_type = #{record.serviceType,jdbcType=CHAR},
@@ -429,9 +415,6 @@
     <set >
       <if test="carrierMemberId != null" >
         carrier_member_id = #{carrierMemberId,jdbcType=VARCHAR},
-      </if>
-      <if test="carrierId != null" >
-        carrier_id = #{carrierId,jdbcType=VARCHAR},
       </if>
       <if test="routeName != null" >
         route_name = #{routeName,jdbcType=INTEGER},
@@ -502,7 +485,6 @@
   <update id="updateByPrimaryKey" parameterType="com.glacier.frame.entity.carrier.CarrierCarInformation" >
     update t_carrier_car_information
     set carrier_member_id = #{carrierMemberId,jdbcType=VARCHAR},
-      carrier_id = #{carrierId,jdbcType=VARCHAR},
       route_name = #{routeName,jdbcType=INTEGER},
       transport_type = #{transportType,jdbcType=CHAR},
       service_type = #{serviceType,jdbcType=CHAR},

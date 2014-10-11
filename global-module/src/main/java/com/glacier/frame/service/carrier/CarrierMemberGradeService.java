@@ -26,7 +26,6 @@ import com.glacier.frame.dao.carrier.CarrierMemberGradeMapper;
 import com.glacier.frame.dto.query.carrier.CarrierMemberGradeQueryDTO;
 import com.glacier.frame.entity.carrier.CarrierMemberGrade;
 import com.glacier.frame.entity.carrier.CarrierMemberGradeExample;
-import com.glacier.frame.entity.member.ShipperMemberGrade;
 import com.glacier.jqueryui.util.JqGridReturn;
 import com.glacier.jqueryui.util.JqPager; 
 import com.glacier.jqueryui.util.JqReturnJson;
@@ -37,7 +36,7 @@ import com.glacier.frame.entity.carrier.CarrierMemberGradeExample.Criteria;
  * @Description: TODO(承运商信誉等级表业务类)
  * @author wuting
  * @email 920339213@QQ.com
- * @date 2014-10-09
+ * @date 2014-10-11
  */
 @Service
 @Transactional(readOnly = true ,propagation = Propagation.REQUIRED)

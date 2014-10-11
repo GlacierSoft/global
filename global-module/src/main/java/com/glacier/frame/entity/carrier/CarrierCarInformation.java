@@ -2,12 +2,23 @@ package com.glacier.frame.entity.carrier;
 
 import java.util.Date;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 public class CarrierCarInformation {
     private String carId;
 
+    /**
+     * 自定义字段
+     */
+    private String carrierMemberRealName;
+    
+    private String auditorDisplay;
+    
+    private String createrDisplay;
+    
+    private String updaterDisplay;
+    
     private String carrierMemberId;
-
-    private String carrierId;
 
     private Integer routeName;
 
@@ -39,16 +50,19 @@ public class CarrierCarInformation {
 
     private String auditOpinion;
 
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date auditTime;
 
     private String remark;
 
     private String creater;
 
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
     private String updater;
 
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
 
     public String getCarId() {
@@ -65,14 +79,6 @@ public class CarrierCarInformation {
 
     public void setCarrierMemberId(String carrierMemberId) {
         this.carrierMemberId = carrierMemberId;
-    }
-
-    public String getCarrierId() {
-        return carrierId;
-    }
-
-    public void setCarrierId(String carrierId) {
-        this.carrierId = carrierId;
     }
 
     public Integer getRouteName() {
@@ -243,7 +249,39 @@ public class CarrierCarInformation {
         this.updateTime = updateTime;
     }
 
-    @Override
+    public String getCarrierMemberRealName() {
+		return carrierMemberRealName;
+	}
+
+	public void setCarrierMemberRealName(String carrierMemberRealName) {
+		this.carrierMemberRealName = carrierMemberRealName;
+	}
+	
+	public String getAuditorDisplay() {
+		return auditorDisplay;
+	}
+
+	public void setAuditorDisplay(String auditorDisplay) {
+		this.auditorDisplay = auditorDisplay;
+	}
+
+	public String getCreaterDisplay() {
+		return createrDisplay;
+	}
+
+	public void setCreaterDisplay(String createrDisplay) {
+		this.createrDisplay = createrDisplay;
+	}
+
+	public String getUpdaterDisplay() {
+		return updaterDisplay;
+	}
+
+	public void setUpdaterDisplay(String updaterDisplay) {
+		this.updaterDisplay = updaterDisplay;
+	}
+
+	@Override
     public boolean equals(Object that) {
         if (this == that) {
             return true;
@@ -257,7 +295,6 @@ public class CarrierCarInformation {
         CarrierCarInformation other = (CarrierCarInformation) that;
         return (this.getCarId() == null ? other.getCarId() == null : this.getCarId().equals(other.getCarId()))
             && (this.getCarrierMemberId() == null ? other.getCarrierMemberId() == null : this.getCarrierMemberId().equals(other.getCarrierMemberId()))
-            && (this.getCarrierId() == null ? other.getCarrierId() == null : this.getCarrierId().equals(other.getCarrierId()))
             && (this.getRouteName() == null ? other.getRouteName() == null : this.getRouteName().equals(other.getRouteName()))
             && (this.getTransportType() == null ? other.getTransportType() == null : this.getTransportType().equals(other.getTransportType()))
             && (this.getServiceType() == null ? other.getServiceType() == null : this.getServiceType().equals(other.getServiceType()))
@@ -287,7 +324,6 @@ public class CarrierCarInformation {
         int result = 1;
         result = prime * result + ((getCarId() == null) ? 0 : getCarId().hashCode());
         result = prime * result + ((getCarrierMemberId() == null) ? 0 : getCarrierMemberId().hashCode());
-        result = prime * result + ((getCarrierId() == null) ? 0 : getCarrierId().hashCode());
         result = prime * result + ((getRouteName() == null) ? 0 : getRouteName().hashCode());
         result = prime * result + ((getTransportType() == null) ? 0 : getTransportType().hashCode());
         result = prime * result + ((getServiceType() == null) ? 0 : getServiceType().hashCode());

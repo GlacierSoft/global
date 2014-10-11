@@ -103,6 +103,12 @@ public class CarrierCarInformationExample {
         public List<Criterion> getCriteria() {
             return criteria;
         }
+        
+        //扩展查询条件
+        public Criteria andCarrierMemberRealNamelike(String value) {
+            addCriterion("temp_carrier_member.member_name like", value, "getCarrierMemberRealName");
+            return (Criteria) this;
+        }
 
         protected void addCriterion(String condition) {
             if (condition == null) {
@@ -262,76 +268,6 @@ public class CarrierCarInformationExample {
 
         public Criteria andCarrierMemberIdNotBetween(String value1, String value2) {
             addCriterion("temp_carrier_car_information.carrier_member_id not between", value1, value2, "carrierMemberId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCarrierIdIsNull() {
-            addCriterion("temp_carrier_car_information.carrier_id is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCarrierIdIsNotNull() {
-            addCriterion("temp_carrier_car_information.carrier_id is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCarrierIdEqualTo(String value) {
-            addCriterion("temp_carrier_car_information.carrier_id =", value, "carrierId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCarrierIdNotEqualTo(String value) {
-            addCriterion("temp_carrier_car_information.carrier_id <>", value, "carrierId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCarrierIdGreaterThan(String value) {
-            addCriterion("temp_carrier_car_information.carrier_id >", value, "carrierId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCarrierIdGreaterThanOrEqualTo(String value) {
-            addCriterion("temp_carrier_car_information.carrier_id >=", value, "carrierId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCarrierIdLessThan(String value) {
-            addCriterion("temp_carrier_car_information.carrier_id <", value, "carrierId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCarrierIdLessThanOrEqualTo(String value) {
-            addCriterion("temp_carrier_car_information.carrier_id <=", value, "carrierId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCarrierIdLike(String value) {
-            addCriterion("temp_carrier_car_information.carrier_id like", value, "carrierId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCarrierIdNotLike(String value) {
-            addCriterion("temp_carrier_car_information.carrier_id not like", value, "carrierId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCarrierIdIn(List<String> values) {
-            addCriterion("temp_carrier_car_information.carrier_id in", values, "carrierId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCarrierIdNotIn(List<String> values) {
-            addCriterion("temp_carrier_car_information.carrier_id not in", values, "carrierId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCarrierIdBetween(String value1, String value2) {
-            addCriterion("temp_carrier_car_information.carrier_id between", value1, value2, "carrierId");
-            return (Criteria) this;
-        }
-
-        public Criteria andCarrierIdNotBetween(String value1, String value2) {
-            addCriterion("temp_carrier_car_information.carrier_id not between", value1, value2, "carrierId");
             return (Criteria) this;
         }
 
