@@ -13,7 +13,8 @@
 		toolbarId : 'bankCardDataGrid_toolbar',
 		actions : {
              edit:{flag:'edit',controlType:'single'},
-             del:{flag:'del',controlType:'multiple'}
+             del:{flag:'del',controlType:'multiple'},
+             audit:{flag:'audit',controlType:'single'}
           }
      };
 
