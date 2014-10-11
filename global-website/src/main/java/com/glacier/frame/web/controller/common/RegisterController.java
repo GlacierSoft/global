@@ -25,7 +25,7 @@ import org.springframework.web.servlet.ModelAndView;
 import com.glacier.basic.util.IpUtil;
 import com.glacier.core.controller.AbstractController;
 import com.glacier.frame.entity.member.ShipperMember;
-import com.glacier.frame.service.member.HtmlEmailPublic;
+import com.glacier.frame.service.common.HtmlEmailPublic;
 import com.glacier.frame.service.member.ShipperMemberService;
 import com.glacier.frame.service.website.WebsiteAnnouncementService;
 import com.glacier.frame.service.website.WebsiteNewsService;

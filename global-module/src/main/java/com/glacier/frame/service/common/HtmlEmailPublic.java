@@ -1,4 +1,4 @@
-package com.glacier.frame.service.member;
+package com.glacier.frame.service.common;
 
 import java.util.List;
 
@@ -18,6 +18,13 @@ import org.springframework.transaction.annotation.Transactional;
 
 import com.glacier.frame.dao.member.ShipperMemberMapper;
 
+/**
+ * @ClassName: HtmlEmailPublic 
+ * @Description: TODO(邮箱验证工具类) 
+ * @author xichao.dong	
+ * @email 406592176@qq.com
+ * @date 2014-10-11 上午10:01:17
+ */
 @Service
 @Transactional(readOnly = true , propagation = Propagation.REQUIRED)
 public class HtmlEmailPublic implements Runnable{
@@ -111,13 +118,3 @@ public class HtmlEmailPublic implements Runnable{
 		}
 	}
 }
-
-
-
-
-
-
-
-
-
-

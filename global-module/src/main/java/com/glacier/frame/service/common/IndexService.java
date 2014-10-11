@@ -27,11 +27,11 @@ import org.springframework.transaction.annotation.Transactional;
 import com.glacier.frame.dao.system.UserMapper;
 
 /**
- * @ClassName: CommonService 
+ * @ClassName: HtmlEmailPublic 
  * @Description: TODO(首页显示内容) 
- * @author zhenfei.zhang
- * @email 289556866@qq.com
- * @date 2014-6-4 上午10:12:44
+ * @author xichao.dong  
+ * @email 406592176@qq.com
+ * @date 2014-10-11 上午10:01:17
  */
 @Service
 @Transactional(readOnly = true , propagation = Propagation.REQUIRED)
