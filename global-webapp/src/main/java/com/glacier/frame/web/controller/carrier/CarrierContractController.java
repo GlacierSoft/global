@@ -19,9 +19,17 @@
  */
 package com.glacier.frame.web.controller.carrier;
 
+import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
+
+import com.glacier.frame.dto.query.carrier.CarrierContractRecordQueryDTO;
+import com.glacier.frame.service.carrier.CarrierContractRecordService;
+import com.glacier.jqueryui.util.JqPager;
 
 /**
  * @ClassName: CarrierContractController 
@@ -34,6 +42,8 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping(value="/carrierContract")
 public class CarrierContractController {
      
+	@Autowired
+	private CarrierContractRecordService carrierContractRecordService;
 	
 	//进入承运商合同记录展示页面
     @RequestMapping(value = "/index.htm")
@@ -41,4 +51,22 @@ public class CarrierContractController {
         ModelAndView mav = new ModelAndView("carrier_mgr/carrierContract_mgr/carrierContract");
         return mav;
     }
+    
+    //获取表格结构的所有合同记录信息
+   	@RequestMapping(value = "/list.json", method = RequestMethod.POST)
+   	@ResponseBody
+   	private Object listActionAsGridByMenuId(JqPager jqPager, CarrierContractRecordQueryDTO carrierContractRecordQueryDTO, String q) {
+   	    return carrierContractRecordService.listAsGrid(jqPager, carrierContractRecordQueryDTO, q);
+   	}
+   	
+    //承运商合同记录信息详情页
+  	@RequestMapping(value = "/intoDetail.htm")
+  	private Object intoContractManagerDetailPage(String contractRecordId) {
+  	    ModelAndView mav = new ModelAndView("carrier_mgr/carrierContract_mgr/carrierContract_detail");
+  	    if(StringUtils.isNotBlank(contractRecordId)){
+  	          mav.addObject("carrierContractData", carrierContractRecordService.getCarrierContractPro(contractRecordId));
+  	    }
+  	    return mav;
+  	}
+    
 }

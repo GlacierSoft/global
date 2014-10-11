@@ -2,6 +2,8 @@ package com.glacier.frame.entity.carrier;
 
 import java.util.Date;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 public class CarrierBankCard {
     private String bankcardId;
 
@@ -21,19 +23,65 @@ public class CarrierBankCard {
 
     private String auditOpinion;
 
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date auditTime;
 
     private String remark;
 
     private String creater;
 
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
     private String updater;
 
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
+    
+    private String createrDisplay;
+    
+    private String updaterDisplay;
+    
+    private String auditDisplay;
+    
+    private String memberDisplay;
+    
+   
 
-    public String getBankcardId() {
+	public String getCreaterDisplay() {
+		return createrDisplay;
+	}
+
+	public void setCreaterDisplay(String createrDisplay) {
+		this.createrDisplay = createrDisplay;
+	}
+
+	public String getUpdaterDisplay() {
+		return updaterDisplay;
+	}
+
+	public void setUpdaterDisplay(String updaterDisplay) {
+		this.updaterDisplay = updaterDisplay;
+	}
+
+	public String getAuditDisplay() {
+		return auditDisplay;
+	}
+
+	public void setAuditDisplay(String auditDisplay) {
+		this.auditDisplay = auditDisplay;
+	}
+
+	
+	public String getMemberDisplay() {
+		return memberDisplay;
+	}
+
+	public void setMemberDisplay(String memberDisplay) {
+		this.memberDisplay = memberDisplay;
+	}
+
+	public String getBankcardId() {
         return bankcardId;
     }
 

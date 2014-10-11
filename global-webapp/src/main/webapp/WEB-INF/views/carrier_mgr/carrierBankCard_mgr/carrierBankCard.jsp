@@ -5,19 +5,21 @@
 	uri="http://com.glacier.permissions.com.cn/tag/easyui"%>
 
 <script type="text/javascript">
-	$.util.namespace('glacier.carrier_mgr.carrierContract_mgr.carrierContract');//自定义命名空间，相当于一个唯一变量(推荐按照webapp目录结构命名可避免重复)
+	
+	$.util.namespace('glacier.carrier_mgr.carrierBankCard_mgr.carrierBankCard');//自定义命名空间，相当于一个唯一变量(推荐按照webapp目录结构命名可避免重复)
 
 	//定义toolbar的操作，对操作进行控制
-	glacier.carrier_mgr.carrierContract_mgr.carrierContract.param = {
-		toolbarId : 'carrierContractDataGrid_toolbar',
+	glacier.carrier_mgr.carrierBankCard_mgr.carrierBankCard.param = {
+		toolbarId : 'carrierBankCardDataGrid_toolbar',
 		actions : {
              edit:{flag:'edit',controlType:'single'},
-             del:{flag:'del',controlType:'multiple'}
+             del:{flag:'del',controlType:'multiple'},
+             audit:{flag:'audit',controlType:'single'}
           }
      };
 
 	//初始化客服DataGrid
-	glacier.carrier_mgr.carrierContract_mgr.carrierContract.carrierContractDataGrid = $('#carrierContractDataGrid').datagrid({
+	glacier.carrier_mgr.carrierBankCard_mgr.carrierBankCard.carrierBankCardDataGrid = $('#carrierBankCardDataGrid').datagrid({
 						fit : true,//控件自动resize占满窗口大小
 						iconCls : 'icon-save',//图标样式
 						border : false,//是否存在边框
@@ -28,58 +30,58 @@
 						singleSelect : true,//限制单选
 						checkOnSelect : false,//选择复选框的时候选择该行
 						selectOnCheck : false,//选择的时候复选框打勾
- 						url : ctx + '/do/carrierContract/list.json',
+ 						url : ctx + '/do/carrierBankCard/list.json',
 						sortName : 'createTime',//排序字段名称
 						sortOrder : 'DESC',//升序还是降序
 						remoteSort : true,//开启远程排序，默认为false
-						idField : 'contractRecordId',
+						idField : 'bankcardId',
 						columns : [ [ {
-							field : 'contractRecordId',
+							field : 'bankcardId',
 							title : 'ID',
 							checkbox : true
 						}, {
-							field : 'deliverId',
-							title : '配送货物',
+							field : 'memberDisplay',
+							title : '账户名称',
 							width : 120,
 							sortable : true
 						}, {
-							field : 'carrierDisplay',
-							title : '承运商(乙方)',
+							field : 'bankName',
+							title : '开户行名称',
+							width : 120,
+							sortable : true
+						},{
+							field : 'cardName',
+							title : '银行卡名称',
 							width : 120,
 							sortable : true
 						}, {
-							field : 'platformId',
-							title : '平台方(甲方)',
+							field : 'cardNumber',
+							title : '银行卡号',
 							width : 120,
 							sortable : true,
 						}, {
-							field : 'contractTypeDisplay',
-							title : '合同类型',
-							width : 120,
-							sortable : true,
-						},  {
-							field : 'status',
-							title : '合同状态',
+							field : 'auditState',
+							title : '审核状态',
 							width : 120,
 							sortable : true,
 							formatter : function(value, row, index) {//数据格式化
-								return renderGridValue(value, fields.status);
+								return renderGridValue(value, fields.auditState);
 							}
 						}, {
-							field : 'contractContent',
-							title : '合同内容',
+							field : 'auditDisplay',
+							title : '审核人',
 							width : 120,
 							sortable : true,
 						}, {
-							field : 'enableTime',
-							title : '合同生效时间',
+							field : 'auditOpinion',
+							title : '审核内容',
 							width : 120,
-							sortable : true
-						}, {
-							field : 'disableTime',
-							title : '合同失效时间',
-							width : 140,
 							sortable : true,
+						}, {
+							field : 'auditTime',
+							title : '审核时间',
+							sortable : true,
+							width : 120
 						}, {
 							field : 'createrDisplay',
 							title : '创建人',
@@ -110,30 +112,30 @@
 						pmemberSize : 10,//注意，pmemberSize必须在pmemberList存在
 						pmemberList : [ 2, 10, 50, 100 ],//从session中获取
 						rownumbers : true,//True 就会显示行号的列
-						toolbar : '#carrierContractDataGrid_toolbar',
+						toolbar : '#carrierBankCardDataGrid_toolbar',
 						onCheck : function(rowIndex, rowData) {//选择行事件触发
 							action_controller(
-									glacier.carrier_mgr.carrierContract_mgr.carrierContract.param,this).check();
+									glacier.carrier_mgr.carrierBankCard_mgr.carrierBankCard.param ,this).check();
 						},
 						onCheckAll : function(rows) {//取消勾选行状态触发事件
 							action_controller(
-									glacier.carrier_mgr.carrierContract_mgr.carrierContract.param,this).check();
+									glacier.carrier_mgr.carrierBankCard_mgr.carrierBankCard.param ,this).check();
 						},
 						onUncheck : function(rowIndex, rowData) {//选择行事件触发
 							action_controller(
-									glacier.carrier_mgr.carrierContract_mgr.carrierContract.param,this).unCheck();
+									glacier.carrier_mgr.carrierBankCard_mgr.carrierBankCard.param ,this).unCheck();
 						},
 						onUncheckAll : function(rows) {//取消勾选行状态触发事件
 							action_controller(
-									glacier.carrier_mgr.carrierContract_mgr.carrierContract.param,this).unCheck();
+									glacier.carrier_mgr.carrierBankCard_mgr.carrierBankCard.param ,this).unCheck();
 						},
 						onSelect : function(rowIndex, rowData) {//选择行事件触发
 							action_controller(
-									glacier.carrier_mgr.carrierContract_mgr.carrierContract.param,this).select();
+									glacier.carrier_mgr.carrierBankCard_mgr.carrierBankCard.param ,this).select();
 						},
 						onUnselectAll : function(rows) {
 							action_controller(
-									glacier.carrier_mgr.carrierContract_mgr.carrierContract.param,this).unSelect();
+									glacier.carrier_mgr.carrierBankCard_mgr.carrierBankCard.param ,this).unSelect();
 						},
 						onLoadSuccess : function(index, record) {//加载数据成功触发事件
 							$(this).datagrid('clearSelections');
@@ -146,9 +148,9 @@
 						},
 						onDblClickRow : function(rowIndex, rowData){
                         $.easyui.showDialog({
-								title : '【' + rowData.carrierDisplay + '-'+rowData.platformId+'】合同详细信息',
-								href : ctx+ '/do/carrierContract/intoDetail.htm?contractRecordId='+ rowData.contractRecordId,//从controller请求jsp页面进行渲染
-								width : 560,
+								title : '【' + rowData.memberDisplay + '】银行卡帐号详情',
+								href : ctx+ '/do/carrierBankCard/intoDetail.htm?bankcardId='+ rowData.bankcardId,//从controller请求jsp页面进行渲染
+								width : 540,
 								height : 360,
 								resizable : false,
 								enableApplyButton : false,
@@ -157,62 +159,68 @@
 						}
 					});
 	
-	  glacier.carrier_mgr.carrierContract_mgr.carrierContract.expContractorManager=function(){
-		  alert("我是打印方法!!!!");
-	  };
+	//点击审核触发按钮
+	glacier.carrier_mgr.carrierBankCard_mgr.carrierBankCard.checkCarrierBankCard=function(){
+		var row =glacier.carrier_mgr.carrierBankCard_mgr.carrierBankCard.carrierBankCardDataGrid.datagrid("getSelected");
+		glacier.basicAddOrEditDialog({
+				title :"【"+row.carrierDisplay+"】银行卡信息审核",
+				width : 580,
+				height : 380,
+				queryUrl : ctx + '/do/carrierBankCard/intoAudit.htm',
+				submitUrl : ctx + '/do/carrierBankCard/audit.json',
+				queryParams : {
+					bankcardId : row.bankcardId
+				},
+				successFun : function (){
+					glacier.carrier_mgr.carrierBankCard_mgr.carrierBankCard.bankCardDataGrid.datagrid('reload');
+				}
+			});
+	};
 	
-	//状态下拉项
-	$('#bankCardSearchForm_status').combobox({
-			valueField : 'value',
-			//height:18,
-			width : 80,
-			textField : 'label',
-			panelHeight : 'auto',
-			editable : false,
-			//required:true,
-			data : fields.status
-		});
 	
 </script>
 
-<!-- 所有客服列表面板和表格 -->
+
 <div class="easyui-layout" data-options="fit:true">
-	<div id="carrierContractGridPanel" data-options="region:'center',border:true">
-		<table id="carrierContractDataGrid">
-			<glacierui:toolbar panelEnName="CarrierContractList"
-				toolbarId="carrierContractDataGrid_toolbar" menuEnName="carrierContract" />
+    
+    <div id="carrierBankCardGridPanel" data-options="region:'center',border:true">
+		<table id="carrierBankCardDataGrid">
+			<glacierui:toolbar panelEnName="CarrierBankCardList"
+				toolbarId="carrierBankCardDataGrid_toolbar" menuEnName="carrierBankCard" />
 			<!-- 自定义标签：自动根据菜单获取当前用户权限，动态注册方法 -->
 		</table>
 	</div>
-	<div data-options="region:'north',split:true"
+
+  <div data-options="region:'north',split:true"
 		style="height: 40px; padding-left: 10px;">
-		<form id="carrierContractSearchForm">
+		<form id="carrierBankCodeSearchForm">
 			<table>
 				<tr>
-					<td>承运商名称：</td>
-					<td><input name="memberDisplay" style="width: 80px;"
+					<td>账户名称：</td>
+					<td><input name="carrierDisplay" style="width: 80px;"
 						class="spinner" /></td>
-					<td>合同状态：</td>
-					<td>
-					    <input id="bankCardSearchForm_status" name="status" style="width: 80px;" class="spinner"/>
-					</td>
-					<td>生效时间：</td>
-					<td><input name="contractTypeStartTime" class="easyui-datetimebox"
-						style="width: 100px;" /> - <input name="contractTypeEndTime"
-						class="easyui-datetimebox" style="width: 100px;" /></td>
-					<td>失效时间：</td>
-					<td><input name="contractRemoveStartTime" class="easyui-datetimebox"
-						style="width: 100px;" /> - <input name="contractTypeRemoveEndEndTime"
+					<td>银行卡名称：</td>
+					<td><input name="cardName" style="width: 80px;"
+						class="spinner" /></td>
+					<td>银行卡号：</td>
+					<td><input id="cardNumber" name="type"
+						style="width: 80px;" class="spinner" /></td>
+					<td>录入时间：</td>
+					<td><input name="bankCardStartTime" class="easyui-datetimebox"
+						style="width: 100px;" /> - <input name="bankCardEndTime"
 						class="easyui-datetimebox" style="width: 100px;" /></td>
 					<td><a href="javascript:void(0);" class="easyui-linkbutton"
 						data-options="iconCls:'icon-standard-zoom-in',plain:true"
-						onclick="glacier.carrier_mgr.carrierContract_mgr.carrierContract.carrierContractDataGrid.datagrid('load',glacier.serializeObject($('#contractSearchForm')));">查询</a>
+						onclick="glacier.carrier_mgr.carrierBankCard_mgr.carrierBankCard.carrierBankCardDataGrid.datagrid('load',glacier.serializeObject($('#carrierBankCodeSearchForm')));">查询</a>
 						<a href="javascript:void(0);" class="easyui-linkbutton"
 						data-options="iconCls:'icon-standard-zoom-out',plain:true"
-						onclick="$('#carrierContractSearchForm input').val('');glacier.carrier_mgr.carrierContract_mgr.carrierContract.carrierContractDataGrid.datagrid('load',{});">重置条件</a>
+						onclick="$('#carrierBankCodeSearchForm input').val('');glacier.carrier_mgr.carrierBankCard_mgr.carrierBankCard.carrierBankCardDataGrid.datagrid('load',{});">重置条件</a>
 					</td>
 				</tr>
 			</table>
 		</form>
 	</div>
+	
+	
+	
 </div>
