@@ -199,7 +199,4 @@ public class ShipperMemberGradeService {
         }
         return returnResult;
     }
-    
-    
-    
 }

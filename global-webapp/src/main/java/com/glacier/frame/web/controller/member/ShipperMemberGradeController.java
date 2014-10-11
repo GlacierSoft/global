@@ -57,7 +57,7 @@ public class ShipperMemberGradeController extends AbstractController{
 	    return mav;
     }
     
-    // 进入新闻Form表单页面
+    // 进入会员等级Form表单页面
     @RequestMapping(value = "/intoForm.htm")
     private Object intoGradeFormPnews(String gradeId) {
         ModelAndView mav = new ModelAndView("member_mgr/shipperMemberGrade_mgr/shipperMemberGrade_form");
@@ -93,5 +93,4 @@ public class ShipperMemberGradeController extends AbstractController{
     public Object delGrade(@RequestParam List<String> memberGradeIds,@RequestParam List<String> memberGradeNames) {
     	return shipperMemberGradeService.delNews(memberGradeIds, memberGradeNames);
     }
-    
 }

@@ -212,8 +212,6 @@
 		});
 	};
 	
-	
-	
 	//点击删除按钮触发方法
 	glacier.memberGrade_mgr.memberGrade_mgr.memberGrade.delMemberGrade = function() {
 		var rows = glacier.memberGrade_mgr.memberGrade_mgr.memberGrade.memberGradeDataGrid.datagrid("getChecked");
