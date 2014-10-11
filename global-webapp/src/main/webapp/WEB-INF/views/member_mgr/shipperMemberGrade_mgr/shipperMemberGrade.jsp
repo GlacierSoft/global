@@ -85,16 +85,16 @@
 								return renderGridValue(value, fields.status);
 							}
 						},{
+							field : 'createrDisplay',
+							title : '创建人',
+							sortable : true,
+							width : 120
+						},{
 							field : 'createTime',
 							title : '创建时间',
 							sortable : true,
 							width : 200
 						},{
-							field : 'createrDisplay',
-							title : '创建人',
-							sortable : true,
-							width : 120
-						}, {
 							field : 'updaterDisplay',
 							title : '更新人',
 							sortable : true,
@@ -104,6 +104,11 @@
 							title : '更新时间',
 							sortable : true,
 							width : 200
+						},{
+							field : 'remark',
+							title : '备注',
+							sortable : true,
+							width : 120
 						} ] ],
 						pagination : true,//True 就会在 datagrid 的底部显示分页栏
 						pmemberGradeSize : 10,//注意，pmemberGradeSize必须在pmemberGradeList存在

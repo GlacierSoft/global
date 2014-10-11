@@ -95,7 +95,7 @@
 		<tr>
 			<td>备注：</td>
 			<td colspan="3">
-				<textarea id="memberGrade_mgr_memberGrade_form_remark" name="remark" readonly="readonly" style="width:670px;" class="spinner">${gradeData.remark}</textarea>
+				<textarea id="memberGrade_mgr_memberGrade_form_remark" name="remark" readonly="readonly" style="width:670px;" class="spinner formta">${gradeData.remark}</textarea>
 			</td>
 		</tr>
 	</table>
