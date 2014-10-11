@@ -16,6 +16,13 @@ import com.glacier.frame.entity.member.ShipperMemberBankCard;
 import com.glacier.frame.service.member.ShipperMemberBankCardService;
 import com.glacier.jqueryui.util.JqPager;
 
+/*** 
+ * @ClassName:  ContractManagerController
+ * @Description: TODO(会员银行卡管理控制层)
+ * @author zhengjunjie
+ * @email 1203807137@QQ.com
+ * @date 2014-10-08  下午2:09:10
+ */
 @Controller
 @RequestMapping(value="/memberBankCard")
 public class MemberBankCardController {
@@ -30,14 +37,14 @@ public class MemberBankCardController {
       return mav;
     }
 	
-	//获取表格结构的所有菜单数据
+	//获取表格结构的所有会员银行卡数据
    	@RequestMapping(value = "/list.json", method = RequestMethod.POST)
    	@ResponseBody
    	private Object listActionAsGridByMenuId(JqPager jqPager, ShipperMemberBankCardQueryDTO shipperMemberBankCardQueryDTO, String q) {
    	    return shipperMemberBankCardService.listAsGrid(jqPager, shipperMemberBankCardQueryDTO, q);
    	}
   	
-    //进入货主会员卡信息详情页
+    //进入货主会员银行卡信息详情页
  	@RequestMapping(value = "/intoDetail.htm")
  	private Object intoBankCardDetailPage(String bankcardId) {
 	    ModelAndView mav = new ModelAndView("member_mgr/bankCard_mgr/bankCard_detail");
@@ -47,7 +54,7 @@ public class MemberBankCardController {
 	    return mav;
  	 }
  	
- 	//进入货主会员卡信息审核页
+ 	//进入货主会员银行卡信息审核页
     @RequestMapping(value = "/intoAudit.htm")
     private Object intoAuditBankCard(String bankcardId) {
         ModelAndView mav = new ModelAndView("member_mgr/bankCard_mgr/bankCard_audit");
@@ -57,7 +64,7 @@ public class MemberBankCardController {
         return mav;
     }
     
-    // 货主会员卡信息审核
+    // 货主会员银行卡信息审核
     @RequestMapping(value = "/audit.json", method = RequestMethod.POST)
     @ResponseBody
     private Object auditBankCard(@Valid ShipperMemberBankCard shipperMemberBankCard, BindingResult bindingResult) {

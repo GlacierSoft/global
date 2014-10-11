@@ -18,6 +18,13 @@ import com.glacier.frame.entity.member.MemberContractType;
 import com.glacier.frame.service.member.ContractManagerService;
 import com.glacier.jqueryui.util.JqPager;
 
+/*** 
+ * @ClassName:  ContractManagerController
+ * @Description: TODO(合同管理控制层)
+ * @author zhengjunjie
+ * @email 1203807137@QQ.com
+ * @date 2014-10-08  下午2:09:10
+ */
 @Controller
 @RequestMapping(value="/contractManager")
 public class ContractManagerController {
@@ -32,14 +39,14 @@ public class ContractManagerController {
         return mav;
     }
     
-    //获取表格结构的所有菜单数据
+    //获取表格结构的所有合同管理记录信息
 	@RequestMapping(value = "/list.json", method = RequestMethod.POST)
 	@ResponseBody
 	private Object listActionAsGridByMenuId(JqPager jqPager) {
 	     return contractManagerService.listAsGrid(jqPager);
 	}
 	
-	 //合同类型详情页
+	 //合同管理记录详情页
 	 @RequestMapping(value = "/intoDetail.htm")
 	 private Object intoContractManagerDetailPage(String contractTypeId) {
 	     ModelAndView mav = new ModelAndView("member_mgr/contractManager_mgr/contractManager_detail");
@@ -49,7 +56,7 @@ public class ContractManagerController {
 	     return mav;
 	  }
 	 
-	 // 进入合同类型Form表单页面
+	 // 进入合同类型表单页面
     @RequestMapping(value = "/intoForm.htm")
     private Object intoContractManagerForm(String contractTypeId) {
         ModelAndView mav = new ModelAndView("member_mgr/contractManager_mgr/contractManager_form");
@@ -59,7 +66,7 @@ public class ContractManagerController {
         return mav;
     }
 	 
-	//增加合同类型
+	//增加合同类型记录
     @RequestMapping(value = "/add.json", method = RequestMethod.POST)
     @ResponseBody
     private Object addContractManagerForm(@Valid MemberContractType memberContractType, BindingResult bindingResult) {
@@ -69,7 +76,7 @@ public class ContractManagerController {
         return contractManagerService.addContractManager(memberContractType);
     }
     
-    // 修改合同类型
+    // 修改合同管理信息
     @RequestMapping(value = "/edit.json", method = RequestMethod.POST)
     @ResponseBody
     private Object editContractManagerForm(@Valid MemberContractType memberContractType, BindingResult bindingResult) {
@@ -85,7 +92,6 @@ public class ContractManagerController {
     public Object delContractManagerForm(@RequestParam List<String> contractTypeIds) {
     	return contractManagerService.delContractManager(contractTypeIds);
     }
-    
     
     // 进入合同类型信息表单页面
     @RequestMapping(value = "/intoAudit.htm")
