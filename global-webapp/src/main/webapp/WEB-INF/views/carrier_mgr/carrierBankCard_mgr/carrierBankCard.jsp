@@ -172,7 +172,7 @@
 					bankcardId : row.bankcardId
 				},
 				successFun : function (){
-					glacier.carrier_mgr.carrierBankCard_mgr.carrierBankCard.bankCardDataGrid.datagrid('reload');
+					glacier.carrier_mgr.carrierBankCard_mgr.carrierBankCard.carrierBankCardDataGrid.datagrid('reload');
 				}
 			});
 	};

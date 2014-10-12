@@ -76,6 +76,17 @@ public class CarrierBankCardController {
   	    return mav;
    	 }
    	
+   	
+   	//进入承运商银行卡信息审核页
+    @RequestMapping(value = "/intoAudit.htm")
+    private Object intoAuditBankCard(String bankcardId) {
+        ModelAndView mav = new ModelAndView("carrier_mgr/carrierBankCard_mgr/carrierBankCard_audit");
+        if(StringUtils.isNotBlank(bankcardId)){
+        	 mav.addObject("carrierBankCardData", carrierBankCardService.getBankCardPro(bankcardId));
+        }
+        return mav;
+    }
+    
     // 承运商银行卡信息审核
     @RequestMapping(value = "/audit.json", method = RequestMethod.POST)
     @ResponseBody

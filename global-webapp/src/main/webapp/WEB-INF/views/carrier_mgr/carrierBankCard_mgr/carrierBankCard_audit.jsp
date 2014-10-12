@@ -62,7 +62,7 @@
 		</tr>
 		<tr>   
 		     <td valign="top">记录备注：</td>
-			 <td colspan="3"><textarea name="remark" style="width:420px;" maxlength="255" class="spinner formta" readonly="readonly">${shipperMemberBankCardData.remark}</textarea></td>
+			 <td colspan="3"><textarea name="remark" style="width:420px;" maxlength="255" class="spinner formta" readonly="readonly">${carrierBankCardData.remark}</textarea></td>
 		</tr>
 	</table>
 </form>
@@ -73,9 +73,9 @@
 	$('#bankCard_mgr_bankCard_detail_auditState').val(renderGridValue('${carrierBankCardData.auditState}',fields.auditState));
 	
 	 //审核按钮初始化
-	if(${shipperMemberBankCardData.auditState == 'authstr'}){
+	if(${carrierBankCardData.auditState == 'authstr'}){
 		document.all("contractManager_mgr_contractManager_form_auditState")[0].checked=true;
-	}else if(${shipperMemberBankCardData.auditState == 'pass'}){
+	}else if(${carrierBankCardData.auditState == 'pass'}){
 		document.all("contractManager_mgr_contractManager_form_auditState")[1].checked=true;
 	}else{
 		document.all("contractManager_mgr_contractManager_form_auditState")[2].checked=true;

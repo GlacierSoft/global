@@ -104,7 +104,7 @@
   <sql id="Base_extend">
   	 LEFT JOIN t_user temp_creater ON temp_creater.user_id = temp_carrier_bank_card.creater <!-- 扩展 -->
      LEFT JOIN t_user temp_updater ON temp_updater.user_id =  temp_carrier_bank_card.updater <!-- 扩展 -->
-     LEFT JOIN t_carrier_member temp_carrier_member on temp_carrier_member.carrier_member_id= temp_carrier_bank_card.member_id<!-- 扩展 -->
+     LEFT JOIN t_carrier_member temp_carrier_member on temp_carrier_member.carrier_member_id= temp_carrier_bank_card.carrier_member_id<!-- 扩展 -->
      LEFT JOIN t_user temp_auditor ON temp_auditor.user_id =  temp_carrier_bank_card.audit <!-- 扩展 -->
   </sql>
   
