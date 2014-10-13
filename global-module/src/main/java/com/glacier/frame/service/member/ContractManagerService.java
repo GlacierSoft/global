@@ -61,15 +61,15 @@ public class ContractManagerService {
      * @return Object    返回类型 
      * @throws
      */ 
-    public Object listAsGrid(JqPager padvertisementr) {
+    public Object listAsGrid(JqPager jqPager) {
         JqGridReturn returnResult = new JqGridReturn();
         MemberContractTypeExample memberContractTypExample = new MemberContractTypeExample();
-        if (null != padvertisementr.getPage() && null != padvertisementr.getRows()) {// 设置排序信息
-        	memberContractTypExample.setLimitStart((padvertisementr.getPage() - 1) * padvertisementr.getRows());
-        	memberContractTypExample.setLimitEnd(padvertisementr.getRows());
+        if (null != jqPager.getPage() && null != jqPager.getRows()) {// 设置排序信息
+        	memberContractTypExample.setLimitStart((jqPager.getPage() - 1) * jqPager.getRows());
+        	memberContractTypExample.setLimitEnd(jqPager.getRows());
         }
-        if (StringUtils.isNotBlank(padvertisementr.getSort()) && StringUtils.isNotBlank(padvertisementr.getOrder())) {// 设置排序信息
-        	memberContractTypExample.setOrderByClause(padvertisementr.getOrderBy("temp_member_contract_type_"));
+        if (StringUtils.isNotBlank(jqPager.getSort()) && StringUtils.isNotBlank(jqPager.getOrder())) {// 设置排序信息
+        	memberContractTypExample.setOrderByClause(jqPager.getOrderBy("temp_member_contract_type_"));
         }
         List<MemberContractType>  memberContractTypes = memberContractTypeMapper.selectByExample(memberContractTypExample); // 查询所有广告列表
         int total = memberContractTypeMapper.countByExample(memberContractTypExample); // 查询总页数

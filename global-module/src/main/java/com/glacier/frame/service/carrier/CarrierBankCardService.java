@@ -62,17 +62,17 @@ public class CarrierBankCardService {
      * @return Object    返回类型 
      * @throws
      */ 
-	public Object listAsGrid(JqPager padvertisementr, CarrierBankCardQueryDTO carrierBankCardQueryDTO, String q) {
+	public Object listAsGrid(JqPager jqPager, CarrierBankCardQueryDTO carrierBankCardQueryDTO, String q) {
         JqGridReturn returnResult = new JqGridReturn();
         CarrierBankCardExample carrierBankCardExample = new CarrierBankCardExample();
         Criteria queryCriteria = carrierBankCardExample.createCriteria();
         carrierBankCardQueryDTO.setQueryCondition(queryCriteria, q);
-        if (null != padvertisementr.getPage() && null != padvertisementr.getRows()) {// 设置排序信息
-        	carrierBankCardExample.setLimitStart((padvertisementr.getPage() - 1) * padvertisementr.getRows());
-        	carrierBankCardExample.setLimitEnd(padvertisementr.getRows());
+        if (null != jqPager.getPage() && null != jqPager.getRows()) {// 设置排序信息
+        	carrierBankCardExample.setLimitStart((jqPager.getPage() - 1) * jqPager.getRows());
+        	carrierBankCardExample.setLimitEnd(jqPager.getRows());
         }
-        if (StringUtils.isNotBlank(padvertisementr.getSort()) && StringUtils.isNotBlank(padvertisementr.getOrder())) {// 设置排序信息
-        	carrierBankCardExample.setOrderByClause(padvertisementr.getOrderBy("temp_carrier_bank_card_"));
+        if (StringUtils.isNotBlank(jqPager.getSort()) && StringUtils.isNotBlank(jqPager.getOrder())) {// 设置排序信息
+        	carrierBankCardExample.setOrderByClause(jqPager.getOrderBy("temp_carrier_bank_card_"));
         }
         List<CarrierBankCard>  carrierBankCards = carrierBankCardMapper.selectByExample(carrierBankCardExample); // 查询所有广告列表
         int total = carrierBankCardMapper.countByExample(carrierBankCardExample); // 查询总页数

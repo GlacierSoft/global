@@ -53,17 +53,17 @@ public class ContractService {
      * @return Object    返回类型 
      * @throws
      */ 
-	public Object listAsGrid(JqPager padvertisementr, ShipperMemberContractRecordQueryDTO contractRecordQueryDTO, String q) {
+	public Object listAsGrid(JqPager jqPager, ShipperMemberContractRecordQueryDTO contractRecordQueryDTO, String q) {
 	    JqGridReturn returnResult = new JqGridReturn();
 	    ShipperMemberContractRecordExample shipperMemberContractRecordExample = new ShipperMemberContractRecordExample();
 	    Criteria queryCriteria = shipperMemberContractRecordExample.createCriteria();
 	    contractRecordQueryDTO.setQueryCondition(queryCriteria, q);
-	    if (null != padvertisementr.getPage() && null != padvertisementr.getRows()) {// 设置排序信息
-	    	shipperMemberContractRecordExample.setLimitStart((padvertisementr.getPage() - 1) * padvertisementr.getRows());
-	    	shipperMemberContractRecordExample.setLimitEnd(padvertisementr.getRows());
+	    if (null != jqPager.getPage() && null != jqPager.getRows()) {// 设置排序信息
+	    	shipperMemberContractRecordExample.setLimitStart((jqPager.getPage() - 1) * jqPager.getRows());
+	    	shipperMemberContractRecordExample.setLimitEnd(jqPager.getRows());
 	    }
-	    if (StringUtils.isNotBlank(padvertisementr.getSort()) && StringUtils.isNotBlank(padvertisementr.getOrder())) {// 设置排序信息
-	    	shipperMemberContractRecordExample.setOrderByClause(padvertisementr.getOrderBy("temp_shipper_member_contract_record_"));
+	    if (StringUtils.isNotBlank(jqPager.getSort()) && StringUtils.isNotBlank(jqPager.getOrder())) {// 设置排序信息
+	    	shipperMemberContractRecordExample.setOrderByClause(jqPager.getOrderBy("temp_shipper_member_contract_record_"));
 	    }
 	    List<ShipperMemberContractRecord>  shipperMemberContractRecords = shipperMemberContractRecordMapper.selectByExample(shipperMemberContractRecordExample); // 查询所有广告列表
 	    int total = shipperMemberContractRecordMapper.countByExample(shipperMemberContractRecordExample); // 查询总页数
