@@ -29,11 +29,11 @@
 		<tr>
 			<td>运送类型:</td>
 	    	<td>
-	    	<input id="carrier_mgr_carInformation_form_transportType" class="easyui-validatebox spinner" style="width:268px;height: 20px;" type="text" name="transportType"  value="${carInfoformationData.transportType}" required="true" />
+	    	<input id="carrier_mgr_carInformation_form_transportType" style="width:268px;height: 20px;" type="text" name="transportType"  value="${carInfoformationData.transportType}" required="true" class="easyui-combobox"  data-options="valueField:'value',textField : 'label',panelHeight : 'auto',editable : false,required:true,data : fields.transportType"/>
 	    	</td>
 	    	<td>服务类型：</td>
 			<td>
-				<input id="carrier_mgr_carInformation_form_serviceType" style="width:268px;height: 20px;" name="serviceType" value="${carInfoformationData.serviceType}" class="easyui-validatebox spinner"  required="true"/>
+				<input id="carrier_mgr_carInformation_form_serviceType" style="width:268px;height: 20px;" name="serviceType" value="${carInfoformationData.serviceType}" required="true" class="easyui-combobox"  data-options="valueField:'value',textField : 'label',panelHeight : 'auto',editable : false,required:true,data : fields.serviceType"/>
 			</td>
 		</tr>
 		<tr>
@@ -53,7 +53,7 @@
 			</td>
 			<td>车辆运输状态：</td>
 			<td>
-				<input id="carrier_mgr_carInformation_form_carStatus" style="width:268px;height: 20px;" name="carStatus" value="${carInfoformationData.carStatus}" class="easyui-validatebox spinner"  required="true"/>
+				<input id="carrier_mgr_carInformation_form_carStatus" style="width:268px;height: 20px;" name="carStatus" value="${carInfoformationData.carStatus}" required="true" class="easyui-combobox"  data-options="valueField:'value',textField : 'label',panelHeight : 'auto',editable : false,required:true,data : fields.carStatus"/>
 			</td>
 		</tr>
 		<tr>
@@ -71,6 +71,78 @@
 	</table>
 </form>
 <script type="text/javascript">
+KindEditor.options.filterMode = false;
+KindEditor.ready(function(K) {
+	K.each({
+		'plug-align' : {
+			name : '对齐方式',
+			method : {
+				'justifyleft' : '左对齐',
+				'justifycenter' : '居中对齐',
+				'justifyright' : '右对齐'
+			}
+		},
+		'plug-order' : {
+			name : '编号',
+			method : {
+				'insertorderedlist' : '数字编号',
+				'insertunorderedlist' : '项目编号'
+			}
+		},
+		'plug-indent' : {
+			name : '缩进',
+			method : {
+				'indent' : '向右缩进',
+				'outdent' : '向左缩进'
+			}
+		}
+	},function( pluginName, pluginData ){
+		var lang = {};
+		lang[pluginName] = pluginData.name;
+		KindEditor.lang( lang );
+		KindEditor.plugin( pluginName, function(K) {
+			var self = this;
+			self.clickToolbar( pluginName, function() {
+				var menu = self.createMenu({
+						name : pluginName,
+						width : pluginData.width || 100
+					});
+				K.each( pluginData.method, function( i, v ){
+					menu.addItem({
+						title : v,
+						checked : false,
+						iconClass : pluginName+'-'+i,
+						click : function() {
+							self.exec(i).hideMenu();
+						}
+					});
+				})
+			});
+		});
+	});
+	K.create('#carrier_mgr_carInformation_form_remark', {
+		themeType : 'qq',
+		allowFileManager : true,
+		minWidth : "650px",
+		uploadJson : '../resources/js/kindeditor/jsp/upload_json.jsp',
+        fileManagerJson : '../resources/js/kindeditor/jsp/file_manager_json.jsp',
+        allowFileManager : true,
+        urlType:'domain',
+		afterBlur : function() {
+			this.sync();
+			K.ctrl(document, 13, function() {
+				K('form[name=myform]')[0].submit();
+			});
+			K.ctrl(this.edit.doc, 13, function() {
+				K('form[name=myform]')[0].submit();
+			});
+		},
+		items : [
+			'bold','italic','underline','fontname','fontsize','forecolor','hilitecolor','plug-align','plug-order','plug-indent','link','code','emoticons','flash','table','lineheight','fullscreen','image'
+		]
+	});
+});
+
 	//用于combogrid的客户信息绑定
 	$('#carrier_mgr_carInformation_form_carrierMemberId').combogrid({
 		panelWidth:450,
@@ -125,75 +197,5 @@
 	});
 </script>
 <script type="text/javascript">
-	KindEditor.options.filterMode = false;
-	KindEditor.ready(function(K) {
-		K.each({
-			'plug-align' : {
-				name : '对齐方式',
-				method : {
-					'justifyleft' : '左对齐',
-					'justifycenter' : '居中对齐',
-					'justifyright' : '右对齐'
-				}
-			},
-			'plug-order' : {
-				name : '编号',
-				method : {
-					'insertorderedlist' : '数字编号',
-					'insertunorderedlist' : '项目编号'
-				}
-			},
-			'plug-indent' : {
-				name : '缩进',
-				method : {
-					'indent' : '向右缩进',
-					'outdent' : '向左缩进'
-				}
-			}
-		},function( pluginName, pluginData ){
-			var lang = {};
-			lang[pluginName] = pluginData.name;
-			KindEditor.lang( lang );
-			KindEditor.plugin( pluginName, function(K) {
-				var self = this;
-				self.clickToolbar( pluginName, function() {
-					var menu = self.createMenu({
-							name : pluginName,
-							width : pluginData.width || 100
-						});
-					K.each( pluginData.method, function( i, v ){
-						menu.addItem({
-							title : v,
-							checked : false,
-							iconClass : pluginName+'-'+i,
-							click : function() {
-								self.exec(i).hideMenu();
-							}
-						});
-					})
-				});
-			});
-		});
-		K.create('#carrier_mgr_carInformation_form_remark', {
-			themeType : 'qq',
-			allowFileManager : true,
-			minWidth : "650px",
-			uploadJson : '../resources/js/kindeditor/jsp/upload_json.jsp',
-	        fileManagerJson : '../resources/js/kindeditor/jsp/file_manager_json.jsp',
-	        allowFileManager : true,
-	        urlType:'domain',
-			afterBlur : function() {
-				this.sync();
-				K.ctrl(document, 13, function() {
-					K('form[name=myform]')[0].submit();
-				});
-				K.ctrl(this.edit.doc, 13, function() {
-					K('form[name=myform]')[0].submit();
-				});
-			},
-			items : [
-				'bold','italic','underline','fontname','fontsize','forecolor','hilitecolor','plug-align','plug-order','plug-indent','link','code','emoticons','flash','table','lineheight','fullscreen','image'
-			]
-		});
-	});
+	
 </script>

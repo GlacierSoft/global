@@ -187,12 +187,12 @@
 						}
 					});
 
-	// 增加会员信用等级
+	// 增加承运商车辆信息
 	glacier.carrierCarInformation_mgr.carrierCarInformation_mgr.carrierCarInformation.addMemberGrade = function(){
 		glacier.carrierCarInformation_mgr.carrierCarInformation_mgr.carrierCarInformation.carrierCarInformationDialog('【车辆】- 增加车辆',false,'/do/carrierCarInformation/add.json');
 	};
 	
-	//编辑会员信用等级
+	//编辑承运商车辆信息
 	glacier.carrierCarInformation_mgr.carrierCarInformation_mgr.carrierCarInformation.editMemberGrade = function(){
 		glacier.carrierCarInformation_mgr.carrierCarInformation_mgr.carrierCarInformation.carrierCarInformationDialog('【车辆】- 编辑车辆',true,'/do/carrierCarInformation/edit.json');
 	};
