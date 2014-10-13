@@ -3,12 +3,12 @@
 <!-- 引入国际化标签 -->
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<form id="memberGrade_mgr_grade_form" method="post" style="padding:15px">
+<form id="carrierCarInformation_mgr_grade_form" method="post" style="padding:15px">
 	<table class="formtable" width="750">
 		<tr>
 			<td>车辆编号：</td>
 			<td>
-				<input type="hidden" id="carrier_mgr_carInformation_form_carId" name="gradeId" value="${carInfoformationData.carId}" />
+				<input type="hidden" id="carrier_mgr_carInformation_form_carId" name="carId" value="${carInfoformationData.carId}" />
 				<input id="carrier_mgr_carInformation_form_routeName" style="width:268px;height: 20px;" name="routeName" value="${carInfoformationData.routeName}" class="easyui-validatebox spinner"  required="true"/>
 			</td>
 			<td>车辆牌号:</td>
@@ -47,24 +47,28 @@
 			</td>
 		</tr>
 		<tr>
-			<td>车辆所在地：</td>
+			<td>车辆所在地dd：</td>
 			<td>
-				<input id="carrier_mgr_carInformation_form_carAttribution" style="width:268px;height: 20px;" name="carAttribution" value="${carInfoformationData.carAttribution}" class="easyui-validatebox spinner"  required="true"/>
+				<input id="carrier_mgr_carInformation_form_carAttribution55" style="width:268px;height: 20px;" name="carAttribution" value="${carInfoformationData.remark}" class="easyui-validatebox spinner"  required="true"/>
 			</td>
-			<td>车辆运输状态：</td>
+			<td>车辆年龄：</td>
 			<td>
-				<input id="carrier_mgr_carInformation_form_carStatus" style="width:268px;height: 20px;" name="carStatus" value="${carInfoformationData.carStatus}" required="true" class="easyui-combobox"  data-options="valueField:'value',textField : 'label',panelHeight : 'auto',editable : false,required:true,data : fields.carStatus"/>
+				<input id="carrier_mgr_carInformation_form_carAge" style="width:268px;height: 20px;" name="carAge" value="${carInfoformationData.carAge}" required="true" class="easyui-validatebox spinner"/>
 			</td>
 		</tr>
 		<tr>
 			<td>车辆状态：</td>
 			<td>
-			<input id="carrier_mgr_carInformation_form_transportStatus" name="transportStatus"  style="width:268px;" value="${carInfoformationData.transportStatus}" class="easyui-combobox"  data-options="valueField:'value',textField : 'label',panelHeight : 'auto',editable : false,required:true,data : fields.status"/>
+			<input id="carrier_mgr_carInformation_form_carStatus" name="carStatus"  style="width:268px;" value="${carInfoformationData.carStatus}" class="easyui-combobox"  data-options="valueField:'value',textField : 'label',panelHeight : 'auto',editable : false,required:true,data : fields.status"/>
+			</td>
+			<td>车辆运输状态：</td>
+			<td>
+				<input id="carrier_mgr_carInformation_form_transportStatus" style="width:268px;height: 20px;" name="transportStatus" value="${carInfoformationData.transportStatus}" required="true" class="easyui-combobox"  data-options="valueField:'value',textField : 'label',panelHeight : 'auto',editable : false,required:true,data : fields.transportStatus"/>
 			</td>
 		</tr>
 		<tr>
 			<td>车辆描述：</td>
-			<td colspan="3">
+			<td colspan="3">${carInfoformationData.remark}
 				<textarea id="carrier_mgr_carInformation_form_remark" name="remark" style="width:650px;" class="spinner formta">${carInfoformationData.remark}</textarea>
 			</td>
 		</tr>

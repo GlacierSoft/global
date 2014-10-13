@@ -49,19 +49,29 @@ public class CarrierCarInfomationController extends AbstractController{
     // 进入承运商车辆Detail信息页面
     @RequestMapping(value = "/intoDetail.htm")
     private Object intoCarInformationDetailPage(String gradeId) { 
-    	ModelAndView mav = new ModelAndView("carrier_mgr/carrierCarInformation_mgr/carrierCarInformation_detail");
+    	ModelAndView mav = new ModelAndView("carrier_mgr/carrierCarInformation_mgr/carrierCarInformatione_detail");
         if(StringUtils.isNotBlank(gradeId)){
-            mav.addObject("gradeData", carrierCarInformationService.getCarInformation(gradeId));
+            mav.addObject("carInfoformationData", carrierCarInformationService.getCarInformation(gradeId));
         }
 	    return mav;
     }
     
     // 进入承运商车辆Form表单页面
     @RequestMapping(value = "/intoForm.htm")
-    private Object intoGradeFormPnews(String gradeId) {
+    private Object intoGradeFormPnews(String carId) {
         ModelAndView mav = new ModelAndView("carrier_mgr/carrierCarInformation_mgr/carrierCarInformation_form");
-        if(StringUtils.isNotBlank(gradeId)){
-            mav.addObject("gradeData", carrierCarInformationService.getCarInformation(gradeId));
+        if(StringUtils.isNotBlank(carId)){
+            mav.addObject("gradeData", carrierCarInformationService.getCarInformation(carId));
+        }
+        return mav;
+    }
+    
+    // 进入会员充值设置audit表单页面
+    @RequestMapping(value = "/intoAudit.htm")
+    private Object intoAuditCarInformation(String carId) {
+        ModelAndView mav = new ModelAndView("carrier_mgr/carrierCarInformation_mgr/carrierCarInformation_audit");
+        if(StringUtils.isNotBlank(carId)){
+        	mav.addObject("gradeData", carrierCarInformationService.getCarInformation(carId));
         }
         return mav;
     }
@@ -69,11 +79,21 @@ public class CarrierCarInfomationController extends AbstractController{
     // 增加承运商车辆
     @RequestMapping(value = "/add.json", method = RequestMethod.POST)
     @ResponseBody
-    private Object addGrade(@Valid CarrierCarInformation memberGrade, BindingResult bindingResult) {
+    private Object addGrade(@Valid CarrierCarInformation carInformation, BindingResult bindingResult) {
         if (bindingResult.hasErrors()) {// 后台校验的错误信息
             return returnErrorBindingResult(bindingResult);
         }
-        return carrierCarInformationService.addNews(memberGrade);
+        return carrierCarInformationService.addNews(carInformation);
+    }
+    
+    // 审核车辆信息记录
+    @RequestMapping(value = "/audit.json", method = RequestMethod.POST)
+    @ResponseBody
+    private Object auditRechargeSet(@Valid CarrierCarInformation carInformation, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {// 后台校验的错误信息
+            return returnErrorBindingResult(bindingResult);
+        }
+        return carrierCarInformationService.auditCarInformation(carInformation);
     }
     
     //修改承运商车辆

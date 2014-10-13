@@ -108,7 +108,7 @@ public class CarrierCarInformationService {
             returnResult.setSuccess(false);
             return returnResult;
         }
-        
+        carInformation.setAuditState("authstr");
         carInformation.setCarId(RandomGUID.getRandomGUID());
         carInformation.setCreater(pricipalUser.getUserId());
         carInformation.setCreateTime(new Date());
@@ -120,6 +120,36 @@ public class CarrierCarInformationService {
             returnResult.setMsg("[" + carInformation.getPlateNumber() + "] 承运商车辆信息已保存");
         } else {
             returnResult.setMsg("发生未知错误，承运商车辆信息保存失败");
+        }
+        return returnResult;
+    }
+    
+    /**
+     * @Title: auditCarInformation 
+     * @Description: TODO(审核车辆信息记录) 
+     * @param @param carInformation
+     * @param @return    设定文件 
+     * @return Object    返回类型 
+     * @throws
+     */
+    @Transactional(readOnly = false)
+    public Object auditCarInformation(CarrierCarInformation carInformation) {
+        JqReturnJson returnResult = new JqReturnJson();// 构建返回结果，默认结果为false 
+        if(carInformation.getAuditState().equals("authstr")){
+        	 returnResult.setMsg("无效的操作，请选择是否通过！！"); 
+             return returnResult; 
+        } 
+        int count = 0;
+        Subject pricipalSubject = SecurityUtils.getSubject();
+        User pricipalUser = (User) pricipalSubject.getPrincipal();
+        carInformation.setAudit(pricipalUser.getUserId());
+        carInformation.setAuditTime(new Date());
+        count = carrierCarInformationMapper.updateByPrimaryKeySelective(carInformation);
+        if (count == 1) {
+            returnResult.setSuccess(true);
+            returnResult.setMsg("[" + carInformation.getPlateNumber() + "] 的车辆信息记录审核操作成功");
+        } else {
+            returnResult.setMsg("发生未知错误，车辆信息记录审核操作失败");
         }
         return returnResult;
     }
@@ -148,6 +178,7 @@ public class CarrierCarInformationService {
         }
         //根据ID获取承运商车辆信息
         CarrierCarInformation memberGradeTime = (CarrierCarInformation) getCarInformation(carInformation.getCarId());
+        carInformation.setAudit(memberGradeTime.getAudit());
         carInformation.setCreater(memberGradeTime.getCreater());
         carInformation.setCreateTime(memberGradeTime.getCreateTime());
         carInformation.setUpdater(pricipalUser.getUserId());

@@ -51,14 +51,17 @@
 							field : 'transportType',
 							title : '运输类型',
 							width : 120,
-							sortable : true
+							sortable : true,
+							formatter : function(value, row, index) {
+								return renderGridValue(value, fields.transportType);
+							}
 						},{
 							field : 'serviceType',
 							title : '服务类型',
 							width : 120,
 							sortable : true,
 							formatter : function(value, row, index) {
-								return renderGridValue(value, fields.status);
+								return renderGridValue(value, fields.serviceType);
 							}
 						},{
 							field : 'plateNumber',
@@ -71,10 +74,13 @@
 							width : 120,
 							sortable : true
 						},{
-							field : 'transportType',
-							title : '运输类型',
+							field : 'transportStatus',
+							title : '车辆运输状态',
 							width : 120,
-							sortable : true
+							sortable : true,
+							formatter : function(value, row, index) {
+								return renderGridValue(value, fields.transportStatus);
+							}
 						},{
 							field : 'carType',
 							title : '车辆类型',
@@ -94,12 +100,18 @@
 							field : 'carStatus',
 							title : '车辆状态',
 							width : 120,
-							sortable : true
+							sortable : true,
+							formatter : function(value, row, index) {
+								return renderGridValue(value, fields.status);
+							}
 						},{
 							field : 'auditState',
 							title : '审核状态',
 							width : 120,
-							sortable : true
+							sortable : true,
+							formatter : function(value, row, index) {
+								return renderGridValue(value, fields.auditState);
+							}
 						},{
 							field : 'audit',
 							title : '审核人',
@@ -177,9 +189,9 @@
 						onDblClickRow : function(rowIndex, rowData){
                         $.easyui.showDialog({
 								title : '【' + rowData.gradeName + '】车辆详细信息',
-								href : ctx+ '/do/carrierCarInformation/intoDetail.htm?gradeId='+ rowData.gradeId,//从controller请求jsp页面进行渲染
+								href : ctx+ '/do/carrierCarInformation/intoDetail.htm?gradeId='+ rowData.carId,//从controller请求jsp页面进行渲染
 								width : 830,
-								height : 370,
+								height : 590,
 								resizable : false,
 								enableApplyButton : false,
 								enableSaveButton : false
@@ -230,7 +242,8 @@
 				if(editModel){//编辑模式
 					var row = glacier.carrierCarInformation_mgr.carrierCarInformation_mgr.carrierCarInformation.carrierCarInformationDataGrid.datagrid("getSelected");
 					if(row){
-						$('#carrierCarInformation_mgr_grade_form').form('load', row );
+						$('#carrierCarInformation_mgr_grade_form').form('load', row);
+						alert(row.remark);
 					}else{
 						$.messager.show({//提示用户
 							title : '提示',
