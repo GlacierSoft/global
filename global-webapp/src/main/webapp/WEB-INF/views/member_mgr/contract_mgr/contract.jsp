@@ -3,7 +3,15 @@
 <!-- 引入自定义权限标签 -->
 <%@ taglib prefix="glacierui"
 	uri="http://com.glacier.permissions.com.cn/tag/easyui"%>
-
+<%    
+String path = request.getContextPath();    
+String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";    
+%>
+<script language="javascript" src="<%=basePath %>resources/js/lodop/LodopFuncs.js"></script>
+<object  id="LODOP_OB" classid="clsid:2105C259-1E0C-4534-8141-A753534CB4CA" width=0 height=0> 
+       <embed id="LODOP_EM" type="application/x-print-lodop" width=0 height=0></embed>
+</object>
+	
 <script type="text/javascript">
 	$.util.namespace('glacier.member_mgr.contract_mgr.contract');//自定义命名空间，相当于一个唯一变量(推荐按照webapp目录结构命名可避免重复)
 
@@ -164,8 +172,18 @@
 	  };
 	  
 	  glacier.member_mgr.contract_mgr.contract.printContractorManager=function(){
-		  alert("我是打印方法!!!!");
+		  CheckIsInstall();
+			
 	  }
+	  
+	  function CheckIsInstall() {	 
+			try{ 
+			     var LODOP=getLodop(document.getElementById('LODOP_OB'),document.getElementById('LODOP_EM')); 
+				if ((LODOP!=null)&&(typeof(LODOP.VERSION)!="undefined")) alert("本机已成功安装过Lodop控件!\n  版本号:"+LODOP.VERSION); 
+			 }catch(err){ 
+				//alert("Error:本机未安装或需要升级!"); 
+	 		 } 
+		}; 
 	  
 	
 	  //状态下拉项
