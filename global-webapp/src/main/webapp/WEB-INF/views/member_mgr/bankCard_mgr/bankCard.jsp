@@ -197,13 +197,13 @@
 			<table>
 				<tr>
 					<td>账户名称：</td>
-					<td><input name="MemberName" style="width: 80px;"
+					<td><input name="memberDisplay" style="width: 80px;"
 						class="spinner" /></td>
 					<td>银行卡名称：</td>
 					<td><input name="cardName" style="width: 80px;"
 						class="spinner" /></td>
 					<td>银行卡号：</td>
-					<td><input id="cardNumber" name="type"
+					<td><input id="cardNumber" name="cardNumber"
 						style="width: 80px;" class="spinner" /></td>
 					<td>录入时间：</td>
 					<td><input name="bankCardStartTime" class="easyui-datetimebox"
@@ -211,7 +211,7 @@
 						class="easyui-datetimebox" style="width: 100px;" /></td>
 					<td><a href="javascript:void(0);" class="easyui-linkbutton"
 						data-options="iconCls:'icon-standard-zoom-in',plain:true"
-						onclick="glacier.member_mgr.bankCard_mgr.bankCard.bankCardDataGrid.datagrid('load',glacier.serializeObject($('#bankCardSearchForm')));">查询</a>
+						onclick="glacier.member_mgr.bankCard_mgr.bankCard.bankCardDataGrid.datagrid('load',glacier.serializeObject($('#bankCodeSearchForm')));">查询</a>
 						<a href="javascript:void(0);" class="easyui-linkbutton"
 						data-options="iconCls:'icon-standard-zoom-out',plain:true"
 						onclick="$('#bankCardSearchForm input').val('');glacier.member_mgr.bankCard_mgr.bankCard.bankCardDataGrid.datagrid('load',{});">重置条件</a>

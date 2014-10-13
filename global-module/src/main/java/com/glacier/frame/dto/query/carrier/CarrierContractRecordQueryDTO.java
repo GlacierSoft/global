@@ -2,21 +2,22 @@ package com.glacier.frame.dto.query.carrier;
 
 import java.util.Date;
 
+import org.apache.commons.lang3.builder.ReflectionToStringBuilder;
+
 import com.glacier.frame.entity.carrier.CarrierContractRecord;
 import com.glacier.frame.entity.carrier.CarrierContractRecordExample.Criteria;
 
 
 public class CarrierContractRecordQueryDTO extends CarrierContractRecord  {
-	 
-	   private Date contractTypeStartTime;
+	  private Date contractTypeStartTime;
 	   
 	   private Date contractTypeEndTime;
 	   
 	   private  Date contractRemoveStartTime;
 	   
-	   private  Date contractTypeRemoveEndEndTime;
+	   private  Date contractTypeRemoveEndTime;
 
-	public Date getContractTypeStartTime() {
+   public Date getContractTypeStartTime() {
 		return contractTypeStartTime;
 	}
 
@@ -40,19 +41,22 @@ public class CarrierContractRecordQueryDTO extends CarrierContractRecord  {
 		this.contractRemoveStartTime = contractRemoveStartTime;
 	}
 
-	public Date getContractTypeRemoveEndEndTime() {
-		return contractTypeRemoveEndEndTime;
+	public Date getContractTypeRemoveEndTime() {
+		return contractTypeRemoveEndTime;
 	}
 
-	public void setContractTypeRemoveEndEndTime(Date contractTypeRemoveEndEndTime) {
-		this.contractTypeRemoveEndEndTime = contractTypeRemoveEndEndTime;
+	public void setContractTypeRemoveEndTime(Date contractTypeRemoveEndTime) {
+		this.contractTypeRemoveEndTime = contractTypeRemoveEndTime;
 	}
-	   
-	
+
 	public void setQueryCondition(Criteria queryCriteria, String q){
 		
+		if(null!=this.getCarrierDisplay()){
+			queryCriteria.andCarrierRealNamelike("%" + this.getCarrierDisplay() + "%");
+		}
+		
 		if(null != this.getStatus()){//状态Enum查询
-	        queryCriteria.andStatusEqualTo(this.getStatus().toString());
+			queryCriteria.andStatusEqualTo(this.getStatus().toString());
 	   	}
 		
 		if(null!=contractTypeStartTime&&null!=contractTypeEndTime){//创建时间段查询
@@ -66,16 +70,22 @@ public class CarrierContractRecordQueryDTO extends CarrierContractRecord  {
 	          }
 	     }
 	     
-	     if(null!=contractRemoveStartTime&&null!=contractTypeRemoveEndEndTime){//创建时间段查询
-	    	 queryCriteria.andDisableTimeBetween(contractRemoveStartTime, contractTypeRemoveEndEndTime);
+	     if(null!=contractRemoveStartTime&&null!=contractTypeRemoveEndTime){//创建时间段查询
+	    	 queryCriteria.andDisableTimeBetween(contractRemoveStartTime, contractTypeRemoveEndTime);
 	      }else{
 	    	 if(null != contractRemoveStartTime){
 	              queryCriteria.andDisableTimeGreaterThanOrEqualTo(contractRemoveStartTime);
 	          }
-	          if(null != contractRemoveStartTime){
-	              queryCriteria.andDisableTimeLessThanOrEqualTo(contractRemoveStartTime);
+	          if(null != contractTypeRemoveEndTime){
+	              queryCriteria.andDisableTimeLessThanOrEqualTo(contractTypeRemoveEndTime);
 	          }
 	     }
+	    
 	}
+	
+      @Override
+	   public String toString() {
+	       return ReflectionToStringBuilder.toString(this);
+	   } 
 	   
 }

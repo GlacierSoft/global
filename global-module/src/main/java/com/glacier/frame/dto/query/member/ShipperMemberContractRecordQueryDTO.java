@@ -18,7 +18,7 @@ public class ShipperMemberContractRecordQueryDTO extends ShipperMemberContractRe
 	   
 	   private  Date contractRemoveStartTime;
 	   
-	   private  Date contractTypeRemoveEndEndTime;
+	   private  Date contractTypeRemoveEndTime;
 
     public Date getContractTypeStartTime() {
 		return contractTypeStartTime;
@@ -44,15 +44,23 @@ public class ShipperMemberContractRecordQueryDTO extends ShipperMemberContractRe
 		this.contractRemoveStartTime = contractRemoveStartTime;
 	}
 
-	public Date getContractTypeRemoveEndEndTime() {
-		return contractTypeRemoveEndEndTime;
+   public Date getContractTypeRemoveEndTime() {
+		return contractTypeRemoveEndTime;
 	}
 
-	public void setContractTypeRemoveEndEndTime(Date contractTypeRemoveEndEndTime) {
-		this.contractTypeRemoveEndEndTime = contractTypeRemoveEndEndTime;
+	public void setContractTypeRemoveEndTime(Date contractTypeRemoveEndTime) {
+		this.contractTypeRemoveEndTime = contractTypeRemoveEndTime;
 	}
-	
+
 	public void setQueryCondition(Criteria queryCriteria, String q){
+		
+		if(null!=this.getMemberDisplay()){
+			queryCriteria.andMemberDispaly("%"+this.getMemberDisplay()+"%");
+		}
+		
+		if(null != this.getStatus()){//状态Enum查询
+			queryCriteria.andStatusEqualTo(this.getStatus().toString());
+	   	}
 		
 		if(null!=contractTypeStartTime&&null!=contractTypeEndTime){//创建时间段查询
 	    	 queryCriteria.andOperationTimeBetween(contractTypeStartTime, contractTypeEndTime);
@@ -65,14 +73,14 @@ public class ShipperMemberContractRecordQueryDTO extends ShipperMemberContractRe
 	          }
 	     }
 	     
-	     if(null!=contractRemoveStartTime&&null!=contractTypeRemoveEndEndTime){//创建时间段查询
-	    	 queryCriteria.andCloseTimeBetween(contractRemoveStartTime, contractTypeRemoveEndEndTime);
+	     if(null!=contractRemoveStartTime&&null!=contractTypeRemoveEndTime){//创建时间段查询
+	    	 queryCriteria.andCloseTimeBetween(contractRemoveStartTime, contractTypeRemoveEndTime);
 	      }else{
 	    	 if(null != contractRemoveStartTime){
 	              queryCriteria.andCloseTimeGreaterThanOrEqualTo(contractRemoveStartTime);
 	          }
-	          if(null != contractRemoveStartTime){
-	              queryCriteria.andCloseTimeLessThanOrEqualTo(contractRemoveStartTime);
+	          if(null != contractTypeRemoveEndTime){
+	              queryCriteria.andCloseTimeLessThanOrEqualTo(contractTypeRemoveEndTime);
 	          }
 	     }
 	    

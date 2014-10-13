@@ -197,13 +197,13 @@
 			<table>
 				<tr>
 					<td>账户名称：</td>
-					<td><input name="carrierDisplay" style="width: 80px;"
+					<td><input name="memberDisplay" style="width: 80px;"
 						class="spinner" /></td>
 					<td>银行卡名称：</td>
 					<td><input name="cardName" style="width: 80px;"
 						class="spinner" /></td>
 					<td>银行卡号：</td>
-					<td><input id="cardNumber" name="type"
+					<td><input id="cardNumber" name="cardNumber"
 						style="width: 80px;" class="spinner" /></td>
 					<td>录入时间：</td>
 					<td><input name="bankCardStartTime" class="easyui-datetimebox"

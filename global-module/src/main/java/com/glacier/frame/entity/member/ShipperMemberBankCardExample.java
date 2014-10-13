@@ -104,6 +104,12 @@ public class ShipperMemberBankCardExample {
             return criteria;
         }
 
+        public Criteria andMemberDisplay(String value) {
+            addCriterion("temp_shipper_member.member_name like", value, "memberDisplay");
+            return (Criteria) this;
+        }
+        
+        
         protected void addCriterion(String condition) {
             if (condition == null) {
                 throw new RuntimeException("Value for condition cannot be null");

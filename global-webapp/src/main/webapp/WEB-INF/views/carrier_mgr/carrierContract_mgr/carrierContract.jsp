@@ -189,7 +189,7 @@
 			<table>
 				<tr>
 					<td>承运商名称：</td>
-					<td><input name="memberDisplay" style="width: 80px;"
+					<td><input name="carrierDisplay" style="width: 80px;"
 						class="spinner" /></td>
 					<td>合同状态：</td>
 					<td>
@@ -201,11 +201,11 @@
 						class="easyui-datetimebox" style="width: 100px;" /></td>
 					<td>失效时间：</td>
 					<td><input name="contractRemoveStartTime" class="easyui-datetimebox"
-						style="width: 100px;" /> - <input name="contractTypeRemoveEndEndTime"
+						style="width: 100px;" /> - <input name="contractTypeRemoveEndTime"
 						class="easyui-datetimebox" style="width: 100px;" /></td>
 					<td><a href="javascript:void(0);" class="easyui-linkbutton"
 						data-options="iconCls:'icon-standard-zoom-in',plain:true"
-						onclick="glacier.carrier_mgr.carrierContract_mgr.carrierContract.carrierContractDataGrid.datagrid('load',glacier.serializeObject($('#contractSearchForm')));">查询</a>
+						onclick="glacier.carrier_mgr.carrierContract_mgr.carrierContract.carrierContractDataGrid.datagrid('load',glacier.serializeObject($('#carrierContractSearchForm')));">查询</a>
 						<a href="javascript:void(0);" class="easyui-linkbutton"
 						data-options="iconCls:'icon-standard-zoom-out',plain:true"
 						onclick="$('#carrierContractSearchForm input').val('');glacier.carrier_mgr.carrierContract_mgr.carrierContract.carrierContractDataGrid.datagrid('load',{});">重置条件</a>
