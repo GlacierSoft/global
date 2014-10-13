@@ -20,7 +20,7 @@
 		<tr>
 			<td>合同有效期限：</td>
 			<td>
-			  <input id="contractManager_mgr_contractManager_form_timeLimit" name="timeLimit" value="${contractManagerData.timeLimit}"  class="easyui-numberbox spinner"  style="height:18px;width:300px"  />
+			  <input maxlength="3" name="timeLimit" class="easyui-numberspinner spinner" value="${contractManagerData.timeLimit}" data-options="min:0,max:9999,required:true,missingMessage:'请输入有效期(天数),只能输入整数'" style="width: 300px;height:18px;"/>
 			</td>
 		</tr>
 		<tr>
