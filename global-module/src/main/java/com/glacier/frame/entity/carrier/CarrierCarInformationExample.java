@@ -103,13 +103,13 @@ public class CarrierCarInformationExample {
         public List<Criterion> getCriteria() {
             return criteria;
         }
-        
+
         //扩展查询条件
         public Criteria andCarrierMemberRealNamelike(String value) {
             addCriterion("temp_carrier_member.member_name like", value, "getCarrierMemberRealName");
             return (Criteria) this;
         }
-
+        
         protected void addCriterion(String condition) {
             if (condition == null) {
                 throw new RuntimeException("Value for condition cannot be null");
@@ -1008,76 +1008,6 @@ public class CarrierCarInformationExample {
 
         public Criteria andTransportStatusNotBetween(String value1, String value2) {
             addCriterion("temp_carrier_car_information.transport_status not between", value1, value2, "transportStatus");
-            return (Criteria) this;
-        }
-
-        public Criteria andCarImgIsNull() {
-            addCriterion("temp_carrier_car_information.car_img is null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCarImgIsNotNull() {
-            addCriterion("temp_carrier_car_information.car_img is not null");
-            return (Criteria) this;
-        }
-
-        public Criteria andCarImgEqualTo(String value) {
-            addCriterion("temp_carrier_car_information.car_img =", value, "carImg");
-            return (Criteria) this;
-        }
-
-        public Criteria andCarImgNotEqualTo(String value) {
-            addCriterion("temp_carrier_car_information.car_img <>", value, "carImg");
-            return (Criteria) this;
-        }
-
-        public Criteria andCarImgGreaterThan(String value) {
-            addCriterion("temp_carrier_car_information.car_img >", value, "carImg");
-            return (Criteria) this;
-        }
-
-        public Criteria andCarImgGreaterThanOrEqualTo(String value) {
-            addCriterion("temp_carrier_car_information.car_img >=", value, "carImg");
-            return (Criteria) this;
-        }
-
-        public Criteria andCarImgLessThan(String value) {
-            addCriterion("temp_carrier_car_information.car_img <", value, "carImg");
-            return (Criteria) this;
-        }
-
-        public Criteria andCarImgLessThanOrEqualTo(String value) {
-            addCriterion("temp_carrier_car_information.car_img <=", value, "carImg");
-            return (Criteria) this;
-        }
-
-        public Criteria andCarImgLike(String value) {
-            addCriterion("temp_carrier_car_information.car_img like", value, "carImg");
-            return (Criteria) this;
-        }
-
-        public Criteria andCarImgNotLike(String value) {
-            addCriterion("temp_carrier_car_information.car_img not like", value, "carImg");
-            return (Criteria) this;
-        }
-
-        public Criteria andCarImgIn(List<String> values) {
-            addCriterion("temp_carrier_car_information.car_img in", values, "carImg");
-            return (Criteria) this;
-        }
-
-        public Criteria andCarImgNotIn(List<String> values) {
-            addCriterion("temp_carrier_car_information.car_img not in", values, "carImg");
-            return (Criteria) this;
-        }
-
-        public Criteria andCarImgBetween(String value1, String value2) {
-            addCriterion("temp_carrier_car_information.car_img between", value1, value2, "carImg");
-            return (Criteria) this;
-        }
-
-        public Criteria andCarImgNotBetween(String value1, String value2) {
-            addCriterion("temp_carrier_car_information.car_img not between", value1, value2, "carImg");
             return (Criteria) this;
         }
 

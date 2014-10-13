@@ -15,7 +15,6 @@
     <result column="temp_carrier_car_information_car_attribution" property="carAttribution" jdbcType="VARCHAR" />
     <result column="temp_carrier_car_information_car_status" property="carStatus" jdbcType="CHAR" />
     <result column="temp_carrier_car_information_transport_status" property="transportStatus" jdbcType="CHAR" />
-    <result column="temp_carrier_car_information_car_img" property="carImg" jdbcType="VARCHAR" />
     <result column="temp_carrier_car_information_audit_state" property="auditState" jdbcType="CHAR" />
     <result column="temp_carrier_car_information_audit" property="audit" jdbcType="VARCHAR" />
     <result column="temp_carrier_car_information_audit_opinion" property="auditOpinion" jdbcType="VARCHAR" />
@@ -25,6 +24,9 @@
     <result column="temp_carrier_car_information_create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="temp_carrier_car_information_updater" property="updater" jdbcType="VARCHAR" />
     <result column="temp_carrier_car_information_update_time" property="updateTime" jdbcType="TIMESTAMP" />
+  </resultMap>
+  <resultMap id="ResultMapWithBLOBs" type="com.glacier.frame.entity.carrier.CarrierCarInformation" extends="BaseResultMap" >
+    <result column="temp_carrier_car_information_car_img" property="carImg" jdbcType="LONGVARCHAR" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -95,13 +97,35 @@
     temp_carrier_car_information.car_load as temp_carrier_car_information_car_load, temp_carrier_car_information.car_attribution as temp_carrier_car_information_car_attribution, 
     temp_carrier_car_information.car_status as temp_carrier_car_information_car_status, 
     temp_carrier_car_information.transport_status as temp_carrier_car_information_transport_status, 
-    temp_carrier_car_information.car_img as temp_carrier_car_information_car_img, temp_carrier_car_information.audit_state as temp_carrier_car_information_audit_state, 
+    temp_carrier_car_information.audit_state as temp_carrier_car_information_audit_state, 
     temp_carrier_car_information.audit as temp_carrier_car_information_audit, temp_carrier_car_information.audit_opinion as temp_carrier_car_information_audit_opinion, 
     temp_carrier_car_information.audit_time as temp_carrier_car_information_audit_time, 
     temp_carrier_car_information.remark as temp_carrier_car_information_remark, temp_carrier_car_information.creater as temp_carrier_car_information_creater, 
     temp_carrier_car_information.create_time as temp_carrier_car_information_create_time, 
     temp_carrier_car_information.updater as temp_carrier_car_information_updater, temp_carrier_car_information.update_time as temp_carrier_car_information_update_time
   </sql>
+  <sql id="Blob_Column_List" >
+    temp_carrier_car_information.car_img as temp_carrier_car_information_car_img
+  </sql>
+  <select id="selectByExampleWithBLOBs" resultMap="ResultMapWithBLOBs" parameterType="com.glacier.frame.entity.carrier.CarrierCarInformationExample" >
+    select
+    <if test="distinct" >
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
+    from t_carrier_car_information temp_carrier_car_information
+    <if test="_parameter != null" >
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null" >
+      order by ${orderByClause}
+    </if>
+    <if test="limitStart >= 0" >
+      limit ${limitStart} , ${limitEnd}
+    </if>
+  </select>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.glacier.frame.entity.carrier.CarrierCarInformationExample" >
     select
     <if test="distinct" >
@@ -119,9 +143,11 @@
       limit ${limitStart} , ${limitEnd}
     </if>
   </select>
-  <select id="selectByPrimaryKey" resultMap="BaseResultMap" parameterType="java.lang.String" >
+  <select id="selectByPrimaryKey" resultMap="ResultMapWithBLOBs" parameterType="java.lang.String" >
     select 
     <include refid="Base_Column_List" />
+    ,
+    <include refid="Blob_Column_List" />
     from t_carrier_car_information temp_carrier_car_information
     where temp_carrier_car_information.car_id = #{carId,jdbcType=VARCHAR}
   </select>
@@ -140,18 +166,18 @@
       transport_type, service_type, plate_number, 
       car_age, car_type, car_length, 
       car_load, car_attribution, car_status, 
-      transport_status, car_img, audit_state, 
-      audit, audit_opinion, audit_time, 
-      remark, creater, create_time, 
-      updater, update_time)
+      transport_status, audit_state, audit, 
+      audit_opinion, audit_time, remark, 
+      creater, create_time, updater, 
+      update_time, car_img)
     values (#{carId,jdbcType=VARCHAR}, #{carrierMemberId,jdbcType=VARCHAR}, #{routeName,jdbcType=INTEGER}, 
       #{transportType,jdbcType=CHAR}, #{serviceType,jdbcType=CHAR}, #{plateNumber,jdbcType=VARCHAR}, 
       #{carAge,jdbcType=INTEGER}, #{carType,jdbcType=VARCHAR}, #{carLength,jdbcType=INTEGER}, 
       #{carLoad,jdbcType=VARCHAR}, #{carAttribution,jdbcType=VARCHAR}, #{carStatus,jdbcType=CHAR}, 
-      #{transportStatus,jdbcType=CHAR}, #{carImg,jdbcType=VARCHAR}, #{auditState,jdbcType=CHAR}, 
-      #{audit,jdbcType=VARCHAR}, #{auditOpinion,jdbcType=VARCHAR}, #{auditTime,jdbcType=TIMESTAMP}, 
-      #{remark,jdbcType=VARCHAR}, #{creater,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, 
-      #{updater,jdbcType=VARCHAR}, #{updateTime,jdbcType=TIMESTAMP})
+      #{transportStatus,jdbcType=CHAR}, #{auditState,jdbcType=CHAR}, #{audit,jdbcType=VARCHAR}, 
+      #{auditOpinion,jdbcType=VARCHAR}, #{auditTime,jdbcType=TIMESTAMP}, #{remark,jdbcType=VARCHAR}, 
+      #{creater,jdbcType=VARCHAR}, #{createTime,jdbcType=TIMESTAMP}, #{updater,jdbcType=VARCHAR}, 
+      #{updateTime,jdbcType=TIMESTAMP}, #{carImg,jdbcType=LONGVARCHAR})
   </insert>
   <insert id="insertSelective" parameterType="com.glacier.frame.entity.carrier.CarrierCarInformation" >
     insert into t_carrier_car_information
@@ -195,9 +221,6 @@
       <if test="transportStatus != null" >
         transport_status,
       </if>
-      <if test="carImg != null" >
-        car_img,
-      </if>
       <if test="auditState != null" >
         audit_state,
       </if>
@@ -224,6 +247,9 @@
       </if>
       <if test="updateTime != null" >
         update_time,
+      </if>
+      <if test="carImg != null" >
+        car_img,
       </if>
     </trim>
     <trim prefix="values (" suffix=")" suffixOverrides="," >
@@ -266,9 +292,6 @@
       <if test="transportStatus != null" >
         #{transportStatus,jdbcType=CHAR},
       </if>
-      <if test="carImg != null" >
-        #{carImg,jdbcType=VARCHAR},
-      </if>
       <if test="auditState != null" >
         #{auditState,jdbcType=CHAR},
       </if>
@@ -295,6 +318,9 @@
       </if>
       <if test="updateTime != null" >
         #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="carImg != null" >
+        #{carImg,jdbcType=LONGVARCHAR},
       </if>
     </trim>
   </insert>
@@ -346,9 +372,6 @@
       <if test="record.transportStatus != null" >
         temp_carrier_car_information.transport_status = #{record.transportStatus,jdbcType=CHAR},
       </if>
-      <if test="record.carImg != null" >
-        temp_carrier_car_information.car_img = #{record.carImg,jdbcType=VARCHAR},
-      </if>
       <if test="record.auditState != null" >
         temp_carrier_car_information.audit_state = #{record.auditState,jdbcType=CHAR},
       </if>
@@ -376,7 +399,39 @@
       <if test="record.updateTime != null" >
         temp_carrier_car_information.update_time = #{record.updateTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="record.carImg != null" >
+        temp_carrier_car_information.car_img = #{record.carImg,jdbcType=LONGVARCHAR},
+      </if>
     </set>
+    <if test="_parameter != null" >
+      <include refid="Update_By_Example_Where_Clause" />
+    </if>
+  </update>
+  <update id="updateByExampleWithBLOBs" parameterType="map" >
+    update t_carrier_car_information temp_carrier_car_information
+    set temp_carrier_car_information.car_id = #{record.carId,jdbcType=VARCHAR},
+      temp_carrier_car_information.carrier_member_id = #{record.carrierMemberId,jdbcType=VARCHAR},
+      temp_carrier_car_information.route_name = #{record.routeName,jdbcType=INTEGER},
+      temp_carrier_car_information.transport_type = #{record.transportType,jdbcType=CHAR},
+      temp_carrier_car_information.service_type = #{record.serviceType,jdbcType=CHAR},
+      temp_carrier_car_information.plate_number = #{record.plateNumber,jdbcType=VARCHAR},
+      temp_carrier_car_information.car_age = #{record.carAge,jdbcType=INTEGER},
+      temp_carrier_car_information.car_type = #{record.carType,jdbcType=VARCHAR},
+      temp_carrier_car_information.car_length = #{record.carLength,jdbcType=INTEGER},
+      temp_carrier_car_information.car_load = #{record.carLoad,jdbcType=VARCHAR},
+      temp_carrier_car_information.car_attribution = #{record.carAttribution,jdbcType=VARCHAR},
+      temp_carrier_car_information.car_status = #{record.carStatus,jdbcType=CHAR},
+      temp_carrier_car_information.transport_status = #{record.transportStatus,jdbcType=CHAR},
+      temp_carrier_car_information.audit_state = #{record.auditState,jdbcType=CHAR},
+      temp_carrier_car_information.audit = #{record.audit,jdbcType=VARCHAR},
+      temp_carrier_car_information.audit_opinion = #{record.auditOpinion,jdbcType=VARCHAR},
+      temp_carrier_car_information.audit_time = #{record.auditTime,jdbcType=TIMESTAMP},
+      temp_carrier_car_information.remark = #{record.remark,jdbcType=VARCHAR},
+      temp_carrier_car_information.creater = #{record.creater,jdbcType=VARCHAR},
+      temp_carrier_car_information.create_time = #{record.createTime,jdbcType=TIMESTAMP},
+      temp_carrier_car_information.updater = #{record.updater,jdbcType=VARCHAR},
+      temp_carrier_car_information.update_time = #{record.updateTime,jdbcType=TIMESTAMP},
+      temp_carrier_car_information.car_img = #{record.carImg,jdbcType=LONGVARCHAR}
     <if test="_parameter != null" >
       <include refid="Update_By_Example_Where_Clause" />
     </if>
@@ -396,7 +451,6 @@
       temp_carrier_car_information.car_attribution = #{record.carAttribution,jdbcType=VARCHAR},
       temp_carrier_car_information.car_status = #{record.carStatus,jdbcType=CHAR},
       temp_carrier_car_information.transport_status = #{record.transportStatus,jdbcType=CHAR},
-      temp_carrier_car_information.car_img = #{record.carImg,jdbcType=VARCHAR},
       temp_carrier_car_information.audit_state = #{record.auditState,jdbcType=CHAR},
       temp_carrier_car_information.audit = #{record.audit,jdbcType=VARCHAR},
       temp_carrier_car_information.audit_opinion = #{record.auditOpinion,jdbcType=VARCHAR},
@@ -449,9 +503,6 @@
       <if test="transportStatus != null" >
         transport_status = #{transportStatus,jdbcType=CHAR},
       </if>
-      <if test="carImg != null" >
-        car_img = #{carImg,jdbcType=VARCHAR},
-      </if>
       <if test="auditState != null" >
         audit_state = #{auditState,jdbcType=CHAR},
       </if>
@@ -479,7 +530,36 @@
       <if test="updateTime != null" >
         update_time = #{updateTime,jdbcType=TIMESTAMP},
       </if>
+      <if test="carImg != null" >
+        car_img = #{carImg,jdbcType=LONGVARCHAR},
+      </if>
     </set>
+    where car_id = #{carId,jdbcType=VARCHAR}
+  </update>
+  <update id="updateByPrimaryKeyWithBLOBs" parameterType="com.glacier.frame.entity.carrier.CarrierCarInformation" >
+    update t_carrier_car_information
+    set carrier_member_id = #{carrierMemberId,jdbcType=VARCHAR},
+      route_name = #{routeName,jdbcType=INTEGER},
+      transport_type = #{transportType,jdbcType=CHAR},
+      service_type = #{serviceType,jdbcType=CHAR},
+      plate_number = #{plateNumber,jdbcType=VARCHAR},
+      car_age = #{carAge,jdbcType=INTEGER},
+      car_type = #{carType,jdbcType=VARCHAR},
+      car_length = #{carLength,jdbcType=INTEGER},
+      car_load = #{carLoad,jdbcType=VARCHAR},
+      car_attribution = #{carAttribution,jdbcType=VARCHAR},
+      car_status = #{carStatus,jdbcType=CHAR},
+      transport_status = #{transportStatus,jdbcType=CHAR},
+      audit_state = #{auditState,jdbcType=CHAR},
+      audit = #{audit,jdbcType=VARCHAR},
+      audit_opinion = #{auditOpinion,jdbcType=VARCHAR},
+      audit_time = #{auditTime,jdbcType=TIMESTAMP},
+      remark = #{remark,jdbcType=VARCHAR},
+      creater = #{creater,jdbcType=VARCHAR},
+      create_time = #{createTime,jdbcType=TIMESTAMP},
+      updater = #{updater,jdbcType=VARCHAR},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      car_img = #{carImg,jdbcType=LONGVARCHAR}
     where car_id = #{carId,jdbcType=VARCHAR}
   </update>
   <update id="updateByPrimaryKey" parameterType="com.glacier.frame.entity.carrier.CarrierCarInformation" >
@@ -496,7 +576,6 @@
       car_attribution = #{carAttribution,jdbcType=VARCHAR},
       car_status = #{carStatus,jdbcType=CHAR},
       transport_status = #{transportStatus,jdbcType=CHAR},
-      car_img = #{carImg,jdbcType=VARCHAR},
       audit_state = #{auditState,jdbcType=CHAR},
       audit = #{audit,jdbcType=VARCHAR},
       audit_opinion = #{auditOpinion,jdbcType=VARCHAR},

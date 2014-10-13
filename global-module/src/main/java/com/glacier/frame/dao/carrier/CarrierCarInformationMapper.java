@@ -16,15 +16,21 @@ public interface CarrierCarInformationMapper {
 
     int insertSelective(CarrierCarInformation record);
 
+    List<CarrierCarInformation> selectByExampleWithBLOBs(CarrierCarInformationExample example);
+
     List<CarrierCarInformation> selectByExample(CarrierCarInformationExample example);
 
     CarrierCarInformation selectByPrimaryKey(String carId);
 
     int updateByExampleSelective(@Param("record") CarrierCarInformation record, @Param("example") CarrierCarInformationExample example);
 
+    int updateByExampleWithBLOBs(@Param("record") CarrierCarInformation record, @Param("example") CarrierCarInformationExample example);
+
     int updateByExample(@Param("record") CarrierCarInformation record, @Param("example") CarrierCarInformationExample example);
 
     int updateByPrimaryKeySelective(CarrierCarInformation record);
+
+    int updateByPrimaryKeyWithBLOBs(CarrierCarInformation record);
 
     int updateByPrimaryKey(CarrierCarInformation record);
 }

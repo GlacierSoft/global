@@ -2,8 +2,6 @@ package com.glacier.frame.entity.carrier;
 
 import java.util.Date;
 
-import com.alibaba.fastjson.annotation.JSONField;
-
 public class CarrierCarInformation {
     private String carId;
 
@@ -42,28 +40,25 @@ public class CarrierCarInformation {
 
     private String transportStatus;
 
-    private String carImg;
-
     private String auditState;
 
     private String audit;
 
     private String auditOpinion;
 
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date auditTime;
 
     private String remark;
 
     private String creater;
 
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
     private String updater;
 
-    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
+
+    private String carImg;
 
     public String getCarId() {
         return carId;
@@ -75,6 +70,38 @@ public class CarrierCarInformation {
 
     public String getCarrierMemberId() {
         return carrierMemberId;
+    }
+
+    public String getCarrierMemberRealName() {
+        return carrierMemberRealName;
+    }
+
+    public void setCarrierMemberRealName(String carrierMemberRealName) {
+        this.carrierMemberRealName = carrierMemberRealName;
+    }
+
+    public String getAuditorDisplay() {
+        return auditorDisplay;
+    }
+
+    public void setAuditorDisplay(String auditorDisplay) {
+        this.auditorDisplay = auditorDisplay;
+    }
+
+    public String getCreaterDisplay() {
+        return createrDisplay;
+    }
+
+    public void setCreaterDisplay(String createrDisplay) {
+        this.createrDisplay = createrDisplay;
+    }
+
+    public String getUpdaterDisplay() {
+        return updaterDisplay;
+    }
+
+    public void setUpdaterDisplay(String updaterDisplay) {
+        this.updaterDisplay = updaterDisplay;
     }
 
     public void setCarrierMemberId(String carrierMemberId) {
@@ -169,14 +196,6 @@ public class CarrierCarInformation {
         this.transportStatus = transportStatus;
     }
 
-    public String getCarImg() {
-        return carImg;
-    }
-
-    public void setCarImg(String carImg) {
-        this.carImg = carImg;
-    }
-
     public String getAuditState() {
         return auditState;
     }
@@ -249,39 +268,15 @@ public class CarrierCarInformation {
         this.updateTime = updateTime;
     }
 
-    public String getCarrierMemberRealName() {
-		return carrierMemberRealName;
-	}
+    public String getCarImg() {
+        return carImg;
+    }
 
-	public void setCarrierMemberRealName(String carrierMemberRealName) {
-		this.carrierMemberRealName = carrierMemberRealName;
-	}
-	
-	public String getAuditorDisplay() {
-		return auditorDisplay;
-	}
+    public void setCarImg(String carImg) {
+        this.carImg = carImg;
+    }
 
-	public void setAuditorDisplay(String auditorDisplay) {
-		this.auditorDisplay = auditorDisplay;
-	}
-
-	public String getCreaterDisplay() {
-		return createrDisplay;
-	}
-
-	public void setCreaterDisplay(String createrDisplay) {
-		this.createrDisplay = createrDisplay;
-	}
-
-	public String getUpdaterDisplay() {
-		return updaterDisplay;
-	}
-
-	public void setUpdaterDisplay(String updaterDisplay) {
-		this.updaterDisplay = updaterDisplay;
-	}
-
-	@Override
+    @Override
     public boolean equals(Object that) {
         if (this == that) {
             return true;
@@ -306,7 +301,6 @@ public class CarrierCarInformation {
             && (this.getCarAttribution() == null ? other.getCarAttribution() == null : this.getCarAttribution().equals(other.getCarAttribution()))
             && (this.getCarStatus() == null ? other.getCarStatus() == null : this.getCarStatus().equals(other.getCarStatus()))
             && (this.getTransportStatus() == null ? other.getTransportStatus() == null : this.getTransportStatus().equals(other.getTransportStatus()))
-            && (this.getCarImg() == null ? other.getCarImg() == null : this.getCarImg().equals(other.getCarImg()))
             && (this.getAuditState() == null ? other.getAuditState() == null : this.getAuditState().equals(other.getAuditState()))
             && (this.getAudit() == null ? other.getAudit() == null : this.getAudit().equals(other.getAudit()))
             && (this.getAuditOpinion() == null ? other.getAuditOpinion() == null : this.getAuditOpinion().equals(other.getAuditOpinion()))
@@ -315,7 +309,8 @@ public class CarrierCarInformation {
             && (this.getCreater() == null ? other.getCreater() == null : this.getCreater().equals(other.getCreater()))
             && (this.getCreateTime() == null ? other.getCreateTime() == null : this.getCreateTime().equals(other.getCreateTime()))
             && (this.getUpdater() == null ? other.getUpdater() == null : this.getUpdater().equals(other.getUpdater()))
-            && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()));
+            && (this.getUpdateTime() == null ? other.getUpdateTime() == null : this.getUpdateTime().equals(other.getUpdateTime()))
+            && (this.getCarImg() == null ? other.getCarImg() == null : this.getCarImg().equals(other.getCarImg()));
     }
 
     @Override
@@ -335,7 +330,6 @@ public class CarrierCarInformation {
         result = prime * result + ((getCarAttribution() == null) ? 0 : getCarAttribution().hashCode());
         result = prime * result + ((getCarStatus() == null) ? 0 : getCarStatus().hashCode());
         result = prime * result + ((getTransportStatus() == null) ? 0 : getTransportStatus().hashCode());
-        result = prime * result + ((getCarImg() == null) ? 0 : getCarImg().hashCode());
         result = prime * result + ((getAuditState() == null) ? 0 : getAuditState().hashCode());
         result = prime * result + ((getAudit() == null) ? 0 : getAudit().hashCode());
         result = prime * result + ((getAuditOpinion() == null) ? 0 : getAuditOpinion().hashCode());
@@ -345,6 +339,7 @@ public class CarrierCarInformation {
         result = prime * result + ((getCreateTime() == null) ? 0 : getCreateTime().hashCode());
         result = prime * result + ((getUpdater() == null) ? 0 : getUpdater().hashCode());
         result = prime * result + ((getUpdateTime() == null) ? 0 : getUpdateTime().hashCode());
+        result = prime * result + ((getCarImg() == null) ? 0 : getCarImg().hashCode());
         return result;
     }
 }
