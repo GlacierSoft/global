@@ -12,7 +12,8 @@
 		toolbarId : 'contractDataGrid_toolbar',
 		actions : {
              edit:{flag:'edit',controlType:'single'},
-             del:{flag:'del',controlType:'multiple'}
+             del:{flag:'del',controlType:'multiple'},
+             print:{flag:'print',controlType:'single'}
           }
      };
 
@@ -157,20 +158,27 @@
 						}
 					});
 	
-	  glacier.member_mgr.contract_mgr.contract.editContractorManager=function(){
-	  };
 	
-	//状态下拉项
-		$('#bankCardSearchForm_status').combobox({
-				valueField : 'value',
-				//height:18,
-				width : 80,
-				textField : 'label',
-				panelHeight : 'auto',
-				editable : false,
-				//required:true,
-				data : fields.status
-			});
+	  glacier.member_mgr.contract_mgr.contract.editContractorManager=function(){ 
+	      location.href=ctx+"/do/contract/exp.json";
+	  };
+	  
+	  glacier.member_mgr.contract_mgr.contract.printContractorManager=function(){
+		  alert("我是打印方法!!!!");
+	  }
+	  
+	
+	  //状态下拉项
+	  $('#bankCardSearchForm_status').combobox({
+			valueField : 'value',
+			//height:18,
+			width : 80,
+			textField : 'label',
+			panelHeight : 'auto',
+			editable : false,
+			//required:true,
+			data : fields.status
+		});
 		
 	
 </script>

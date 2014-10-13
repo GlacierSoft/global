@@ -158,7 +158,8 @@
 					});
 	
 	  glacier.carrier_mgr.carrierContract_mgr.carrierContract.expContractorManager=function(){
-	   };
+		   location.href=ctx + '/do/carrierContract/exp.json';    
+	  };
 	
 	//状态下拉项
 	$('#bankCardSearchForm_status').combobox({
