@@ -104,7 +104,14 @@ public class CarrierContractRecordExample {
             return criteria;
         }
 
-        protected void addCriterion(String condition) {
+        
+        //拓展查询条件
+        public Criteria andCarrierRealNamelike(String value){
+        	addCriterion("temp_carrier_member.member_name like", value, "carrierDisplay");
+		    return (Criteria) this;
+        }
+        
+       protected void addCriterion(String condition) {
             if (condition == null) {
                 throw new RuntimeException("Value for condition cannot be null");
             }

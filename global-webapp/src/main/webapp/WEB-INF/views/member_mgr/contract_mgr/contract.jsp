@@ -160,6 +160,18 @@
 	  glacier.member_mgr.contract_mgr.contract.editContractorManager=function(){
 	  };
 	
+	//状态下拉项
+		$('#bankCardSearchForm_status').combobox({
+				valueField : 'value',
+				//height:18,
+				width : 80,
+				textField : 'label',
+				panelHeight : 'auto',
+				editable : false,
+				//required:true,
+				data : fields.status
+			});
+		
 	
 </script>
 
@@ -177,22 +189,18 @@
 		<form id="contractSearchForm">
 			<table>
 				<tr>
-					<td>货物名称：</td>
-					<td><input name="goodsDisplay" style="width: 80px;"
-						class="spinner" /></td>
 					<td>会员名称：</td>
 					<td><input name="memberDisplay" style="width: 80px;"
 						class="spinner" /></td>
 					<td>类型：</td>
-					<td><input id="status" name="type"
-						style="width: 80px;" class="spinner" /></td>
+					<td><input id="bankCardSearchForm_status" name="status" style="width: 80px;" class="spinner"/></td>
 					<td>生效时间：</td>
 					<td><input name="contractTypeStartTime" class="easyui-datetimebox"
 						style="width: 100px;" /> - <input name="contractTypeEndTime"
 						class="easyui-datetimebox" style="width: 100px;" /></td>
 					<td>失效时间：</td>
 					<td><input name="contractRemoveStartTime" class="easyui-datetimebox"
-						style="width: 100px;" /> - <input name="contractTypeRemoveEndEndTime"
+						style="width: 100px;" /> - <input name="contractTypeRemoveEndTime"
 						class="easyui-datetimebox" style="width: 100px;" /></td>
 					<td><a href="javascript:void(0);" class="easyui-linkbutton"
 						data-options="iconCls:'icon-standard-zoom-in',plain:true"

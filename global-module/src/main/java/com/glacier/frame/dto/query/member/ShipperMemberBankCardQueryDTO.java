@@ -32,6 +32,11 @@ public class ShipperMemberBankCardQueryDTO extends ShipperMemberBankCard {
 	}
 	
 	public void setQueryCondition(Criteria queryCriteria, String q){
+		 if(null!=this.getMemberDisplay()){
+			 queryCriteria.andMemberDisplay("%"+this.getMemberDisplay()+"%");
+		 }
+		
+		
 		 if(null != this.getCardName() && StringUtils.isNotBlank(this.getCardName())){//会员名称Like查询
 	            queryCriteria.andCardNameLike("%" + this.getCardName() + "%");
 	      }
