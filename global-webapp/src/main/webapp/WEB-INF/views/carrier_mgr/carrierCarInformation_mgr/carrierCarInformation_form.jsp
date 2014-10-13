@@ -19,7 +19,7 @@
 		<tr>
 			<td>承运商:</td>
 	    	<td>
-	    	<input id="carrier_mgr_carInformation_form_carrierMemberId" style="width:268px;height: 20px;" name="carrierMemberId" class="spinner" required="true"/>
+	    	<input id="carrier_mgr_carInformation_form_carrierMemberId" style="width:268px;height: 20px;" value="${carInfoformationData.carrierMemberId}" name="carrierMemberId" class="spinner" required="true"/>
 	    	</td>
 	    	<td>车辆类型：</td>
 			<td>
@@ -39,15 +39,15 @@
 		<tr>
 			<td>车辆长度：</td>
 			<td>
-				<input id="carrier_mgr_carInformation_form_carLength" style="width:268px;height: 20px;" name="carLength" value="${carInfoformationData.carLength}" class="easyui-validatebox spinner"  required="true"/>
+				<input id="carrier_mgr_carInformation_form_carLength" style="width:268px;height: 20px;" name="carLength" value="${carInfoformationData.carLength}" class="easyui-numberbox" missingMessage="请输入整数，至少为1。单位默认为米（M）" required="true"/>
 			</td>
 			<td>车辆载重：</td>
 			<td>
-				<input id="carrier_mgr_carInformation_form_carLoad" style="width:268px;height: 20px;" name="carLoad" value="${carInfoformationData.carLoad}" class="easyui-validatebox spinner"  required="true"/>
+				<input id="carrier_mgr_carInformation_form_carLoad" style="width:268px;height: 20px;" name="carLoad" value="${carInfoformationData.carLoad}" class="easyui-numberbox" missingMessage="请输入整数，至少为1。单位默认为吨（t）" required="true"/>
 			</td>
 		</tr>
 		<tr>
-			<td>车辆所在地dd：</td>
+			<td>车辆所在地：</td>
 			<td>
 				<input id="carrier_mgr_carInformation_form_carAttribution55" style="width:268px;height: 20px;" name="carAttribution" value="${carInfoformationData.remark}" class="easyui-validatebox spinner"  required="true"/>
 			</td>
@@ -68,7 +68,7 @@
 		</tr>
 		<tr>
 			<td>车辆描述：</td>
-			<td colspan="3">${carInfoformationData.remark}
+			<td colspan="3">
 				<textarea id="carrier_mgr_carInformation_form_remark" name="remark" style="width:650px;" class="spinner formta">${carInfoformationData.remark}</textarea>
 			</td>
 		</tr>

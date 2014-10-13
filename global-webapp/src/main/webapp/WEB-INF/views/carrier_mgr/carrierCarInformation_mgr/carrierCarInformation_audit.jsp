@@ -3,80 +3,84 @@
 <!-- 引入国际化标签 -->
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt"%>
 
-<form id="memberGrade_mgr_grade_form" method="post" style="padding:15px">
-	<table class="formtable" width="750">
+
+	<table class="detailtable" width="750" style="margin: 15px;">
 		<tr>
 			<td>车辆编号：</td>
 			<td>
 				<input type="hidden" id="carrier_mgr_carInformation_form_carId" name="gradeId" value="${carInfoformationData.carId}" />
-				<input id="carrier_mgr_carInformation_form_routeName" style="width:268px;height: 20px;" name="routeName" value="${carInfoformationData.routeName}" class="easyui-validatebox spinner"  required="true"/>
+				<input id="carrier_mgr_carInformation_form_routeName" style="width:268px;height: 20px;" name="routeName" value="${carInfoformationData.routeName}" class="easyui-validatebox spinner"  required="true" readonly="readonly"/>
 			</td>
 			<td>车辆牌号:</td>
 	    	<td>
-	    	<input id="carrier_mgr_carInformation_form_plateNumber" style="width:268px;height: 20px;" class="easyui-validatebox spinner" type="text" name="plateNumber" value="${carInfoformationData.plateNumber}" required="true" />
+	    	<input id="carrier_mgr_carInformation_form_plateNumber" style="width:268px;height: 20px;"  class="easyui-validatebox spinner" type="text" name="plateNumber" value="${carInfoformationData.plateNumber}" required="true" readonly="readonly"/>
 	    	</td>
 		</tr>
 		<tr>
 			<td>承运商:</td>
 	    	<td>
-	    	<input id="carrier_mgr_carInformation_form_carrierMemberId" style="width:268px;height: 20px;" name="carrierMemberId" class="spinner" required="true"/>
+	    	<input id="carrier_mgr_carInformation_form_carrierMemberId" style="width:268px;height: 20px;" value="${carInfoformationData.carrierMemberRealName}" class="spinner" required="true" readonly="readonly"/>
 	    	</td>
 	    	<td>车辆类型：</td>
 			<td>
-				<input id="carrier_mgr_carInformation_form_carType" style="width:268px;height: 20px;" name="carType" value="${carInfoformationData.carType}" class="easyui-validatebox spinner"  required="true"/>
+				<input id="carrier_mgr_carInformation_form_carType" style="width:268px;height: 20px;" name="carType" value="${carInfoformationData.carType}" class="easyui-validatebox spinner"  required="true" readonly="readonly"/>
 			</td>
 		</tr>
 		<tr>
 			<td>运送类型:</td>
 	    	<td>
-	    	<input id="carrier_mgr_carInformation_form_transportType" class="easyui-validatebox spinner" style="width:268px;height: 20px;" type="text" name="transportType"  value="${carInfoformationData.transportType}" required="true" />
+	    	<input id="carrier_mgr_carInformation_form_transportType" class="easyui-validatebox spinner" style="width:268px;height: 20px;" type="text" name="transportType"  value="${carInfoformationData.transportType}" required="true" readonly="readonly"/>
 	    	</td>
 	    	<td>服务类型：</td>
 			<td>
-				<input id="carrier_mgr_carInformation_form_serviceType" style="width:268px;height: 20px;" name="serviceType" value="${carInfoformationData.serviceType}" class="easyui-validatebox spinner"  required="true"/>
+				<input id="carrier_mgr_carInformation_form_serviceType" style="width:268px;height: 20px;" name="serviceType" value="${carInfoformationData.serviceType}" class="easyui-validatebox spinner"  required="true" readonly="readonly"/>
 			</td>
 		</tr>
 		<tr>
 			<td>车辆长度：</td>
 			<td>
-				<input id="carrier_mgr_carInformation_form_carLength" style="width:268px;height: 20px;" name="carLength" value="${carInfoformationData.carLength}" class="easyui-validatebox spinner"  required="true"/>
+				<input id="carrier_mgr_carInformation_form_carLength" style="width:268px;height: 20px;" name="carLength" value="${carInfoformationData.carLength}" class="easyui-validatebox spinner"  required="true" readonly="readonly"/>
 			</td>
 			<td>车辆载重：</td>
 			<td>
-				<input id="carrier_mgr_carInformation_form_carLoad" style="width:268px;height: 20px;" name="carLoad" value="${carInfoformationData.carLoad}" class="easyui-validatebox spinner"  required="true"/>
+				<input id="carrier_mgr_carInformation_form_carLoad" style="width:268px;height: 20px;" name="carLoad" value="${carInfoformationData.carLoad}" class="easyui-validatebox spinner"  required="true" readonly="readonly"/>
 			</td>
 		</tr>
 		<tr>
 			<td>车辆所在地：</td>
 			<td>
-				<input id="carrier_mgr_carInformation_form_carAttribution" style="width:268px;height: 20px;" name="carAttribution" value="${carInfoformationData.carAttribution}" class="easyui-validatebox spinner"  required="true"/>
+				<input id="carrier_mgr_carInformation_form_carAttribution" style="width:268px;height: 20px;" name="carAttribution" value="${carInfoformationData.carAttribution}" class="easyui-validatebox spinner"  required="true" readonly="readonly"/>
 			</td>
-			<td>车辆运输状态：</td>
+			<td>车辆年龄：</td>
 			<td>
-				<input id="carrier_mgr_carInformation_form_carStatus" style="width:268px;height: 20px;" name="carStatus" value="${carInfoformationData.carStatus}" class="easyui-validatebox spinner"  required="true"/>
+				<input id="carrier_mgr_carInformation_form_carAge" style="width:268px;height: 20px;" name="carAge" value="${carInfoformationData.carAge}" required="true" class="easyui-validatebox spinner" readonly="readonly"/>
 			</td>
 		</tr>
 		<tr>
 			<td>车辆状态：</td>
 			<td>
-			<input id="carrier_mgr_carInformation_form_transportStatus" name="transportStatus"  style="width:268px;" value="${carInfoformationData.transportStatus}" class="easyui-combobox"  data-options="valueField:'value',textField : 'label',panelHeight : 'auto',editable : false,required:true,data : fields.status"/>
+			<input id="carrier_mgr_carInformation_form_transportStatus" name="transportStatus"  style="width:268px;" value="${carInfoformationData.transportStatus}" readonly="readonly" class="easyui-validatebox spinner"/>
+			</td>
+			<td>车辆运输状态：</td>
+			<td>
+				<input id="carrier_mgr_carInformation_form_carStatus" style="width:268px;height: 20px;" name="carStatus" value="${carInfoformationData.carStatus}" class="easyui-validatebox spinner"  required="true" readonly="readonly"/>
 			</td>
 		</tr>
 		<tr>
 			<td>审核状态：</td>
 			<td>
-				<input name="auditState" value="${carInfoformationData.auditState}" class="spinner" style="height:18px;width:180px" readonly="readonly"/>
+				<input id="carrier_mgr_carInformation_form_auditState" name="auditState" value="${carInfoformationData.auditState}" class="spinner" style="height:18px;width:180px" readonly="readonly"/>
 			</td>
 			<td>审核说明：</td>
 			<td>
-				<input name="auditRemark" value="${carInfoformationData.auditRemark}" class="spinner" style="height:18px;width:180px" readonly="readonly"/>
+				<input name="auditRemark" value="${carInfoformationData.auditOpinion}" class="spinner" style="height:18px;width:180px" readonly="readonly"/>
 			</td>
 		</tr>
 		<tr>
 			<td>审核人：</td>
-			<td><input class="spinner" style="width:180px" value="${carInfoformationData.auditorDisplay}" readonly="readonly"/></td>
+			<td><input  class="spinner" style="width:180px" value="${carInfoformationData.auditorDisplay}" readonly="readonly"/></td>
 			<td>审核时间：</td>
-			<td><input class="spinner" style="width:180px" value="<fmt:formatDate value="${carInfoformationData.auditDate}" pattern="yyyy-MM-dd HH:mm:ss"/>" readonly="readonly"/></td>
+			<td><input class="spinner" style="width:180px" value="<fmt:formatDate value="${carInfoformationData.auditTime}" pattern="yyyy-MM-dd HH:mm:ss"/>" readonly="readonly"/></td>
 		</tr>
 		<tr>
 			<td>创建人：</td>
@@ -98,7 +102,6 @@
 		</tr>
 		
 	</table>
-</form>
 
 <script type="text/javascript">
 	KindEditor.options.filterMode = false;
@@ -182,8 +185,7 @@
 		document.all("carrier_mgr_carInformation_form_auditState")[0].checked=true;
 	}
 </script>
-
-<form  method="post" style="padding:15px">
+<form id="memberGrade_mgr_grade_form" method="post" style="padding:15px">
 	<table class="formtable">
 		<tr>
 			<td>车辆信息审核：</td>
@@ -193,13 +195,20 @@
 				&nbsp;&nbsp;&nbsp;&nbsp;
 				<input id="carrier_mgr_carInformation_form_auditState" name="auditState" type="radio" value="pass" /><span>审核通过</span>
 				&nbsp;&nbsp;&nbsp;&nbsp;
-				<input id="carrier_mgr_carInformation_form_auditState" name="auditState" type="radio" value="failure"  checked="checked"/><span>审核失败</span></td>
+				<input id="carrier_mgr_carInformation_form_auditState" name="auditState" type="radio" value="failure"  checked="checked"/><span>审核失败</span>
+			</td>
 		</tr>
 		<tr>
 			<td>审核说明：</td>
-			<td colspan="3">
-				<textarea name="auditRemark" class="spinner" style="height:50px;width:415px">${carInfoformationData.auditRemark}</textarea>
+			<td colspan="3"><textarea name="auditOpinion" class="spinner formta" style="height:50px;width:650px">${carInfoformationData.auditOpinion}</textarea>
 			</td>
 		</tr>
 	</table>
 </form>
+<script type="text/javascript">
+$('#carrier_mgr_carInformation_form_auditState').val(renderGridValue('${carInfoformationData.auditState}',fields.auditState));
+$('#carrier_mgr_carInformation_form_transportType').val(renderGridValue('${carInfoformationData.transportType}',fields.transportType));
+$('#carrier_mgr_carInformation_form_serviceType').val(renderGridValue('${carInfoformationData.serviceType}',fields.serviceType));
+$('#carrier_mgr_carInformation_form_carStatus').val(renderGridValue('${carInfoformationData.carStatus}',fields.status));
+$('#carrier_mgr_carInformation_form_transportStatus').val(renderGridValue('${carInfoformationData.transportStatus}',fields.transportStatus));
+</script>

@@ -110,7 +110,7 @@
   	<!-- 以下字段属于扩展 -->
     ,temp_creater.user_cn_name as temp_carrier_car_information_creater_display
     ,temp_updater.user_cn_name as temp_carrier_car_information_updater_display
-    ,temp_audit.user_cn_name as temp_carrier_car_information_audit_display
+    ,temp_audit.user_cn_name as temp_carrier_car_information_auditor_display
     ,temp_carrier_member.member_name as temp_carrier_car_information_carrier_member_real_name
   </sql>
   <sql id="Base_extend">
@@ -173,7 +173,7 @@
     where car_id = #{carId,jdbcType=VARCHAR}
   </delete>
   <delete id="deleteByExample" parameterType="com.glacier.frame.entity.carrier.CarrierCarInformationExample" >
-    delete from t_carrier_car_information temp_carrier_car_information
+    delete temp_carrier_car_information from t_carrier_car_information temp_carrier_car_information
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>

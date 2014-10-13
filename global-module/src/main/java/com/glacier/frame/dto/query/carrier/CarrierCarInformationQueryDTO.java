@@ -81,7 +81,7 @@ public class CarrierCarInformationQueryDTO extends CarrierCarInformation{
 	}
 
 	public void setQueryCondition(Criteria queryCriteria){
-	 if(null != this.getCarrierMemberRealName() && StringUtils.isNotBlank(this.getCarrierMemberRealName())){//车牌号码Like查询
+	 if(null != this.getCarrierMemberRealName() && StringUtils.isNotBlank(this.getCarrierMemberRealName())){//承运商名称
             queryCriteria.andCarrierMemberRealNamelike("%" + this.getCarrierMemberRealName() + "%");
      } 
    	 if(null != this.getPlateNumber() && StringUtils.isNotBlank(this.getPlateNumber())){//车牌号码Like查询

@@ -12,7 +12,8 @@
 		toolbarId : 'carrierCarInformationDataGrid_toolbar',
 		actions : {
              edit:{flag:'edit',controlType:'single'},
-             del:{flag:'del',controlType:'multiple'}
+             del:{flag:'del',controlType:'multiple'},
+             audit:{flag:'audit',controlType:'single'}
           }
      };
 
@@ -113,7 +114,7 @@
 								return renderGridValue(value, fields.auditState);
 							}
 						},{
-							field : 'audit',
+							field : 'auditorDisplay',
 							title : '审核人',
 							width : 120,
 							sortable : true
@@ -188,7 +189,7 @@
 						},
 						onDblClickRow : function(rowIndex, rowData){
                         $.easyui.showDialog({
-								title : '【' + rowData.gradeName + '】车辆详细信息',
+								title : '车辆详细信息',
 								href : ctx+ '/do/carrierCarInformation/intoDetail.htm?gradeId='+ rowData.carId,//从controller请求jsp页面进行渲染
 								width : 830,
 								height : 590,
@@ -204,10 +205,13 @@
 		glacier.carrierCarInformation_mgr.carrierCarInformation_mgr.carrierCarInformation.carrierCarInformationDialog('【车辆】- 增加车辆',false,'/do/carrierCarInformation/add.json');
 	};
 	
-	//编辑承运商车辆信息
+	/* //编辑承运商车辆信息
 	glacier.carrierCarInformation_mgr.carrierCarInformation_mgr.carrierCarInformation.editMemberGrade = function(){
 		glacier.carrierCarInformation_mgr.carrierCarInformation_mgr.carrierCarInformation.carrierCarInformationDialog('【车辆】- 编辑车辆',true,'/do/carrierCarInformation/edit.json');
-	};
+	}; */
+	
+	
+	
 	
 	/**
 	打开新建或者编辑窗口
@@ -243,7 +247,6 @@
 					var row = glacier.carrierCarInformation_mgr.carrierCarInformation_mgr.carrierCarInformation.carrierCarInformationDataGrid.datagrid("getSelected");
 					if(row){
 						$('#carrierCarInformation_mgr_grade_form').form('load', row);
-						alert(row.remark);
 					}else{
 						$.messager.show({//提示用户
 							title : '提示',
@@ -256,14 +259,68 @@
 		});
 	};
 	
+	/* //点击增加按钮触发方法
+	glacier.finance_mgr.rechargeSet_mgr.rechargeSet.addRechargeSet = function(){
+		glacier.basicAddOrEditDialog({
+			title : '【充值设置】- 增加',
+			width : 450,
+			height : 360,
+			queryUrl : ctx + '/do/rechargeSet/intoForm.htm',
+			submitUrl : ctx + '/do/rechargeSet/add.json',
+			successFun : function (){
+				glacier.finance_mgr.rechargeSet_mgr.rechargeSet.rechargeSetDataGrid.datagrid('reload');
+			}
+		});
+	}; */
+	//点击编辑按钮触发方法
+	glacier.carrierCarInformation_mgr.carrierCarInformation_mgr.carrierCarInformation.editMemberGrade = function(){
+		var row = glacier.carrierCarInformation_mgr.carrierCarInformation_mgr.carrierCarInformation.carrierCarInformationDataGrid.datagrid("getSelected");
+		glacier.basicAddOrEditDialog({
+			title : '【车辆】- 编辑',
+			width : 790,
+			height : 420,
+			queryUrl : ctx + '/do/carrierCarInformation/intoForm.htm',
+			submitUrl : ctx + '/do/carrierCarInformation/edit.json',
+			queryParams : {
+				carId : row.carId
+			},
+			successFun : function (){
+				glacier.carrierCarInformation_mgr.carrierCarInformation_mgr.carrierCarInformation.carrierCarInformationDataGrid.datagrid('reload');
+			}
+		});
+	};
+	
+	//点击审核按钮触发方法
+	glacier.carrierCarInformation_mgr.carrierCarInformation_mgr.carrierCarInformation.auditCarInfor = function(){
+		var row = glacier.carrierCarInformation_mgr.carrierCarInformation_mgr.carrierCarInformation.carrierCarInformationDataGrid.datagrid("getSelected");
+		var auditState = row.auditState;
+		if ("authstr" == auditState) {
+			glacier.basicAddOrEditDialog({
+				title : '【车辆】- 审核',
+				width : 830,
+				height : 635,
+				queryUrl : ctx + '/do/carrierCarInformation/intoAudit.htm',
+				submitUrl : ctx + '/do/carrierCarInformation/audit.json',
+				queryParams : {
+					carId : row.carId
+				},
+				successFun : function (){
+					glacier.carrierCarInformation_mgr.carrierCarInformation_mgr.carrierCarInformation.carrierCarInformationDataGrid.datagrid('reload');
+				}
+			});
+		} else {
+			alert("该记录已经进行了审核，不需要重复操作。");
+		}
+	};
+	
 	//点击删除按钮触发方法
 	glacier.carrierCarInformation_mgr.carrierCarInformation_mgr.carrierCarInformation.delMemberGrade = function() {
 		var rows = glacier.carrierCarInformation_mgr.carrierCarInformation_mgr.carrierCarInformation.carrierCarInformationDataGrid.datagrid("getChecked");
 		var carrierCarInformationIds = [];//删除的id标识
 		var carrierCarInformationNames = [];
 		for ( var i = 0; i < rows.length; i++) {
-			carrierCarInformationIds.push(rows[i].gradeId);
-			carrierCarInformationNames.push(rows[i].gradeName);
+			carrierCarInformationIds.push(rows[i].carId);
+			carrierCarInformationNames.push(rows[i].plateNumber);
 		}
 		if (carrierCarInformationIds.length > 0) {
 			$.messager.confirm('请确认','是否要删除该记录',function(r){
@@ -341,9 +398,12 @@
 		<form id="carrierCarInformationSearchForm">
 			<table>
 				<tr>
-					<td>车辆名称：</td>
-					<td><input name="gradeName" style="width: 80px;"
+					<td>承运商名称：</td>
+					<td><input name="carrierMemberRealName" style="width: 80px;"
 						class="spinner" /></td> 
+					<td>车辆牌号：</td>
+					<td><input name="plateNumber" style="width: 80px;"
+						class="spinner" /></td> 	
 					<td>创建时间：</td>
 					<td><input name="createStartTime" class="easyui-datetimebox"
 						style="width: 100px;" /> - <input name="createEndTime"

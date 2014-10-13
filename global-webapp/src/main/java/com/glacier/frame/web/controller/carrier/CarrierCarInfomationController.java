@@ -61,17 +61,17 @@ public class CarrierCarInfomationController extends AbstractController{
     private Object intoGradeFormPnews(String carId) {
         ModelAndView mav = new ModelAndView("carrier_mgr/carrierCarInformation_mgr/carrierCarInformation_form");
         if(StringUtils.isNotBlank(carId)){
-            mav.addObject("gradeData", carrierCarInformationService.getCarInformation(carId));
+            mav.addObject("carInfoformationData", carrierCarInformationService.getCarInformation(carId));
         }
         return mav;
     }
     
-    // 进入会员充值设置audit表单页面
+    // 进入车辆信息审核audit表单页面
     @RequestMapping(value = "/intoAudit.htm")
     private Object intoAuditCarInformation(String carId) {
         ModelAndView mav = new ModelAndView("carrier_mgr/carrierCarInformation_mgr/carrierCarInformation_audit");
         if(StringUtils.isNotBlank(carId)){
-        	mav.addObject("gradeData", carrierCarInformationService.getCarInformation(carId));
+        	mav.addObject("carInfoformationData", carrierCarInformationService.getCarInformation(carId));
         }
         return mav;
     }
@@ -109,7 +109,7 @@ public class CarrierCarInfomationController extends AbstractController{
     //批量删除承运商车辆
     @RequestMapping(value = "/del.json", method = RequestMethod.POST)
     @ResponseBody
-    public Object delGrade(@RequestParam List<String> memberGradeIds,@RequestParam List<String> memberGradeNames) {
-    	return carrierCarInformationService.delNews(memberGradeIds, memberGradeNames);
+    public Object delGrade(@RequestParam List<String> carrierCarInformationIds,@RequestParam List<String> carrierCarInformationNames) {
+    	return carrierCarInformationService.delNews(carrierCarInformationIds, carrierCarInformationNames);
     }
 }

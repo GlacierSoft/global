@@ -67,9 +67,37 @@
 			</td>
 		</tr>
 		<tr>
+			<td>审核状态：</td>
+			<td>
+				<input id="carrier_mgr_carInformation_form_auditState" name="auditState" value="${carInfoformationData.auditState}" class="spinner" style="height:18px;width:268px" readonly="readonly"/>
+			</td>
+			<td>审核说明：</td>
+			<td>
+				<input name="auditRemark" value="${carInfoformationData.auditOpinion}" class="spinner" style="height:18px;width:268px" readonly="readonly"/>
+			</td>
+		</tr>
+		<tr>
+			<td>审核人：</td>
+			<td><input id="carrier_mgr_carInformation_form_auditorDisplay" class="spinner" style="width:268px" value="${carInfoformationData.auditorDisplay}" readonly="readonly"/></td>
+			<td>审核时间：</td>
+			<td><input class="spinner" style="width:268px" value="<fmt:formatDate value="${carInfoformationData.auditTime}" pattern="yyyy-MM-dd HH:mm:ss"/>" readonly="readonly"/></td>
+		</tr>
+		<tr>
+			<td>创建人：</td>
+			<td><input class="spinner" style="width:268px" value="${carInfoformationData.createrDisplay}" readonly="readonly"/></td>
+			<td>创建时间：</td>
+			<td><input class="spinner" style="width:268px" value="<fmt:formatDate value="${carInfoformationData.createTime}" pattern="yyyy-MM-dd HH:mm:ss"/>" readonly="readonly"/></td>
+		</tr>
+		<tr>
+			<td>更新人：</td>
+			<td><input class="spinner" style="width:268px" value="${carInfoformationData.updaterDisplay}" readonly="readonly"/></td>
+			<td>更新时间：</td>
+			<td><input class="spinner" style="width:268px" value="<fmt:formatDate value="${carInfoformationData.updateTime}" pattern="yyyy-MM-dd HH:mm:ss"/>" readonly="readonly"/></td>
+		</tr>
+		<tr>
 			<td>车辆描述：</td>
 			<td colspan="3">
-				<textarea id="carrier_mgr_carInformation_form_remark" name="remark" style="width:650px;height: 270px;" class="spinner formta" readonly="readonly">${carInfoformationData.remark}</textarea>
+				<textarea id="carrier_mgr_carInformation_form_remark" name="remark" style="width:650px;height: 170px;" class="spinner formta" readonly="readonly">${carInfoformationData.remark}</textarea>
 			</td>
 		</tr>
 	</table>
@@ -128,7 +156,7 @@
 			themeType : 'qq',
 			allowFileManager : true,
 			minWidth : "650px",
-			minHeight : "270px",
+			minHeight : "170px",
 			uploadJson : '../resources/js/kindeditor/jsp/upload_json.jsp',
 	        fileManagerJson : '../resources/js/kindeditor/jsp/file_manager_json.jsp',
 	        allowFileManager : true,
@@ -150,6 +178,7 @@
 
 </script>
 <script type="text/javascript">
+$('#carrier_mgr_carInformation_form_auditState').val(renderGridValue('${carInfoformationData.auditState}',fields.auditState));
 $('#carrier_mgr_carInformation_form_transportType').val(renderGridValue('${carInfoformationData.transportType}',fields.transportType));
 $('#carrier_mgr_carInformation_form_serviceType').val(renderGridValue('${carInfoformationData.serviceType}',fields.serviceType));
 $('#carrier_mgr_carInformation_form_carStatus').val(renderGridValue('${carInfoformationData.carStatus}',fields.status));
