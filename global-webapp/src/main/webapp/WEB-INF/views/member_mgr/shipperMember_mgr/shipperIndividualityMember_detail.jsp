@@ -29,8 +29,8 @@
 					    <td><input id="member_mgr_member_form_accountBalance" name="accountBalance" class="spinner" style="width:168px" value="<fmt:formatNumber value='${shipperMemberData.accountBalance}' pattern="#,#00.00元"/>" readonly="readonly"/></td>
 				 	</tr>
 					 <tr>
-						<td>注册时间：</td>
-						<td><input class="spinner" style="width:168px" value="<fmt:formatDate value="${shipperMemberData.registrationTime}" pattern="yyyy-MM-dd HH:mm:ss"/>" readonly="readonly"/></td>
+						<td>上次登录IP：</td>
+						<td><input class="spinner" style="width:168px" value="${shipperMemberData.lastLoginIpAddress}"  readonly="readonly"/></td>
 						<td style="padding-left:10px;">上次登录时间：</td>
 						<td><input class="spinner" style="width:168px" value="<fmt:formatDate value="${shipperMemberData.lastLoginTime}" pattern="yyyy-MM-dd HH:mm:ss"/>" readonly="readonly"/></td>
 					</tr>
@@ -44,6 +44,18 @@
 						<td>地 址：</td>
 						<td colspan="3"><input  name="liveAddress" class="spinner" style="width:435px" value="${shipperMemberData.liveAddress}" readonly="readonly"/></td>
 					</tr>
+					<tr>
+				      <td>创建人：</td>
+					  <td><input class="spinner" style="width:168px"   value="${shipperMemberData.createrDisplay}" readonly="readonly"/></td>
+				      <td style="padding-left:10px;">录入时间：</td>
+					  <td><input class="spinner" style="width:168px" value="<fmt:formatDate value="${shipperMemberData.createTime}" pattern="yyyy-MM-dd HH:mm:ss"/>"  readonly="readonly"/></td>
+				    </tr>
+				    <tr>   
+				     <td>更新人：</td>
+					 <td><input class="spinner" style="width:168px"   value="${shipperMemberData.updaterDisplay}" readonly="readonly"/></td>
+				     <td style="padding-left:10px;">更新时间：</td>
+					 <td><input class="spinner" style="width:168px"  value="<fmt:formatDate value="${shipperMemberData.updateTime}" pattern="yyyy-MM-dd HH:mm:ss"/>"  readonly="readonly"/></td>
+				    </tr>
 					<tr>
 						<td>备 注：</td>
 						<td colspan="3"> <textarea   name="remark" class="spinner" style="width:435px;" readonly="readonly" >${shipperMemberData.remark}</textarea></td>

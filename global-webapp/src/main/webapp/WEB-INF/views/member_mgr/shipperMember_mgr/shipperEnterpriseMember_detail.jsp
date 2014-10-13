@@ -29,9 +29,9 @@
 					    <td><input id="member_mgr_member_form_accountBalance" name="accountBalance" class="spinner" style="width:168px" value="<fmt:formatNumber value='${shipperMemberData.accountBalance}' pattern="#,#00.00元"/>" readonly="readonly"/></td>
 					 </tr>
 					 <tr>
-						<td>注册时间：</td>
-						<td><input class="spinner" style="width:168px" value="<fmt:formatDate value="${shipperMemberData.registrationTime}" pattern="yyyy-MM-dd HH:mm:ss"/>" readonly="readonly"/></td>
-						<td style="padding-left:10px;">上次登录时间：</td>
+						<td>上次登录IP：</td>
+						<td><input class="spinner" style="width:168px" value="${shipperMemberData.lastLoginIpAddress}"  readonly="readonly"/></td>
+					    <td style="padding-left:10px;">上次登录时间：</td>
 						<td><input class="spinner" style="width:168px" value="<fmt:formatDate value="${shipperMemberData.lastLoginTime}" pattern="yyyy-MM-dd HH:mm:ss"/>" readonly="readonly"/></td>
 					</tr>
 					<tr>
@@ -44,6 +44,18 @@
 						<td>地 址：</td>
 						<td colspan="3"><input  name="liveAddress" class="spinner" style="width:435px" value="${shipperMemberData.liveAddress}" readonly="readonly"/></td>
 					</tr>
+					<tr>
+				      <td>创建人：</td>
+					  <td><input class="spinner" style="width:168px"   value="${shipperMemberData.createrDisplay}" readonly="readonly"/></td>
+				      <td style="padding-left:10px;">录入时间：</td>
+					  <td><input class="spinner" style="width:168px" value="<fmt:formatDate value="${shipperMemberData.createTime}" pattern="yyyy-MM-dd HH:mm:ss"/>"  readonly="readonly"/></td>
+				    </tr>
+				    <tr>   
+				     <td>更新人：</td>
+					 <td><input class="spinner" style="width:168px"   value="${shipperMemberData.updaterDisplay}" readonly="readonly"/></td>
+				     <td style="padding-left:10px;">更新时间：</td>
+					 <td><input class="spinner" style="width:168px"  value="<fmt:formatDate value="${shipperMemberData.updateTime}" pattern="yyyy-MM-dd HH:mm:ss"/>"  readonly="readonly"/></td>
+				    </tr>
 					<tr>
 						<td>备 注：</td>
 						<td colspan="3"> <textarea   name="remark" class="spinner" style="width:435px;" readonly="readonly" >${shipperMemberData.remark}</textarea></td>
@@ -58,24 +70,28 @@
 					 <tr>
 					    <td>企业名称：</td>
 						<td><input  name="enterpriseName" class="spinner" style="width:168px" value='${enterpriseMemberData.enterpriseName}' readonly="readonly"/></td>
-					    <td style="padding-left:10px;">法人代表：</td>
-						<td><input name="deputy" class="spinner" style="width:168px" value="${enterpriseMemberData.deputy}" readonly="readonly"/></td>
-					 </tr>
+					      <td >企业LOGO：</td>
+						  <td rowspan="3">
+						      <img src="${enterpriseMemberData.enterpriseLogo}" width="130" height="75"></img>
+						  </td>   
+						 </tr>
 					  <tr>
+					    <td>法人代表：</td>
+						<td><input name="deputy" class="spinner" style="width:168px" value="${enterpriseMemberData.deputy}" readonly="readonly"/></td>
+				     </tr>
+					   <tr>
+					    <td>企业类型：</td>
+						<td><input  name="enterpriseType" class="spinner" style="width:168px" value='${enterpriseMemberData.enterpriseType}' readonly="readonly"/></td>
+					 </tr>
+					 <tr>
 					    <td>所属地区：</td>
 						<td><input  name="area" class="spinner" style="width:168px" value='${enterpriseMemberData.area}' readonly="readonly"/></td>
 					    <td style="padding-left:10px;">企业性质：</td>
 						<td><input name="property" class="spinner" style="width:168px" value="${enterpriseMemberData.property}" readonly="readonly"/></td>
 					 </tr>
-					   <tr>
-					    <td>企业类型：</td>
-						<td><input  name="enterpriseType" class="spinner" style="width:168px" value='${enterpriseMemberData.enterpriseType}' readonly="readonly"/></td>
-					    <td style="padding-left:10px;">所属行业：</td>
-						<td><input name="trade" class="spinner" style="width:168px" value="${enterpriseMemberData.trade}" readonly="readonly"/></td>
-					 </tr>
 					  <tr>
-					    <td>企业LOGO：</td>
-						<td><input  name="enterpriseLogo" class="spinner" style="width:168px" value='${enterpriseMemberData.enterpriseLogo}' readonly="readonly"/></td>
+					    <td>所属行业：</td>
+						<td><input name="trade" class="spinner" style="width:168px" value="${enterpriseMemberData.trade}" readonly="readonly"/></td>
 					    <td style="padding-left:10px;">企业标识：</td>
 						<td><input name="enterpriseImg" class="spinner" style="width:168px" value="${enterpriseMemberData.enterpriseImg}" readonly="readonly"/></td>
 					 </tr>
@@ -98,9 +114,9 @@
 					</tr>
 					   <tr>
 					    <td>认证状态：</td>
-						<td><input  name="authState" class="spinner" style="width:168px" value='${enterpriseMemberData.authState}' readonly="readonly"/></td>
+						<td><input id="authState"  name="authState" class="spinner" style="width:168px" value='${enterpriseMemberData.authState}' readonly="readonly"/></td>
 					    <td style="padding-left:10px;">认证人：</td>
-						<td><input name="auth" class="spinner" style="width:168px" value="${enterpriseMemberData.auth}" readonly="readonly"/></td>
+						<td><input name="auditDisplay" class="spinner" style="width:168px" value="${enterpriseMemberData.auditDisplay}" readonly="readonly"/></td>
 					 </tr>
 					 <tr>
 					    <td>认证时间：</td>
@@ -122,5 +138,6 @@
 	}); 
 	$('#member_mgr_member_form_status').val(renderGridValue('${shipperMemberData.status}',fields.status));
 	$('#member_mgr_member_form_memberType').val(renderGridValue('${shipperMemberData.memberType}',fields.memberType));
-	 
+	$('#authState').val(renderGridValue('${enterpriseMemberData.authState}',fields.auditState));
+	
 </script>

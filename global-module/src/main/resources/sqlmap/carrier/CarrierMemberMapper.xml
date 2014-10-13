@@ -31,6 +31,7 @@
     <result column="temp_carrier_member_update_time" property="updateTime" jdbcType="TIMESTAMP" />
     <result column="temp_carrier_member_creater_display" property="createrDisplay" jdbcType="VARCHAR"/> <!-- 自定义扩展字段 -->
     <result column="temp_carrier_member_updater_display" property="updaterDisplay" jdbcType="VARCHAR"/> <!-- 自定义扩展字段 -->
+    <result column="temp_carrier_member_audit_display" property="auditDisplay" jdbcType="VARCHAR"/> <!-- 自定义扩展字段 -->
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -108,11 +109,13 @@
   <!-- 以下字段属于扩展 -->
     ,temp_creater.user_cn_name as temp_carrier_member_creater_display
     ,temp_updater.user_cn_name as temp_carrier_member_updater_display 
+    ,temp_updater.user_cn_name as temp_carrier_member_audit_display
   </sql> 
   <sql id="Base_extend">
   	LEFT JOIN t_user temp_creater ON temp_creater.user_id = temp_carrier_member.creater <!-- 扩展 -->
     LEFT JOIN t_user temp_updater ON temp_updater.user_id = temp_carrier_member.updater <!-- 扩展 -->
-  </sql>
+    LEFT JOIN t_user temp_audit ON temp_audit.user_id = temp_carrier_member.audit <!-- 扩展 -->
+   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.glacier.frame.entity.carrier.CarrierMemberExample" >
     select
     <if test="distinct" >

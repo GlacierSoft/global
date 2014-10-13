@@ -11,7 +11,9 @@
 	glacier.carrier_mgr.carrierMember_mgr.member.param = {
 		toolbarId : 'memberDataGrid_toolbar',
 		actions : {
-             status:{flag:'status',controlType:'single'} 
+             status:{flag:'status',controlType:'single'},
+             audit:{flag:'audit',controlType:'single'},
+             auth:{flag:'auth',controlType:'single'}
           }
      };
 
@@ -183,7 +185,7 @@
                         $.easyui.showDialog({
 								title : '【' + rowData.memberName + '】会员详细信息',
 								href : ctx+ '/do/carrierMember/intoDetail.htm?carrierMemberId='+ rowData.carrierMemberId,//从controller请求jsp页面进行渲染
-								height : 520,
+								height : 550,
 								width:630,
 								resizable : false,
 								enableApplyButton : false,
@@ -192,6 +194,50 @@
 						}
 					});
  
+	
+	
+	//点击审核按钮触发方法 
+	glacier.carrier_mgr.carrierMember_mgr.member.audit= function(){
+		var row = glacier.carrier_mgr.carrierMember_mgr.member.memberDataGrid.datagrid("getSelected");
+		 	glacier.basicAddOrEditDialog({
+				title : '【'+row.memberName+'】-会员审核',
+				width : 570,
+				height : 510,
+				queryUrl : ctx + '/do/carrierMember/intoAudit.htm',
+				submitUrl : ctx + '/do/carrierMember/audit.json',
+				queryParams : {
+					memberId : row.carrierMemberId
+				},
+				successFun : function (){
+					glacier.carrier_mgr.carrierMember_mgr.member.memberDataGrid.datagrid('reload'); 
+				}
+			});  
+	};
+	
+	
+	//点击认证按钮触发方法 
+	glacier.carrier_mgr.carrierMember_mgr.member.auth= function(){
+		var row = glacier.carrier_mgr.carrierMember_mgr.member.memberDataGrid.datagrid("getSelected");
+		var auditState = row.memberType;
+		if ("enterprise" == auditState) {
+		glacier.basicAddOrEditDialog({
+				title : '【'+row.memberName+'】-会员认证',
+				width : 540,
+				height : 510,
+				queryUrl : ctx + '/do/carrierMember/enterpriserAudit.htm',
+				submitUrl : ctx + '/do/carrierMember/enterpriserAudit.json',
+				queryParams : {
+					memberId : row.carrierMemberId
+				},
+				successFun : function (){
+					glacier.carrier_mgr.carrierMember_mgr.member.memberDataGrid.datagrid('reload'); 
+				}
+			});  
+		} else {
+			alert("个体会员不需认证!");
+		} 
+	};
+	
 
 	//点击启用禁用按钮触发方法
 	glacier.carrier_mgr.carrierMember_mgr.member.editMember = function(){

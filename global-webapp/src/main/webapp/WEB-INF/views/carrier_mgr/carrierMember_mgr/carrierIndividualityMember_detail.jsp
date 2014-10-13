@@ -29,8 +29,8 @@
 					    <td><input name="surplusMonney" class="spinner" style="width:168px" value="<fmt:formatNumber value='${carrierMemberData.surplusMonney}' pattern="#,#00.00元"/>" readonly="readonly"/></td>
 				 	</tr>
 					 <tr>
-						<td>注册时间：</td>
-						<td><input class="spinner" style="width:168px" value="<fmt:formatDate value="${carrierMemberData.registrationTime}" pattern="yyyy-MM-dd HH:mm:ss"/>" readonly="readonly"/></td>
+						<td>上次登录IP：</td>
+						<td><input class="spinner" style="width:168px" value="${carrierMemberData.lastLoginIpAddress}"  readonly="readonly"/></td>
 						<td style="padding-left:10px;">上次登录时间：</td>
 						<td><input class="spinner" style="width:168px" value="<fmt:formatDate value="${carrierMemberData.lastLoginTime}" pattern="yyyy-MM-dd HH:mm:ss"/>" readonly="readonly"/></td>
 					</tr>
@@ -56,15 +56,16 @@
 					 </tr>
 					 <tr>
 						<td>审核人：</td>
-						<td ><input name="audit" class="spinner" style="width:168px" value="${carrierMemberData.audit}" readonly="readonly"/></td>
+						<td ><input name="auditDisplay" class="spinner" style="width:168px" value="${carrierMemberData.auditDisplay}" readonly="readonly"/></td>
 						<td style="padding-left:10px;">审核时间：</td>
-						<td ><input name="auditTime" class="spinner" style="width:168px" value="${carrierMemberData.auditTime}" readonly="readonly"/></td>
+						<td ><input name="auditTime" class="spinner" style="width:168px"  value="<fmt:formatDate value="${carrierMemberData.auditTime}" pattern="yyyy-MM-dd HH:mm:ss"/>" readonly="readonly"/></td>
 					 </tr>
 					 
 						<tr>
 						<td>地 址：</td>
 						<td colspan="3"><input  name="liveAddress" class="spinner" style="width:435px" value="${carrierMemberData.liveAddress}" readonly="readonly"/></td>
 					</tr>
+					
 					<tr>
 						<td>备 注：</td>
 						<td colspan="3"> <textarea   name="remark" class="spinner" style="width:435px;" readonly="readonly" >${carrierMemberData.remark}</textarea></td>
@@ -105,6 +106,18 @@
 						<td>详细地址：</td>
 						<td colspan="3"> <textarea   name="detailedAddress" class="spinner" style="width:435px;" readonly="readonly" >${individualityMemberData.detailedAddress}</textarea></td>
 					</tr> 
+					<tr>
+				      <td>创建人：</td>
+					  <td><input class="spinner" style="width:168px"   value="${carrierMemberData.createrDisplay}" readonly="readonly"/></td>
+				      <td style="padding-left:10px;">录入时间：</td>
+					  <td><input class="spinner" style="width:168px" value="<fmt:formatDate value="${carrierMemberData.createTime}" pattern="yyyy-MM-dd HH:mm:ss"/>"  readonly="readonly"/></td>
+				    </tr>
+				    <tr>   
+				     <td>更新人：</td>
+					 <td><input class="spinner" style="width:168px"   value="${carrierMemberData.updaterDisplay}" readonly="readonly"/></td>
+				     <td style="padding-left:10px;">更新时间：</td>
+					 <td><input class="spinner" style="width:168px"  value="<fmt:formatDate value="${carrierMemberData.updateTime}" pattern="yyyy-MM-dd HH:mm:ss"/>"  readonly="readonly"/></td>
+				    </tr>
 			</table>
 		</fieldset>
     </div> 

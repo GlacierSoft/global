@@ -23,9 +23,10 @@ import com.glacier.frame.dao.carrier.CarrierIndividualityMemberMapper;
 import com.glacier.frame.dao.carrier.CarrierMemberMapper; 
 import com.glacier.frame.dao.carrier.CarrierMemberTokenMapper;
 import com.glacier.frame.dto.query.carrier.CarrierMemberQueryDTO;
+import com.glacier.frame.entity.carrier.CarrierEnterpriserMember;
 import com.glacier.frame.entity.carrier.CarrierMember;
 import com.glacier.frame.entity.carrier.CarrierMemberExample;  
-import com.glacier.frame.entity.carrier.CarrierMemberExample.Criteria;
+import com.glacier.frame.entity.carrier.CarrierMemberExample.Criteria; 
 import com.glacier.jqueryui.util.JqGridReturn;
 import com.glacier.jqueryui.util.JqPager;
 import com.glacier.jqueryui.util.JqReturnJson; 
@@ -138,6 +139,76 @@ public class CarrierMemberService {
     		 returnResult.setMsg("发生未知错误，状态修改失败");
     	 }
     	return returnResult; 
-    }
+    } 
+
+    /**
+     * @Title: audit 
+     * @Description: TODO(审核承运商信息) 
+     * @param @param shipperEnterpriseMember
+     * @param @return    设定文件 
+     * @return Object    返回类型 
+     * @throws
+     */
+    @Transactional(readOnly = false) 
+    public Object audit(CarrierMember carrierMember) {
+        JqReturnJson returnResult = new JqReturnJson();// 构建返回结果，默认结果为false
+        CarrierMember enterpriseMember = carrierMemberMapper.selectByPrimaryKey(carrierMember.getCarrierMemberId());
+        if(enterpriseMember.getAuditState().equals("authstr")==false){
+        	returnResult.setMsg("该会员已进行过审核，不可重复操作");
+       	    return returnResult;
+        }
+        int count = 0;
+        //有了user实体关联，取消注释即可
+        /* Subject pricipalSubject = SecurityUtils.getSubject(); 
+        User pricipalUser = (User) pricipalSubject.getPrincipal();
+        carrierMember.setAuditor(pricipalUser.getUserId());
+        carrierMember.setAuthTime(new Date());
+        carrierMember.setUpdater(pricipalUser.getUserId()); 
+       */ count = carrierMemberMapper.updateByPrimaryKeySelective(carrierMember);
+        if (count == 1) {
+            returnResult.setSuccess(true);
+            returnResult.setMsg("会员【"+enterpriseMember.getMemberName()+"】审核操作成功");
+        } else {
+            returnResult.setMsg("发生未知错误，企业信息审核失败");
+        }
+        return returnResult;
+    } 
     
+    /**
+     * @Title: enterpriserAudit 
+     * @Description: TODO(认证承运商信息) 
+     * @param @param carrierEnterpriserMember
+     * @param @return    设定文件 
+     * @return Object    返回类型 
+     * @throws
+     */
+    @Transactional(readOnly = false) 
+    public Object enterpriserAudit(CarrierEnterpriserMember carrierEnterpriserMember) {
+        JqReturnJson returnResult = new JqReturnJson();// 构建返回结果，默认结果为false
+        CarrierEnterpriserMember enterpriserMember = carrierEnterpriserMemberMapper.selectByPrimaryKey(carrierEnterpriserMember.getCarrierMemberId());
+        CarrierMember carrierMember=carrierMemberMapper.selectByPrimaryKey(carrierEnterpriserMember.getCarrierMemberId());
+        if(carrierMember.getAuditState().equals("pass")==false){
+        	returnResult.setMsg("该企业未审核，或者审核未通过，不可进行认证操作!");
+       	    return returnResult;
+        } 
+        if(enterpriserMember.getAuthState().equals("authstr")==false){
+        	returnResult.setMsg("该企业已进行过认证，不可重复操作");
+       	    return returnResult;
+        }
+        int count = 0;
+        //有了user实体关联，取消注释即可
+      /*  Subject pricipalSubject = SecurityUtils.getSubject(); 
+        User pricipalUser = (User) pricipalSubject.getPrincipal();
+        carrierEnterpriserMember.setAuditor(pricipalUser.getUserId());
+        carrierEnterpriserMember.setAuthTime(new Date());
+        carrierEnterpriserMember.setUpdater(pricipalUser.getUserId()); */
+        count = carrierEnterpriserMemberMapper.updateByPrimaryKeySelective(carrierEnterpriserMember);
+        if (count == 1) {
+            returnResult.setSuccess(true);
+            returnResult.setMsg("企业【"+enterpriserMember.getEnterpriseName()+"】认证操作成功");
+        } else {
+            returnResult.setMsg("发生未知错误，企业信息认证失败");
+        }
+        return returnResult;
+    } 
 }

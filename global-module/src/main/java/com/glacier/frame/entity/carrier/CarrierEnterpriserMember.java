@@ -2,6 +2,8 @@ package com.glacier.frame.entity.carrier;
 
 import java.util.Date;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 public class CarrierEnterpriserMember {
     private String carrierMemberId;
 
@@ -34,10 +36,22 @@ public class CarrierEnterpriserMember {
     private String auth;
 
     private String authRemark;
-
+    
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date authTime;
+    
+    //自定义字段审核人
+    private String auditDisplay; 
 
-    public String getCarrierMemberId() {
+    public String getAuditDisplay() {
+		return auditDisplay;
+	}
+
+	public void setAuditDisplay(String auditDisplay) {
+		this.auditDisplay = auditDisplay;
+	}
+
+	public String getCarrierMemberId() {
         return carrierMemberId;
     }
 

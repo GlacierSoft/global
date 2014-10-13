@@ -19,6 +19,8 @@
     <result column="temp_carrier_enterpriser_member_auth" property="auth" jdbcType="VARCHAR" />
     <result column="temp_carrier_enterpriser_member_auth_remark" property="authRemark" jdbcType="VARCHAR" />
     <result column="temp_carrier_enterpriser_member_auth_time" property="authTime" jdbcType="TIMESTAMP" />
+    <!-- 扩展字段 -->
+    <result column="temp_carrier_enterpriser_member_audit_display" property="auditDisplay" jdbcType="TIMESTAMP" />
   </resultMap>
   <sql id="Example_Where_Clause" >
     <where >
@@ -93,7 +95,12 @@
     temp_carrier_enterpriser_member.auth_state as temp_carrier_enterpriser_member_auth_state, 
     temp_carrier_enterpriser_member.auth as temp_carrier_enterpriser_member_auth, temp_carrier_enterpriser_member.auth_remark as temp_carrier_enterpriser_member_auth_remark, 
     temp_carrier_enterpriser_member.auth_time as temp_carrier_enterpriser_member_auth_time
-  </sql>
+    <!-- 以下字段属于扩展 -->
+    ,temp_auth.user_cn_name as temp_carrier_enterpriser_member_audit_display 
+  </sql> 
+  <sql id="Base_extend">
+  	LEFT JOIN t_user temp_auth ON temp_auth.user_id = temp_carrier_enterpriser_member.auth <!-- 扩展 -->
+   </sql>
   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.glacier.frame.entity.carrier.CarrierEnterpriserMemberExample" >
     select
     <if test="distinct" >
@@ -101,6 +108,7 @@
     </if>
     <include refid="Base_Column_List" />
     from t_carrier_enterpriser_member temp_carrier_enterpriser_member
+    <include refid="Base_extend" />
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -115,6 +123,7 @@
     select 
     <include refid="Base_Column_List" />
     from t_carrier_enterpriser_member temp_carrier_enterpriser_member
+    <include refid="Base_extend" />
     where temp_carrier_enterpriser_member.carrier_member_id = #{carrierMemberId,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >

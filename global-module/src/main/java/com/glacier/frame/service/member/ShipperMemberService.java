@@ -13,9 +13,8 @@
 package com.glacier.frame.service.member; 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-
-import org.apache.commons.lang3.StringUtils;
+import java.util.List; 
+import org.apache.commons.lang3.StringUtils; 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -27,13 +26,14 @@ import com.glacier.frame.dao.member.ShipperIndividualityMemberMapper;
 import com.glacier.frame.dao.member.ShipperMemberMapper;
 import com.glacier.frame.dao.member.ShipperMemberTokenMapper;
 import com.glacier.frame.dto.query.member.ShipperMemberQueryDTO;
+import com.glacier.frame.entity.member.ShipperEnterpriseMember;
 import com.glacier.frame.entity.member.ShipperMember;
 import com.glacier.frame.entity.member.ShipperMemberExample;
 import com.glacier.frame.entity.member.ShipperMemberExample.Criteria;
 import com.glacier.frame.entity.member.ShipperMemberToken;
 import com.glacier.jqueryui.util.JqGridReturn;
 import com.glacier.jqueryui.util.JqPager;
-import com.glacier.jqueryui.util.JqReturnJson;
+import com.glacier.jqueryui.util.JqReturnJson; 
 import com.glacier.security.util.Digests;
 import com.glacier.security.util.Encodes;
 /*** 
@@ -145,7 +145,40 @@ public class ShipperMemberService {
     		 returnResult.setMsg("发生未知错误，状态修改失败");
     	 }
     	return returnResult; 
-    }
+    } 
+
+    /**
+     * @Title: audit 
+     * @Description: TODO(审核企业信息) 
+     * @param @param shipperEnterpriseMember
+     * @param @return    设定文件 
+     * @return Object    返回类型 
+     * @throws
+     */
+    @Transactional(readOnly = false) 
+    public Object audit(ShipperEnterpriseMember shipperEnterpriseMember) {
+        JqReturnJson returnResult = new JqReturnJson();// 构建返回结果，默认结果为false
+        ShipperEnterpriseMember enterpriseMember = shipperEnterpriseMemberMapper.selectByPrimaryKey(shipperEnterpriseMember.getMemberId());
+        if(enterpriseMember.getAuthState().equals("authstr")==false){
+        	returnResult.setMsg("该企业已进行过审核，不可重复操作");
+       	    return returnResult;
+        }
+        int count = 0;
+        //有了user实体关联，取消注释即可
+        /* Subject pricipalSubject = SecurityUtils.getSubject(); 
+        User pricipalUser = (User) pricipalSubject.getPrincipal();
+        shipperEnterpriseMember.setAuditor(pricipalUser.getUserId());
+        shipperEnterpriseMember.setAuthTime(new Date());
+        shipperEnterpriseMember.setUpdater(pricipalUser.getUserId()); 
+       */ count = shipperEnterpriseMemberMapper.updateByPrimaryKeySelective(shipperEnterpriseMember);
+        if (count == 1) {
+            returnResult.setSuccess(true);
+            returnResult.setMsg("企业【"+enterpriseMember.getEnterpriseName()+"】审核操作成功");
+        } else {
+            returnResult.setMsg("发生未知错误，企业信息审核失败");
+        }
+        return returnResult;
+    } 
     
     /**
      * 加密方式
@@ -175,7 +208,8 @@ public class ShipperMemberService {
     /**
      * 设定盐值和设定安全的交易密码，生成随机的salt并经过1024次 sha-1 hash
      */
-    private void entryptTradersPassword(ShipperMemberToken shipperMemberToken) {
+    @SuppressWarnings("unused")
+	private void entryptTradersPassword(ShipperMemberToken shipperMemberToken) {
         byte[] salt = Digests.generateSalt(SALT_SIZE);
         shipperMemberToken.setTradersSalt(Encodes.encodeHex(salt));
         byte[] hashPassword = Digests.sha1(shipperMemberToken.getTradersPassword().getBytes(), salt, HASH_INTERATIONS); 

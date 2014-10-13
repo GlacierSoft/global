@@ -11,7 +11,8 @@
 	glacier.member_mgr.member_mgr.member.param = {
 		toolbarId : 'memberDataGrid_toolbar',
 		actions : {
-             status:{flag:'status',controlType:'single'} 
+             status:{flag:'status',controlType:'single'},
+             audit:{flag:'audit',controlType:'single'}
           }
      };
 
@@ -145,7 +146,8 @@
                         $.easyui.showDialog({
 								title : '【' + rowData.memberName + '】会员详细信息',
 								href : ctx+ '/do/shippermember/intoDetail.htm?memberId='+ rowData.memberId,//从controller请求jsp页面进行渲染
-								height : 470,
+								height : 500,
+								width : 610,
 								resizable : false,
 								enableApplyButton : false,
 								enableSaveButton : false
@@ -154,6 +156,34 @@
 					});
  
 
+	
+	//点击认证按钮触发方法
+	glacier.member_mgr.member_mgr.member.audit= function(){
+		var row =  glacier.member_mgr.member_mgr.member.memberDataGrid.datagrid("getSelected");
+		var auditState = row.memberType;
+		if ("enterprise" == auditState) {
+			glacier.basicAddOrEditDialog({
+				title : '【'+row.memberName+'】-企业认证',
+				width : 558,
+				height : 500,
+				queryUrl : ctx + '/do/shippermember/intoAudit.htm',
+				submitUrl : ctx + '/do/shippermember/audit.json',
+				queryParams : {
+					memberId : row.memberId
+				},
+				successFun : function (){
+					glacier.member_mgr.member_mgr.member.memberDataGrid.datagrid('reload');
+			    }
+			}); 
+		} else {
+			alert("个体货主会员不需认证!");
+		} 
+	};
+	
+	
+	
+	
+	
 	//点击启用禁用按钮触发方法
 	glacier.member_mgr.member_mgr.member.editMember = function(){
     var row = glacier.member_mgr.member_mgr.member.memberDataGrid.datagrid("getSelected");

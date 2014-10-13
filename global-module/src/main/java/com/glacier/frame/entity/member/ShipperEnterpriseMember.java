@@ -2,6 +2,8 @@ package com.glacier.frame.entity.member;
 
 import java.util.Date;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 public class ShipperEnterpriseMember {
     private String memberId;
 
@@ -33,11 +35,23 @@ public class ShipperEnterpriseMember {
 
     private String auth;
 
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date authTime;
 
     private String authRemark;
+    
+    //自定义字段审核人
+    private String auditDisplay;
+      
+    public String getAuditDisplay() {
+		return auditDisplay;
+	}
 
-    public String getMemberId() {
+	public void setAuditDisplay(String auditDisplay) {
+		this.auditDisplay = auditDisplay;
+	}
+
+	public String getMemberId() {
         return memberId;
     }
 

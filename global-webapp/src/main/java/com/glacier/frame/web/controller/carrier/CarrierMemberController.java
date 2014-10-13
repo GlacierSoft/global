@@ -2,16 +2,20 @@ package com.glacier.frame.web.controller.carrier;
  
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller; 
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod; 
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView; 
 import com.glacier.core.controller.AbstractController;
 import com.glacier.frame.dto.query.carrier.CarrierMemberQueryDTO;
-import com.glacier.frame.entity.carrier.CarrierMember;
+import com.glacier.frame.entity.carrier.CarrierEnterpriserMember;
+import com.glacier.frame.entity.carrier.CarrierMember; 
 import com.glacier.frame.service.carrier.CarrierMemberService;
 import com.glacier.jqueryui.util.JqPager;  
 
@@ -68,6 +72,47 @@ public class CarrierMemberController extends AbstractController{
     @ResponseBody
     private Object updateStatus(String  memberId) {
     	return carriermemberService.upStatus(memberId); 
-    } 
+    }  
+
+    // 会员audit表单页面
+    @RequestMapping(value = "/intoAudit.htm")
+    private Object intoAuditMember(String memberId) {
+        ModelAndView mav = new ModelAndView("carrier_mgr/carrierMember_mgr/carrierMember_audit");
+        if(StringUtils.isNotBlank(memberId)){
+        	  List<Object> list=carriermemberService.getMember(memberId);
+        	  mav.addObject("carrierMemberData", list.get(0));   
+          }
+        return mav;
+    }
     
+    //会员审核
+    @RequestMapping(value = "/audit.json", method = RequestMethod.POST)
+    @ResponseBody
+    private Object auditMember(@Valid CarrierMember carrierMember, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {// 后台校验的错误信息
+            return returnErrorBindingResult(bindingResult);
+        }
+        return carriermemberService.audit(carrierMember);
+    }
+    
+    // 企业会员audit表单页面
+    @RequestMapping(value = "/enterpriserAudit.htm")
+    private Object intoAuditEnterMember(String memberId) {
+        ModelAndView mav = new ModelAndView("carrier_mgr/carrierMember_mgr/carrierEnterpriseMember_audit");
+        if(StringUtils.isNotBlank(memberId)){
+        	  List<Object> list=carriermemberService.getMember(memberId);
+        	  mav.addObject("enterpriseMemberData", list.get(1));   
+          } 
+        return mav;
+    }
+    
+    //企业会员认证
+    @RequestMapping(value = "/enterpriserAudit.json", method = RequestMethod.POST)
+    @ResponseBody
+    private Object auditEnterMember(@Valid CarrierEnterpriserMember carrierEnterpriserMember, BindingResult bindingResult) {
+        if (bindingResult.hasErrors()) {// 后台校验的错误信息
+            return returnErrorBindingResult(bindingResult);
+        }
+        return carriermemberService.enterpriserAudit(carrierEnterpriserMember);
+    }
 }

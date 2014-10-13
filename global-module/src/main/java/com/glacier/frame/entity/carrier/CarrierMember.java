@@ -81,7 +81,21 @@ public class CarrierMember {
      * 自定义字段，显示更新人的真实名字
      */
     private String updaterDisplay;
-    public String getCarrierMemberId() {
+    
+    /**
+     * 自定义字段，显示审核人的真实名字
+     */
+    private String auditDisplay;
+     
+    public String getAuditDisplay() {
+		return auditDisplay;
+	}
+
+	public void setAuditDisplay(String auditDisplay) {
+		this.auditDisplay = auditDisplay;
+	}
+
+	public String getCarrierMemberId() {
         return carrierMemberId;
     }
 
