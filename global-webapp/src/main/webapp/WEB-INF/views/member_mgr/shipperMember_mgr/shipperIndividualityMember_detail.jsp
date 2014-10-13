@@ -29,7 +29,7 @@
 					    <td><input id="member_mgr_member_form_accountBalance" name="accountBalance" class="spinner" style="width:168px" value="<fmt:formatNumber value='${shipperMemberData.accountBalance}' pattern="#,#00.00元"/>" readonly="readonly"/></td>
 				 	</tr>
 					 <tr>
-						<td>上次登录IP：</td>
+						<td>上次登录ip：</td>
 						<td><input class="spinner" style="width:168px" value="${shipperMemberData.lastLoginIpAddress}"  readonly="readonly"/></td>
 						<td style="padding-left:10px;">上次登录时间：</td>
 						<td><input class="spinner" style="width:168px" value="<fmt:formatDate value="${shipperMemberData.lastLoginTime}" pattern="yyyy-MM-dd HH:mm:ss"/>" readonly="readonly"/></td>
@@ -37,13 +37,9 @@
 					<tr>
 						<td>登录次数：</td>
 						<td ><input name="loginCount" class="spinner" style="width:168px" value="${shipperMemberData.loginCount}" readonly="readonly"/></td>
-						<td style="padding-left:10px;">上次登录ip：</td>
-						<td ><input name="lastLoginIpAddress" class="spinner" style="width:168px" value="${shipperMemberData.lastLoginIpAddress}" readonly="readonly"/></td>
-					 </tr>
-						<tr>
-						<td>地 址：</td>
-						<td colspan="3"><input  name="liveAddress" class="spinner" style="width:435px" value="${shipperMemberData.liveAddress}" readonly="readonly"/></td>
-					</tr>
+						<td style="padding-left:10px;">地 址：</td>
+						<td ><input  name="liveAddress" class="spinner" style="width:168px" value="${shipperMemberData.liveAddress}" readonly="readonly"/></td>
+				   </tr> 
 					<tr>
 				      <td>创建人：</td>
 					  <td><input class="spinner" style="width:168px"   value="${shipperMemberData.createrDisplay}" readonly="readonly"/></td>

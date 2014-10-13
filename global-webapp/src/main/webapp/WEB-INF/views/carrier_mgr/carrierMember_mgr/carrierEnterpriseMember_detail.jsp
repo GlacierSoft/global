@@ -29,21 +29,20 @@
 					    <td><input name="surplusMonney" class="spinner" style="width:168px" value="<fmt:formatNumber value='${carrierMemberData.surplusMonney}' pattern="#,#00.00元"/>" readonly="readonly"/></td>
 				 	</tr>
 					 <tr>
-						<td>上次登录IP：</td>
+						<td>上次登录ip：</td>
 						<td><input class="spinner" style="width:168px" value="${carrierMemberData.lastLoginIpAddress}"  readonly="readonly"/></td>
 						<td style="padding-left:10px;">上次登录时间：</td>
 						<td><input class="spinner" style="width:168px" value="<fmt:formatDate value="${carrierMemberData.lastLoginTime}" pattern="yyyy-MM-dd HH:mm:ss"/>" readonly="readonly"/></td>
 					</tr>
 					<tr>
 						<td>登录次数：</td>
-						<td ><input name="loginCount" class="spinner" style="width:168px" value="${carrierMemberData.loginCount}" readonly="readonly"/></td>
-						<td style="padding-left:10px;">上次登录ip：</td>
-						<td ><input name="lastLoginIpAddress" class="spinner" style="width:168px" value="${carrierMemberData.lastLoginIpAddress}" readonly="readonly"/></td>
-					 </tr>
-					 
+						<td><input name="loginCount" class="spinner" style="width:168px" value="${carrierMemberData.loginCount}" readonly="readonly"/></td>
+					 	<td style="padding-left:10px;">地 址：</td>
+						<td><input  name="liveAddress" class="spinner" style="width:168px" value="${carrierMemberData.liveAddress}" readonly="readonly"/></td>
+					 </tr> 
 					 <tr>
 						<td>信用额度：</td>
-						<td ><input name="creditLimit" class="spinner" style="width:168px" value="${carrierMemberData.creditLimit}" readonly="readonly"/></td>
+						<td ><input name="creditLimit" class="spinner" style="width:168px"  value="<fmt:formatNumber value="${carrierMemberData.creditLimit}" pattern="#,#00.00"/>"  readonly="readonly"/></td>
 						<td style="padding-left:10px;">配送成功次数：</td>
 						<td ><input name="deliverSuccess" class="spinner" style="width:168px" value="${carrierMemberData.deliverSuccess}" readonly="readonly"/></td>
 					 </tr>
@@ -59,12 +58,7 @@
 						<td ><input name="auditDisplay" class="spinner" style="width:168px" value="${carrierMemberData.auditDisplay}" readonly="readonly"/></td>
 						<td style="padding-left:10px;">审核时间：</td>
 						<td ><input name="auditTime" class="spinner" style="width:168px" value="<fmt:formatDate value="${carrierMemberData.auditTime}" pattern="yyyy-MM-dd HH:mm:ss"/>" readonly="readonly"/></td>
-					 </tr>
-					 
-						<tr>
-						<td>地 址：</td>
-						<td colspan="3"><input  name="liveAddress" class="spinner" style="width:435px" value="${carrierMemberData.liveAddress}" readonly="readonly"/></td>
-					</tr>
+					 </tr> 
 					<tr>
 				      <td>创建人：</td>
 					  <td><input class="spinner" style="width:168px"   value="${carrierMemberData.createrDisplay}" readonly="readonly"/></td>
