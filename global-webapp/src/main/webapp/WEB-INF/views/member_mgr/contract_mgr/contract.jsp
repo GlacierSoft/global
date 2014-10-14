@@ -7,7 +7,7 @@
 String path = request.getContextPath();    
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";    
 %>
-<script language="javascript" src="<%=basePath %>resources/js/lodop/LodopFuncs.js"></script>
+
 <object  id="LODOP_OB" classid="clsid:2105C259-1E0C-4534-8141-A753534CB4CA" width=0 height=0> 
        <embed id="LODOP_EM" type="application/x-print-lodop" width=0 height=0></embed>
 </object>
@@ -171,22 +171,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	      location.href=ctx+"/do/contract/exp.json";
 	  };
 	  
-	  glacier.member_mgr.contract_mgr.contract.printContractorManager=function(){
-		  CheckIsInstall();
-			
-	  }
-	  
-	  function CheckIsInstall() {	 
-			try{ 
-			     var LODOP=getLodop(document.getElementById('LODOP_OB'),document.getElementById('LODOP_EM')); 
-				if ((LODOP!=null)&&(typeof(LODOP.VERSION)!="undefined")) alert("本机已成功安装过Lodop控件!\n  版本号:"+LODOP.VERSION); 
-			 }catch(err){ 
-				//alert("Error:本机未安装或需要升级!"); 
-	 		 } 
-		}; 
 	  
 	
-	  //状态下拉项
+	//状态下拉项
 	  $('#bankCardSearchForm_status').combobox({
 			valueField : 'value',
 			//height:18,
@@ -198,6 +185,118 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			data : fields.status
 		});
 		
+	  var CreatedOKLodop7766=null;
+	  
+	  glacier.member_mgr.contract_mgr.contract.printContractorManager=function(){
+		 var LODOP=getLodop();
+		}
+	  
+	  function getLodop(oOBJECT,oEMBED){
+		  /**************************
+		    本函数根据浏览器类型决定采用哪个页面元素作为Lodop对象：
+		    IE系列、IE内核系列的浏览器采用oOBJECT，
+		    其它浏览器(Firefox系列、Chrome系列、Opera系列、Safari系列等)采用oEMBED,
+		    如果页面没有相关对象元素，则新建一个或使用上次那个,避免重复生成。
+		    64位浏览器指向64位的安装程序install_lodop64.exe。
+		  **************************/
+		      //=====全局变量 设定
+		          var str_warn_install="0";
+		          var str_warn_update="0";
+		          var str_warn_firefox="0";
+		          var str_warn_chrome="0";
+		          var str_warn_total="0";
+		  
+		   //=====检测Lodop插件是否安装过，提供链接地址==========
+		  	      var strHtmInstall="<br><font color='#FF00FF'>打印控件未安装!点击这里<a href='<%=basePath%>resources/js/lodop/install_lodop32.exe' target='_self'>执行安装</a>,安装后请刷新页面或重新进入。</font>";
+		          var strHtmUpdate="<br><font color='#FF00FF'>打印控件需要升级!点击这里<a href='<%=basePath%>resources/js/lodop/install_lodop32.exe' target='_self'>执行升级</a>,升级后请重新进入。</font>";
+		          var strHtm64_Install="<br><font color='#FF00FF'>打印控件未安装!点击这里<a href='<%=basePath%>resources/js/lodop/install_lodop64.exe' target='_self'>执行安装</a>,安装后请刷新页面或重新进入。</font>";
+		          var strHtm64_Update="<br><font color='#FF00FF'>打印控件需要升级!点击这里<a href='<%=basePath%>resources/js/lodop/install_lodop64.exe' target='_self'>执行升级</a>,升级后请重新进入。</font>";
+		          var strHtmFireFox="<br><font color='#FF00FF'>（注意：如曾安装过Lodop旧版附件npActiveXPLugin,请在【工具】->【附加组件】->【扩展】中先卸它）</font>";
+		          var strHtmChrome="<br><font color='#FF00FF'>(如果此前正常，仅因浏览器升级或重安装而出问题，需重新执行以上安装）</font>";
+		          var LODOP;		
+		  	try{	
+		  	     //=====判断浏览器类型:===============
+		  	     var isIE	 = (navigator.userAgent.indexOf('MSIE')>=0) || (navigator.userAgent.indexOf('Trident')>=0);
+		  	     var is64IE  = isIE && (navigator.userAgent.indexOf('x64')>=0);
+		  	     //=====如果页面有Lodop就直接使用，没有则新建:==========
+		  	     if (oOBJECT!=undefined || oEMBED!=undefined) { 
+		                 	 if (isIE) 
+		  	             LODOP=oOBJECT; 
+		  	         else 
+		  	             LODOP=oEMBED;
+		  	     } else { 
+		  		 if (CreatedOKLodop7766==null){
+		            	     LODOP=document.createElement("object"); 
+		  		     LODOP.setAttribute("width",0); 
+		                       LODOP.setAttribute("height",0); 
+		  		     LODOP.setAttribute("style","position:absolute;left:0px;top:-100px;width:0px;height:0px;");  		     
+		                       if (isIE) LODOP.setAttribute("classid","clsid:2105C259-1E0C-4534-8141-A753534CB4CA"); 
+		  		     else LODOP.setAttribute("type","application/x-print-lodop");
+		  		     document.documentElement.appendChild(LODOP); 
+		  	             CreatedOKLodop7766=LODOP;		     
+		   	         } else 
+		                       LODOP=CreatedOKLodop7766;
+		  	     };
+		  	     //=====判断Lodop插件是否安装过，没有安装或版本过低就提示下载安装:==========
+		  	     if ((LODOP==null)||(typeof(LODOP.VERSION)=="undefined")) {
+		  	             if (navigator.userAgent.indexOf('Chrome')>=0){
+		  	            	str_warn_chrome=strHtmChrome;
+		  	            	// document.documentElement.innerHTML=strHtmChrome+document.documentElement.innerHTML;
+		  	             }
+		  	              if (navigator.userAgent.indexOf('Firefox')>=0){
+		  	            	str_warn_firefox=strHtmFireFox;
+		  	            	  //document.documentElement.innerHTML=strHtmFireFox+document.documentElement.innerHTML; 
+		  	             }
+		  	             if (is64IE) {
+		  	            	 //document.write(strHtm64_Install);
+		  	            	$.messager.confirm('请确认', strHtm64_Install, function(r){
+	  		            		location.href="<%=basePath%>resources/js/lodop/install_lodop32.exe";
+	  		            	 });
+		  	            	 
+		  	             }else if (isIE) {
+		  	            		 //document.write(strHtmInstall);
+		  	            		$.messager.confirm('请确认', strHtmInstall, function(r){
+		  		            		location.href="<%=basePath%>resources/js/lodop/install_lodop64.exe";
+		  		            	 });
+		  	            	 }else{
+		  	            		//document.documentElement.innerHTML=strHtmInstall+document.documentElement.innerHTML;
+		  	            		if(str_warn_chrome.trim()!="0")
+		  	            			str_warn_total=str_warn_chrome;
+		  	            		if(str_warn_firefox.trim()!="0")
+		  	            			str_warn_total=str_warn_firefox;
+		  	            		  $.messager.confirm('请确认', strHtmInstall+str_warn_total, function(r){
+		  		            		location.href="<%=basePath%>resources/js/lodop/install_lodop32.exe";
+		  		            	 });
+		  		             }
+		  		                     
+		  	             return LODOP;
+		  	     } else if (LODOP.VERSION<"6.1.9.2") {
+		  	              if (is64IE)
+		  	            	 document.write(strHtm64_Update); 
+		  	             else if (isIE)
+		  	            	  document.write(strHtmUpdate);
+		  	              else{
+		  	            	  document.documentElement.innerHTML=strHtmUpdate+document.documentElement.innerHTML;
+		  	            	}
+		  	             
+		  	    	     return LODOP;
+		  	     } else{
+		  	    	  alert("最新版本!!!!"); 
+		  	     }
+		  	     //=====如下空白位置适合调用统一功能(如注册码、语言选择等):====	     
+
+
+		  	     //============================================================	     
+		  	     return LODOP; 
+		  	} catch(err) {
+		  	     if (is64IE)	
+		              document.documentElement.innerHTML="Error:"+strHtm64_Install+document.documentElement.innerHTML;else
+		              document.documentElement.innerHTML="Error:"+strHtmInstall+document.documentElement.innerHTML;
+		  	     return LODOP; 
+		  	};
+		  }
+	  
+	  
 	
 </script>
 

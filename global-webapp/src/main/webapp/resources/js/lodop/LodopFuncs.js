@@ -53,14 +53,23 @@ function getLodop(oOBJECT,oEMBED){
 	     };
 	     //=====判断Lodop插件是否安装过，没有安装或版本过低就提示下载安装:==========
 	     if ((LODOP==null)||(typeof(LODOP.VERSION)=="undefined")) {
-	             if (navigator.userAgent.indexOf('Chrome')>=0)
-	                 document.documentElement.innerHTML=strHtmChrome+document.documentElement.innerHTML;
-	             if (navigator.userAgent.indexOf('Firefox')>=0)
-	                 document.documentElement.innerHTML=strHtmFireFox+document.documentElement.innerHTML;
-	             if (is64IE) document.write(strHtm64_Install); else
-	             if (isIE)   document.write(strHtmInstall);    else
-	                 document.documentElement.innerHTML=strHtmInstall+document.documentElement.innerHTML;
-	             return LODOP;
+	             if (navigator.userAgent.indexOf('Chrome')>=0){
+	            	 document.documentElement.innerHTML=strHtmChrome+document.documentElement.innerHTML;
+	             }
+	              if (navigator.userAgent.indexOf('Firefox')>=0){
+	            	  document.documentElement.innerHTML=strHtmFireFox+document.documentElement.innerHTML; 
+	              }
+	             if (is64IE) {
+	            	 document.write(strHtm64_Install);
+	             }else{
+	            	 if (isIE) {
+	            		 document.write(strHtmInstall);
+	            	 }else{
+	            		document.documentElement.innerHTML=strHtmInstall+document.documentElement.innerHTML;
+		            	 
+		             }
+		                     
+	             }return LODOP;
 	     } else 
 	     if (LODOP.VERSION<"6.1.9.2") {
 	             if (is64IE) document.write(strHtm64_Update); else
