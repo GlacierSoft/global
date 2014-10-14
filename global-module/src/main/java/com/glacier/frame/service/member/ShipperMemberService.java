@@ -15,6 +15,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List; 
 import org.apache.commons.lang3.StringUtils; 
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -31,6 +33,7 @@ import com.glacier.frame.entity.member.ShipperMember;
 import com.glacier.frame.entity.member.ShipperMemberExample;
 import com.glacier.frame.entity.member.ShipperMemberExample.Criteria;
 import com.glacier.frame.entity.member.ShipperMemberToken;
+import com.glacier.frame.entity.system.User;
 import com.glacier.jqueryui.util.JqGridReturn;
 import com.glacier.jqueryui.util.JqPager;
 import com.glacier.jqueryui.util.JqReturnJson; 
@@ -164,13 +167,11 @@ public class ShipperMemberService {
        	    return returnResult;
         }
         int count = 0;
-        //有了user实体关联，取消注释即可
-        /* Subject pricipalSubject = SecurityUtils.getSubject(); 
+        Subject pricipalSubject = SecurityUtils.getSubject(); 
         User pricipalUser = (User) pricipalSubject.getPrincipal();
-        shipperEnterpriseMember.setAuditor(pricipalUser.getUserId());
-        shipperEnterpriseMember.setAuthTime(new Date());
-        shipperEnterpriseMember.setUpdater(pricipalUser.getUserId()); 
-       */ count = shipperEnterpriseMemberMapper.updateByPrimaryKeySelective(shipperEnterpriseMember);
+        shipperEnterpriseMember.setAuth(pricipalUser.getUserId());
+        shipperEnterpriseMember.setAuthTime(new Date()); 
+        count = shipperEnterpriseMemberMapper.updateByPrimaryKeySelective(shipperEnterpriseMember);
         if (count == 1) {
             returnResult.setSuccess(true);
             returnResult.setMsg("企业【"+enterpriseMember.getEnterpriseName()+"】审核操作成功");
@@ -329,9 +330,7 @@ public class ShipperMemberService {
         shipperMemberToken.setMemberId(shipperMemberId);
         shipperMemberToken.setMemberName(shipperMember.getMemberName());
         shipperMemberToken.setPassword(shipperMember.getMemberPassword()); 
-        this.entryptPassword(shipperMemberToken); 
-        
-        
+        this.entryptPassword(shipperMemberToken);  
         //增加会员信息 
         shipperMember.setMemberId(shipperMemberId);
         shipperMember.setMemberPassword(shipperMemberToken.getPassword()); 

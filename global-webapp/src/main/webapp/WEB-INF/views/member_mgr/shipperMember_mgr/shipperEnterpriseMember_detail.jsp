@@ -116,7 +116,7 @@
 					 </tr>
 					 <tr>
 					    <td>认证时间：</td>
-						<td><input  name="authTime" class="spinner" style="width:168px" value='${enterpriseMemberData.authTime}' readonly="readonly"/></td>
+						<td><input  name="authTime" class="spinner" style="width:168px" value="<fmt:formatDate  value='${enterpriseMemberData.authTime}'  pattern="yyyy-MM-dd HH:mm:ss"/>"readonly="readonly"/></td>
 					     <td style="padding-left:10px;">认证备注：</td>
 						<td><input name="authRemark" class="spinner" style="width:168px" value="${enterpriseMemberData.authRemark}" readonly="readonly"/></td>
 					  </tr>

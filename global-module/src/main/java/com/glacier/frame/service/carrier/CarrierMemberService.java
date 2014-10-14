@@ -12,8 +12,11 @@
  */
 package com.glacier.frame.service.carrier; 
 import java.util.ArrayList; 
+import java.util.Date;
 import java.util.List; 
 import org.apache.commons.lang3.StringUtils;
+import org.apache.shiro.SecurityUtils;
+import org.apache.shiro.subject.Subject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Propagation;
@@ -27,6 +30,7 @@ import com.glacier.frame.entity.carrier.CarrierEnterpriserMember;
 import com.glacier.frame.entity.carrier.CarrierMember;
 import com.glacier.frame.entity.carrier.CarrierMemberExample;  
 import com.glacier.frame.entity.carrier.CarrierMemberExample.Criteria; 
+import com.glacier.frame.entity.system.User;
 import com.glacier.jqueryui.util.JqGridReturn;
 import com.glacier.jqueryui.util.JqPager;
 import com.glacier.jqueryui.util.JqReturnJson; 
@@ -158,13 +162,13 @@ public class CarrierMemberService {
        	    return returnResult;
         }
         int count = 0;
-        //有了user实体关联，取消注释即可
-        /* Subject pricipalSubject = SecurityUtils.getSubject(); 
+        Subject pricipalSubject = SecurityUtils.getSubject(); 
         User pricipalUser = (User) pricipalSubject.getPrincipal();
-        carrierMember.setAuditor(pricipalUser.getUserId());
-        carrierMember.setAuthTime(new Date());
+        carrierMember.setAudit(pricipalUser.getUserId());
+        carrierMember.setAuditTime(new Date());
         carrierMember.setUpdater(pricipalUser.getUserId()); 
-       */ count = carrierMemberMapper.updateByPrimaryKeySelective(carrierMember);
+        carrierMember.setUpdateTime(new Date());
+        count = carrierMemberMapper.updateByPrimaryKeySelective(carrierMember);
         if (count == 1) {
             returnResult.setSuccess(true);
             returnResult.setMsg("会员【"+enterpriseMember.getMemberName()+"】审核操作成功");
@@ -195,13 +199,11 @@ public class CarrierMemberService {
         	returnResult.setMsg("该企业已进行过认证，不可重复操作");
        	    return returnResult;
         }
-        int count = 0;
-        //有了user实体关联，取消注释即可
-      /*  Subject pricipalSubject = SecurityUtils.getSubject(); 
+        int count = 0; 
+        Subject pricipalSubject = SecurityUtils.getSubject(); 
         User pricipalUser = (User) pricipalSubject.getPrincipal();
-        carrierEnterpriserMember.setAuditor(pricipalUser.getUserId());
-        carrierEnterpriserMember.setAuthTime(new Date());
-        carrierEnterpriserMember.setUpdater(pricipalUser.getUserId()); */
+        carrierEnterpriserMember.setAuth(pricipalUser.getUserId());
+        carrierEnterpriserMember.setAuthTime(new Date()); 
         count = carrierEnterpriserMemberMapper.updateByPrimaryKeySelective(carrierEnterpriserMember);
         if (count == 1) {
             returnResult.setSuccess(true);
