@@ -194,12 +194,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  function getLodop(oOBJECT,oEMBED){
 		  /**************************
 		    本函数根据浏览器类型决定采用哪个页面元素作为Lodop对象：
-		    IE系列、IE内核系列的浏览器采用oOBJECT，
+		 IE系列、IE内核系列的浏览器采用oOBJECT，
 		    其它浏览器(Firefox系列、Chrome系列、Opera系列、Safari系列等)采用oEMBED,
 		    如果页面没有相关对象元素，则新建一个或使用上次那个,避免重复生成。
-		    64位浏览器指向64位的安装程序install_lodop64.exe。
-		  **************************/
-		      //=====全局变量 设定
+		 64位浏览器指向64位的安装程序install_lodop64.exe。
+		 **************************/
+		 //=====全局变量 设定
 		          var str_warn_install="0";
 		          var str_warn_update="0";
 		          var str_warn_firefox="0";
@@ -249,24 +249,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  	             }
 		  	             if (is64IE) {
 		  	            	 //document.write(strHtm64_Install);
-		  	            	$.messager.confirm('请确认', strHtm64_Install, function(r){
-	  		            		location.href="<%=basePath%>resources/js/lodop/install_lodop32.exe";
-	  		            	 });
+		  	            	$.messager.alert("操作提示",strHtm64_Install,"warning");
 		  	            	 
 		  	             }else if (isIE) {
 		  	            		 //document.write(strHtmInstall);
-		  	            		$.messager.confirm('请确认', strHtmInstall, function(r){
-		  		            		location.href="<%=basePath%>resources/js/lodop/install_lodop64.exe";
-		  		            	 });
+		  	            	$.messager.alert("操作提示",strHtmInstall,"warning");
 		  	            	 }else{
 		  	            		//document.documentElement.innerHTML=strHtmInstall+document.documentElement.innerHTML;
 		  	            		if(str_warn_chrome.trim()!="0")
 		  	            			str_warn_total=str_warn_chrome;
 		  	            		if(str_warn_firefox.trim()!="0")
 		  	            			str_warn_total=str_warn_firefox;
-		  	            		  $.messager.confirm('请确认', strHtmInstall+str_warn_total, function(r){
-		  		            		location.href="<%=basePath%>resources/js/lodop/install_lodop32.exe";
-		  		            	 });
+		  	            		 $.messager.alert("操作提示",strHtmInstall+str_warn_total,"warning");
 		  		             }
 		  		                     
 		  	             return LODOP;
@@ -281,12 +275,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  	             
 		  	    	     return LODOP;
 		  	     } else{
-		  	    	  alert("最新版本!!!!"); 
+		  	    	$.messager.alert("选择操作","<a href='javascript:prn1_preview();'>打印预览</a>&nbsp;<a href='javascript:prn1_print()'>直接打印</a>&nbsp;<a href='javascript:prn1_printA()'>选择打印机</a>&nbsp;<a href='javascript:prn2_manage()'>打印维护</a>","warning");
+		  	        
 		  	     }
 		  	     //=====如下空白位置适合调用统一功能(如注册码、语言选择等):====	     
 
-
-		  	     //============================================================	     
+                //============================================================	     
 		  	     return LODOP; 
 		  	} catch(err) {
 		  	     if (is64IE)	
@@ -296,7 +290,73 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		  	};
 		  }
 	  
+	 var LODOP; //声明为全局变量 
 	  
+	  //打印预览
+	  function prn1_preview(){
+		  var row =glacier.member_mgr.contract_mgr.contract.contractDataGrid.datagrid("getSelected");
+		  //合同名称
+		  var contract_name="【"+row.memberDisplay+"-"+row.platformId+"】"+"专用合同";
+		  //签署人(甲方)
+		  var contract_first_party=row.memberDispaly;
+		  //签署人（乙方）
+		  var contract_second_party=row.platformId;
+		  //签署内容
+		  var contract_opinion=row.contractContent;
+		  //签生效时间时间
+		  var contract_start_time=row.operationTime;
+		 //签署失效时间
+		 var contract_end_time=row.closeTime;
+		 //内容测试
+		 alert(contract_name+"   "+"contract_first_party"+"  "+contract_second_party+"   "+contract_opinion+"   "+contract_start_time+"  "+contract_end_time);
+		
+		CreateOneFormPage();	
+	    LODOP.PREVIEW();	
+      }; 
+	  
+	  //直接打印
+	  function prn1_print() {		
+		CreateOneFormPage();
+		LODOP.PRINT();	
+	 };
+	
+	  //选择打印机
+	  function prn1_printA() {		
+		CreateOneFormPage();
+		LODOP.PRINTA(); 	
+	 };
+	
+	//打印维护
+    function prn2_manage() {	
+		CreateTwoFormPage();
+		LODOP.PRINT_SETUP();	
+	};
+	  
+	  
+	function CreateOneFormPage(){
+		LODOP=getLodop(document.getElementById('LODOP_OB'),document.getElementById('LODOP_EM'));         
+		LODOP.PRINT_INIT("打印控件功能演示_Lodop功能_名片");       
+		LODOP.ADD_PRINT_RECT(10,55,360,220,0,1);       
+		LODOP.SET_PRINT_STYLE("FontSize",11);       
+		LODOP.ADD_PRINT_TEXT(20,180,100,25,"郭德强");       
+		LODOP.SET_PRINT_STYLEA(2,"FontName","隶书");       
+		LODOP.SET_PRINT_STYLEA(2,"FontSize",15);		       
+		LODOP.ADD_PRINT_TEXT(53,187,75,20,"科学家");       
+		LODOP.ADD_PRINT_TEXT(100,131,272,20,"地址：中国北京社会科学院附近东大街西胡同");       
+		LODOP.ADD_PRINT_TEXT(138,132,166,20,"电话：010-88811888");	     
+		LODOP.SET_PREVIEW_WINDOW(0,0,0,760,540,"");
+	}	  
+	  
+	function CreateTwoFormPage(){
+		LODOP=getLodop();  
+		LODOP.PRINT_INIT("打印控件功能演示_Lodop功能_表单二");
+		LODOP.ADD_PRINT_RECT(70,27,634,242,0,1);
+		LODOP.ADD_PRINT_TEXT(29,236,279,38,"页面内容改变布局打印");
+		LODOP.SET_PRINT_STYLEA(2,"FontSize",18);
+		LODOP.SET_PRINT_STYLEA(2,"Bold",1);
+		LODOP.ADD_PRINT_HTM(88,40,321,185,document.getElementById("form1").innerHTML);
+		LODOP.ADD_PRINT_TEXT(319,58,500,30,"注：其中《表单一》按显示大小，《表单二》在程序控制宽度(285px)内自适应调整");
+	}; 
 	
 </script>
 
@@ -338,4 +398,28 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</table>
 		</form>
 	</div>
+	<div data-options="region:'south',split:true"
+		style="height: 40px; padding-left: 10px;" >
+	</div>
+</div>
+<div id="Test_One" style="display: none;">
+    <form id="form1">
+		  <table border="1" width="300" id="tb01" bgcolor="#CCFFCC" style="border:solid 1px black;border-collapse:collapse"><tr><td width="133" id="mtb001">
+		  <font face="黑体" color="#FF0000" size="3"><u>&nbsp;《表单一》&nbsp;</u></font></td></tr></table>
+		  <table border="1" width="300" height="106" cellspacing="0" bgcolor="#CCFFFF"style="border-collapse:collapse;table-layout:fixed;border:solid 1px black;"><tr>
+		  <td width="66" height="16" style="border:solid 1px black"><font color="#0000FF">A</font><font color="#0000FF">等</font></td>
+			<td width="51" height="16" style="border:solid 1px black"><font color="#0000FF">B</font><font color="#0000FF">等</font></td>
+			<td width="51" height="16" style="border:solid 1px black"><font color="#0000FF">C</font><font color="#0000FF">等</font></td></tr> 
+		<tr>
+			<td width="66" height="16" style="border:solid 1px black">A<sub>01</sub></td>
+			<td width="80" height="12" style="border:solid 1px black">中-001</td>
+			<td width="51" height="12" style="border:solid 1px black">C1<sup>x</sup></td>
+		</tr> 
+		<tr>
+		  	<td width="66" height="16" style="border:solid 1px black;overflow:hidden">A<sub>03</sub><nobr>over隐藏后面的：1234567890</nobr>
+			</td><td width="80" height="16" style="border:solid 1px black;overflow:hidden">韩-안녕</td><td width="51" height="16">C3<sup>x</sup>
+		</td>
+		</tr> 
+		</table>
+</form>
 </div>
