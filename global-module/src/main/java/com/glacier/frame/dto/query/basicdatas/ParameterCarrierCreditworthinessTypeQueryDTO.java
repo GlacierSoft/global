@@ -8,18 +8,17 @@ package com.glacier.frame.dto.query.basicdatas;
 import java.util.Date;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.lang3.builder.ReflectionToStringBuilder; 
-
-import com.glacier.frame.entity.basicdatas.ParameterCarrierCarType;
-import com.glacier.frame.entity.basicdatas.ParameterCarrierCarTypeExample.Criteria;
+import com.glacier.frame.entity.basicdatas.ParameterCarrierCreditworthinessTypeExample.Criteria;
+import com.glacier.frame.entity.basicdatas.ParameterCarrierCreditworthinessType;
 
 /**
- * @ClassName: ParameterCarrierCarTypeQueryDTO 
- * @Description: TODO(车辆类型查询DTO) 
+ * @ClassName: CarrierMemberGradeQueryDTO 
+ * @Description: TODO(会员等级查询DTO) 
  * @author wuting
  * @email 920339213@QQ.com
  * @date 2014-10-9
  */
-public class ParameterCarrierCarTypeQueryDTO extends ParameterCarrierCarType{
+public class ParameterCarrierCreditworthinessTypeQueryDTO extends ParameterCarrierCreditworthinessType{
 	private Date createStartTime;
 
     private Date createEndTime;
@@ -82,11 +81,11 @@ public class ParameterCarrierCarTypeQueryDTO extends ParameterCarrierCarType{
 	}
 
 	public void setQueryCondition(Criteria queryCriteria){
-   	 if(null != this.getCartypeName() && StringUtils.isNotBlank(this.getCartypeName())){//车辆类型名称Like查询
-            queryCriteria.andCartypeNameLike("%" + this.getCartypeName() + "%");
+   	 if(null != this.getCreditworthinessType() && StringUtils.isNotBlank(this.getCreditworthinessType())){//信誉度类型名称Like查询
+            queryCriteria.andCreditworthinessTypeLike("%" + this.getCreditworthinessType() + "%");
         }  
-   	 if(null != this.getStatus()){//状态Enum查询
-        queryCriteria.andStatusEqualTo(this.getStatus().toString());
+   	 if(null != this.getChangeType()){//状态Enum查询
+        queryCriteria.andChangeTypeEqualTo(this.getChangeType().toString());
    	 	}
      if(null != createStartTime && null != createEndTime){//创建时间段查询
            queryCriteria.andCreateTimeBetween(createStartTime, createEndTime); 

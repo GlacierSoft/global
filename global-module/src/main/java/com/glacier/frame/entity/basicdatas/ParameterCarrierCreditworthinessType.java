@@ -1,8 +1,10 @@
-package com.glacier.frame.entity.carrier;
+package com.glacier.frame.entity.basicdatas;
 
 import java.util.Date;
 
-public class CarrierCreditworthinessType {
+import com.alibaba.fastjson.annotation.JSONField;
+
+public class ParameterCarrierCreditworthinessType {
     private String creditworthinessTypeId;
 
     private String creditworthinessType;
@@ -15,11 +17,20 @@ public class CarrierCreditworthinessType {
 
     private String creater;
 
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
     private String updater;
 
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
+    
+    /**
+     * 自定义字段
+     */
+    private String createrDisplay;
+    
+    private String updaterDisplay;
 
     public String getCreditworthinessTypeId() {
         return creditworthinessTypeId;
@@ -93,7 +104,23 @@ public class CarrierCreditworthinessType {
         this.updateTime = updateTime;
     }
 
-    @Override
+    public String getCreaterDisplay() {
+		return createrDisplay;
+	}
+
+	public void setCreaterDisplay(String createrDisplay) {
+		this.createrDisplay = createrDisplay;
+	}
+
+	public String getUpdaterDisplay() {
+		return updaterDisplay;
+	}
+
+	public void setUpdaterDisplay(String updaterDisplay) {
+		this.updaterDisplay = updaterDisplay;
+	}
+
+	@Override
     public boolean equals(Object that) {
         if (this == that) {
             return true;
@@ -104,7 +131,7 @@ public class CarrierCreditworthinessType {
         if (getClass() != that.getClass()) {
             return false;
         }
-        CarrierCreditworthinessType other = (CarrierCreditworthinessType) that;
+        ParameterCarrierCreditworthinessType other = (ParameterCarrierCreditworthinessType) that;
         return (this.getCreditworthinessTypeId() == null ? other.getCreditworthinessTypeId() == null : this.getCreditworthinessTypeId().equals(other.getCreditworthinessTypeId()))
             && (this.getCreditworthinessType() == null ? other.getCreditworthinessType() == null : this.getCreditworthinessType().equals(other.getCreditworthinessType()))
             && (this.getChangeType() == null ? other.getChangeType() == null : this.getChangeType().equals(other.getChangeType()))

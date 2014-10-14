@@ -1,10 +1,10 @@
-package com.glacier.frame.entity.carrier;
+package com.glacier.frame.entity.basicdatas;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class CarrierCreditworthinessTypeExample {
+public class ParameterCarrierCreditworthinessTypeExample {
     protected String orderByClause;
 
     protected boolean distinct;
@@ -15,7 +15,7 @@ public class CarrierCreditworthinessTypeExample {
 
     protected int limitEnd = -1;
 
-    public CarrierCreditworthinessTypeExample() {
+    public ParameterCarrierCreditworthinessTypeExample() {
         oredCriteria = new ArrayList<Criteria>();
     }
 
@@ -126,602 +126,602 @@ public class CarrierCreditworthinessTypeExample {
         }
 
         public Criteria andCreditworthinessTypeIdIsNull() {
-            addCriterion("temp_carrier_creditworthiness_type.creditworthiness_type_id is null");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.creditworthiness_type_id is null");
             return (Criteria) this;
         }
 
         public Criteria andCreditworthinessTypeIdIsNotNull() {
-            addCriterion("temp_carrier_creditworthiness_type.creditworthiness_type_id is not null");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.creditworthiness_type_id is not null");
             return (Criteria) this;
         }
 
         public Criteria andCreditworthinessTypeIdEqualTo(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.creditworthiness_type_id =", value, "creditworthinessTypeId");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.creditworthiness_type_id =", value, "creditworthinessTypeId");
             return (Criteria) this;
         }
 
         public Criteria andCreditworthinessTypeIdNotEqualTo(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.creditworthiness_type_id <>", value, "creditworthinessTypeId");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.creditworthiness_type_id <>", value, "creditworthinessTypeId");
             return (Criteria) this;
         }
 
         public Criteria andCreditworthinessTypeIdGreaterThan(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.creditworthiness_type_id >", value, "creditworthinessTypeId");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.creditworthiness_type_id >", value, "creditworthinessTypeId");
             return (Criteria) this;
         }
 
         public Criteria andCreditworthinessTypeIdGreaterThanOrEqualTo(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.creditworthiness_type_id >=", value, "creditworthinessTypeId");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.creditworthiness_type_id >=", value, "creditworthinessTypeId");
             return (Criteria) this;
         }
 
         public Criteria andCreditworthinessTypeIdLessThan(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.creditworthiness_type_id <", value, "creditworthinessTypeId");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.creditworthiness_type_id <", value, "creditworthinessTypeId");
             return (Criteria) this;
         }
 
         public Criteria andCreditworthinessTypeIdLessThanOrEqualTo(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.creditworthiness_type_id <=", value, "creditworthinessTypeId");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.creditworthiness_type_id <=", value, "creditworthinessTypeId");
             return (Criteria) this;
         }
 
         public Criteria andCreditworthinessTypeIdLike(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.creditworthiness_type_id like", value, "creditworthinessTypeId");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.creditworthiness_type_id like", value, "creditworthinessTypeId");
             return (Criteria) this;
         }
 
         public Criteria andCreditworthinessTypeIdNotLike(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.creditworthiness_type_id not like", value, "creditworthinessTypeId");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.creditworthiness_type_id not like", value, "creditworthinessTypeId");
             return (Criteria) this;
         }
 
         public Criteria andCreditworthinessTypeIdIn(List<String> values) {
-            addCriterion("temp_carrier_creditworthiness_type.creditworthiness_type_id in", values, "creditworthinessTypeId");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.creditworthiness_type_id in", values, "creditworthinessTypeId");
             return (Criteria) this;
         }
 
         public Criteria andCreditworthinessTypeIdNotIn(List<String> values) {
-            addCriterion("temp_carrier_creditworthiness_type.creditworthiness_type_id not in", values, "creditworthinessTypeId");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.creditworthiness_type_id not in", values, "creditworthinessTypeId");
             return (Criteria) this;
         }
 
         public Criteria andCreditworthinessTypeIdBetween(String value1, String value2) {
-            addCriterion("temp_carrier_creditworthiness_type.creditworthiness_type_id between", value1, value2, "creditworthinessTypeId");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.creditworthiness_type_id between", value1, value2, "creditworthinessTypeId");
             return (Criteria) this;
         }
 
         public Criteria andCreditworthinessTypeIdNotBetween(String value1, String value2) {
-            addCriterion("temp_carrier_creditworthiness_type.creditworthiness_type_id not between", value1, value2, "creditworthinessTypeId");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.creditworthiness_type_id not between", value1, value2, "creditworthinessTypeId");
             return (Criteria) this;
         }
 
         public Criteria andCreditworthinessTypeIsNull() {
-            addCriterion("temp_carrier_creditworthiness_type.creditworthiness_type is null");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.creditworthiness_type is null");
             return (Criteria) this;
         }
 
         public Criteria andCreditworthinessTypeIsNotNull() {
-            addCriterion("temp_carrier_creditworthiness_type.creditworthiness_type is not null");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.creditworthiness_type is not null");
             return (Criteria) this;
         }
 
         public Criteria andCreditworthinessTypeEqualTo(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.creditworthiness_type =", value, "creditworthinessType");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.creditworthiness_type =", value, "creditworthinessType");
             return (Criteria) this;
         }
 
         public Criteria andCreditworthinessTypeNotEqualTo(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.creditworthiness_type <>", value, "creditworthinessType");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.creditworthiness_type <>", value, "creditworthinessType");
             return (Criteria) this;
         }
 
         public Criteria andCreditworthinessTypeGreaterThan(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.creditworthiness_type >", value, "creditworthinessType");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.creditworthiness_type >", value, "creditworthinessType");
             return (Criteria) this;
         }
 
         public Criteria andCreditworthinessTypeGreaterThanOrEqualTo(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.creditworthiness_type >=", value, "creditworthinessType");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.creditworthiness_type >=", value, "creditworthinessType");
             return (Criteria) this;
         }
 
         public Criteria andCreditworthinessTypeLessThan(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.creditworthiness_type <", value, "creditworthinessType");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.creditworthiness_type <", value, "creditworthinessType");
             return (Criteria) this;
         }
 
         public Criteria andCreditworthinessTypeLessThanOrEqualTo(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.creditworthiness_type <=", value, "creditworthinessType");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.creditworthiness_type <=", value, "creditworthinessType");
             return (Criteria) this;
         }
 
         public Criteria andCreditworthinessTypeLike(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.creditworthiness_type like", value, "creditworthinessType");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.creditworthiness_type like", value, "creditworthinessType");
             return (Criteria) this;
         }
 
         public Criteria andCreditworthinessTypeNotLike(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.creditworthiness_type not like", value, "creditworthinessType");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.creditworthiness_type not like", value, "creditworthinessType");
             return (Criteria) this;
         }
 
         public Criteria andCreditworthinessTypeIn(List<String> values) {
-            addCriterion("temp_carrier_creditworthiness_type.creditworthiness_type in", values, "creditworthinessType");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.creditworthiness_type in", values, "creditworthinessType");
             return (Criteria) this;
         }
 
         public Criteria andCreditworthinessTypeNotIn(List<String> values) {
-            addCriterion("temp_carrier_creditworthiness_type.creditworthiness_type not in", values, "creditworthinessType");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.creditworthiness_type not in", values, "creditworthinessType");
             return (Criteria) this;
         }
 
         public Criteria andCreditworthinessTypeBetween(String value1, String value2) {
-            addCriterion("temp_carrier_creditworthiness_type.creditworthiness_type between", value1, value2, "creditworthinessType");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.creditworthiness_type between", value1, value2, "creditworthinessType");
             return (Criteria) this;
         }
 
         public Criteria andCreditworthinessTypeNotBetween(String value1, String value2) {
-            addCriterion("temp_carrier_creditworthiness_type.creditworthiness_type not between", value1, value2, "creditworthinessType");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.creditworthiness_type not between", value1, value2, "creditworthinessType");
             return (Criteria) this;
         }
 
         public Criteria andChangeTypeIsNull() {
-            addCriterion("temp_carrier_creditworthiness_type.change_type is null");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.change_type is null");
             return (Criteria) this;
         }
 
         public Criteria andChangeTypeIsNotNull() {
-            addCriterion("temp_carrier_creditworthiness_type.change_type is not null");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.change_type is not null");
             return (Criteria) this;
         }
 
         public Criteria andChangeTypeEqualTo(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.change_type =", value, "changeType");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.change_type =", value, "changeType");
             return (Criteria) this;
         }
 
         public Criteria andChangeTypeNotEqualTo(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.change_type <>", value, "changeType");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.change_type <>", value, "changeType");
             return (Criteria) this;
         }
 
         public Criteria andChangeTypeGreaterThan(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.change_type >", value, "changeType");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.change_type >", value, "changeType");
             return (Criteria) this;
         }
 
         public Criteria andChangeTypeGreaterThanOrEqualTo(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.change_type >=", value, "changeType");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.change_type >=", value, "changeType");
             return (Criteria) this;
         }
 
         public Criteria andChangeTypeLessThan(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.change_type <", value, "changeType");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.change_type <", value, "changeType");
             return (Criteria) this;
         }
 
         public Criteria andChangeTypeLessThanOrEqualTo(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.change_type <=", value, "changeType");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.change_type <=", value, "changeType");
             return (Criteria) this;
         }
 
         public Criteria andChangeTypeLike(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.change_type like", value, "changeType");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.change_type like", value, "changeType");
             return (Criteria) this;
         }
 
         public Criteria andChangeTypeNotLike(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.change_type not like", value, "changeType");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.change_type not like", value, "changeType");
             return (Criteria) this;
         }
 
         public Criteria andChangeTypeIn(List<String> values) {
-            addCriterion("temp_carrier_creditworthiness_type.change_type in", values, "changeType");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.change_type in", values, "changeType");
             return (Criteria) this;
         }
 
         public Criteria andChangeTypeNotIn(List<String> values) {
-            addCriterion("temp_carrier_creditworthiness_type.change_type not in", values, "changeType");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.change_type not in", values, "changeType");
             return (Criteria) this;
         }
 
         public Criteria andChangeTypeBetween(String value1, String value2) {
-            addCriterion("temp_carrier_creditworthiness_type.change_type between", value1, value2, "changeType");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.change_type between", value1, value2, "changeType");
             return (Criteria) this;
         }
 
         public Criteria andChangeTypeNotBetween(String value1, String value2) {
-            addCriterion("temp_carrier_creditworthiness_type.change_type not between", value1, value2, "changeType");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.change_type not between", value1, value2, "changeType");
             return (Criteria) this;
         }
 
         public Criteria andChangeValueIsNull() {
-            addCriterion("temp_carrier_creditworthiness_type.change_value is null");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.change_value is null");
             return (Criteria) this;
         }
 
         public Criteria andChangeValueIsNotNull() {
-            addCriterion("temp_carrier_creditworthiness_type.change_value is not null");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.change_value is not null");
             return (Criteria) this;
         }
 
         public Criteria andChangeValueEqualTo(Integer value) {
-            addCriterion("temp_carrier_creditworthiness_type.change_value =", value, "changeValue");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.change_value =", value, "changeValue");
             return (Criteria) this;
         }
 
         public Criteria andChangeValueNotEqualTo(Integer value) {
-            addCriterion("temp_carrier_creditworthiness_type.change_value <>", value, "changeValue");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.change_value <>", value, "changeValue");
             return (Criteria) this;
         }
 
         public Criteria andChangeValueGreaterThan(Integer value) {
-            addCriterion("temp_carrier_creditworthiness_type.change_value >", value, "changeValue");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.change_value >", value, "changeValue");
             return (Criteria) this;
         }
 
         public Criteria andChangeValueGreaterThanOrEqualTo(Integer value) {
-            addCriterion("temp_carrier_creditworthiness_type.change_value >=", value, "changeValue");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.change_value >=", value, "changeValue");
             return (Criteria) this;
         }
 
         public Criteria andChangeValueLessThan(Integer value) {
-            addCriterion("temp_carrier_creditworthiness_type.change_value <", value, "changeValue");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.change_value <", value, "changeValue");
             return (Criteria) this;
         }
 
         public Criteria andChangeValueLessThanOrEqualTo(Integer value) {
-            addCriterion("temp_carrier_creditworthiness_type.change_value <=", value, "changeValue");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.change_value <=", value, "changeValue");
             return (Criteria) this;
         }
 
         public Criteria andChangeValueIn(List<Integer> values) {
-            addCriterion("temp_carrier_creditworthiness_type.change_value in", values, "changeValue");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.change_value in", values, "changeValue");
             return (Criteria) this;
         }
 
         public Criteria andChangeValueNotIn(List<Integer> values) {
-            addCriterion("temp_carrier_creditworthiness_type.change_value not in", values, "changeValue");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.change_value not in", values, "changeValue");
             return (Criteria) this;
         }
 
         public Criteria andChangeValueBetween(Integer value1, Integer value2) {
-            addCriterion("temp_carrier_creditworthiness_type.change_value between", value1, value2, "changeValue");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.change_value between", value1, value2, "changeValue");
             return (Criteria) this;
         }
 
         public Criteria andChangeValueNotBetween(Integer value1, Integer value2) {
-            addCriterion("temp_carrier_creditworthiness_type.change_value not between", value1, value2, "changeValue");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.change_value not between", value1, value2, "changeValue");
             return (Criteria) this;
         }
 
         public Criteria andRemarkIsNull() {
-            addCriterion("temp_carrier_creditworthiness_type.remark is null");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.remark is null");
             return (Criteria) this;
         }
 
         public Criteria andRemarkIsNotNull() {
-            addCriterion("temp_carrier_creditworthiness_type.remark is not null");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.remark is not null");
             return (Criteria) this;
         }
 
         public Criteria andRemarkEqualTo(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.remark =", value, "remark");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.remark =", value, "remark");
             return (Criteria) this;
         }
 
         public Criteria andRemarkNotEqualTo(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.remark <>", value, "remark");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.remark <>", value, "remark");
             return (Criteria) this;
         }
 
         public Criteria andRemarkGreaterThan(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.remark >", value, "remark");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.remark >", value, "remark");
             return (Criteria) this;
         }
 
         public Criteria andRemarkGreaterThanOrEqualTo(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.remark >=", value, "remark");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.remark >=", value, "remark");
             return (Criteria) this;
         }
 
         public Criteria andRemarkLessThan(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.remark <", value, "remark");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.remark <", value, "remark");
             return (Criteria) this;
         }
 
         public Criteria andRemarkLessThanOrEqualTo(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.remark <=", value, "remark");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.remark <=", value, "remark");
             return (Criteria) this;
         }
 
         public Criteria andRemarkLike(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.remark like", value, "remark");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.remark like", value, "remark");
             return (Criteria) this;
         }
 
         public Criteria andRemarkNotLike(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.remark not like", value, "remark");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.remark not like", value, "remark");
             return (Criteria) this;
         }
 
         public Criteria andRemarkIn(List<String> values) {
-            addCriterion("temp_carrier_creditworthiness_type.remark in", values, "remark");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.remark in", values, "remark");
             return (Criteria) this;
         }
 
         public Criteria andRemarkNotIn(List<String> values) {
-            addCriterion("temp_carrier_creditworthiness_type.remark not in", values, "remark");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.remark not in", values, "remark");
             return (Criteria) this;
         }
 
         public Criteria andRemarkBetween(String value1, String value2) {
-            addCriterion("temp_carrier_creditworthiness_type.remark between", value1, value2, "remark");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.remark between", value1, value2, "remark");
             return (Criteria) this;
         }
 
         public Criteria andRemarkNotBetween(String value1, String value2) {
-            addCriterion("temp_carrier_creditworthiness_type.remark not between", value1, value2, "remark");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.remark not between", value1, value2, "remark");
             return (Criteria) this;
         }
 
         public Criteria andCreaterIsNull() {
-            addCriterion("temp_carrier_creditworthiness_type.creater is null");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.creater is null");
             return (Criteria) this;
         }
 
         public Criteria andCreaterIsNotNull() {
-            addCriterion("temp_carrier_creditworthiness_type.creater is not null");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.creater is not null");
             return (Criteria) this;
         }
 
         public Criteria andCreaterEqualTo(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.creater =", value, "creater");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.creater =", value, "creater");
             return (Criteria) this;
         }
 
         public Criteria andCreaterNotEqualTo(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.creater <>", value, "creater");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.creater <>", value, "creater");
             return (Criteria) this;
         }
 
         public Criteria andCreaterGreaterThan(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.creater >", value, "creater");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.creater >", value, "creater");
             return (Criteria) this;
         }
 
         public Criteria andCreaterGreaterThanOrEqualTo(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.creater >=", value, "creater");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.creater >=", value, "creater");
             return (Criteria) this;
         }
 
         public Criteria andCreaterLessThan(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.creater <", value, "creater");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.creater <", value, "creater");
             return (Criteria) this;
         }
 
         public Criteria andCreaterLessThanOrEqualTo(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.creater <=", value, "creater");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.creater <=", value, "creater");
             return (Criteria) this;
         }
 
         public Criteria andCreaterLike(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.creater like", value, "creater");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.creater like", value, "creater");
             return (Criteria) this;
         }
 
         public Criteria andCreaterNotLike(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.creater not like", value, "creater");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.creater not like", value, "creater");
             return (Criteria) this;
         }
 
         public Criteria andCreaterIn(List<String> values) {
-            addCriterion("temp_carrier_creditworthiness_type.creater in", values, "creater");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.creater in", values, "creater");
             return (Criteria) this;
         }
 
         public Criteria andCreaterNotIn(List<String> values) {
-            addCriterion("temp_carrier_creditworthiness_type.creater not in", values, "creater");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.creater not in", values, "creater");
             return (Criteria) this;
         }
 
         public Criteria andCreaterBetween(String value1, String value2) {
-            addCriterion("temp_carrier_creditworthiness_type.creater between", value1, value2, "creater");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.creater between", value1, value2, "creater");
             return (Criteria) this;
         }
 
         public Criteria andCreaterNotBetween(String value1, String value2) {
-            addCriterion("temp_carrier_creditworthiness_type.creater not between", value1, value2, "creater");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.creater not between", value1, value2, "creater");
             return (Criteria) this;
         }
 
         public Criteria andCreateTimeIsNull() {
-            addCriterion("temp_carrier_creditworthiness_type.create_time is null");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.create_time is null");
             return (Criteria) this;
         }
 
         public Criteria andCreateTimeIsNotNull() {
-            addCriterion("temp_carrier_creditworthiness_type.create_time is not null");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.create_time is not null");
             return (Criteria) this;
         }
 
         public Criteria andCreateTimeEqualTo(Date value) {
-            addCriterion("temp_carrier_creditworthiness_type.create_time =", value, "createTime");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.create_time =", value, "createTime");
             return (Criteria) this;
         }
 
         public Criteria andCreateTimeNotEqualTo(Date value) {
-            addCriterion("temp_carrier_creditworthiness_type.create_time <>", value, "createTime");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.create_time <>", value, "createTime");
             return (Criteria) this;
         }
 
         public Criteria andCreateTimeGreaterThan(Date value) {
-            addCriterion("temp_carrier_creditworthiness_type.create_time >", value, "createTime");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.create_time >", value, "createTime");
             return (Criteria) this;
         }
 
         public Criteria andCreateTimeGreaterThanOrEqualTo(Date value) {
-            addCriterion("temp_carrier_creditworthiness_type.create_time >=", value, "createTime");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.create_time >=", value, "createTime");
             return (Criteria) this;
         }
 
         public Criteria andCreateTimeLessThan(Date value) {
-            addCriterion("temp_carrier_creditworthiness_type.create_time <", value, "createTime");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.create_time <", value, "createTime");
             return (Criteria) this;
         }
 
         public Criteria andCreateTimeLessThanOrEqualTo(Date value) {
-            addCriterion("temp_carrier_creditworthiness_type.create_time <=", value, "createTime");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.create_time <=", value, "createTime");
             return (Criteria) this;
         }
 
         public Criteria andCreateTimeIn(List<Date> values) {
-            addCriterion("temp_carrier_creditworthiness_type.create_time in", values, "createTime");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.create_time in", values, "createTime");
             return (Criteria) this;
         }
 
         public Criteria andCreateTimeNotIn(List<Date> values) {
-            addCriterion("temp_carrier_creditworthiness_type.create_time not in", values, "createTime");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.create_time not in", values, "createTime");
             return (Criteria) this;
         }
 
         public Criteria andCreateTimeBetween(Date value1, Date value2) {
-            addCriterion("temp_carrier_creditworthiness_type.create_time between", value1, value2, "createTime");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.create_time between", value1, value2, "createTime");
             return (Criteria) this;
         }
 
         public Criteria andCreateTimeNotBetween(Date value1, Date value2) {
-            addCriterion("temp_carrier_creditworthiness_type.create_time not between", value1, value2, "createTime");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.create_time not between", value1, value2, "createTime");
             return (Criteria) this;
         }
 
         public Criteria andUpdaterIsNull() {
-            addCriterion("temp_carrier_creditworthiness_type.updater is null");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.updater is null");
             return (Criteria) this;
         }
 
         public Criteria andUpdaterIsNotNull() {
-            addCriterion("temp_carrier_creditworthiness_type.updater is not null");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.updater is not null");
             return (Criteria) this;
         }
 
         public Criteria andUpdaterEqualTo(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.updater =", value, "updater");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.updater =", value, "updater");
             return (Criteria) this;
         }
 
         public Criteria andUpdaterNotEqualTo(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.updater <>", value, "updater");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.updater <>", value, "updater");
             return (Criteria) this;
         }
 
         public Criteria andUpdaterGreaterThan(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.updater >", value, "updater");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.updater >", value, "updater");
             return (Criteria) this;
         }
 
         public Criteria andUpdaterGreaterThanOrEqualTo(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.updater >=", value, "updater");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.updater >=", value, "updater");
             return (Criteria) this;
         }
 
         public Criteria andUpdaterLessThan(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.updater <", value, "updater");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.updater <", value, "updater");
             return (Criteria) this;
         }
 
         public Criteria andUpdaterLessThanOrEqualTo(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.updater <=", value, "updater");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.updater <=", value, "updater");
             return (Criteria) this;
         }
 
         public Criteria andUpdaterLike(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.updater like", value, "updater");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.updater like", value, "updater");
             return (Criteria) this;
         }
 
         public Criteria andUpdaterNotLike(String value) {
-            addCriterion("temp_carrier_creditworthiness_type.updater not like", value, "updater");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.updater not like", value, "updater");
             return (Criteria) this;
         }
 
         public Criteria andUpdaterIn(List<String> values) {
-            addCriterion("temp_carrier_creditworthiness_type.updater in", values, "updater");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.updater in", values, "updater");
             return (Criteria) this;
         }
 
         public Criteria andUpdaterNotIn(List<String> values) {
-            addCriterion("temp_carrier_creditworthiness_type.updater not in", values, "updater");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.updater not in", values, "updater");
             return (Criteria) this;
         }
 
         public Criteria andUpdaterBetween(String value1, String value2) {
-            addCriterion("temp_carrier_creditworthiness_type.updater between", value1, value2, "updater");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.updater between", value1, value2, "updater");
             return (Criteria) this;
         }
 
         public Criteria andUpdaterNotBetween(String value1, String value2) {
-            addCriterion("temp_carrier_creditworthiness_type.updater not between", value1, value2, "updater");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.updater not between", value1, value2, "updater");
             return (Criteria) this;
         }
 
         public Criteria andUpdateTimeIsNull() {
-            addCriterion("temp_carrier_creditworthiness_type.update_time is null");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.update_time is null");
             return (Criteria) this;
         }
 
         public Criteria andUpdateTimeIsNotNull() {
-            addCriterion("temp_carrier_creditworthiness_type.update_time is not null");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.update_time is not null");
             return (Criteria) this;
         }
 
         public Criteria andUpdateTimeEqualTo(Date value) {
-            addCriterion("temp_carrier_creditworthiness_type.update_time =", value, "updateTime");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.update_time =", value, "updateTime");
             return (Criteria) this;
         }
 
         public Criteria andUpdateTimeNotEqualTo(Date value) {
-            addCriterion("temp_carrier_creditworthiness_type.update_time <>", value, "updateTime");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.update_time <>", value, "updateTime");
             return (Criteria) this;
         }
 
         public Criteria andUpdateTimeGreaterThan(Date value) {
-            addCriterion("temp_carrier_creditworthiness_type.update_time >", value, "updateTime");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.update_time >", value, "updateTime");
             return (Criteria) this;
         }
 
         public Criteria andUpdateTimeGreaterThanOrEqualTo(Date value) {
-            addCriterion("temp_carrier_creditworthiness_type.update_time >=", value, "updateTime");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.update_time >=", value, "updateTime");
             return (Criteria) this;
         }
 
         public Criteria andUpdateTimeLessThan(Date value) {
-            addCriterion("temp_carrier_creditworthiness_type.update_time <", value, "updateTime");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.update_time <", value, "updateTime");
             return (Criteria) this;
         }
 
         public Criteria andUpdateTimeLessThanOrEqualTo(Date value) {
-            addCriterion("temp_carrier_creditworthiness_type.update_time <=", value, "updateTime");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.update_time <=", value, "updateTime");
             return (Criteria) this;
         }
 
         public Criteria andUpdateTimeIn(List<Date> values) {
-            addCriterion("temp_carrier_creditworthiness_type.update_time in", values, "updateTime");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.update_time in", values, "updateTime");
             return (Criteria) this;
         }
 
         public Criteria andUpdateTimeNotIn(List<Date> values) {
-            addCriterion("temp_carrier_creditworthiness_type.update_time not in", values, "updateTime");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.update_time not in", values, "updateTime");
             return (Criteria) this;
         }
 
         public Criteria andUpdateTimeBetween(Date value1, Date value2) {
-            addCriterion("temp_carrier_creditworthiness_type.update_time between", value1, value2, "updateTime");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.update_time between", value1, value2, "updateTime");
             return (Criteria) this;
         }
 
         public Criteria andUpdateTimeNotBetween(Date value1, Date value2) {
-            addCriterion("temp_carrier_creditworthiness_type.update_time not between", value1, value2, "updateTime");
+            addCriterion("temp_parameter_carrier_creditworthiness_type.update_time not between", value1, value2, "updateTime");
             return (Criteria) this;
         }
     }

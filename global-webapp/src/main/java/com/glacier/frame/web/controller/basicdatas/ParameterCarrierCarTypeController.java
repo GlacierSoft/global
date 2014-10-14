@@ -48,10 +48,10 @@ public class ParameterCarrierCarTypeController extends AbstractController{
       
     // 进入车辆类型信息Detail信息页面
     @RequestMapping(value = "/intoDetail.htm")
-    private Object intoMemberGradeDetailPage(String carTypeId) { 
-    	ModelAndView mav = new ModelAndView("basicdatas_mgr/carrierCarType_mgr/carrierMemberGrade_detail");
-        if(StringUtils.isNotBlank(carTypeId)){
-            mav.addObject("carTypeDate", carrierCarTypeService.getCarrierCarType(carTypeId));
+    private Object intoMemberGradeDetailPage(String cartypeId) { 
+    	ModelAndView mav = new ModelAndView("basicdatas_mgr/carrierCarType_mgr/carrierCarType_detail");
+        if(StringUtils.isNotBlank(cartypeId)){
+            mav.addObject("carTypeDate", carrierCarTypeService.getCarrierCarType(cartypeId));
         }
 	    return mav;
     }
