@@ -104,6 +104,24 @@ public class CarrierMemberCreditworthinessExample {
             return criteria;
         }
 
+        //自定会员名称查询方法
+        public Criteria andMemberName(String value) {
+        	addCriterion(" temp_carrier_member.member_name like ",value," memberName ");
+            return (Criteria) this;
+        } 
+        
+        //自定义积分类型查询方法
+        public Criteria andCreditworthinessTypeEqualTo(String value) {
+        	addCriterion(" temp_carrier_creditworthiness_type.creditworthiness_type = ",value," creditworthinessType");
+            return (Criteria) this;
+        }  
+        
+         //自定义改变类型查询方法
+        public Criteria andChangeTypeEqualTo(String value) {
+            addCriterion(" temp_carrier_creditworthiness_change_type.change_type = ", value, " changeType");
+            return (Criteria) this;
+        } 
+        
         protected void addCriterion(String condition) {
             if (condition == null) {
                 throw new RuntimeException("Value for condition cannot be null");
@@ -125,73 +143,73 @@ public class CarrierMemberCreditworthinessExample {
             criteria.add(new Criterion(condition, value1, value2));
         }
 
-        public Criteria andTCarrierMemberCreditworthinessIdIsNull() {
-            addCriterion("temp_carrier_member_creditworthiness.t_carrier_member_creditworthiness_id is null");
+        public Criteria andCarrierMemberCreditworthinessIdIsNull() {
+            addCriterion("temp_carrier_member_creditworthiness.carrier_member_creditworthiness_id is null");
             return (Criteria) this;
         }
 
-        public Criteria andTCarrierMemberCreditworthinessIdIsNotNull() {
-            addCriterion("temp_carrier_member_creditworthiness.t_carrier_member_creditworthiness_id is not null");
+        public Criteria andCarrierMemberCreditworthinessIdIsNotNull() {
+            addCriterion("temp_carrier_member_creditworthiness.carrier_member_creditworthiness_id is not null");
             return (Criteria) this;
         }
 
-        public Criteria andTCarrierMemberCreditworthinessIdEqualTo(String value) {
-            addCriterion("temp_carrier_member_creditworthiness.t_carrier_member_creditworthiness_id =", value, "tCarrierMemberCreditworthinessId");
+        public Criteria andCarrierMemberCreditworthinessIdEqualTo(String value) {
+            addCriterion("temp_carrier_member_creditworthiness.carrier_member_creditworthiness_id =", value, "carrierMemberCreditworthinessId");
             return (Criteria) this;
         }
 
-        public Criteria andTCarrierMemberCreditworthinessIdNotEqualTo(String value) {
-            addCriterion("temp_carrier_member_creditworthiness.t_carrier_member_creditworthiness_id <>", value, "tCarrierMemberCreditworthinessId");
+        public Criteria andCarrierMemberCreditworthinessIdNotEqualTo(String value) {
+            addCriterion("temp_carrier_member_creditworthiness.carrier_member_creditworthiness_id <>", value, "carrierMemberCreditworthinessId");
             return (Criteria) this;
         }
 
-        public Criteria andTCarrierMemberCreditworthinessIdGreaterThan(String value) {
-            addCriterion("temp_carrier_member_creditworthiness.t_carrier_member_creditworthiness_id >", value, "tCarrierMemberCreditworthinessId");
+        public Criteria andCarrierMemberCreditworthinessIdGreaterThan(String value) {
+            addCriterion("temp_carrier_member_creditworthiness.carrier_member_creditworthiness_id >", value, "carrierMemberCreditworthinessId");
             return (Criteria) this;
         }
 
-        public Criteria andTCarrierMemberCreditworthinessIdGreaterThanOrEqualTo(String value) {
-            addCriterion("temp_carrier_member_creditworthiness.t_carrier_member_creditworthiness_id >=", value, "tCarrierMemberCreditworthinessId");
+        public Criteria andCarrierMemberCreditworthinessIdGreaterThanOrEqualTo(String value) {
+            addCriterion("temp_carrier_member_creditworthiness.carrier_member_creditworthiness_id >=", value, "carrierMemberCreditworthinessId");
             return (Criteria) this;
         }
 
-        public Criteria andTCarrierMemberCreditworthinessIdLessThan(String value) {
-            addCriterion("temp_carrier_member_creditworthiness.t_carrier_member_creditworthiness_id <", value, "tCarrierMemberCreditworthinessId");
+        public Criteria andCarrierMemberCreditworthinessIdLessThan(String value) {
+            addCriterion("temp_carrier_member_creditworthiness.carrier_member_creditworthiness_id <", value, "carrierMemberCreditworthinessId");
             return (Criteria) this;
         }
 
-        public Criteria andTCarrierMemberCreditworthinessIdLessThanOrEqualTo(String value) {
-            addCriterion("temp_carrier_member_creditworthiness.t_carrier_member_creditworthiness_id <=", value, "tCarrierMemberCreditworthinessId");
+        public Criteria andCarrierMemberCreditworthinessIdLessThanOrEqualTo(String value) {
+            addCriterion("temp_carrier_member_creditworthiness.carrier_member_creditworthiness_id <=", value, "carrierMemberCreditworthinessId");
             return (Criteria) this;
         }
 
-        public Criteria andTCarrierMemberCreditworthinessIdLike(String value) {
-            addCriterion("temp_carrier_member_creditworthiness.t_carrier_member_creditworthiness_id like", value, "tCarrierMemberCreditworthinessId");
+        public Criteria andCarrierMemberCreditworthinessIdLike(String value) {
+            addCriterion("temp_carrier_member_creditworthiness.carrier_member_creditworthiness_id like", value, "carrierMemberCreditworthinessId");
             return (Criteria) this;
         }
 
-        public Criteria andTCarrierMemberCreditworthinessIdNotLike(String value) {
-            addCriterion("temp_carrier_member_creditworthiness.t_carrier_member_creditworthiness_id not like", value, "tCarrierMemberCreditworthinessId");
+        public Criteria andCarrierMemberCreditworthinessIdNotLike(String value) {
+            addCriterion("temp_carrier_member_creditworthiness.carrier_member_creditworthiness_id not like", value, "carrierMemberCreditworthinessId");
             return (Criteria) this;
         }
 
-        public Criteria andTCarrierMemberCreditworthinessIdIn(List<String> values) {
-            addCriterion("temp_carrier_member_creditworthiness.t_carrier_member_creditworthiness_id in", values, "tCarrierMemberCreditworthinessId");
+        public Criteria andCarrierMemberCreditworthinessIdIn(List<String> values) {
+            addCriterion("temp_carrier_member_creditworthiness.carrier_member_creditworthiness_id in", values, "carrierMemberCreditworthinessId");
             return (Criteria) this;
         }
 
-        public Criteria andTCarrierMemberCreditworthinessIdNotIn(List<String> values) {
-            addCriterion("temp_carrier_member_creditworthiness.t_carrier_member_creditworthiness_id not in", values, "tCarrierMemberCreditworthinessId");
+        public Criteria andCarrierMemberCreditworthinessIdNotIn(List<String> values) {
+            addCriterion("temp_carrier_member_creditworthiness.carrier_member_creditworthiness_id not in", values, "carrierMemberCreditworthinessId");
             return (Criteria) this;
         }
 
-        public Criteria andTCarrierMemberCreditworthinessIdBetween(String value1, String value2) {
-            addCriterion("temp_carrier_member_creditworthiness.t_carrier_member_creditworthiness_id between", value1, value2, "tCarrierMemberCreditworthinessId");
+        public Criteria andCarrierMemberCreditworthinessIdBetween(String value1, String value2) {
+            addCriterion("temp_carrier_member_creditworthiness.carrier_member_creditworthiness_id between", value1, value2, "carrierMemberCreditworthinessId");
             return (Criteria) this;
         }
 
-        public Criteria andTCarrierMemberCreditworthinessIdNotBetween(String value1, String value2) {
-            addCriterion("temp_carrier_member_creditworthiness.t_carrier_member_creditworthiness_id not between", value1, value2, "tCarrierMemberCreditworthinessId");
+        public Criteria andCarrierMemberCreditworthinessIdNotBetween(String value1, String value2) {
+            addCriterion("temp_carrier_member_creditworthiness.carrier_member_creditworthiness_id not between", value1, value2, "carrierMemberCreditworthinessId");
             return (Criteria) this;
         }
 

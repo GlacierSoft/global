@@ -2,8 +2,7 @@ package com.glacier.frame.entity.member;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.List;
-
+import java.util.List;  
 public class ShipperMemberIntegralExample {
     protected String orderByClause;
 
@@ -103,7 +102,25 @@ public class ShipperMemberIntegralExample {
         public List<Criterion> getCriteria() {
             return criteria;
         }
-
+        
+        //自定会员名称查询方法
+        public Criteria andMemberName(String value) {
+        	addCriterion(" temp_shipper_member.member_name like ",value," memberName ");
+            return (Criteria) this;
+        } 
+        
+        //自定义积分类型查询方法
+        public Criteria andIntegralTypeNameEqualTo(String value) {
+        	addCriterion(" temp_shipper_integral_type.integral_type = ",value," integralTypeName");
+            return (Criteria) this;
+        }  
+        
+         //自定义改变类型查询方法
+        public Criteria andChangeTypeEqualTo(String value) {
+            addCriterion(" temp_shipper_change_type.change_type = ", value, " changeType");
+            return (Criteria) this;
+        } 
+        
         protected void addCriterion(String condition) {
             if (condition == null) {
                 throw new RuntimeException("Value for condition cannot be null");

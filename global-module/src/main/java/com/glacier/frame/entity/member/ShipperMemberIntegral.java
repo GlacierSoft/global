@@ -2,7 +2,10 @@ package com.glacier.frame.entity.member;
 
 import java.util.Date;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 public class ShipperMemberIntegral {
+	
     private String shipperMemberIntegralId;
 
     private String memberId;
@@ -13,13 +16,82 @@ public class ShipperMemberIntegral {
 
     private String creater;
 
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
     private String updater;
-
+    
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
+    
+    //自定义字段
+    private String memberName; 
+    
+    //积分类型
+    private String integralTypeName; 
 
-    public String getShipperMemberIntegralId() {
+    //改变类型
+    private String changeType;
+    
+    //改变值
+    private String changeValue;
+    
+    //创建人
+    private String createrDisplay;
+    
+    //更新人
+    private String updaterDisplay;
+     
+    
+    public String getChangeValue() {
+		return changeValue;
+	}
+
+	public void setChangeValue(String changeValue) {
+		this.changeValue = changeValue;
+	}
+
+	public String getChangeType() {
+		return changeType;
+	}
+
+	public void setChangeType(String changeType) {
+		this.changeType = changeType;
+	}
+
+	public String getCreaterDisplay() {
+		return createrDisplay;
+	}
+
+	public void setCreaterDisplay(String createrDisplay) {
+		this.createrDisplay = createrDisplay;
+	}
+
+	public String getUpdaterDisplay() {
+		return updaterDisplay;
+	}
+
+	public void setUpdaterDisplay(String updaterDisplay) {
+		this.updaterDisplay = updaterDisplay;
+	}
+
+	public String getIntegralTypeName() {
+		return integralTypeName;
+	}
+
+	public void setIntegralTypeName(String integralTypeName) {
+		this.integralTypeName = integralTypeName;
+	}
+
+	public String getMemberName() {
+		return memberName;
+	}
+
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
+	}
+
+	public String getShipperMemberIntegralId() {
         return shipperMemberIntegralId;
     }
 

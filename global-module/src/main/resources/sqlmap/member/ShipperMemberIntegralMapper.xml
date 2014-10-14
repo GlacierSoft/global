@@ -10,9 +10,16 @@
     <result column="temp_shipper_member_integral_create_time" property="createTime" jdbcType="TIMESTAMP" />
     <result column="temp_shipper_member_integral_updater" property="updater" jdbcType="VARCHAR" />
     <result column="temp_shipper_member_integral_update_time" property="updateTime" jdbcType="TIMESTAMP" />
-  </resultMap>
+    <!-- 自定义扩展字段 -->
+    <result column="temp_shipper_member_integral_member_name" property="memberName" jdbcType="VARCHAR" />
+    <result column="temp_shipper_member_integral_integral_type_name" property="integralTypeName" jdbcType="VARCHAR" />
+    <result column="temp_shipper_member_integral_change_type" property="changeType" jdbcType="VARCHAR" />
+    <result column="temp_shipper_member_integral_creater_display" property="createrDisplay" jdbcType="VARCHAR" />
+    <result column="temp_shipper_member_integral_updater_display" property="updaterDisplay" jdbcType="VARCHAR" />
+    <result column="temp_shipper_member_integral_change_value" property="changeValue" jdbcType="VARCHAR" />
+   </resultMap>
   <sql id="Example_Where_Clause" >
-    <where >
+    <where>
       <foreach collection="oredCriteria" item="criteria" separator="or" >
         <if test="criteria.valid" >
           <trim prefix="(" suffix=")" prefixOverrides="and" >
@@ -76,14 +83,31 @@
     temp_shipper_member_integral.remark as temp_shipper_member_integral_remark, temp_shipper_member_integral.creater as temp_shipper_member_integral_creater, 
     temp_shipper_member_integral.create_time as temp_shipper_member_integral_create_time, 
     temp_shipper_member_integral.updater as temp_shipper_member_integral_updater, temp_shipper_member_integral.update_time as temp_shipper_member_integral_update_time
-  </sql>
-  <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.glacier.frame.entity.member.ShipperMemberIntegralExample" >
+     <!-- 自定义扩展字段 -->
+    ,temp_shipper_member.member_name as temp_shipper_member_integral_member_name 
+    ,temp_shipper_integral_type.integral_type as temp_shipper_member_integral_integral_type_name 
+    ,temp_shipper_change_type.change_type as temp_shipper_member_integral_change_type 
+    ,temp_creater.user_cn_name as temp_shipper_member_integral_creater_display
+    ,temp_updater.user_cn_name as temp_shipper_member_integral_updater_display 
+    ,temp_shipper_change_value.change_value as temp_shipper_member_integral_change_value
+   
+   </sql> 
+   <sql id="Base_extend">
+    LEFT JOIN t_shipper_member temp_shipper_member ON temp_shipper_member.member_id =temp_shipper_member_integral.member_id <!-- 扩展 -->
+    LEFT JOIN t_shipper_integral_type temp_shipper_integral_type ON temp_shipper_integral_type.integral_type_id =temp_shipper_member_integral.integral_type_id <!-- 扩展 -->
+    LEFT JOIN t_shipper_integral_type temp_shipper_change_type ON temp_shipper_change_type.integral_type_id =temp_shipper_member_integral.integral_type_id <!-- 扩展 -->
+   	LEFT JOIN t_user temp_creater ON temp_creater.user_id = temp_shipper_member_integral.creater <!-- 扩展 -->
+    LEFT JOIN t_user temp_updater ON temp_updater.user_id = temp_shipper_member_integral.updater <!-- 扩展 -->
+    LEFT JOIN t_shipper_integral_type temp_shipper_change_value ON temp_shipper_change_value.integral_type_id =temp_shipper_member_integral.integral_type_id <!-- 扩展 -->
+   </sql> 
+   <select id="selectByExample" resultMap="BaseResultMap" parameterType="com.glacier.frame.entity.member.ShipperMemberIntegralExample" >
     select
     <if test="distinct" >
       distinct
     </if>
     <include refid="Base_Column_List" />
     from t_shipper_member_integral temp_shipper_member_integral
+    <include refid="Base_extend" />
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>
@@ -98,6 +122,7 @@
     select 
     <include refid="Base_Column_List" />
     from t_shipper_member_integral temp_shipper_member_integral
+    <include refid="Base_extend" />
     where temp_shipper_member_integral.shipper_member_integral_id = #{shipperMemberIntegralId,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String" >
@@ -177,6 +202,7 @@
   </insert>
   <select id="countByExample" parameterType="com.glacier.frame.entity.member.ShipperMemberIntegralExample" resultType="java.lang.Integer" >
     select count(*) from t_shipper_member_integral temp_shipper_member_integral
+    <include refid="Base_extend" />
     <if test="_parameter != null" >
       <include refid="Example_Where_Clause" />
     </if>

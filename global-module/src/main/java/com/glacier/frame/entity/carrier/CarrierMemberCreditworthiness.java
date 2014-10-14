@@ -2,8 +2,10 @@ package com.glacier.frame.entity.carrier;
 
 import java.util.Date;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 public class CarrierMemberCreditworthiness {
-    private String tCarrierMemberCreditworthinessId;
+    private String carrierMemberCreditworthinessId;
 
     private String carrierMemberId;
 
@@ -11,20 +13,88 @@ public class CarrierMemberCreditworthiness {
 
     private String remark;
 
-    private String creater;
-
+    private String creater;  
+	
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date createTime;
 
     private String updater;
-
+    
+    @JSONField(format="yyyy-MM-dd HH:mm:ss")
     private Date updateTime;
+    
+    //自定义字段
+    private String memberName; 
+    
+    //积分类型
+    private String creditworthinessType; 
 
-    public String gettCarrierMemberCreditworthinessId() {
-        return tCarrierMemberCreditworthinessId;
+    //改变类型
+    private String changeType;
+    
+    //改变值
+    private String changeValue;
+    
+    //创建人
+    private String createrDisplay;
+    
+    //更新人
+    private String updaterDisplay;  
+
+    public String getMemberName() {
+		return memberName;
+	}
+
+	public void setMemberName(String memberName) {
+		this.memberName = memberName;
+	}
+
+	public String getCreditworthinessType() {
+		return creditworthinessType;
+	}
+
+	public void setCreditworthinessType(String creditworthinessType) {
+		this.creditworthinessType = creditworthinessType;
+	}
+
+	public String getChangeType() {
+		return changeType;
+	}
+
+	public void setChangeType(String changeType) {
+		this.changeType = changeType;
+	}
+
+	public String getChangeValue() {
+		return changeValue;
+	}
+
+	public void setChangeValue(String changeValue) {
+		this.changeValue = changeValue;
+	}
+
+	public String getCreaterDisplay() {
+		return createrDisplay;
+	}
+
+	public void setCreaterDisplay(String createrDisplay) {
+		this.createrDisplay = createrDisplay;
+	}
+
+	public String getUpdaterDisplay() {
+		return updaterDisplay;
+	}
+
+	public void setUpdaterDisplay(String updaterDisplay) {
+		this.updaterDisplay = updaterDisplay;
+	}
+
+	public String getCarrierMemberCreditworthinessId() {
+        return carrierMemberCreditworthinessId;
     }
 
-    public void settCarrierMemberCreditworthinessId(String tCarrierMemberCreditworthinessId) {
-        this.tCarrierMemberCreditworthinessId = tCarrierMemberCreditworthinessId;
+    public void setCarrierMemberCreditworthinessId(String carrierMemberCreditworthinessId) {
+        this.carrierMemberCreditworthinessId = carrierMemberCreditworthinessId;
     }
 
     public String getCarrierMemberId() {
@@ -95,7 +165,7 @@ public class CarrierMemberCreditworthiness {
             return false;
         }
         CarrierMemberCreditworthiness other = (CarrierMemberCreditworthiness) that;
-        return (this.gettCarrierMemberCreditworthinessId() == null ? other.gettCarrierMemberCreditworthinessId() == null : this.gettCarrierMemberCreditworthinessId().equals(other.gettCarrierMemberCreditworthinessId()))
+        return (this.getCarrierMemberCreditworthinessId() == null ? other.getCarrierMemberCreditworthinessId() == null : this.getCarrierMemberCreditworthinessId().equals(other.getCarrierMemberCreditworthinessId()))
             && (this.getCarrierMemberId() == null ? other.getCarrierMemberId() == null : this.getCarrierMemberId().equals(other.getCarrierMemberId()))
             && (this.getCreditworthinessTypeId() == null ? other.getCreditworthinessTypeId() == null : this.getCreditworthinessTypeId().equals(other.getCreditworthinessTypeId()))
             && (this.getRemark() == null ? other.getRemark() == null : this.getRemark().equals(other.getRemark()))
@@ -109,7 +179,7 @@ public class CarrierMemberCreditworthiness {
     public int hashCode() {
         final int prime = 31;
         int result = 1;
-        result = prime * result + ((gettCarrierMemberCreditworthinessId() == null) ? 0 : gettCarrierMemberCreditworthinessId().hashCode());
+        result = prime * result + ((getCarrierMemberCreditworthinessId() == null) ? 0 : getCarrierMemberCreditworthinessId().hashCode());
         result = prime * result + ((getCarrierMemberId() == null) ? 0 : getCarrierMemberId().hashCode());
         result = prime * result + ((getCreditworthinessTypeId() == null) ? 0 : getCreditworthinessTypeId().hashCode());
         result = prime * result + ((getRemark() == null) ? 0 : getRemark().hashCode());

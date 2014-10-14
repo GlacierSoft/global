@@ -10,7 +10,7 @@ public interface CarrierMemberCreditworthinessMapper {
 
     int deleteByExample(CarrierMemberCreditworthinessExample example);
 
-    int deleteByPrimaryKey(String tCarrierMemberCreditworthinessId);
+    int deleteByPrimaryKey(String carrierMemberCreditworthinessId);
 
     int insert(CarrierMemberCreditworthiness record);
 
@@ -18,7 +18,7 @@ public interface CarrierMemberCreditworthinessMapper {
 
     List<CarrierMemberCreditworthiness> selectByExample(CarrierMemberCreditworthinessExample example);
 
-    CarrierMemberCreditworthiness selectByPrimaryKey(String tCarrierMemberCreditworthinessId);
+    CarrierMemberCreditworthiness selectByPrimaryKey(String carrierMemberCreditworthinessId);
 
     int updateByExampleSelective(@Param("record") CarrierMemberCreditworthiness record, @Param("example") CarrierMemberCreditworthinessExample example);
 
