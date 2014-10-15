@@ -69,30 +69,30 @@
 		<tr>
 			<td>审核状态：</td>
 			<td>
-				<input id="carrier_mgr_carInformation_form_auditState" name="auditState" value="${carInfoformationData.auditState}" class="spinner" style="height:18px;width:180px" readonly="readonly"/>
+				<input id="carrier_mgr_carInformation_form_auditState" name="auditState" value="${carInfoformationData.auditState}" class="spinner" style="height:18px;width:268px" readonly="readonly"/>
 			</td>
 			<td>审核说明：</td>
 			<td>
-				<input name="auditRemark" value="${carInfoformationData.auditOpinion}" class="spinner" style="height:18px;width:180px" readonly="readonly"/>
+				<input name="auditRemark" value="${carInfoformationData.auditOpinion}" class="spinner" style="height:18px;width:268px" readonly="readonly"/>
 			</td>
 		</tr>
 		<tr>
 			<td>审核人：</td>
-			<td><input  class="spinner" style="width:180px" value="${carInfoformationData.auditorDisplay}" readonly="readonly"/></td>
+			<td><input  class="spinner" style="width:268px" value="${carInfoformationData.auditorDisplay}" readonly="readonly"/></td>
 			<td>审核时间：</td>
-			<td><input class="spinner" style="width:180px" value="<fmt:formatDate value="${carInfoformationData.auditTime}" pattern="yyyy-MM-dd HH:mm:ss"/>" readonly="readonly"/></td>
+			<td><input class="spinner" style="width:268px" value="<fmt:formatDate value="${carInfoformationData.auditTime}" pattern="yyyy-MM-dd HH:mm:ss"/>" readonly="readonly"/></td>
 		</tr>
 		<tr>
 			<td>创建人：</td>
-			<td><input class="spinner" style="width:180px" value="${carInfoformationData.createrDisplay}" readonly="readonly"/></td>
+			<td><input class="spinner" style="width:268px" value="${carInfoformationData.createrDisplay}" readonly="readonly"/></td>
 			<td>创建时间：</td>
-			<td><input class="spinner" style="width:180px" value="<fmt:formatDate value="${carInfoformationData.createTime}" pattern="yyyy-MM-dd HH:mm:ss"/>" readonly="readonly"/></td>
+			<td><input class="spinner" style="width:268px" value="<fmt:formatDate value="${carInfoformationData.createTime}" pattern="yyyy-MM-dd HH:mm:ss"/>" readonly="readonly"/></td>
 		</tr>
 		<tr>
 			<td>更新人：</td>
-			<td><input class="spinner" style="width:180px" value="${carInfoformationData.updaterDisplay}" readonly="readonly"/></td>
+			<td><input class="spinner" style="width:268px" value="${carInfoformationData.updaterDisplay}" readonly="readonly"/></td>
 			<td>更新时间：</td>
-			<td><input class="spinner" style="width:180px" value="<fmt:formatDate value="${carInfoformationData.updateTime}" pattern="yyyy-MM-dd HH:mm:ss"/>" readonly="readonly"/></td>
+			<td><input class="spinner" style="width:268px" value="<fmt:formatDate value="${carInfoformationData.updateTime}" pattern="yyyy-MM-dd HH:mm:ss"/>" readonly="readonly"/></td>
 		</tr>
 		<tr>
 			<td>车辆描述：</td>
