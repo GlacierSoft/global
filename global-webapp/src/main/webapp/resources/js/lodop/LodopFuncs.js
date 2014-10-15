@@ -61,22 +61,18 @@ function getLodop(oOBJECT,oEMBED){
 	              }
 	             if (is64IE) {
 	            	 document.write(strHtm64_Install);
-	             }else{
-	            	 if (isIE) {
+	             }else if (isIE) {
 	            		 document.write(strHtmInstall);
-	            	 }else{
+	             }else{
 	            		document.documentElement.innerHTML=strHtmInstall+document.documentElement.innerHTML;
-		            	 
-		             }
-		                     
-	             }return LODOP;
-	     } else 
-	     if (LODOP.VERSION<"6.1.9.2") {
+		            }
+		         return LODOP;
+	     } else  if (LODOP.VERSION<"6.1.9.2") {
 	             if (is64IE) document.write(strHtm64_Update); else
 	             if (isIE) document.write(strHtmUpdate); else
 	             document.documentElement.innerHTML=strHtmUpdate+document.documentElement.innerHTML;
 	    	     return LODOP;
-	     };
+	     }
 	     //=====如下空白位置适合调用统一功能(如注册码、语言选择等):====	     
 
 

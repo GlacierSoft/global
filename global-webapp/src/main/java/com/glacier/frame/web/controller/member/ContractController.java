@@ -86,5 +86,17 @@ public class ContractController {
    	  	ouputStream.flush();    
    	  	ouputStream.close();   
 	   }
+	 
+	 //合同信息导出
+	 @RequestMapping(value="print.htm")
+	 private Object intoContractPrintPage(String contractRecordId,String str) {
+		    ModelAndView mav = new ModelAndView("member_mgr/contract_mgr/contract_print");
+		    mav.addObject("str",str);
+		    if(StringUtils.isNotBlank(contractRecordId)){
+		          mav.addObject("contractData", contractService.getContractPro(contractRecordId));
+		    }
+		    return mav;
+		}
+	 
 	
 }
