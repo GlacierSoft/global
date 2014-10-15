@@ -336,12 +336,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	function CreateOneFormPage(){
 		LODOP=getLodop(document.getElementById('LODOP_OB'),document.getElementById('LODOP_EM'));         
 		LODOP.PRINT_INIT("打印控件功能演示_Lodop功能_名片");       
-		LODOP.ADD_PRINT_RECT(10,55,360,220,0,1);       
+		LODOP.ADD_PRINT_RECT(10,55,710,450,0,1);       
 		LODOP.SET_PRINT_STYLE("FontSize",11);       
-		LODOP.ADD_PRINT_TEXT(20,180,100,25,"郭德强");       
+		LODOP.ADD_PRINT_TEXT(20,380,300,25,"承运商越海平台专属合同");       
 		LODOP.SET_PRINT_STYLEA(2,"FontName","隶书");       
 		LODOP.SET_PRINT_STYLEA(2,"FontSize",15);		       
-		LODOP.ADD_PRINT_TEXT(53,187,75,20,"科学家");       
+		LODOP.ADD_PRINT_TEXT(53,230,75,20,"");       
 		LODOP.ADD_PRINT_TEXT(100,131,272,20,"地址：中国北京社会科学院附近东大街西胡同");       
 		LODOP.ADD_PRINT_TEXT(138,132,166,20,"电话：010-88811888");	     
 		LODOP.SET_PREVIEW_WINDOW(0,0,0,760,540,"");
@@ -398,28 +398,4 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</table>
 		</form>
 	</div>
-	<div data-options="region:'south',split:true"
-		style="height: 40px; padding-left: 10px;" >
-	</div>
-</div>
-<div id="Test_One" style="display: none;">
-    <form id="form1">
-		  <table border="1" width="300" id="tb01" bgcolor="#CCFFCC" style="border:solid 1px black;border-collapse:collapse"><tr><td width="133" id="mtb001">
-		  <font face="黑体" color="#FF0000" size="3"><u>&nbsp;《表单一》&nbsp;</u></font></td></tr></table>
-		  <table border="1" width="300" height="106" cellspacing="0" bgcolor="#CCFFFF"style="border-collapse:collapse;table-layout:fixed;border:solid 1px black;"><tr>
-		  <td width="66" height="16" style="border:solid 1px black"><font color="#0000FF">A</font><font color="#0000FF">等</font></td>
-			<td width="51" height="16" style="border:solid 1px black"><font color="#0000FF">B</font><font color="#0000FF">等</font></td>
-			<td width="51" height="16" style="border:solid 1px black"><font color="#0000FF">C</font><font color="#0000FF">等</font></td></tr> 
-		<tr>
-			<td width="66" height="16" style="border:solid 1px black">A<sub>01</sub></td>
-			<td width="80" height="12" style="border:solid 1px black">中-001</td>
-			<td width="51" height="12" style="border:solid 1px black">C1<sup>x</sup></td>
-		</tr> 
-		<tr>
-		  	<td width="66" height="16" style="border:solid 1px black;overflow:hidden">A<sub>03</sub><nobr>over隐藏后面的：1234567890</nobr>
-			</td><td width="80" height="16" style="border:solid 1px black;overflow:hidden">韩-안녕</td><td width="51" height="16">C3<sup>x</sup>
-		</td>
-		</tr> 
-		</table>
-</form>
 </div>
