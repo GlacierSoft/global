@@ -1,6 +1,6 @@
 /**
- * @Title: ShipperMemberIntegral.java 
- * @Package com.glacier.frame.service.member 
+ * @Title: CarrierMemberCreditwortinessService.java 
+ * @Package com.glacier.frame.service.carrier 
  * @author song.jundong   
  * @email 985776597@qq.com
  * @date 2014-10-14 上午9:30:18 
@@ -75,9 +75,9 @@ public class CarrierMemberCreditwortinessService {
     }
       
     /**
-	 * @Title: getMember 
-	 * @Description: TODO(根据会员积分记录id获取会员信息) 
-	 * @param @param memberId
+	 * @Title: getMemberCreditworthiness 
+	 * @Description: TODO(根据信誉记录id获取会员信息) 
+	 * @param @param creditworthinessId
 	 * @param @return    设定文件 
 	 * @return Object    返回类型 
 	 * @throws

@@ -44,14 +44,14 @@ public class CarrierMemberCreditwortinessController extends AbstractController{
 	  @Autowired
 	    private CarrierMemberCreditwortinessService creditwortinessService;// 注入会员积分记录业务Bean
 	    
-	    // 进入会员积分记录列表展示页面
+	    // 进入会员信誉度列表展示页面
 	    @RequestMapping(value = "/index.htm")
 	    private Object intoIndexPintegral() {
 	        ModelAndView mav = new ModelAndView("carrier_mgr/carrierMemberCreditwortiness_mgr/creditwortiness");
 	        return mav;
 	    }
 	     
-	    // 进入会员积分记录Detail信息页面
+	    // 进入会员信誉记录Detail信息页面
 	    @RequestMapping(value = "/intoDetail.htm")
 	    private Object intoIntegralDetailPage(String carrierMemberCreditworthinessId) {
 	        ModelAndView mav = new ModelAndView("carrier_mgr/carrierMemberCreditwortiness_mgr/creditwortiness_detail");
@@ -61,7 +61,7 @@ public class CarrierMemberCreditwortinessController extends AbstractController{
 	        return mav;
 	    }
 	    
-	    // 获取表格结构的所有会员积分记录数据
+	    // 获取表格结构的所有会员信誉记录数据
 	    @RequestMapping(value = "/list.json", method = RequestMethod.POST)
 	    @ResponseBody
 	    private Object listIntegralAsGridByMenuId(CarrierMemberCreditwortinessQueryDTO  carrierMemberCreditwortinessQueryDTO, JqPager pintegralr) {

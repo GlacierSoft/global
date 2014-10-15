@@ -87,7 +87,7 @@
 		},
 		onDblClickRow:function(rowIndex, rowData){
 			$.easyui.showDialog({
-				title: '【'+rowData.memberName+'】积分详细信息',
+				title: '【'+rowData.memberName+'】信誉记录详细信息',
 				href : ctx + '/do/memberCreditwortiness/intoDetail.htm?carrierMemberCreditworthinessId='+rowData.carrierMemberCreditworthinessId,//从controller请求jsp页面进行渲染
 				width : 530,
 				height : 250,

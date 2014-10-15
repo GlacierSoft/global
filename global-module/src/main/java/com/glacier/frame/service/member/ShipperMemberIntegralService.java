@@ -75,9 +75,9 @@ public class ShipperMemberIntegralService {
     }
       
     /**
-	 * @Title: getMember 
+	 * @Title: getMemberIntegral 
 	 * @Description: TODO(根据会员积分记录id获取会员信息) 
-	 * @param @param memberId
+	 * @param @param shipperMemberIntegralId
 	 * @param @return    设定文件 
 	 * @return Object    返回类型 
 	 * @throws
