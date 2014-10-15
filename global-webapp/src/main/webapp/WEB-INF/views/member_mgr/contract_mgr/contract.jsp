@@ -167,9 +167,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	      location.href=ctx+"/do/contract/exp.json";
 	  };
 	  
-	  
-	
-	//状态下拉项
+	 //状态下拉项
 	  $('#bankCardSearchForm_status').combobox({
 			valueField : 'value',
 			//height:18,
@@ -184,25 +182,119 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	  var CreatedOKLodop7766=null;
 	  
 	  glacier.member_mgr.contract_mgr.contract.printContractorManager=function(){
-		  $("#investDailogTest").dialog({
-			  title:"what the fuck !",
-			  width: 650,    
-			  height: 230,
-			  modal: true,
-		      closed: false   
-		});
+		 var LODOP=getLodop();
 	  }
 	  
 	function print_Preview(str){
 		var row =glacier.member_mgr.contract_mgr.contract.contractDataGrid.datagrid("getSelected");
 		$("#spread_dialog").dialog({
-	 		title:"what the fuck !",  
-	 		width: 650,    
-			height: 230,
+	 		width: 380,    
+			height: 160,
 	 		href: ctx+"/do/contract/print.htm?contractRecordId="+row.contractRecordId+"&str="+str, 
 	 		closed: false
 	 	});
 	};
+	
+	var CreatedOKLodop7766=null;
+	 
+	 function getLodop(oOBJECT,oEMBED){
+		  /**************************
+		    本函数根据浏览器类型决定采用哪个页面元素作为Lodop对象：
+		 IE系列、IE内核系列的浏览器采用oOBJECT，
+		    其它浏览器(Firefox系列、Chrome系列、Opera系列、Safari系列等)采用oEMBED,
+		    如果页面没有相关对象元素，则新建一个或使用上次那个,避免重复生成。
+		 64位浏览器指向64位的安装程序install_lodop64.exe。
+		 **************************/
+		 //=====全局变量 设定
+	          var str_warn_install="0";
+	          var str_warn_update="0";
+	          var str_warn_firefox="0";
+	          var str_warn_chrome="0";
+	          var str_warn_total="0";
+	  
+	   //=====检测Lodop插件是否安装过，提供链接地址==========
+	  	      var strHtmInstall="<br><font color='#FF00FF'>打印控件未安装!点击这里<a href='<%=basePath%>resources/js/lodop/install_lodop32.exe' target='_self'>执行安装</a>,安装后请刷新页面或重新进入。</font>";
+	          var strHtmUpdate="<br><font color='#FF00FF'>打印控件需要升级!点击这里<a href='<%=basePath%>resources/js/lodop/install_lodop32.exe' target='_self'>执行升级</a>,升级后请重新进入。</font>";
+	          var strHtm64_Install="<br><font color='#FF00FF'>打印控件未安装!点击这里<a href='<%=basePath%>resources/js/lodop/install_lodop64.exe' target='_self'>执行安装</a>,安装后请刷新页面或重新进入。</font>";
+	          var strHtm64_Update="<br><font color='#FF00FF'>打印控件需要升级!点击这里<a href='<%=basePath%>resources/js/lodop/install_lodop64.exe' target='_self'>执行升级</a>,升级后请重新进入。</font>";
+	          var strHtmFireFox="<br><font color='#FF00FF'>（注意：如曾安装过Lodop旧版附件npActiveXPLugin,请在【工具】->【附加组件】->【扩展】中先卸它）</font>";
+	          var strHtmChrome="<br><font color='#FF00FF'>(如果此前正常，仅因浏览器升级或重安装而出问题，需重新执行以上安装）</font>";
+	          var LODOP;		
+	  	try{	
+	  	     //=====判断浏览器类型:===============
+	  	     var isIE	 = (navigator.userAgent.indexOf('MSIE')>=0) || (navigator.userAgent.indexOf('Trident')>=0);
+	  	     var is64IE  = isIE && (navigator.userAgent.indexOf('x64')>=0);
+	  	     //=====如果页面有Lodop就直接使用，没有则新建:==========
+	  	     if (oOBJECT!=undefined || oEMBED!=undefined) { 
+	                 	 if (isIE) 
+	  	             LODOP=oOBJECT; 
+	  	         else 
+	  	             LODOP=oEMBED;
+	  	     } else { 
+	  		 if (CreatedOKLodop7766==null){
+	            	     LODOP=document.createElement("object"); 
+	  		     LODOP.setAttribute("width",0); 
+	                       LODOP.setAttribute("height",0); 
+	  		     LODOP.setAttribute("style","position:absolute;left:0px;top:-100px;width:0px;height:0px;");  		     
+	                       if (isIE) LODOP.setAttribute("classid","clsid:2105C259-1E0C-4534-8141-A753534CB4CA"); 
+	  		     else LODOP.setAttribute("type","application/x-print-lodop");
+	  		     document.documentElement.appendChild(LODOP); 
+	  	             CreatedOKLodop7766=LODOP;		     
+	   	         } else 
+	                       LODOP=CreatedOKLodop7766;
+	  	     };
+	  	     //=====判断Lodop插件是否安装过，没有安装或版本过低就提示下载安装:==========
+	  	     if ((LODOP==null)||(typeof(LODOP.VERSION)=="undefined")) {
+	  	             if (navigator.userAgent.indexOf('Chrome')>=0){
+	  	            	str_warn_chrome=strHtmChrome;
+	  	            	// document.documentElement.innerHTML=strHtmChrome+document.documentElement.innerHTML;
+	  	             }
+	  	              if (navigator.userAgent.indexOf('Firefox')>=0){
+	  	            	str_warn_firefox=strHtmFireFox;
+	  	            	  //document.documentElement.innerHTML=strHtmFireFox+document.documentElement.innerHTML; 
+	  	             }
+	  	             if (is64IE) {
+	  	            	 //document.write(strHtm64_Install);
+	  	            	$.messager.alert("操作提示",strHtm64_Install,"warning");
+	  	            	 
+	  	             }else if (isIE) {
+	  	            		 //document.write(strHtmInstall);
+	  	            	$.messager.alert("操作提示",strHtmInstall,"warning");
+	  	            	 }else{
+	  	            		//document.documentElement.innerHTML=strHtmInstall+document.documentElement.innerHTML;
+	  	            		if(str_warn_chrome.trim()!="0")
+	  	            			str_warn_total=str_warn_chrome;
+	  	            		if(str_warn_firefox.trim()!="0")
+	  	            			str_warn_total=str_warn_firefox;
+	  	            		 $.messager.alert("操作提示",strHtmInstall+str_warn_total,"warning");
+	  	            	 }
+	  		         return LODOP;
+	  	     } else if (LODOP.VERSION<"6.1.9.2") {
+	  	              if (is64IE)
+	  	            	$.messager.alert("操作提示",strHtm64_Update,"warning");
+	  	            else if (isIE)
+	  	            	$.messager.alert("操作提示",strHtm64_Update,"warning");
+	  	            else
+	  	            	$.messager.alert("操作提示",strHtm64_Update,"warning");
+	  	            	
+	  	             return LODOP;
+	  	     }else{
+	  	    	 $("#investDailogTest").dialog({
+	  				  title:"选择操作",
+	  				  width: 380,    
+	  				  height: 150,
+	  				  modal: true,
+	  			      closed: false
+	  			});
+	  	     }
+	  	     return LODOP; 
+	  	} catch(err) {
+	  	     if (is64IE)	
+	              document.documentElement.innerHTML="Error:"+strHtm64_Install+document.documentElement.innerHTML;else
+	              document.documentElement.innerHTML="Error:"+strHtmInstall+document.documentElement.innerHTML;
+	  	     return LODOP; 
+	  	};
+	  }
 	
 	
 	
@@ -210,11 +302,18 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 
 <!--自定义对话款  -->
-<div id="investDailogTest" class="easyui-dialog"  buttons="#dlg-buttons-invest" closed="true" style="position:relative; z-index:101;">
-   <a href="javascript:print_Preview('preview_print');">打印预览</a>&nbsp;
-   <a href="javascript:print_Preview('direct_print');">直接打印</a>&nbsp;
-   <a href="javascript:print_Preview('design_print');">打印设计</a>&nbsp;
-   <a href="javascript:print_Preview('choose_print');">选择打印机</a>&nbsp;
+<div id="investDailogTest" class="easyui-dialog"  buttons="#dlg-buttons-invest" closed="true" style="position:relative; z-index:9999;">
+       <div style="width:320px;height: 60px;border:0px solid red;margin: 0px auto;margin-top: 10px;">
+		  <div style="float: left;">
+		     <img alt="" src="<%=basePath %>resources/images/warning.png" style="width:50px;height: 50px; "> 
+		  </div>
+		  <div style="float: left;line-height: 50px;margin-left: 20px;">
+		  	<a href="javascript:print_Preview('preview_print');">打印预览</a>&nbsp;
+		  	<a href="javascript:print_Preview('direct_print');">直接打印</a>&nbsp;
+		  	<a href="javascript:print_Preview('design_print');">打印设计</a>&nbsp;
+		  	<a href="javascript:print_Preview('choose_print');">选择打印机</a>&nbsp;
+		   </div>
+		 </div>
 </div>
 <!--自定义按钮  -->
 <div id="dlg-buttons-invest">   
@@ -228,7 +327,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </div> 
 
 <!--自定义对话框(媒介)-->
-<div id="spread_dialog" class="easyui-dialog" closed="true" style="position:relative; z-index:1;"></div>  
+<div id="spread_dialog" class="easyui-dialog" closed="true" style="position:relative; z-index:-1;"></div>  
 
 <!-- 所有客服列表面板和表格 -->
 <div class="easyui-layout" data-options="fit:true">

@@ -64,7 +64,10 @@ function getLodop(oOBJECT,oEMBED){
 	             }else if (isIE) {
 	            		 document.write(strHtmInstall);
 	             }else{
+	            	    $('#spread_dialog').dialog('close');
 	            		document.documentElement.innerHTML=strHtmInstall+document.documentElement.innerHTML;
+	            		$.messager.alert('警告','警告消息');
+	            		 
 		            }
 		         return LODOP;
 	     } else  if (LODOP.VERSION<"6.1.9.2") {
